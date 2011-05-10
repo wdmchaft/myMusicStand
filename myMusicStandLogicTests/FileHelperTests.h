@@ -13,3 +13,5 @@
 }
 
 @end
+
+NSArray *filesInDirectory(NSString *path);

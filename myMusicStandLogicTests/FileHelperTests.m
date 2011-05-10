@@ -52,3 +52,14 @@
 }
 
 @end
+
+NSArray *filesInDirectory(NSString *path)
+{
+    if ([@"Another Fake Directory" isEqual:path])
+    {
+        return [NSArray arrayWithObjects:@"New File.pdf", @"Second File.pdf", nil];
+    }
+    return [NSArray arrayWithObject:@"New File.pdf"];
+    
+}
+

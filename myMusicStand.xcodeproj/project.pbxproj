@@ -179,20 +179,9 @@
 		64D94DFF1379B2CB00300349 /* myMusicStand */ = {
 			isa = PBXGroup;
 			children = (
-				64D94E541379B35D00300349 /* FileHelpers.h */,
-				64D94E551379B35D00300349 /* FileHelpers.m */,
-				64D94E081379B2CB00300349 /* myMusicStandAppDelegate.h */,
-				64D94E091379B2CB00300349 /* myMusicStandAppDelegate.m */,
-				64D94E0B1379B2CC00300349 /* MainWindow.xib */,
-				64D94E0E1379B2CC00300349 /* myMusicStand.xcdatamodeld */,
-				64D94E8A1379BEFB00300349 /* TimestampEntity.h */,
-				64D94E8B1379BEFB00300349 /* TimestampEntity.m */,
-				64D94E861379BE1100300349 /* File.h */,
-				64D94E871379BE1100300349 /* File.m */,
-				64D94E821379BDCB00300349 /* OrderedFile.h */,
-				64D94E831379BDCB00300349 /* OrderedFile.m */,
-				64D94E7E1379BC3A00300349 /* Setlist.h */,
-				64D94E7F1379BC3A00300349 /* Setlist.m */,
+				64D94E8E1379C52100300349 /* File System work */,
+				64D94E8F1379C53600300349 /* Top Level */,
+				64D94E901379C54C00300349 /* Models */,
 				64D94E001379B2CB00300349 /* Supporting Files */,
 			);
 			path = myMusicStand;
@@ -242,16 +231,10 @@
 		64D94E3C1379B2F500300349 /* myMusicStandLogicTests */ = {
 			isa = PBXGroup;
 			children = (
-				64D94E731379B65500300349 /* SetlistTests.h */,
-				64D94E741379B65500300349 /* SetlistTests.m */,
-				64D94E6C1379B62400300349 /* OrderedFileTests.h */,
-				64D94E6D1379B62400300349 /* OrderedFileTests.m */,
-				64D94E611379B57800300349 /* FileTests.h */,
-				64D94E621379B57800300349 /* FileTests.m */,
-				64D94E5C1379B42000300349 /* CoreDataTest.h */,
-				64D94E5D1379B42000300349 /* CoreDataTest.m */,
-				64D94E591379B39300300349 /* FileHelperTests.h */,
-				64D94E5A1379B39300300349 /* FileHelperTests.m */,
+				64D94E981379C5EF00300349 /* Setlists Testing */,
+				64D94E951379C5B200300349 /* File related tests */,
+				64D94E961379C5C700300349 /* Core Data Testing */,
+				64D94E971379C5D800300349 /* File System Work Testing */,
 				64D94E3D1379B2F500300349 /* Supporting Files */,
 			);
 			path = myMusicStandLogicTests;
@@ -265,6 +248,111 @@
 				64D94E421379B2F500300349 /* myMusicStandLogicTests-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		64D94E8E1379C52100300349 /* File System work */ = {
+			isa = PBXGroup;
+			children = (
+				64D94E541379B35D00300349 /* FileHelpers.h */,
+				64D94E551379B35D00300349 /* FileHelpers.m */,
+			);
+			name = "File System work";
+			sourceTree = "<group>";
+		};
+		64D94E8F1379C53600300349 /* Top Level */ = {
+			isa = PBXGroup;
+			children = (
+				64D94E081379B2CB00300349 /* myMusicStandAppDelegate.h */,
+				64D94E091379B2CB00300349 /* myMusicStandAppDelegate.m */,
+				64D94E0B1379B2CC00300349 /* MainWindow.xib */,
+			);
+			name = "Top Level";
+			sourceTree = "<group>";
+		};
+		64D94E901379C54C00300349 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				64D94E0E1379B2CC00300349 /* myMusicStand.xcdatamodeld */,
+				64D94E941379C59000300349 /* Ordered Entity By Creation time */,
+				64D94E931379C58100300349 /* File (Chart) */,
+				64D94E921379C57300300349 /* Ordering  */,
+				64D94E911379C56800300349 /* Sets */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		64D94E911379C56800300349 /* Sets */ = {
+			isa = PBXGroup;
+			children = (
+				64D94E7E1379BC3A00300349 /* Setlist.h */,
+				64D94E7F1379BC3A00300349 /* Setlist.m */,
+			);
+			name = Sets;
+			sourceTree = "<group>";
+		};
+		64D94E921379C57300300349 /* Ordering  */ = {
+			isa = PBXGroup;
+			children = (
+				64D94E821379BDCB00300349 /* OrderedFile.h */,
+				64D94E831379BDCB00300349 /* OrderedFile.m */,
+			);
+			name = "Ordering ";
+			sourceTree = "<group>";
+		};
+		64D94E931379C58100300349 /* File (Chart) */ = {
+			isa = PBXGroup;
+			children = (
+				64D94E861379BE1100300349 /* File.h */,
+				64D94E871379BE1100300349 /* File.m */,
+			);
+			name = "File (Chart)";
+			sourceTree = "<group>";
+		};
+		64D94E941379C59000300349 /* Ordered Entity By Creation time */ = {
+			isa = PBXGroup;
+			children = (
+				64D94E8A1379BEFB00300349 /* TimestampEntity.h */,
+				64D94E8B1379BEFB00300349 /* TimestampEntity.m */,
+			);
+			name = "Ordered Entity By Creation time";
+			sourceTree = "<group>";
+		};
+		64D94E951379C5B200300349 /* File related tests */ = {
+			isa = PBXGroup;
+			children = (
+				64D94E6C1379B62400300349 /* OrderedFileTests.h */,
+				64D94E6D1379B62400300349 /* OrderedFileTests.m */,
+				64D94E611379B57800300349 /* FileTests.h */,
+				64D94E621379B57800300349 /* FileTests.m */,
+			);
+			name = "File related tests";
+			sourceTree = "<group>";
+		};
+		64D94E961379C5C700300349 /* Core Data Testing */ = {
+			isa = PBXGroup;
+			children = (
+				64D94E5C1379B42000300349 /* CoreDataTest.h */,
+				64D94E5D1379B42000300349 /* CoreDataTest.m */,
+			);
+			name = "Core Data Testing";
+			sourceTree = "<group>";
+		};
+		64D94E971379C5D800300349 /* File System Work Testing */ = {
+			isa = PBXGroup;
+			children = (
+				64D94E591379B39300300349 /* FileHelperTests.h */,
+				64D94E5A1379B39300300349 /* FileHelperTests.m */,
+			);
+			name = "File System Work Testing";
+			sourceTree = "<group>";
+		};
+		64D94E981379C5EF00300349 /* Setlists Testing */ = {
+			isa = PBXGroup;
+			children = (
+				64D94E731379B65500300349 /* SetlistTests.h */,
+				64D94E741379B65500300349 /* SetlistTests.m */,
+			);
+			name = "Setlists Testing";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

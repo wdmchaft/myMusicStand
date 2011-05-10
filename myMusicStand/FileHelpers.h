@@ -12,7 +12,4 @@ typedef enum {
     FileDiffTypeStale
 } FileDiffType;
 
-NSString *pathInDocumentDirectory(NSString *fileName);
-NSString *incrementFileName(NSString *fileName);
-NSArray *filesInDirectory(NSString *path);
 NSArray *filesDiffWithFileslistAndKnownFiles(NSArray *filesInDirectory, NSArray *knownFiles, FileDiffType type);
