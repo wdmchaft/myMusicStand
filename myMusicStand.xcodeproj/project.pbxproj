@@ -1,0 +1,467 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		64D94DF81379B2CB00300349 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64D94DF71379B2CB00300349 /* UIKit.framework */; };
+		64D94DFA1379B2CB00300349 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64D94DF91379B2CB00300349 /* Foundation.framework */; };
+		64D94DFC1379B2CB00300349 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64D94DFB1379B2CB00300349 /* CoreGraphics.framework */; };
+		64D94DFE1379B2CB00300349 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64D94DFD1379B2CB00300349 /* CoreData.framework */; };
+		64D94E041379B2CB00300349 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 64D94E021379B2CB00300349 /* InfoPlist.strings */; };
+		64D94E071379B2CB00300349 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 64D94E061379B2CB00300349 /* main.m */; };
+		64D94E0A1379B2CB00300349 /* myMusicStandAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 64D94E091379B2CB00300349 /* myMusicStandAppDelegate.m */; };
+		64D94E0D1379B2CC00300349 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64D94E0B1379B2CC00300349 /* MainWindow.xib */; };
+		64D94E101379B2CC00300349 /* myMusicStand.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 64D94E0E1379B2CC00300349 /* myMusicStand.xcdatamodeld */; };
+		64D94E171379B2CC00300349 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64D94DF71379B2CB00300349 /* UIKit.framework */; };
+		64D94E181379B2CC00300349 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64D94DF91379B2CB00300349 /* Foundation.framework */; };
+		64D94E191379B2CC00300349 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64D94DFB1379B2CB00300349 /* CoreGraphics.framework */; };
+		64D94E1A1379B2CC00300349 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64D94DFD1379B2CB00300349 /* CoreData.framework */; };
+		64D94E221379B2CC00300349 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 64D94E201379B2CC00300349 /* InfoPlist.strings */; };
+		64D94E251379B2CC00300349 /* myMusicStandTests.h in Resources */ = {isa = PBXBuildFile; fileRef = 64D94E241379B2CC00300349 /* myMusicStandTests.h */; };
+		64D94E271379B2CC00300349 /* myMusicStandTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 64D94E261379B2CC00300349 /* myMusicStandTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		64D94E1B1379B2CC00300349 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 64D94DEA1379B2CB00300349 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 64D94DF21379B2CB00300349;
+			remoteInfo = myMusicStand;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		64D94DF31379B2CB00300349 /* myMusicStand.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = myMusicStand.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		64D94DF71379B2CB00300349 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		64D94DF91379B2CB00300349 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		64D94DFB1379B2CB00300349 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		64D94DFD1379B2CB00300349 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		64D94E011379B2CB00300349 /* myMusicStand-Info.plist */ = {isa = PBXFileReference; path = "myMusicStand-Info.plist"; sourceTree = "<group>"; };
+		64D94E031379B2CB00300349 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		64D94E051379B2CB00300349 /* myMusicStand-Prefix.pch */ = {isa = PBXFileReference; path = "myMusicStand-Prefix.pch"; sourceTree = "<group>"; };
+		64D94E061379B2CB00300349 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		64D94E081379B2CB00300349 /* myMusicStandAppDelegate.h */ = {isa = PBXFileReference; path = myMusicStandAppDelegate.h; sourceTree = "<group>"; };
+		64D94E091379B2CB00300349 /* myMusicStandAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = myMusicStandAppDelegate.m; sourceTree = "<group>"; };
+		64D94E0C1379B2CC00300349 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
+		64D94E0F1379B2CC00300349 /* myMusicStand.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = myMusicStand.xcdatamodel; sourceTree = "<group>"; };
+		64D94E161379B2CC00300349 /* myMusicStandTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = myMusicStandTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		64D94E1F1379B2CC00300349 /* myMusicStandTests-Info.plist */ = {isa = PBXFileReference; path = "myMusicStandTests-Info.plist"; sourceTree = "<group>"; };
+		64D94E211379B2CC00300349 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		64D94E231379B2CC00300349 /* myMusicStandTests-Prefix.pch */ = {isa = PBXFileReference; path = "myMusicStandTests-Prefix.pch"; sourceTree = "<group>"; };
+		64D94E241379B2CC00300349 /* myMusicStandTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = myMusicStandTests.h; sourceTree = "<group>"; };
+		64D94E261379B2CC00300349 /* myMusicStandTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = myMusicStandTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		64D94DF01379B2CB00300349 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				64D94DF81379B2CB00300349 /* UIKit.framework in Frameworks */,
+				64D94DFA1379B2CB00300349 /* Foundation.framework in Frameworks */,
+				64D94DFC1379B2CB00300349 /* CoreGraphics.framework in Frameworks */,
+				64D94DFE1379B2CB00300349 /* CoreData.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		64D94E121379B2CC00300349 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				64D94E171379B2CC00300349 /* UIKit.framework in Frameworks */,
+				64D94E181379B2CC00300349 /* Foundation.framework in Frameworks */,
+				64D94E191379B2CC00300349 /* CoreGraphics.framework in Frameworks */,
+				64D94E1A1379B2CC00300349 /* CoreData.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		64D94DE81379B2CB00300349 = {
+			isa = PBXGroup;
+			children = (
+				64D94DFF1379B2CB00300349 /* myMusicStand */,
+				64D94E1D1379B2CC00300349 /* myMusicStandTests */,
+				64D94DF61379B2CB00300349 /* Frameworks */,
+				64D94DF41379B2CB00300349 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		64D94DF41379B2CB00300349 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				64D94DF31379B2CB00300349 /* myMusicStand.app */,
+				64D94E161379B2CC00300349 /* myMusicStandTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		64D94DF61379B2CB00300349 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				64D94DF71379B2CB00300349 /* UIKit.framework */,
+				64D94DF91379B2CB00300349 /* Foundation.framework */,
+				64D94DFB1379B2CB00300349 /* CoreGraphics.framework */,
+				64D94DFD1379B2CB00300349 /* CoreData.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		64D94DFF1379B2CB00300349 /* myMusicStand */ = {
+			isa = PBXGroup;
+			children = (
+				64D94E081379B2CB00300349 /* myMusicStandAppDelegate.h */,
+				64D94E091379B2CB00300349 /* myMusicStandAppDelegate.m */,
+				64D94E0B1379B2CC00300349 /* MainWindow.xib */,
+				64D94E0E1379B2CC00300349 /* myMusicStand.xcdatamodeld */,
+				64D94E001379B2CB00300349 /* Supporting Files */,
+			);
+			path = myMusicStand;
+			sourceTree = "<group>";
+		};
+		64D94E001379B2CB00300349 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				64D94E011379B2CB00300349 /* myMusicStand-Info.plist */,
+				64D94E021379B2CB00300349 /* InfoPlist.strings */,
+				64D94E051379B2CB00300349 /* myMusicStand-Prefix.pch */,
+				64D94E061379B2CB00300349 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		64D94E1D1379B2CC00300349 /* myMusicStandTests */ = {
+			isa = PBXGroup;
+			children = (
+				64D94E241379B2CC00300349 /* myMusicStandTests.h */,
+				64D94E261379B2CC00300349 /* myMusicStandTests.m */,
+				64D94E1E1379B2CC00300349 /* Supporting Files */,
+			);
+			path = myMusicStandTests;
+			sourceTree = "<group>";
+		};
+		64D94E1E1379B2CC00300349 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				64D94E1F1379B2CC00300349 /* myMusicStandTests-Info.plist */,
+				64D94E201379B2CC00300349 /* InfoPlist.strings */,
+				64D94E231379B2CC00300349 /* myMusicStandTests-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		64D94DF21379B2CB00300349 /* myMusicStand */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 64D94E2A1379B2CC00300349 /* Build configuration list for PBXNativeTarget "myMusicStand" */;
+			buildPhases = (
+				64D94DEF1379B2CB00300349 /* Sources */,
+				64D94DF01379B2CB00300349 /* Frameworks */,
+				64D94DF11379B2CB00300349 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = myMusicStand;
+			productName = myMusicStand;
+			productReference = 64D94DF31379B2CB00300349 /* myMusicStand.app */;
+			productType = "com.apple.product-type.application";
+		};
+		64D94E151379B2CC00300349 /* myMusicStandTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 64D94E2D1379B2CC00300349 /* Build configuration list for PBXNativeTarget "myMusicStandTests" */;
+			buildPhases = (
+				64D94E111379B2CC00300349 /* Sources */,
+				64D94E121379B2CC00300349 /* Frameworks */,
+				64D94E131379B2CC00300349 /* Resources */,
+				64D94E141379B2CC00300349 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				64D94E1C1379B2CC00300349 /* PBXTargetDependency */,
+			);
+			name = myMusicStandTests;
+			productName = myMusicStandTests;
+			productReference = 64D94E161379B2CC00300349 /* myMusicStandTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		64D94DEA1379B2CB00300349 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 64D94DED1379B2CB00300349 /* Build configuration list for PBXProject "myMusicStand" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 64D94DE81379B2CB00300349;
+			productRefGroup = 64D94DF41379B2CB00300349 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				64D94DF21379B2CB00300349 /* myMusicStand */,
+				64D94E151379B2CC00300349 /* myMusicStandTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		64D94DF11379B2CB00300349 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				64D94E041379B2CB00300349 /* InfoPlist.strings in Resources */,
+				64D94E0D1379B2CC00300349 /* MainWindow.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		64D94E131379B2CC00300349 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				64D94E221379B2CC00300349 /* InfoPlist.strings in Resources */,
+				64D94E251379B2CC00300349 /* myMusicStandTests.h in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		64D94E141379B2CC00300349 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		64D94DEF1379B2CB00300349 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				64D94E071379B2CB00300349 /* main.m in Sources */,
+				64D94E0A1379B2CB00300349 /* myMusicStandAppDelegate.m in Sources */,
+				64D94E101379B2CC00300349 /* myMusicStand.xcdatamodeld in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		64D94E111379B2CC00300349 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				64D94E271379B2CC00300349 /* myMusicStandTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		64D94E1C1379B2CC00300349 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 64D94DF21379B2CB00300349 /* myMusicStand */;
+			targetProxy = 64D94E1B1379B2CC00300349 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		64D94E021379B2CB00300349 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				64D94E031379B2CB00300349 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		64D94E0B1379B2CC00300349 /* MainWindow.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				64D94E0C1379B2CC00300349 /* en */,
+			);
+			name = MainWindow.xib;
+			sourceTree = "<group>";
+		};
+		64D94E201379B2CC00300349 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				64D94E211379B2CC00300349 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		64D94E281379B2CC00300349 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_UNIVERSAL_IPHONE_OS)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Debug;
+		};
+		64D94E291379B2CC00300349 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_UNIVERSAL_IPHONE_OS)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Release;
+		};
+		64D94E2B1379B2CC00300349 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "myMusicStand/myMusicStand-Prefix.pch";
+				INFOPLIST_FILE = "myMusicStand/myMusicStand-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		64D94E2C1379B2CC00300349 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "myMusicStand/myMusicStand-Prefix.pch";
+				INFOPLIST_FILE = "myMusicStand/myMusicStand-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALIDATE_PRODUCT = YES;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		64D94E2E1379B2CC00300349 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/myMusicStand.app/myMusicStand";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "myMusicStandTests/myMusicStandTests-Prefix.pch";
+				INFOPLIST_FILE = "myMusicStandTests/myMusicStandTests-Info.plist";
+				OTHER_LDFLAGS = (
+					"-framework",
+					SenTestingKit,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		64D94E2F1379B2CC00300349 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/myMusicStand.app/myMusicStand";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "myMusicStandTests/myMusicStandTests-Prefix.pch";
+				INFOPLIST_FILE = "myMusicStandTests/myMusicStandTests-Info.plist";
+				OTHER_LDFLAGS = (
+					"-framework",
+					SenTestingKit,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		64D94DED1379B2CB00300349 /* Build configuration list for PBXProject "myMusicStand" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				64D94E281379B2CC00300349 /* Debug */,
+				64D94E291379B2CC00300349 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		64D94E2A1379B2CC00300349 /* Build configuration list for PBXNativeTarget "myMusicStand" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				64D94E2B1379B2CC00300349 /* Debug */,
+				64D94E2C1379B2CC00300349 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		64D94E2D1379B2CC00300349 /* Build configuration list for PBXNativeTarget "myMusicStandTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				64D94E2E1379B2CC00300349 /* Debug */,
+				64D94E2F1379B2CC00300349 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		64D94E0E1379B2CC00300349 /* myMusicStand.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				64D94E0F1379B2CC00300349 /* myMusicStand.xcdatamodel */,
+			);
+			currentVersion = 64D94E0F1379B2CC00300349 /* myMusicStand.xcdatamodel */;
+			path = myMusicStand.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 64D94DEA1379B2CB00300349 /* Project object */;
+}
