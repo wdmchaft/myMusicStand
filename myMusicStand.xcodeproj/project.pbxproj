@@ -29,6 +29,8 @@
 		64D94E571379B35D00300349 /* FileHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 64D94E551379B35D00300349 /* FileHelpers.m */; };
 		64D94E581379B35D00300349 /* FileHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 64D94E551379B35D00300349 /* FileHelpers.m */; };
 		64D94E5B1379B39300300349 /* FileHelperTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 64D94E5A1379B39300300349 /* FileHelperTests.m */; };
+		64D94E5E1379B42000300349 /* CoreDataTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 64D94E5D1379B42000300349 /* CoreDataTest.m */; };
+		64D94E601379B44800300349 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64D94E5F1379B44800300349 /* CoreData.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +75,9 @@
 		64D94E551379B35D00300349 /* FileHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileHelpers.m; sourceTree = "<group>"; };
 		64D94E591379B39300300349 /* FileHelperTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileHelperTests.h; sourceTree = "<group>"; };
 		64D94E5A1379B39300300349 /* FileHelperTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileHelperTests.m; sourceTree = "<group>"; };
+		64D94E5C1379B42000300349 /* CoreDataTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataTest.h; sourceTree = "<group>"; };
+		64D94E5D1379B42000300349 /* CoreDataTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataTest.m; sourceTree = "<group>"; };
+		64D94E5F1379B44800300349 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = SDKs/MacOSX10.6.sdk/System/Library/Frameworks/CoreData.framework; sourceTree = DEVELOPER_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +107,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				64D94E601379B44800300349 /* CoreData.framework in Frameworks */,
 				64D94E371379B2F500300349 /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -112,6 +118,7 @@
 		64D94DE81379B2CB00300349 = {
 			isa = PBXGroup;
 			children = (
+				64D94E5F1379B44800300349 /* CoreData.framework */,
 				64D94DFF1379B2CB00300349 /* myMusicStand */,
 				64D94E1D1379B2CC00300349 /* myMusicStandTests */,
 				64D94E3C1379B2F500300349 /* myMusicStandLogicTests */,
@@ -201,6 +208,8 @@
 		64D94E3C1379B2F500300349 /* myMusicStandLogicTests */ = {
 			isa = PBXGroup;
 			children = (
+				64D94E5C1379B42000300349 /* CoreDataTest.h */,
+				64D94E5D1379B42000300349 /* CoreDataTest.m */,
 				64D94E591379B39300300349 /* FileHelperTests.h */,
 				64D94E5A1379B39300300349 /* FileHelperTests.m */,
 				64D94E3D1379B2F500300349 /* Supporting Files */,
@@ -384,6 +393,7 @@
 			files = (
 				64D94E581379B35D00300349 /* FileHelpers.m in Sources */,
 				64D94E5B1379B39300300349 /* FileHelperTests.m in Sources */,
+				64D94E5E1379B42000300349 /* CoreDataTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
