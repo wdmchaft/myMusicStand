@@ -9,7 +9,9 @@
 #import <UIKit/UIKit.h>
 
 
-@interface FilesListTableViewController : UITableViewController {
+@interface FilesListTableViewController : UITableViewController 
+<UITableViewDelegate>
+{
     
 }
 
