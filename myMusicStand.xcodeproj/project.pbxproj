@@ -23,6 +23,12 @@
 		64D94E221379B2CC00300349 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 64D94E201379B2CC00300349 /* InfoPlist.strings */; };
 		64D94E251379B2CC00300349 /* myMusicStandTests.h in Resources */ = {isa = PBXBuildFile; fileRef = 64D94E241379B2CC00300349 /* myMusicStandTests.h */; };
 		64D94E271379B2CC00300349 /* myMusicStandTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 64D94E261379B2CC00300349 /* myMusicStandTests.m */; };
+		64D94E371379B2F500300349 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64D94E361379B2F500300349 /* Cocoa.framework */; };
+		64D94E411379B2F500300349 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 64D94E3F1379B2F500300349 /* InfoPlist.strings */; };
+		64D94E561379B35D00300349 /* FileHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 64D94E551379B35D00300349 /* FileHelpers.m */; };
+		64D94E571379B35D00300349 /* FileHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 64D94E551379B35D00300349 /* FileHelpers.m */; };
+		64D94E581379B35D00300349 /* FileHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 64D94E551379B35D00300349 /* FileHelpers.m */; };
+		64D94E5B1379B39300300349 /* FileHelperTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 64D94E5A1379B39300300349 /* FileHelperTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,20 +47,32 @@
 		64D94DF91379B2CB00300349 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		64D94DFB1379B2CB00300349 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		64D94DFD1379B2CB00300349 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
-		64D94E011379B2CB00300349 /* myMusicStand-Info.plist */ = {isa = PBXFileReference; path = "myMusicStand-Info.plist"; sourceTree = "<group>"; };
+		64D94E011379B2CB00300349 /* myMusicStand-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "myMusicStand-Info.plist"; sourceTree = "<group>"; };
 		64D94E031379B2CB00300349 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		64D94E051379B2CB00300349 /* myMusicStand-Prefix.pch */ = {isa = PBXFileReference; path = "myMusicStand-Prefix.pch"; sourceTree = "<group>"; };
+		64D94E051379B2CB00300349 /* myMusicStand-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "myMusicStand-Prefix.pch"; sourceTree = "<group>"; };
 		64D94E061379B2CB00300349 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		64D94E081379B2CB00300349 /* myMusicStandAppDelegate.h */ = {isa = PBXFileReference; path = myMusicStandAppDelegate.h; sourceTree = "<group>"; };
+		64D94E081379B2CB00300349 /* myMusicStandAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = myMusicStandAppDelegate.h; sourceTree = "<group>"; };
 		64D94E091379B2CB00300349 /* myMusicStandAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = myMusicStandAppDelegate.m; sourceTree = "<group>"; };
 		64D94E0C1379B2CC00300349 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
 		64D94E0F1379B2CC00300349 /* myMusicStand.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = myMusicStand.xcdatamodel; sourceTree = "<group>"; };
 		64D94E161379B2CC00300349 /* myMusicStandTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = myMusicStandTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
-		64D94E1F1379B2CC00300349 /* myMusicStandTests-Info.plist */ = {isa = PBXFileReference; path = "myMusicStandTests-Info.plist"; sourceTree = "<group>"; };
+		64D94E1F1379B2CC00300349 /* myMusicStandTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "myMusicStandTests-Info.plist"; sourceTree = "<group>"; };
 		64D94E211379B2CC00300349 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		64D94E231379B2CC00300349 /* myMusicStandTests-Prefix.pch */ = {isa = PBXFileReference; path = "myMusicStandTests-Prefix.pch"; sourceTree = "<group>"; };
+		64D94E231379B2CC00300349 /* myMusicStandTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "myMusicStandTests-Prefix.pch"; sourceTree = "<group>"; };
 		64D94E241379B2CC00300349 /* myMusicStandTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = myMusicStandTests.h; sourceTree = "<group>"; };
 		64D94E261379B2CC00300349 /* myMusicStandTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = myMusicStandTests.m; sourceTree = "<group>"; };
+		64D94E351379B2F500300349 /* myMusicStandLogicTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = myMusicStandLogicTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		64D94E361379B2F500300349 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		64D94E391379B2F500300349 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		64D94E3A1379B2F500300349 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		64D94E3B1379B2F500300349 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		64D94E3E1379B2F500300349 /* myMusicStandLogicTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "myMusicStandLogicTests-Info.plist"; sourceTree = "<group>"; };
+		64D94E401379B2F500300349 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		64D94E421379B2F500300349 /* myMusicStandLogicTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "myMusicStandLogicTests-Prefix.pch"; sourceTree = "<group>"; };
+		64D94E541379B35D00300349 /* FileHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileHelpers.h; sourceTree = "<group>"; };
+		64D94E551379B35D00300349 /* FileHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileHelpers.m; sourceTree = "<group>"; };
+		64D94E591379B39300300349 /* FileHelperTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileHelperTests.h; sourceTree = "<group>"; };
+		64D94E5A1379B39300300349 /* FileHelperTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileHelperTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +98,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		64D94E311379B2F500300349 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				64D94E371379B2F500300349 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -88,6 +114,7 @@
 			children = (
 				64D94DFF1379B2CB00300349 /* myMusicStand */,
 				64D94E1D1379B2CC00300349 /* myMusicStandTests */,
+				64D94E3C1379B2F500300349 /* myMusicStandLogicTests */,
 				64D94DF61379B2CB00300349 /* Frameworks */,
 				64D94DF41379B2CB00300349 /* Products */,
 			);
@@ -98,6 +125,7 @@
 			children = (
 				64D94DF31379B2CB00300349 /* myMusicStand.app */,
 				64D94E161379B2CC00300349 /* myMusicStandTests.octest */,
+				64D94E351379B2F500300349 /* myMusicStandLogicTests.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -109,6 +137,8 @@
 				64D94DF91379B2CB00300349 /* Foundation.framework */,
 				64D94DFB1379B2CB00300349 /* CoreGraphics.framework */,
 				64D94DFD1379B2CB00300349 /* CoreData.framework */,
+				64D94E361379B2F500300349 /* Cocoa.framework */,
+				64D94E381379B2F500300349 /* Other Frameworks */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -116,6 +146,8 @@
 		64D94DFF1379B2CB00300349 /* myMusicStand */ = {
 			isa = PBXGroup;
 			children = (
+				64D94E541379B35D00300349 /* FileHelpers.h */,
+				64D94E551379B35D00300349 /* FileHelpers.m */,
 				64D94E081379B2CB00300349 /* myMusicStandAppDelegate.h */,
 				64D94E091379B2CB00300349 /* myMusicStandAppDelegate.m */,
 				64D94E0B1379B2CC00300349 /* MainWindow.xib */,
@@ -152,6 +184,36 @@
 				64D94E1F1379B2CC00300349 /* myMusicStandTests-Info.plist */,
 				64D94E201379B2CC00300349 /* InfoPlist.strings */,
 				64D94E231379B2CC00300349 /* myMusicStandTests-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		64D94E381379B2F500300349 /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				64D94E391379B2F500300349 /* AppKit.framework */,
+				64D94E3A1379B2F500300349 /* CoreData.framework */,
+				64D94E3B1379B2F500300349 /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		64D94E3C1379B2F500300349 /* myMusicStandLogicTests */ = {
+			isa = PBXGroup;
+			children = (
+				64D94E591379B39300300349 /* FileHelperTests.h */,
+				64D94E5A1379B39300300349 /* FileHelperTests.m */,
+				64D94E3D1379B2F500300349 /* Supporting Files */,
+			);
+			path = myMusicStandLogicTests;
+			sourceTree = "<group>";
+		};
+		64D94E3D1379B2F500300349 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				64D94E3E1379B2F500300349 /* myMusicStandLogicTests-Info.plist */,
+				64D94E3F1379B2F500300349 /* InfoPlist.strings */,
+				64D94E421379B2F500300349 /* myMusicStandLogicTests-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -195,6 +257,24 @@
 			productReference = 64D94E161379B2CC00300349 /* myMusicStandTests.octest */;
 			productType = "com.apple.product-type.bundle";
 		};
+		64D94E341379B2F500300349 /* myMusicStandLogicTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 64D94E471379B2F500300349 /* Build configuration list for PBXNativeTarget "myMusicStandLogicTests" */;
+			buildPhases = (
+				64D94E301379B2F500300349 /* Sources */,
+				64D94E311379B2F500300349 /* Frameworks */,
+				64D94E321379B2F500300349 /* Resources */,
+				64D94E331379B2F500300349 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = myMusicStandLogicTests;
+			productName = myMusicStandLogicTests;
+			productReference = 64D94E351379B2F500300349 /* myMusicStandLogicTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -214,6 +294,7 @@
 			targets = (
 				64D94DF21379B2CB00300349 /* myMusicStand */,
 				64D94E151379B2CC00300349 /* myMusicStandTests */,
+				64D94E341379B2F500300349 /* myMusicStandLogicTests */,
 			);
 		};
 /* End PBXProject section */
@@ -237,10 +318,31 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		64D94E321379B2F500300349 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				64D94E411379B2F500300349 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
 		64D94E141379B2CC00300349 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+		64D94E331379B2F500300349 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -263,6 +365,7 @@
 				64D94E071379B2CB00300349 /* main.m in Sources */,
 				64D94E0A1379B2CB00300349 /* myMusicStandAppDelegate.m in Sources */,
 				64D94E101379B2CC00300349 /* myMusicStand.xcdatamodeld in Sources */,
+				64D94E561379B35D00300349 /* FileHelpers.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -271,6 +374,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				64D94E271379B2CC00300349 /* myMusicStandTests.m in Sources */,
+				64D94E571379B35D00300349 /* FileHelpers.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		64D94E301379B2F500300349 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				64D94E581379B35D00300349 /* FileHelpers.m in Sources */,
+				64D94E5B1379B39300300349 /* FileHelperTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -305,6 +418,14 @@
 			isa = PBXVariantGroup;
 			children = (
 				64D94E211379B2CC00300349 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		64D94E3F1379B2F500300349 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				64D94E401379B2F500300349 /* en */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -420,6 +541,57 @@
 			};
 			name = Release;
 		};
+		64D94E481379B2F500300349 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = "$(DEVELOPER_LIBRARY_DIR)/Frameworks";
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "myMusicStandLogicTests/myMusicStandLogicTests-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				INFOPLIST_FILE = "myMusicStandLogicTests/myMusicStandLogicTests-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SenTestingKit,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		64D94E491379B2F500300349 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = "$(DEVELOPER_LIBRARY_DIR)/Frameworks";
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "myMusicStandLogicTests/myMusicStandLogicTests-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				INFOPLIST_FILE = "myMusicStandLogicTests/myMusicStandLogicTests-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				OTHER_LDFLAGS = (
+					"-framework",
+					SenTestingKit,
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -445,6 +617,14 @@
 			buildConfigurations = (
 				64D94E2E1379B2CC00300349 /* Debug */,
 				64D94E2F1379B2CC00300349 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		64D94E471379B2F500300349 /* Build configuration list for PBXNativeTarget "myMusicStandLogicTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				64D94E481379B2F500300349 /* Debug */,
+				64D94E491379B2F500300349 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};
