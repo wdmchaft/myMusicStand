@@ -7,11 +7,10 @@
 //
 
 #import <SenTestingKit/SenTestingKit.h>
-
+#import "myMusicStandAppDelegate.h"
 
 @interface myMusicStandTests : SenTestCase {
-@private
-    
+    myMusicStandAppDelegate *delegate;
 }
 
 @end

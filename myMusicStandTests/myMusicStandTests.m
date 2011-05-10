@@ -14,8 +14,7 @@
 - (void)setUp
 {
     [super setUp];
-    
-    // Set-up code here.
+    delegate = [myMusicStandAppDelegate sharedInstance];
 }
 
 - (void)tearDown
@@ -27,7 +26,6 @@
 
 - (void)testDelegateExists
 {
-    myMusicStandAppDelegate *delegate = [myMusicStandAppDelegate sharedInstance];
     STAssertNotNil(delegate, @"The App Delegate should exist");
 }
 @end
