@@ -7,7 +7,7 @@
 //
 
 #import "myMusicStandTests.h"
-
+#import "myMusicStandAppDelegate.h"
 
 @implementation myMusicStandTests
 
@@ -25,9 +25,9 @@
     [super tearDown];
 }
 
-- (void)testExample
+- (void)testDelegateExists
 {
-    STFail(@"Unit tests are not implemented yet in myMusicStandTests");
+    myMusicStandAppDelegate *delegate = [myMusicStandAppDelegate sharedInstance];
+    STAssertNotNil(delegate, @"The App Delegate should exist");
 }
-
 @end

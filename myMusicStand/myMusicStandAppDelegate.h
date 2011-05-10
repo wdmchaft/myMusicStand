@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreData/CoreData.h>
 
 @interface myMusicStandAppDelegate : NSObject <UIApplicationDelegate> {
 
@@ -20,5 +21,5 @@
 
 - (void)saveContext;
 - (NSURL *)applicationDocumentsDirectory;
-
++ (id)sharedInstance;
 @end

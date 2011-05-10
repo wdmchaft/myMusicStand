@@ -32,7 +32,6 @@
 		64D94E601379B44800300349 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64D94E5F1379B44800300349 /* CoreData.framework */; };
 		64D94E631379B57900300349 /* FileTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 64D94E621379B57800300349 /* FileTests.m */; };
 		64D94E6E1379B62400300349 /* OrderedFileTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 64D94E6D1379B62400300349 /* OrderedFileTests.m */; };
-		64D94E751379B65500300349 /* SetlistTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 64D94E741379B65500300349 /* SetlistTests.m */; };
 		64D94E7A1379B6EC00300349 /* myMusicStand.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = 64D94E0F1379B2CC00300349 /* myMusicStand.xcdatamodel */; };
 		64D94E7B1379B7A500300349 /* SetlistTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 64D94E741379B65500300349 /* SetlistTests.m */; };
 		64D94E801379BC3A00300349 /* Setlist.m in Sources */ = {isa = PBXBuildFile; fileRef = 64D94E7F1379BC3A00300349 /* Setlist.m */; };
@@ -274,7 +273,7 @@
 			children = (
 				64D94E0E1379B2CC00300349 /* myMusicStand.xcdatamodeld */,
 				64D94E941379C59000300349 /* Ordered Entity By Creation time */,
-				64D94E931379C58100300349 /* File (Chart) */,
+				64D94E931379C58100300349 /* Files (aka Charts) */,
 				64D94E921379C57300300349 /* Ordering  */,
 				64D94E911379C56800300349 /* Sets */,
 			);
@@ -299,13 +298,13 @@
 			name = "Ordering ";
 			sourceTree = "<group>";
 		};
-		64D94E931379C58100300349 /* File (Chart) */ = {
+		64D94E931379C58100300349 /* Files (aka Charts) */ = {
 			isa = PBXGroup;
 			children = (
 				64D94E861379BE1100300349 /* File.h */,
 				64D94E871379BE1100300349 /* File.m */,
 			);
-			name = "File (Chart)";
+			name = "Files (aka Charts)";
 			sourceTree = "<group>";
 		};
 		64D94E941379C59000300349 /* Ordered Entity By Creation time */ = {
@@ -503,7 +502,6 @@
 				64D94E0A1379B2CB00300349 /* myMusicStandAppDelegate.m in Sources */,
 				64D94E101379B2CC00300349 /* myMusicStand.xcdatamodeld in Sources */,
 				64D94E561379B35D00300349 /* FileHelpers.m in Sources */,
-				64D94E751379B65500300349 /* SetlistTests.m in Sources */,
 				64D94E801379BC3A00300349 /* Setlist.m in Sources */,
 				64D94E841379BDCB00300349 /* OrderedFile.m in Sources */,
 				64D94E881379BE1100300349 /* File.m in Sources */,
@@ -761,6 +759,7 @@
 				64D94E2C1379B2CC00300349 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		64D94E2D1379B2CC00300349 /* Build configuration list for PBXNativeTarget "myMusicStandTests" */ = {
 			isa = XCConfigurationList;
@@ -769,6 +768,7 @@
 				64D94E2F1379B2CC00300349 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		64D94E471379B2F500300349 /* Build configuration list for PBXNativeTarget "myMusicStandLogicTests" */ = {
 			isa = XCConfigurationList;
@@ -777,6 +777,7 @@
 				64D94E491379B2F500300349 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

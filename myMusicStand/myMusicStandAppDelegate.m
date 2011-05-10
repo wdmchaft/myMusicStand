@@ -8,6 +8,8 @@
 
 #import "myMusicStandAppDelegate.h"
 
+static myMusicStandAppDelegate *sharedInstance;
+
 @implementation myMusicStandAppDelegate
 
 
@@ -18,6 +20,28 @@
 @synthesize managedObjectModel=__managedObjectModel;
 
 @synthesize persistentStoreCoordinator=__persistentStoreCoordinator;
+
+- (id)init 
+{
+	if (sharedInstance)
+	{
+		NSLog(@"Error: You are creating a second AppController");
+	}
+	
+	[super init];
+	sharedInstance = self;
+	
+	/*
+	 Class privateClass = NSClassFromString(@"NSSQLCore");
+	 // You will get a compiler warning here, ignore it
+	 [privateClass setDebugDefault:YES];*/
+	return self;
+}
+
++ (myMusicStandAppDelegate *)sharedInstance
+{
+	return sharedInstance;
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
