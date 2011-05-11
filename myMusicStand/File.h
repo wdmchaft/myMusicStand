@@ -21,6 +21,7 @@ typedef enum {
 }
 @property (nonatomic, retain) NSString * filename;
 @property (nonatomic, retain) NSSet* orderedFiles;
+@property (nonatomic, retain) NSString *alias;
 
 + (File *)fileWithContext:(NSManagedObjectContext *)moc;
 - (void)addOrderedFilesObject:(OrderedFile *)value;

@@ -69,4 +69,10 @@
     STAssertEqualObjects(files, [context allEntity:@"File"],
                          @"The files should be in the order they were created");
 }
+
+- (void)testFileSettingTitle
+{
+    [file setAlias:@"a cool title"];
+    STAssertEquals(@"a cool title", [file alias], @"The file's title should be set");
+}
 @end

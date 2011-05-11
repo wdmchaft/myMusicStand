@@ -13,6 +13,7 @@
 @implementation File
 @dynamic filename;
 @dynamic orderedFiles;
+@dynamic alias;
 
 - (void)addOrderedFilesObject:(OrderedFile *)value {    
     NSSet *changedObjects = [[NSSet alloc] initWithObjects:&value count:1];
