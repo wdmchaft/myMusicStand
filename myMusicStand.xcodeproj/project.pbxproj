@@ -46,7 +46,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		64D94E1B1379B2CC00300349 /* PBXContainerItemProxy */ = {
+		64E47BC5137B1F7600AC5C93 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 64D94DEA1379B2CB00300349 /* Project object */;
 			proxyType = 1;
@@ -104,7 +104,6 @@
 		64D94E8B1379BEFB00300349 /* TimestampEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimestampEntity.m; sourceTree = "<group>"; };
 		64E47BC0137AE3E800AC5C93 /* FilesListTableViewControllerTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilesListTableViewControllerTests.h; sourceTree = "<group>"; };
 		64E47BC1137AE3E800AC5C93 /* FilesListTableViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilesListTableViewControllerTests.m; sourceTree = "<group>"; };
-		64E47BC3137B14C600AC5C93 /* OCMock.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OCMock.framework; path = ../../../../Library/Frameworks/OCMock.framework; sourceTree = "<group>"; };
 		64EAE5FA1379DDE900544C29 /* FilesListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilesListTableViewController.h; sourceTree = "<group>"; };
 		64EAE5FB1379DDE900544C29 /* FilesListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilesListTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -147,7 +146,6 @@
 		64D94DE81379B2CB00300349 = {
 			isa = PBXGroup;
 			children = (
-				64E47BC3137B14C600AC5C93 /* OCMock.framework */,
 				64D94E5F1379B44800300349 /* CoreData.framework */,
 				64D94DFF1379B2CB00300349 /* myMusicStand */,
 				64D94E1D1379B2CC00300349 /* myMusicStandTests */,
@@ -401,7 +399,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				64D94E1C1379B2CC00300349 /* PBXTargetDependency */,
+				64E47BC6137B1F7600AC5C93 /* PBXTargetDependency */,
 			);
 			name = myMusicStandTests;
 			productName = myMusicStandTests;
@@ -554,10 +552,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		64D94E1C1379B2CC00300349 /* PBXTargetDependency */ = {
+		64E47BC6137B1F7600AC5C93 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 64D94DF21379B2CB00300349 /* myMusicStand */;
-			targetProxy = 64D94E1B1379B2CC00300349 /* PBXContainerItemProxy */;
+			targetProxy = 64E47BC5137B1F7600AC5C93 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -671,10 +669,18 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "myMusicStandTests/myMusicStandTests-Prefix.pch";
+				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/Libraries/Headers";
 				INFOPLIST_FILE = "myMusicStandTests/myMusicStandTests-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(PROJECT_DIR)/Libraries\"",
+				);
 				OTHER_LDFLAGS = (
 					"-framework",
 					SenTestingKit,
+					"-ObjC",
+					"-force_load",
+					"$(PROJECT_DIR)/Libraries/libOCMock.a",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
@@ -694,10 +700,18 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "myMusicStandTests/myMusicStandTests-Prefix.pch";
+				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/Libraries/Headers";
 				INFOPLIST_FILE = "myMusicStandTests/myMusicStandTests-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(PROJECT_DIR)/Libraries\"",
+				);
 				OTHER_LDFLAGS = (
 					"-framework",
 					SenTestingKit,
+					"-ObjC",
+					"-force_load",
+					"$(PROJECT_DIR)/Libraries/libOCMock.a",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
