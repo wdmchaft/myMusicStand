@@ -17,6 +17,14 @@
 {
     [super setUp];
     appDelegate = [[UIApplication sharedApplication] delegate];
+    
+    // Make appDelegate use our testing context 
+    // instead of setting up it's own
+    [appDelegate setManagedObjectContext:context];
+    
+    // Create file in our context
+    file = [File fileWithContext:context];
+    [file setFilename:@"File1.pdf"];
 }
 
 - (void)tearDown
@@ -57,15 +65,30 @@
 
 - (void)testKnownFiles
 {
-    // Make appDelegate use our testing context to check files
-    [appDelegate setManagedObjectContext:context];
-    
-    // Create file in our context
-    [[File fileWithContext:context] setFilename:@"File1.pdf"];
     
     NSArray *expectedKnownFiles = [NSArray arrayWithObjects:@"File1.pdf", nil];
     STAssertEqualObjects(expectedKnownFiles, [appDelegate knownFileNames], 
                          @"The known files should return the files created");
 }
+
+- (void)testFilesDiffs
+{
+    // See NSFileManager (FakingDirectory) for contents of fake directory
+    [appDelegate checkForFileDiffs];
+    NSArray *expectedFileNames = [NSArray arrayWithObjects:@"File1.pdf", @"File3.pdf", nil];
+    STAssertEqualObjects(expectedFileNames, [appDelegate knownFileNames], 
+                         @"The files should have a new file");
+        
+}
+
 @end
 
+// Overriding the method for filemanager will allow for testing of delegates use of diffing
+@implementation NSFileManager (FakingDirectory)
+
+- (NSArray *)contentsOfDirectoryAtPath:(NSString *)path error:(NSError **)error
+{
+    return [NSArray arrayWithObjects:@"File1.pdf", @"File3.pdf", nil];
+}
+
+@end

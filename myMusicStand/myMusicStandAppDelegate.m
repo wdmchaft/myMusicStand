@@ -8,6 +8,7 @@
 
 #import "myMusicStandAppDelegate.h"
 #import "File.h"
+#import "FileHelpers.h"
 
 static myMusicStandAppDelegate *sharedInstance;
 
@@ -210,6 +211,7 @@ static myMusicStandAppDelegate *sharedInstance;
 
 - (NSArray *)knownFileNames
 {
+    
     NSArray *files = [[self managedObjectContext] allEntity:@"File"];
     NSMutableArray *fileNames = [[[NSMutableArray alloc] init] autorelease];    
  
@@ -221,6 +223,27 @@ static myMusicStandAppDelegate *sharedInstance;
     
     // return an immutable copy of the filenames array 
     return [[fileNames copy] autorelease];
+}
+
+- (void)checkForFileDiffs
+{
+    // Get the context to add new files to
+    NSManagedObjectContext *context = [self managedObjectContext];
+
+    // Get a file manager
+    NSFileManager *fm = [NSFileManager defaultManager];
+    
+    // Diff for new files
+    NSArray *directoryContents = [fm contentsOfDirectoryAtPath:@"" error:nil];
+    NSArray *knownFiles = [self knownFileNames];
+    NSArray *newFiles = filesDiffWithFileslistAndKnownFiles(directoryContents, knownFiles, FileDiffTypeNew);
+    
+    // Loop through the new file names and add them
+    for (NSString *newFile in newFiles)
+    {
+        [[File fileWithContext:context] setFilename:newFile];
+    }
+    
 }
 
 #pragma mark - Application's Documents directory

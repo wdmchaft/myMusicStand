@@ -11,6 +11,7 @@
 
 @interface myMusicStandAppDelegate : NSObject <UIApplicationDelegate> {
     IBOutlet UIViewController *rootController;
+    NSArray *theFiles;
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
@@ -23,4 +24,5 @@
 - (void)saveContext;
 - (NSURL *)applicationDocumentsDirectory;
 + (id)sharedInstance;
+- (void)checkForFileDiffs;
 @end
