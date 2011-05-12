@@ -17,5 +17,5 @@
 }
 
 @property (nonatomic, retain) myMusicStandAppDelegate *delegate;
-
+@property (nonatomic, retain) NSArray *files;
 @end

@@ -12,6 +12,7 @@
 @implementation FilesListTableViewController
 
 @synthesize delegate;
+@synthesize files;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -95,7 +96,10 @@
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
     }
     
-    // Configure the cell...
+    // File to display
+    File *file = [files objectAtIndex:[indexPath row]];
+    // Configure the cell to show the filename
+    [[cell textLabel] setText:[file filename]];
     
     return cell;
 }

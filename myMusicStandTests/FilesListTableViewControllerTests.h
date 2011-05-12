@@ -7,11 +7,13 @@
 //
 
 #import <SenTestingKit/SenTestingKit.h>
+#import "CoreDataTest.h"
 
-
-@interface FilesListTableViewControllerTests : SenTestCase {
-@private
-    
+@class FilesListTableViewController;
+@interface FilesListTableViewControllerTests : CoreDataTest {
+    id mockDelegate;
+    id mockContext;
+    FilesListTableViewController *controller;
 }
 
 @end
