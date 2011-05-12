@@ -47,7 +47,8 @@
     // Test that the cell textLabel is properly set
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
     UITableViewCell *cell = [controller tableView:nil cellForRowAtIndexPath:indexPath];
-    STAssertEqualObjects(@"File1.pdf", [[cell textLabel] text], 
+    //the alias is used and not the filename
+    STAssertEqualObjects([file alias], [[cell textLabel] text], 
                          @"The text of the cell should be the filename");
 }
 @end

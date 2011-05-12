@@ -11,7 +11,6 @@
 
 @implementation FilesListTableViewController
 
-@synthesize delegate;
 @synthesize files;
 
 - (id)initWithStyle:(UITableViewStyle)style
