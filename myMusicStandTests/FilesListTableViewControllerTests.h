@@ -11,8 +11,6 @@
 
 @class FilesListTableViewController;
 @interface FilesListTableViewControllerTests : CoreDataTest {
-    id mockDelegate;
-    id mockContext;
     FilesListTableViewController *controller;
 }
 
