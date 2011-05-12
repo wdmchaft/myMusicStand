@@ -8,7 +8,10 @@
 
 #import "FilesListTableViewControllerTests.h"
 #import "FilesListTableViewController.h"
+#import "myMusicStandAppDelegate.h"
+#import "File.h"
 #import <OCMock/OCMock.h>
+
 @implementation FilesListTableViewControllerTests
 
 - (void)setUp
@@ -32,6 +35,25 @@
                    @"The initial number of rows should be 0 but it was %d", 
                    [controller tableView:nil numberOfRowsInSection:0]);
                    
+}
+
+- (void)testControllerReadsFromCoreData
+{
+    id mockDelegate = [OCMockObject mockForClass:[myMusicStandAppDelegate class]];
+    id mockContext = [OCMockObject mockForClass:[NSManagedObjectContext class]];
+    FilesListTableViewController *controller = [[FilesListTableViewController alloc] init];
+    [controller setDelegate:mockDelegate];
+    NSArray *array = [NSArray arrayWithObject:[[[File alloc] init] autorelease]];
+                      
+    [[[mockDelegate stub] andReturn:mockContext] managedObjectContext];
+    [[[mockContext stub] andReturn:array] allEntity:[OCMArg any]];
+    
+    [controller viewDidLoad];
+    
+    [mockContext verify];
+    [mockDelegate verify];
+    STAssertEquals(1, [controller tableView:nil numberOfRowsInSection:0], 
+                   @"The controller should know that there is 1 File");
 }
 
 @end

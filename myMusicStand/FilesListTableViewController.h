@@ -8,11 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
-
+@class myMusicStandAppDelegate;
 @interface FilesListTableViewController : UITableViewController 
 <UITableViewDelegate>
 {
-    
+    myMusicStandAppDelegate *delegate;
+    NSArray *files;
 }
+
+@property (nonatomic, retain) myMusicStandAppDelegate *delegate;
 
 @end
