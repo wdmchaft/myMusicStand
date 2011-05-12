@@ -27,6 +27,7 @@
 
 - (void)testInitialNumberOfRowsZero
 {
+    // The initial number of rows in the table should be 0
     STAssertEquals(0, [controller tableView:nil numberOfRowsInSection:0], 
                    @"The initial number of rows should be 0 but it was %d", 
                    [controller tableView:nil numberOfRowsInSection:0]);
