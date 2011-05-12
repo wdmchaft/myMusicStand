@@ -55,6 +55,9 @@ static myMusicStandAppDelegate *sharedInstance;
     NSManagedObjectContext *context = [self managedObjectContext];
     // Give our rootController those files
     [(FilesListTableViewController *)rootController setFiles:[context allEntity:@"File"]];
+    
+    // Add rootController's view to window
+    [[self window] addSubview:[rootController view]];
     [self.window makeKeyAndVisible];
     return YES;
 }
@@ -240,7 +243,8 @@ static myMusicStandAppDelegate *sharedInstance;
     NSFileManager *fm = [NSFileManager defaultManager];
     
     // Diff for new files
-    NSArray *directoryContents = [fm contentsOfDirectoryAtPath:@"" error:nil];
+    NSString *docsPath = [[self applicationDocumentsDirectory] path];
+    NSArray *directoryContents = [fm contentsOfDirectoryAtPath:docsPath error:nil];
     NSArray *knownFiles = [self knownFileNames];
     NSArray *newFiles = filesDiffWithFileslistAndKnownFiles(directoryContents, knownFiles, FileDiffTypeNew);
     
