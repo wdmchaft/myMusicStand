@@ -80,5 +80,11 @@
 {
     STAssertEqualObjects([file filename], [file alias], 
                          @"The alias should be the filename if it is not set");
+    // Test that Filename doesn't trample the alias if 
+    // it has been set.
+    [file setAlias:@"A cooler name"];
+    [file setFilename:@"File1.pdf"];
+    STAssertFalse([[file filename] isEqual:[file alias]], 
+                  @"The filename and alias shouldn't be equal");
 }
 @end
