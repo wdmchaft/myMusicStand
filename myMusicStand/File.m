@@ -51,6 +51,23 @@
     return file;
 }
 
+- (void)setFilename:(NSString *)newFilename
+{
+    [self willChangeValueForKey:@"filename"];
+    [self setPrimitiveValue:newFilename forKey:@"filename"];
+    // if the alias hasn't been set by default we will set it 
+    // to the filename
+    [self willAccessValueForKey:@"alias"];
+    // if the alias is null 
+    if (![self valueForKey:@"alias"])
+    {
+        [self willChangeValueForKey:@"alias"];
+        [self setPrimitiveValue:newFilename forKey:@"alias"];
+        [self didChangeValueForKey:@"alias"];
+    }
+    [self didAccessValueForKey:@"alias"];
+    [self didChangeValueForKey:@"filename"];
+}
 @end
 
 @implementation NSManagedObjectContext (FilenameAvailabilityCheck)

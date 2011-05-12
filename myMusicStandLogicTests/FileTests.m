@@ -75,4 +75,10 @@
     [file setAlias:@"a cool title"];
     STAssertEquals(@"a cool title", [file alias], @"The file's title should be set");
 }
+
+- (void)testDefaultAliasIsFilename
+{
+    STAssertEqualObjects([file filename], [file alias], 
+                         @"The alias should be the filename if it is not set");
+}
 @end
