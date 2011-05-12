@@ -45,4 +45,12 @@
     UIViewController *rootController = [appDelegate rootController];
     STAssertNotNil(rootController, @"The root controller outlet should be setup");
 }
+
+- (void)testFileSharingOn
+{
+    NSDictionary *dict = [[NSBundle mainBundle] infoDictionary];
+
+    STAssertEquals(YES, [[dict valueForKey:@"UIFileSharingEnabled"] boolValue], 
+                   @"File sharing should be turned on");
+}
 @end
