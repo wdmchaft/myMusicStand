@@ -8,6 +8,7 @@
 
 #import "myMusicStandAppDelegate.h"
 #import "File.h"
+#import "FilesListTableViewController.h"
 #import "FileHelpers.h"
 
 static myMusicStandAppDelegate *sharedInstance;
@@ -49,7 +50,11 @@ static myMusicStandAppDelegate *sharedInstance;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    // First find any new files and add them to the context
     [self checkForFileDiffs];
+    NSManagedObjectContext *context = [self managedObjectContext];
+    // Give our rootController those files
+    [(FilesListTableViewController *)rootController setFiles:[context allEntity:@"File"]];
     [self.window makeKeyAndVisible];
     return YES;
 }

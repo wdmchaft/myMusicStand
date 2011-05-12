@@ -22,7 +22,7 @@
     // instead of setting up it's own
     [appDelegate setManagedObjectContext:context];
     
-    // Create file in our context
+    // Create file in our context 
     file = [File fileWithContext:context];
     [file setFilename:@"File1.pdf"];
 }
@@ -63,22 +63,18 @@
                    @"File sharing should be turned on");
 }
 
-- (void)testKnownFiles
-{
-    
-    NSArray *expectedKnownFiles = [NSArray arrayWithObjects:@"File1.pdf", nil];
-    STAssertEqualObjects(expectedKnownFiles, [appDelegate knownFileNames], 
-                         @"The known files should return the files created");
-}
 
-- (void)testFilesDiffs
+// Verfies filediffes have been found and files have been given to rootController
+- (void)testFilesAreGivenToControllerAfterLauch
 {
-    // See NSFileManager (FakingDirectory) for contents of fake directory
+    // Simulate application launch
     [appDelegate application:nil didFinishLaunchingWithOptions:nil];
-    NSArray *expectedFileNames = [NSArray arrayWithObjects:@"File1.pdf", @"File3.pdf", nil];
-    STAssertEqualObjects(expectedFileNames, [appDelegate knownFileNames], 
-                         @"The files should have a new file");
-        
+    
+    // The files in the rootController should have been set
+    FilesListTableViewController *rootController = 
+    (FilesListTableViewController *)[appDelegate rootController];
+    STAssertEquals(2, (int)[[rootController files] count], 
+                   @"The files should have been given to the root controller");
 }
 
 @end
