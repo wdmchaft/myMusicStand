@@ -9,8 +9,9 @@
 #import <SenTestingKit/SenTestingKit.h>
 #import <UIKit/UIKit.h>
 
+@class myMusicStandAppDelegate;
 @interface DelegateTests : SenTestCase {
-    id yourApplicationDelegate;
+    myMusicStandAppDelegate *appDelegate;
 }
 
 @end

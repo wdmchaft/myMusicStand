@@ -49,7 +49,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		64C96967137B754E002B5D10 /* DelegateTests.h */ = {isa = PBXFileReference; fileEncoding = 4; path = DelegateTests.h; sourceTree = "<group>"; };
+		64C96967137B754E002B5D10 /* DelegateTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DelegateTests.h; sourceTree = "<group>"; };
 		64C96968137B754E002B5D10 /* DelegateTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DelegateTests.m; sourceTree = "<group>"; };
 		64D94DF31379B2CB00300349 /* myMusicStand.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = myMusicStand.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		64D94DF71379B2CB00300349 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };

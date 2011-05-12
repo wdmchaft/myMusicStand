@@ -7,14 +7,15 @@
 //
 
 #import "DelegateTests.h"
-
+#import "myMusicStandAppDelegate.h"
+#import "FilesListTableViewController.h"
 
 @implementation DelegateTests
 
 - (void)setUp
 {
     [super setUp];
-    yourApplicationDelegate = [[UIApplication sharedApplication] delegate];
+    appDelegate = [[UIApplication sharedApplication] delegate];
 }
 
 - (void)tearDown
@@ -23,17 +24,25 @@
 }
 - (void)testAppDelegate 
 {
-    STAssertNotNil(yourApplicationDelegate, @"UIApplication failed to find the AppDelegate");
+    STAssertNotNil(appDelegate, @"UIApplication failed to find the AppDelegate");
 }
 
 - (void)testWindowSubview
 {
-    UIWindow *window = [yourApplicationDelegate window];
+    UIWindow *window = [appDelegate window];
     STAssertEquals(1, (NSInteger)[[window subviews] count], 
                    @"The window shoud have 1 subview but it had %lu", [[window subviews] count]);
     
     UIView *subview;
     STAssertNoThrow(subview = [[window subviews] objectAtIndex:0], 
                     @"Accessing the subview should be valid");
+    STAssertTrue([subview isKindOfClass:[UITableView class]], 
+                 @"The subview should be a tableview");
+}
+
+- (void)testOutlets
+{
+    UIViewController *rootController = [appDelegate rootController];
+    STAssertNotNil(rootController, @"The root controller outlet should be setup");
 }
 @end

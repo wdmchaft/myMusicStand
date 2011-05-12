@@ -15,6 +15,8 @@ static myMusicStandAppDelegate *sharedInstance;
 
 @synthesize window=_window;
 
+@synthesize rootController;
+
 @synthesize managedObjectContext=__managedObjectContext;
 
 @synthesize managedObjectModel=__managedObjectModel;
