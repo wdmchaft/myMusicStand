@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		64C96969137B754E002B5D10 /* SetupTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 64C96968137B754E002B5D10 /* SetupTests.m */; };
+		64C96969137B754E002B5D10 /* DelegateTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 64C96968137B754E002B5D10 /* DelegateTests.m */; };
 		64D94DF81379B2CB00300349 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64D94DF71379B2CB00300349 /* UIKit.framework */; };
 		64D94DFA1379B2CB00300349 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64D94DF91379B2CB00300349 /* Foundation.framework */; };
 		64D94DFC1379B2CB00300349 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64D94DFB1379B2CB00300349 /* CoreGraphics.framework */; };
@@ -49,8 +49,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		64C96967137B754E002B5D10 /* SetupTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetupTests.h; sourceTree = "<group>"; };
-		64C96968137B754E002B5D10 /* SetupTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetupTests.m; sourceTree = "<group>"; };
+		64C96967137B754E002B5D10 /* DelegateTests.h */ = {isa = PBXFileReference; fileEncoding = 4; path = DelegateTests.h; sourceTree = "<group>"; };
+		64C96968137B754E002B5D10 /* DelegateTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DelegateTests.m; sourceTree = "<group>"; };
 		64D94DF31379B2CB00300349 /* myMusicStand.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = myMusicStand.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		64D94DF71379B2CB00300349 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		64D94DF91379B2CB00300349 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -191,8 +191,8 @@
 				64D94E1E1379B2CC00300349 /* Supporting Files */,
 				64E47BC0137AE3E800AC5C93 /* FilesListTableViewControllerTests.h */,
 				64E47BC1137AE3E800AC5C93 /* FilesListTableViewControllerTests.m */,
-				64C96967137B754E002B5D10 /* SetupTests.h */,
-				64C96968137B754E002B5D10 /* SetupTests.m */,
+				64C96967137B754E002B5D10 /* DelegateTests.h */,
+				64C96968137B754E002B5D10 /* DelegateTests.m */,
 			);
 			path = myMusicStandTests;
 			sourceTree = "<group>";
@@ -462,7 +462,7 @@
 				64DB278C137C2D2C0069D076 /* FileHelperTests.m in Sources */,
 				64EAE5FD1379DDE900544C29 /* FilesListTableViewController.m in Sources */,
 				64E47BC2137AE3E800AC5C93 /* FilesListTableViewControllerTests.m in Sources */,
-				64C96969137B754E002B5D10 /* SetupTests.m in Sources */,
+				64C96969137B754E002B5D10 /* DelegateTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
