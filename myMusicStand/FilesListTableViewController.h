@@ -12,10 +12,8 @@
 @interface FilesListTableViewController : UITableViewController 
 <UITableViewDelegate>
 {
-    myMusicStandAppDelegate *delegate;
     NSArray *files;
 }
 
-@property (nonatomic, retain) myMusicStandAppDelegate *delegate;
 @property (nonatomic, retain) NSArray *files;
 @end

@@ -44,7 +44,6 @@
 {
     [super viewDidLoad];
 
-    files = [[delegate managedObjectContext] allEntity:@"File"];
 }
 
 - (void)viewDidUnload
