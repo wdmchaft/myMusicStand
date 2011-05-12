@@ -8,9 +8,10 @@
 
 #import <SenTestingKit/SenTestingKit.h>
 #import <UIKit/UIKit.h>
+#import "CoreDataTest.h"
 
 @class myMusicStandAppDelegate;
-@interface DelegateTests : SenTestCase {
+@interface DelegateTests : CoreDataTest {
     myMusicStandAppDelegate *appDelegate;
 }
 

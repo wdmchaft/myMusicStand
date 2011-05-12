@@ -9,6 +9,7 @@
 #import "DelegateTests.h"
 #import "myMusicStandAppDelegate.h"
 #import "FilesListTableViewController.h"
+#import "File.h"
 
 @implementation DelegateTests
 
@@ -53,4 +54,18 @@
     STAssertEquals(YES, [[dict valueForKey:@"UIFileSharingEnabled"] boolValue], 
                    @"File sharing should be turned on");
 }
+
+- (void)testKnownFiles
+{
+    // Make appDelegate use our testing context to check files
+    [appDelegate setManagedObjectContext:context];
+    
+    // Create file in our context
+    [[File fileWithContext:context] setFilename:@"File1.pdf"];
+    
+    NSArray *expectedKnownFiles = [NSArray arrayWithObjects:@"File1.pdf", nil];
+    STAssertEqualObjects(expectedKnownFiles, [appDelegate knownFileNames], 
+                         @"The known files should return the files created");
+}
 @end
+

@@ -7,6 +7,7 @@
 //
 
 #import "myMusicStandAppDelegate.h"
+#import "File.h"
 
 static myMusicStandAppDelegate *sharedInstance;
 
@@ -47,7 +48,6 @@ static myMusicStandAppDelegate *sharedInstance;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
     [self.window makeKeyAndVisible];
     return YES;
 }
@@ -206,6 +206,21 @@ static myMusicStandAppDelegate *sharedInstance;
     }    
     
     return __persistentStoreCoordinator;
+}
+
+- (NSArray *)knownFileNames
+{
+    NSArray *files = [[self managedObjectContext] allEntity:@"File"];
+    NSMutableArray *fileNames = [[[NSMutableArray alloc] init] autorelease];    
+ 
+    // Loop through all the known files and build up an array of filenames
+    for (File *file in files)
+    {
+        [fileNames addObject:[file filename]];
+    }
+    
+    // return an immutable copy of the filenames array 
+    return [[fileNames copy] autorelease];
 }
 
 #pragma mark - Application's Documents directory
