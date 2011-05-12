@@ -74,7 +74,7 @@
 - (void)testFilesDiffs
 {
     // See NSFileManager (FakingDirectory) for contents of fake directory
-    [appDelegate checkForFileDiffs];
+    [appDelegate application:nil didFinishLaunchingWithOptions:nil];
     NSArray *expectedFileNames = [NSArray arrayWithObjects:@"File1.pdf", @"File3.pdf", nil];
     STAssertEqualObjects(expectedFileNames, [appDelegate knownFileNames], 
                          @"The files should have a new file");

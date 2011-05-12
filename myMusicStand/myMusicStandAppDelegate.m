@@ -49,6 +49,7 @@ static myMusicStandAppDelegate *sharedInstance;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [self checkForFileDiffs];
     [self.window makeKeyAndVisible];
     return YES;
 }
