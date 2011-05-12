@@ -10,7 +10,7 @@
 #import <UIKit/UIKit.h>
 
 @interface SetupTests : SenTestCase {
-    
+    id yourApplicationDelegate;
 }
 
 @end

@@ -15,7 +15,7 @@
 //
 
 #import <SenTestingKit/SenTestingKit.h>
-
+#import <CoreData/CoreData.h>
 
 @interface CoreDataTest : SenTestCase {
     NSManagedObjectModel *model;

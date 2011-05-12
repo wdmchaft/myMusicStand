@@ -22,25 +22,17 @@
 		64D94E191379B2CC00300349 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64D94DFB1379B2CB00300349 /* CoreGraphics.framework */; };
 		64D94E1A1379B2CC00300349 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64D94DFD1379B2CB00300349 /* CoreData.framework */; };
 		64D94E221379B2CC00300349 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 64D94E201379B2CC00300349 /* InfoPlist.strings */; };
-		64D94E371379B2F500300349 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64D94E361379B2F500300349 /* Cocoa.framework */; };
-		64D94E411379B2F500300349 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 64D94E3F1379B2F500300349 /* InfoPlist.strings */; };
 		64D94E561379B35D00300349 /* FileHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 64D94E551379B35D00300349 /* FileHelpers.m */; };
-		64D94E581379B35D00300349 /* FileHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 64D94E551379B35D00300349 /* FileHelpers.m */; };
-		64D94E5B1379B39300300349 /* FileHelperTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 64D94E5A1379B39300300349 /* FileHelperTests.m */; };
-		64D94E5E1379B42000300349 /* CoreDataTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 64D94E5D1379B42000300349 /* CoreDataTest.m */; };
-		64D94E601379B44800300349 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64D94E5F1379B44800300349 /* CoreData.framework */; };
-		64D94E631379B57900300349 /* FileTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 64D94E621379B57800300349 /* FileTests.m */; };
-		64D94E6E1379B62400300349 /* OrderedFileTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 64D94E6D1379B62400300349 /* OrderedFileTests.m */; };
-		64D94E7A1379B6EC00300349 /* myMusicStand.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = 64D94E0F1379B2CC00300349 /* myMusicStand.xcdatamodel */; };
-		64D94E7B1379B7A500300349 /* SetlistTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 64D94E741379B65500300349 /* SetlistTests.m */; };
 		64D94E801379BC3A00300349 /* Setlist.m in Sources */ = {isa = PBXBuildFile; fileRef = 64D94E7F1379BC3A00300349 /* Setlist.m */; };
-		64D94E811379BC3A00300349 /* Setlist.m in Sources */ = {isa = PBXBuildFile; fileRef = 64D94E7F1379BC3A00300349 /* Setlist.m */; };
 		64D94E841379BDCB00300349 /* OrderedFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 64D94E831379BDCB00300349 /* OrderedFile.m */; };
-		64D94E851379BDCB00300349 /* OrderedFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 64D94E831379BDCB00300349 /* OrderedFile.m */; };
 		64D94E881379BE1100300349 /* File.m in Sources */ = {isa = PBXBuildFile; fileRef = 64D94E871379BE1100300349 /* File.m */; };
-		64D94E891379BE1100300349 /* File.m in Sources */ = {isa = PBXBuildFile; fileRef = 64D94E871379BE1100300349 /* File.m */; };
 		64D94E8C1379BEFB00300349 /* TimestampEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 64D94E8B1379BEFB00300349 /* TimestampEntity.m */; };
-		64D94E8D1379BEFB00300349 /* TimestampEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 64D94E8B1379BEFB00300349 /* TimestampEntity.m */; };
+		64DB2784137C2D2C0069D076 /* SetlistTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 64D94E741379B65500300349 /* SetlistTests.m */; };
+		64DB2786137C2D2C0069D076 /* OrderedFileTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 64D94E6D1379B62400300349 /* OrderedFileTests.m */; };
+		64DB2788137C2D2C0069D076 /* FileTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 64D94E621379B57800300349 /* FileTests.m */; };
+		64DB278A137C2D2C0069D076 /* CoreDataTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 64D94E5D1379B42000300349 /* CoreDataTest.m */; };
+		64DB278C137C2D2C0069D076 /* FileHelperTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 64D94E5A1379B39300300349 /* FileHelperTests.m */; };
+		64DB278E137C2DBE0069D076 /* myMusicStand.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = 64D94E0F1379B2CC00300349 /* myMusicStand.xcdatamodel */; };
 		64E47BC2137AE3E800AC5C93 /* FilesListTableViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 64E47BC1137AE3E800AC5C93 /* FilesListTableViewControllerTests.m */; };
 		64EAE5FC1379DDE900544C29 /* FilesListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64EAE5FB1379DDE900544C29 /* FilesListTableViewController.m */; };
 		64EAE5FD1379DDE900544C29 /* FilesListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64EAE5FB1379DDE900544C29 /* FilesListTableViewController.m */; };
@@ -76,14 +68,10 @@
 		64D94E1F1379B2CC00300349 /* myMusicStandTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "myMusicStandTests-Info.plist"; sourceTree = "<group>"; };
 		64D94E211379B2CC00300349 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		64D94E231379B2CC00300349 /* myMusicStandTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "myMusicStandTests-Prefix.pch"; sourceTree = "<group>"; };
-		64D94E351379B2F500300349 /* myMusicStandLogicTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = myMusicStandLogicTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		64D94E361379B2F500300349 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		64D94E391379B2F500300349 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		64D94E3A1379B2F500300349 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		64D94E3B1379B2F500300349 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		64D94E3E1379B2F500300349 /* myMusicStandLogicTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "myMusicStandLogicTests-Info.plist"; sourceTree = "<group>"; };
-		64D94E401379B2F500300349 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		64D94E421379B2F500300349 /* myMusicStandLogicTests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "myMusicStandLogicTests-Prefix.pch"; sourceTree = "<group>"; };
 		64D94E541379B35D00300349 /* FileHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileHelpers.h; sourceTree = "<group>"; };
 		64D94E551379B35D00300349 /* FileHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileHelpers.m; sourceTree = "<group>"; };
 		64D94E591379B39300300349 /* FileHelperTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileHelperTests.h; sourceTree = "<group>"; };
@@ -134,15 +122,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		64D94E311379B2F500300349 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				64D94E601379B44800300349 /* CoreData.framework in Frameworks */,
-				64D94E371379B2F500300349 /* Cocoa.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -152,7 +131,6 @@
 				64D94E5F1379B44800300349 /* CoreData.framework */,
 				64D94DFF1379B2CB00300349 /* myMusicStand */,
 				64D94E1D1379B2CC00300349 /* myMusicStandTests */,
-				64D94E3C1379B2F500300349 /* myMusicStandLogicTests */,
 				64D94DF61379B2CB00300349 /* Frameworks */,
 				64D94DF41379B2CB00300349 /* Products */,
 			);
@@ -163,7 +141,6 @@
 			children = (
 				64D94DF31379B2CB00300349 /* myMusicStand.app */,
 				64D94E161379B2CC00300349 /* myMusicStandTests.octest */,
-				64D94E351379B2F500300349 /* myMusicStandLogicTests.octest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -207,6 +184,10 @@
 		64D94E1D1379B2CC00300349 /* myMusicStandTests */ = {
 			isa = PBXGroup;
 			children = (
+				64D94E981379C5EF00300349 /* Setlists Testing */,
+				64D94E951379C5B200300349 /* File related tests */,
+				64D94E961379C5C700300349 /* Core Data Testing */,
+				64D94E971379C5D800300349 /* File System Work Testing */,
 				64D94E1E1379B2CC00300349 /* Supporting Files */,
 				64E47BC0137AE3E800AC5C93 /* FilesListTableViewControllerTests.h */,
 				64E47BC1137AE3E800AC5C93 /* FilesListTableViewControllerTests.m */,
@@ -234,28 +215,6 @@
 				64D94E3B1379B2F500300349 /* Foundation.framework */,
 			);
 			name = "Other Frameworks";
-			sourceTree = "<group>";
-		};
-		64D94E3C1379B2F500300349 /* myMusicStandLogicTests */ = {
-			isa = PBXGroup;
-			children = (
-				64D94E981379C5EF00300349 /* Setlists Testing */,
-				64D94E951379C5B200300349 /* File related tests */,
-				64D94E961379C5C700300349 /* Core Data Testing */,
-				64D94E971379C5D800300349 /* File System Work Testing */,
-				64D94E3D1379B2F500300349 /* Supporting Files */,
-			);
-			path = myMusicStandLogicTests;
-			sourceTree = "<group>";
-		};
-		64D94E3D1379B2F500300349 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				64D94E3E1379B2F500300349 /* myMusicStandLogicTests-Info.plist */,
-				64D94E3F1379B2F500300349 /* InfoPlist.strings */,
-				64D94E421379B2F500300349 /* myMusicStandLogicTests-Prefix.pch */,
-			);
-			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		64D94E8E1379C52100300349 /* File System work */ = {
@@ -334,6 +293,7 @@
 				64D94E621379B57800300349 /* FileTests.m */,
 			);
 			name = "File related tests";
+			path = ../myMusicStandLogicTests;
 			sourceTree = "<group>";
 		};
 		64D94E961379C5C700300349 /* Core Data Testing */ = {
@@ -343,6 +303,7 @@
 				64D94E5D1379B42000300349 /* CoreDataTest.m */,
 			);
 			name = "Core Data Testing";
+			path = ../myMusicStandLogicTests;
 			sourceTree = "<group>";
 		};
 		64D94E971379C5D800300349 /* File System Work Testing */ = {
@@ -352,6 +313,7 @@
 				64D94E5A1379B39300300349 /* FileHelperTests.m */,
 			);
 			name = "File System Work Testing";
+			path = ../myMusicStandLogicTests;
 			sourceTree = "<group>";
 		};
 		64D94E981379C5EF00300349 /* Setlists Testing */ = {
@@ -361,6 +323,7 @@
 				64D94E741379B65500300349 /* SetlistTests.m */,
 			);
 			name = "Setlists Testing";
+			path = ../myMusicStandLogicTests;
 			sourceTree = "<group>";
 		};
 		64EAE5FE1379DDEF00544C29 /* Files list controller */ = {
@@ -411,24 +374,6 @@
 			productReference = 64D94E161379B2CC00300349 /* myMusicStandTests.octest */;
 			productType = "com.apple.product-type.bundle";
 		};
-		64D94E341379B2F500300349 /* myMusicStandLogicTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 64D94E471379B2F500300349 /* Build configuration list for PBXNativeTarget "myMusicStandLogicTests" */;
-			buildPhases = (
-				64D94E301379B2F500300349 /* Sources */,
-				64D94E311379B2F500300349 /* Frameworks */,
-				64D94E321379B2F500300349 /* Resources */,
-				64D94E331379B2F500300349 /* ShellScript */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = myMusicStandLogicTests;
-			productName = myMusicStandLogicTests;
-			productReference = 64D94E351379B2F500300349 /* myMusicStandLogicTests.octest */;
-			productType = "com.apple.product-type.bundle";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -448,7 +393,6 @@
 			targets = (
 				64D94DF21379B2CB00300349 /* myMusicStand */,
 				64D94E151379B2CC00300349 /* myMusicStandTests */,
-				64D94E341379B2F500300349 /* myMusicStandLogicTests */,
 			);
 		};
 /* End PBXProject section */
@@ -471,31 +415,10 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		64D94E321379B2F500300349 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				64D94E411379B2F500300349 /* InfoPlist.strings in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
 		64D94E141379B2CC00300349 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
-		};
-		64D94E331379B2F500300349 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -531,27 +454,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				64DB278E137C2DBE0069D076 /* myMusicStand.xcdatamodel in Sources */,
+				64DB2784137C2D2C0069D076 /* SetlistTests.m in Sources */,
+				64DB2786137C2D2C0069D076 /* OrderedFileTests.m in Sources */,
+				64DB2788137C2D2C0069D076 /* FileTests.m in Sources */,
+				64DB278A137C2D2C0069D076 /* CoreDataTest.m in Sources */,
+				64DB278C137C2D2C0069D076 /* FileHelperTests.m in Sources */,
 				64EAE5FD1379DDE900544C29 /* FilesListTableViewController.m in Sources */,
 				64E47BC2137AE3E800AC5C93 /* FilesListTableViewControllerTests.m in Sources */,
 				64C96969137B754E002B5D10 /* SetupTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		64D94E301379B2F500300349 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				64D94E7B1379B7A500300349 /* SetlistTests.m in Sources */,
-				64D94E7A1379B6EC00300349 /* myMusicStand.xcdatamodel in Sources */,
-				64D94E581379B35D00300349 /* FileHelpers.m in Sources */,
-				64D94E5B1379B39300300349 /* FileHelperTests.m in Sources */,
-				64D94E5E1379B42000300349 /* CoreDataTest.m in Sources */,
-				64D94E631379B57900300349 /* FileTests.m in Sources */,
-				64D94E6E1379B62400300349 /* OrderedFileTests.m in Sources */,
-				64D94E811379BC3A00300349 /* Setlist.m in Sources */,
-				64D94E851379BDCB00300349 /* OrderedFile.m in Sources */,
-				64D94E891379BE1100300349 /* File.m in Sources */,
-				64D94E8D1379BEFB00300349 /* TimestampEntity.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -586,14 +497,6 @@
 			isa = PBXVariantGroup;
 			children = (
 				64D94E211379B2CC00300349 /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		64D94E3F1379B2F500300349 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				64D94E401379B2F500300349 /* en */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -725,57 +628,6 @@
 			};
 			name = Release;
 		};
-		64D94E481379B2F500300349 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
-				COPY_PHASE_STRIP = NO;
-				FRAMEWORK_SEARCH_PATHS = "$(DEVELOPER_LIBRARY_DIR)/Frameworks";
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "myMusicStandLogicTests/myMusicStandLogicTests-Prefix.pch";
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				INFOPLIST_FILE = "myMusicStandLogicTests/myMusicStandLogicTests-Info.plist";
-				MACOSX_DEPLOYMENT_TARGET = 10.6;
-				ONLY_ACTIVE_ARCH = YES;
-				OTHER_LDFLAGS = (
-					"-framework",
-					SenTestingKit,
-				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
-				WRAPPER_EXTENSION = octest;
-			};
-			name = Debug;
-		};
-		64D94E491379B2F500300349 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
-				COPY_PHASE_STRIP = YES;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				FRAMEWORK_SEARCH_PATHS = "$(DEVELOPER_LIBRARY_DIR)/Frameworks";
-				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "myMusicStandLogicTests/myMusicStandLogicTests-Prefix.pch";
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				INFOPLIST_FILE = "myMusicStandLogicTests/myMusicStandLogicTests-Info.plist";
-				MACOSX_DEPLOYMENT_TARGET = 10.6;
-				OTHER_LDFLAGS = (
-					"-framework",
-					SenTestingKit,
-				);
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
-				WRAPPER_EXTENSION = octest;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -802,15 +654,6 @@
 			buildConfigurations = (
 				64D94E2E1379B2CC00300349 /* Debug */,
 				64D94E2F1379B2CC00300349 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		64D94E471379B2F500300349 /* Build configuration list for PBXNativeTarget "myMusicStandLogicTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				64D94E481379B2F500300349 /* Debug */,
-				64D94E491379B2F500300349 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
