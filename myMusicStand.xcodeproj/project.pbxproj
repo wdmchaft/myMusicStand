@@ -127,6 +127,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		64415E9A137DD50300DADC4C /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				64415E89137D8EAD00DADC4C /* BlockTableViewCell.xib */,
+			);
+			name = Cell;
+			sourceTree = "<group>";
+		};
 		64D94DE81379B2CB00300349 = {
 			isa = PBXGroup;
 			children = (
@@ -331,9 +339,9 @@
 		64EAE5FE1379DDEF00544C29 /* Files list controller */ = {
 			isa = PBXGroup;
 			children = (
+				64415E9A137DD50300DADC4C /* Cell */,
 				64EAE5FA1379DDE900544C29 /* FilesListTableViewController.h */,
 				64EAE5FB1379DDE900544C29 /* FilesListTableViewController.m */,
-				64415E89137D8EAD00DADC4C /* BlockTableViewCell.xib */,
 			);
 			name = "Files list controller";
 			sourceTree = "<group>";

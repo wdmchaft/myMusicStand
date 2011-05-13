@@ -36,16 +36,16 @@
 
 - (void)testControllerCreatesCellsCorrectly
 {
-    // File to be displayed in the tableview
-    [[File fileWithContext:context] setFilename:@"File1.pdf"];
-    [[File fileWithContext:context] setFilename:@"File2.pdf"];
-    [[File fileWithContext:context] setFilename:@"File3.pdf"];
+    NSArray *filenames = [NSArray arrayWithObjects:@"File1.pdf", @"File2.pdf",
+                          @"File3.pdf", @"File4.pdf", @"File5.pdf", nil];
+    // Files to be displayed in the tableview
+    for (NSString *filename in filenames)
+    {
+        [[File fileWithContext:context] setFilename:filename];
+    }
     
-    // Create an array for the controller to pull the file from
-    NSArray *files = [context allEntity:@"File"];
-    
-    // Set the array to the controller
-    [controller setFiles:files];
+    // Set the files in the controller
+    [controller setFiles:[context allEntity:@"File"]];
     
     // Test that the cell textLabel is properly set
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
@@ -77,6 +77,39 @@
     //the alias is used and not the filename
     STAssertEqualObjects(@"File3.pdf", [subview text],
                          @"The label's text should be the alias");
+    
+    // Test second cell
+    indexPath = [NSIndexPath indexPathForRow:1 inSection:0];
+    cell = [controller tableView:nil cellForRowAtIndexPath:indexPath];
+    
+    subview = (UILabel *)[[cell contentView] viewWithTag:1];
+    STAssertNotNil(subview, @"The tag should return a label");
+    //the alias is used and not the filename
+    STAssertEqualObjects(@"File4.pdf", [subview text],
+                         @"The label's text should be the alias");
+    
+    subview = (UILabel *)[[cell contentView] viewWithTag:2];
+    STAssertNotNil(subview, @"The tag should return a label");
+    //the alias is used and not the filename
+    STAssertEqualObjects(@"File5.pdf", [subview text],
+                         @"The label's text should be the alias");
+    
+    /*
+    subview = (UILabel *)[[cell contentView] viewWithTag:2];
+    STAssertNotNil(subview, @"The tag should return a label");
+    //the alias is used and not the filename
+    STAssertEqualObjects(@"", [subview text],
+                         @"The label's text should be the alias");*/
+    
+    // Test prepare for reuse clears all labels
+    [cell prepareForReuse];
+    for (UILabel *subview in [[cell contentView] subviews])
+    {
+        STAssertEqualObjects(@"", [subview text], 
+                             @"A subview's text should be empty after a call to prepareForReuse");
+    }
+    
+    
 }
 
 - (void)testControllerReturnsCorrectNumberOfRows

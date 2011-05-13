@@ -123,9 +123,11 @@
     
     // Loop through all possible blocks for the cell and attempt to set their values
     int count = 0; // starting offset 
-    for (int index = [indexPath row]; index < [files count] && count < NUM_BLOCKS_PER_CELL; index++)
+    for (int index = NUM_BLOCKS_PER_CELL * [indexPath row]; // BLOCKS * row gives us the first index we can use
+         index < [files count] && count < NUM_BLOCKS_PER_CELL; index++)
     {
-        file = [files objectAtIndex:[indexPath row] + count];
+        
+        file = [files objectAtIndex:index];
         label = (UILabel *)[cell viewWithTag:count + 1];
         [label setText:[file alias]];
         
@@ -190,6 +192,19 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath 
 {
     return 270;
+}
+
+@end
+
+// Override cell's perpareForReuse method to clear all labels
+@implementation UITableViewCell (clearCellLabels)
+
+-(void)prepareForReuse
+{
+    for (UILabel *subview in [[self contentView] subviews])
+    {
+        [subview setText:@""];
+    }
 }
 
 @end
