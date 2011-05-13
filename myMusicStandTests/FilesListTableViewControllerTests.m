@@ -65,7 +65,15 @@
 {
     // Set the files in the controller
     
-    STAssertEquals(2, [controller index:5 inTermsOfBase:3], 
+    // Test 2 additional values return a new row
+    STAssertEquals(2, [controller rowIndex:5 forNumberOfBlocks:3], 
+                   @"Calculate the offset in terms of the base value");
+    
+    // Test 1 additional value returns a new row
+    STAssertEquals(3, [controller rowIndex:7 forNumberOfBlocks:3], 
+                   @"Calculate the offset in terms of the base value");
+    
+    STAssertEquals(4, [controller rowIndex:12 forNumberOfBlocks:3], 
                    @"Calculate the offset in terms of the base value");
     
 }

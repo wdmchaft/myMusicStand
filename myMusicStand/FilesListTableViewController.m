@@ -149,9 +149,19 @@
 }
 */
 
--(int)index:(int)index inTermsOfBase:(int)base
+-(int)rowIndex:(int)index forNumberOfBlocks:(int)blocks
 {
-    return 2;
+    // Calculate if there is a remainder
+    int remainder = index % blocks;
+    
+    // if we have a remainder 
+    if (remainder != 0)
+    {
+        // add one extra 
+        return index / blocks + 1;
+    }
+    // else we don't need an extra row
+    return index / blocks;
 }
 
 #pragma mark - Table view delegate
