@@ -54,5 +54,19 @@
     // Test cell height
     STAssertEquals(270, (int)[controller tableView:nil heightForRowAtIndexPath:indexPath], 
                    @"The height for a cell should be 270");
+    
+    // The content view of the cell should have 3 subviews
+    STAssertEquals(3, (int)[[[cell contentView] subviews] count], 
+                   @"The cell should have 3 subviews");
+    
+}
+
+- (void)testIndexInTermsOfBase
+{
+    // Set the files in the controller
+    
+    STAssertEquals(2, [controller index:5 inTermsOfBase:3], 
+                   @"Calculate the offset in terms of the base value");
+    
 }
 @end

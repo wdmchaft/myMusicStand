@@ -149,6 +149,11 @@
 }
 */
 
+-(int)index:(int)index inTermsOfBase:(int)base
+{
+    return 2;
+}
+
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
