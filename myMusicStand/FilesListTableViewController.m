@@ -105,7 +105,8 @@
     // File to display
     File *file = [files objectAtIndex:[indexPath row]];
     // Configure the cell to show the filename
-    [[cell textLabel] setText:[file filename]];
+    UILabel *label = (UILabel *)[cell viewWithTag:1];
+    [label setText:[file alias]];
     
     return cell;
 }

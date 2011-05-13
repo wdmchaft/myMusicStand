@@ -48,9 +48,7 @@
     // Test that the cell textLabel is properly set
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
     UITableViewCell *cell = [controller tableView:nil cellForRowAtIndexPath:indexPath];
-    //the alias is used and not the filename
-    STAssertEqualObjects([file alias], [[cell textLabel] text], 
-                         @"The text of the cell should be the filename");
+
     // Test cell height
     STAssertEquals(270, (int)[controller tableView:nil heightForRowAtIndexPath:indexPath], 
                    @"The height for a cell should be 270");
@@ -58,6 +56,13 @@
     // The content view of the cell should have 3 subviews
     STAssertEquals(3, (int)[[[cell contentView] subviews] count], 
                    @"The cell should have 3 subviews");
+    
+    // Test tags in cell
+    UILabel *subview = (UILabel *)[[cell contentView] viewWithTag:1];
+    STAssertNotNil(subview, @"The tag should return a label");
+    //the alias is used and not the filename
+    STAssertEqualObjects([file alias], [subview text],
+                         @"The label's text should be the alias");
     
 }
 
@@ -77,4 +82,6 @@
                    @"Calculate the offset in terms of the base value");
     
 }
+
+
 @end
