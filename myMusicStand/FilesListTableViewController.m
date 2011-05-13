@@ -122,16 +122,16 @@
     UILabel *label;
     
     // Loop through all possible blocks for the cell and attempt to set their values
-    int count = 0; // starting offset 
+    int tagOffset = 0; // starting offset 
     for (int index = NUM_BLOCKS_PER_CELL * [indexPath row]; // BLOCKS * row gives us the first index we can use
-         index < [files count] && count < NUM_BLOCKS_PER_CELL; index++)
+         index < [files count] && tagOffset < NUM_BLOCKS_PER_CELL; index++)
     {
         
         file = [files objectAtIndex:index];
-        label = (UILabel *)[cell viewWithTag:count + 1];
+        label = (UILabel *)[cell viewWithTag:tagOffset + 1];
         [label setText:[file alias]];
-        
-        count++;
+
+        tagOffset++;
     }
     
     return cell;

@@ -12,6 +12,7 @@
 @class FilesListTableViewController;
 @interface FilesListTableViewControllerTests : CoreDataTest {
     FilesListTableViewController *controller;
+    NSIndexPath *indexPath;
 }
 
 @end

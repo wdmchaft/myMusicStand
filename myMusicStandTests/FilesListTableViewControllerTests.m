@@ -17,6 +17,7 @@
 {
     [super setUp];
     controller = [[FilesListTableViewController alloc] init];
+    indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
 }
 
 - (void)tearDown
@@ -34,6 +35,27 @@
                    
 }
 
+- (void)testInitialCellHasThreeBlankLabels
+{
+    UITableViewCell *cell = [controller tableView:nil cellForRowAtIndexPath:indexPath];
+    for (UILabel *subview in [[cell contentView] subviews])
+    {
+        STAssertEqualObjects(@"", [subview text], 
+                             @"A subview's text should be empty after a call to prepareForReuse");
+    }
+    
+    // The content view of the cell should have 3 subviews
+    STAssertEquals(3, (int)[[[cell contentView] subviews] count], 
+                   @"The cell should have 3 subviews");
+}
+
+- (void)testCellHeight
+{
+    // Test cell height
+    STAssertEquals(270, (int)[controller tableView:nil heightForRowAtIndexPath:indexPath], 
+                   @"The height for a cell should be 270");
+}
+
 - (void)testControllerCreatesCellsCorrectly
 {
     NSArray *filenames = [NSArray arrayWithObjects:@"File1.pdf", @"File2.pdf",
@@ -48,58 +70,37 @@
     [controller setFiles:[context allEntity:@"File"]];
     
     // Test that the cell textLabel is properly set
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+    indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
     UITableViewCell *cell = [controller tableView:nil cellForRowAtIndexPath:indexPath];
+    
+    // Loop through rows 
+    int i = 0;
+    int tagOffset = 0; // tag offset
+    UILabel *subview;
 
-    // Test cell height
-    STAssertEquals(270, (int)[controller tableView:nil heightForRowAtIndexPath:indexPath], 
-                   @"The height for a cell should be 270");
-    
-    // The content view of the cell should have 3 subviews
-    STAssertEquals(3, (int)[[[cell contentView] subviews] count], 
-                   @"The cell should have 3 subviews");
-    
-    // Test tags in cell
-    UILabel *subview = (UILabel *)[[cell contentView] viewWithTag:1];
-    STAssertNotNil(subview, @"The tag should return a label");
-    //the alias is used and not the filename
-    STAssertEqualObjects(@"File1.pdf", [subview text],
-                         @"The label's text should be the alias");
-    
-    subview = (UILabel *)[[cell contentView] viewWithTag:2];
-    STAssertNotNil(subview, @"The tag should return a label");
-    //the alias is used and not the filename
-    STAssertEqualObjects(@"File2.pdf", [subview text],
-                         @"The label's text should be the alias");
-    
-    subview = (UILabel *)[[cell contentView] viewWithTag:3];
-    STAssertNotNil(subview, @"The tag should return a label");
-    //the alias is used and not the filename
-    STAssertEqualObjects(@"File3.pdf", [subview text],
-                         @"The label's text should be the alias");
-    
-    // Test second cell
-    indexPath = [NSIndexPath indexPathForRow:1 inSection:0];
-    cell = [controller tableView:nil cellForRowAtIndexPath:indexPath];
-    
-    subview = (UILabel *)[[cell contentView] viewWithTag:1];
-    STAssertNotNil(subview, @"The tag should return a label");
-    //the alias is used and not the filename
-    STAssertEqualObjects(@"File4.pdf", [subview text],
-                         @"The label's text should be the alias");
-    
-    subview = (UILabel *)[[cell contentView] viewWithTag:2];
-    STAssertNotNil(subview, @"The tag should return a label");
-    //the alias is used and not the filename
-    STAssertEqualObjects(@"File5.pdf", [subview text],
-                         @"The label's text should be the alias");
-    
-    /*
-    subview = (UILabel *)[[cell contentView] viewWithTag:2];
-    STAssertNotNil(subview, @"The tag should return a label");
-    //the alias is used and not the filename
-    STAssertEqualObjects(@"", [subview text],
-                         @"The label's text should be the alias");*/
+    // loop through each table cell 
+    for (int count = 0; count < [controller tableView:nil numberOfRowsInSection:0]; count++)
+    {
+        // loop through each subview in a table cell
+        for (; i < [filenames count] && tagOffset < 3; i++)
+        {
+            // Test tags in cell
+            subview = (UILabel *)[[cell contentView] viewWithTag:tagOffset + 1];
+            STAssertNotNil(subview, @"The tag should return a label");
+            //the alias is used and not the filename
+            STAssertEqualObjects([filenames objectAtIndex:i], [subview text],
+                                 @"The label's text should be the alias");
+            
+            tagOffset++;
+        }
+        
+        // Test second cell
+        indexPath = [NSIndexPath indexPathForRow:1 inSection:0];
+        cell = [controller tableView:nil cellForRowAtIndexPath:indexPath];
+        
+        // reset the offset
+        tagOffset = 0;
+    }
     
     // Test prepare for reuse clears all labels
     [cell prepareForReuse];
