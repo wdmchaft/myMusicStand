@@ -25,6 +25,9 @@
     // Create file in our context 
     file = [File fileWithContext:context];
     [file setFilename:@"File1.pdf"];
+    
+    // Set the root controller to the rootController of the appDelegate
+    rootController = [appDelegate rootController];
 }
 
 - (void)tearDown
@@ -43,21 +46,21 @@
     STAssertEquals(1, (NSInteger)[[window subviews] count], 
                    @"The window shoud have 1 subview but it had %lu", [[window subviews] count]);
     
-    // Test that that subview is a tableview
+    // Test that that subview exists and is a tableview
     UIView *subview;
     STAssertNoThrow(subview = [[window subviews] objectAtIndex:0], 
                     @"Accessing the subview should be valid");
     STAssertTrue([subview isKindOfClass:[UITableView class]], 
                  @"The subview should be a tableview");
     
-    UIViewController *rootController = [appDelegate rootController];
+    // The controller's view should belong to the rootController
     STAssertEqualObjects([rootController view], subview, 
                          @"The subview should belong to the rootController");
 }
 
 - (void)testOutlets
 {
-    UIViewController *rootController = [appDelegate rootController];
+    
     STAssertNotNil(rootController, @"The root controller outlet should be setup");
 }
 
@@ -77,8 +80,6 @@
     [appDelegate application:nil didFinishLaunchingWithOptions:nil];
     
     // The files in the rootController should have been set
-    FilesListTableViewController *rootController = 
-    (FilesListTableViewController *)[appDelegate rootController];
     STAssertEquals(2, (int)[[rootController files] count], 
                    @"The files should have been given to the root controller");
 }

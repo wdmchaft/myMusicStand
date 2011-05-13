@@ -10,9 +10,10 @@
 #import <UIKit/UIKit.h>
 #import "CoreDataTest.h"
 
-@class myMusicStandAppDelegate, File;
+@class myMusicStandAppDelegate, File, FilesListTableViewController;
 @interface DelegateTests : CoreDataTest {
     myMusicStandAppDelegate *appDelegate;
+    FilesListTableViewController *rootController;
     File *file;
 }
 
