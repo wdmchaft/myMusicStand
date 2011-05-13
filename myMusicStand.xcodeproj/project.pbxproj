@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		64415E8A137D8EAD00DADC4C /* BlockTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64415E89137D8EAD00DADC4C /* BlockTableViewCell.xib */; };
 		64C96969137B754E002B5D10 /* DelegateTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 64C96968137B754E002B5D10 /* DelegateTests.m */; };
 		64D94DF81379B2CB00300349 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64D94DF71379B2CB00300349 /* UIKit.framework */; };
 		64D94DFA1379B2CB00300349 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64D94DF91379B2CB00300349 /* Foundation.framework */; };
@@ -49,6 +50,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		64415E89137D8EAD00DADC4C /* BlockTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BlockTableViewCell.xib; sourceTree = "<group>"; };
 		64C96967137B754E002B5D10 /* DelegateTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DelegateTests.h; sourceTree = "<group>"; };
 		64C96968137B754E002B5D10 /* DelegateTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DelegateTests.m; sourceTree = "<group>"; };
 		64D94DF31379B2CB00300349 /* myMusicStand.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = myMusicStand.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -331,6 +333,7 @@
 			children = (
 				64EAE5FA1379DDE900544C29 /* FilesListTableViewController.h */,
 				64EAE5FB1379DDE900544C29 /* FilesListTableViewController.m */,
+				64415E89137D8EAD00DADC4C /* BlockTableViewCell.xib */,
 			);
 			name = "Files list controller";
 			sourceTree = "<group>";
@@ -404,6 +407,7 @@
 			files = (
 				64D94E041379B2CB00300349 /* InfoPlist.strings in Resources */,
 				64D94E0D1379B2CC00300349 /* MainWindow.xib in Resources */,
+				64415E8A137D8EAD00DADC4C /* BlockTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

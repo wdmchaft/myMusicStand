@@ -13,6 +13,7 @@
 <UITableViewDelegate>
 {
     NSArray *files;
+    IBOutlet UITableViewCell *tvCell;
 }
 
 @property (nonatomic, retain) NSArray *files;

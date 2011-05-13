@@ -91,7 +91,15 @@
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        
+        // Load the tableview cell
+        [[NSBundle mainBundle] loadNibNamed:@"BlockTableViewCell"
+                                      owner:self
+                                    options:nil];
+        // Set the cell
+        cell = tvCell;
+        // Clear pointer to cell
+        tvCell = nil;
     }
     
     // File to display
@@ -153,6 +161,11 @@
      [self.navigationController pushViewController:detailViewController animated:YES];
      [detailViewController release];
      */
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath 
+{
+    return 270;
 }
 
 @end
