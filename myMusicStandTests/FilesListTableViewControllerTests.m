@@ -37,10 +37,12 @@
 - (void)testControllerCreatesCellsCorrectly
 {
     // File to be displayed in the tableview
-    File *file = [File fileWithContext:context];
-    [file setFilename:@"File1.pdf"];
+    [[File fileWithContext:context] setFilename:@"File1.pdf"];
+    [[File fileWithContext:context] setFilename:@"File2.pdf"];
+    [[File fileWithContext:context] setFilename:@"File3.pdf"];
+    
     // Create an array for the controller to pull the file from
-    NSArray *files = [NSArray arrayWithObject:file];
+    NSArray *files = [context allEntity:@"File"];
     
     // Set the array to the controller
     [controller setFiles:files];
@@ -61,27 +63,36 @@
     UILabel *subview = (UILabel *)[[cell contentView] viewWithTag:1];
     STAssertNotNil(subview, @"The tag should return a label");
     //the alias is used and not the filename
-    STAssertEqualObjects([file alias], [subview text],
+    STAssertEqualObjects(@"File1.pdf", [subview text],
                          @"The label's text should be the alias");
     
+    subview = (UILabel *)[[cell contentView] viewWithTag:2];
+    STAssertNotNil(subview, @"The tag should return a label");
+    //the alias is used and not the filename
+    STAssertEqualObjects(@"File2.pdf", [subview text],
+                         @"The label's text should be the alias");
+    
+    subview = (UILabel *)[[cell contentView] viewWithTag:3];
+    STAssertNotNil(subview, @"The tag should return a label");
+    //the alias is used and not the filename
+    STAssertEqualObjects(@"File3.pdf", [subview text],
+                         @"The label's text should be the alias");
 }
 
 - (void)testIndexInTermsOfBase
 {
-    // Set the files in the controller
-    
-    // Test 2 additional values return a new row
+    // Test 2 additional values increment the row
     STAssertEquals(2, [controller rowIndex:5 forNumberOfBlocks:3], 
                    @"Calculate the offset in terms of the base value");
     
-    // Test 1 additional value returns a new row
+    // Test 1 additional value increment the row
     STAssertEquals(3, [controller rowIndex:7 forNumberOfBlocks:3], 
                    @"Calculate the offset in terms of the base value");
     
+    // Test 3 additional values incremente the row
     STAssertEquals(4, [controller rowIndex:12 forNumberOfBlocks:3], 
                    @"Calculate the offset in terms of the base value");
     
 }
-
 
 @end

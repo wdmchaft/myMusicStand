@@ -85,6 +85,7 @@
     return [files count];
 }
 
+#define NUM_BLOCKS_PER_CELL 3
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
@@ -103,10 +104,20 @@
     }
     
     // File to display
-    File *file = [files objectAtIndex:[indexPath row]];
-    // Configure the cell to show the filename
-    UILabel *label = (UILabel *)[cell viewWithTag:1];
-    [label setText:[file alias]];
+    File *file;
+    // Label to display alias of File
+    UILabel *label;
+    
+    // Loop through all possible blocks for the cell and attempt to set their values
+    int count = 0; // starting offset 
+    for (int index = [indexPath row]; index < [files count] && count < NUM_BLOCKS_PER_CELL; index++)
+    {
+        file = [files objectAtIndex:[indexPath row] + count];
+        label = (UILabel *)[cell viewWithTag:count + 1];
+        [label setText:[file alias]];
+        
+        count++;
+    }
     
     return cell;
 }
