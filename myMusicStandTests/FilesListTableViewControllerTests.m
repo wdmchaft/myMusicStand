@@ -79,20 +79,23 @@
                          @"The label's text should be the alias");
 }
 
-- (void)testIndexInTermsOfBase
+- (void)testControllerReturnsCorrectNumberOfRows
 {
-    // Test 2 additional values increment the row
-    STAssertEquals(2, [controller rowIndex:5 forNumberOfBlocks:3], 
+    // Test 1 additional value increment the row
+    [controller setFiles:[NSArray arrayWithObjects:@"", @"", @"", @"", @"", @"", @"", nil]];
+    STAssertEquals(3, [controller tableView:nil numberOfRowsInSection:0], 
                    @"Calculate the offset in terms of the base value");
     
-    // Test 1 additional value increment the row
-    STAssertEquals(3, [controller rowIndex:7 forNumberOfBlocks:3], 
-                   @"Calculate the offset in terms of the base value");
+    // Test 2 additional values increment the row
+    [controller setFiles:[NSArray arrayWithObjects:@"", @"", @"", @"", @"",nil]];
+    STAssertEquals(2, [controller tableView:nil numberOfRowsInSection:0], 
+                   @"The number of rows should be 2");
     
     // Test 3 additional values incremente the row
-    STAssertEquals(4, [controller rowIndex:12 forNumberOfBlocks:3], 
+    [controller setFiles:[NSArray arrayWithObjects:@"", @"", @"", @"", @"", @"", @"", 
+                          @"", @"", @"", @"", @"", nil]];
+    STAssertEquals(4, [controller tableView:nil numberOfRowsInSection:0], 
                    @"Calculate the offset in terms of the base value");
-    
 }
 
 @end

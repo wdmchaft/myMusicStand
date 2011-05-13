@@ -17,5 +17,4 @@
 }
 
 @property (nonatomic, retain) NSArray *files;
--(int)rowIndex:(int)index forNumberOfBlocks:(int)blocks;
 @end

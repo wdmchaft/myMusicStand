@@ -9,6 +9,8 @@
 #import "FilesListTableViewController.h"
 #import "File.h"
 
+#define NUM_BLOCKS_PER_CELL 3
+
 @implementation FilesListTableViewController
 
 @synthesize files;
@@ -81,11 +83,22 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    // Return the number of rows in the section.
-    return [files count];
+    int index = [files count];
+
+    // Calculate if there is a remainder
+    int remainder = index % NUM_BLOCKS_PER_CELL;
+    
+    // if we have a remainder 
+    if (remainder != 0)
+    {
+        // add one extra 
+        return index / NUM_BLOCKS_PER_CELL + 1;
+    }
+    // else we don't need an extra row
+    return index / NUM_BLOCKS_PER_CELL;
 }
 
-#define NUM_BLOCKS_PER_CELL 3
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
@@ -160,22 +173,6 @@
     return YES;
 }
 */
-
--(int)rowIndex:(int)index forNumberOfBlocks:(int)blocks
-{
-    // Calculate if there is a remainder
-    int remainder = index % blocks;
-    
-    // if we have a remainder 
-    if (remainder != 0)
-    {
-        // add one extra 
-        return index / blocks + 1;
-    }
-    // else we don't need an extra row
-    return index / blocks;
-}
-
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
