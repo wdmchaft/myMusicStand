@@ -74,6 +74,12 @@
                    @"The height for a cell should be 270");
 }
 
+- (void)testTableViewSelectionStyle
+{
+    UITableView *tableView = [controller tableView];
+    STAssertFalse([tableView allowsSelection], @"The table shouldn't allow select");
+}
+
 - (void)testTableSeparatorStyleShouldBeNone
 {
     UITableView *tableView = [controller tableView];

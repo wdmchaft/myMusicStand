@@ -53,7 +53,10 @@
     // Set the background view
     UITableView *tv = [self tableView];
     [tv setBackgroundView:[backgroundView autorelease]];
+    // Set separator style
     [tv setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+    // Set tableview to not allow selection
+    [tv setAllowsSelection:NO];
 
 }
 
@@ -140,7 +143,10 @@
         file = [files objectAtIndex:index];
         label = (UILabel *)[cell viewWithTag:tagOffset + 1];
         [label setText:[file alias]];
-
+        
+        // Set font color 
+        [label setTextColor:[UIColor whiteColor]];
+        
         tagOffset++;
     }
     
