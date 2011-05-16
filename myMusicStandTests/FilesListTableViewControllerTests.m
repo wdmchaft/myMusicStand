@@ -38,10 +38,16 @@
 - (void)testInitialCellHasThreeBlankLabels
 {
     UITableViewCell *cell = [controller tableView:nil cellForRowAtIndexPath:indexPath];
+    // Loop through all UILabels in the cell's contentView
     for (UILabel *subview in [[cell contentView] subviews])
     {
+        // Check the label is blank
         STAssertEqualObjects(@"", [subview text], 
                              @"A subview's text should be empty after a call to prepareForReuse");
+        
+        // Check the width of the label
+        STAssertEquals(162, (int)subview.bounds.size.width, @"The width of the label should be 162");
+
     }
     
     // The content view of the cell should have 3 subviews
@@ -87,6 +93,7 @@
             // Test tags in cell
             subview = (UILabel *)[[cell contentView] viewWithTag:tagOffset + 1];
             STAssertNotNil(subview, @"The tag should return a label");
+                        
             //the alias is used and not the filename
             STAssertEqualObjects([filenames objectAtIndex:i], [subview text],
                                  @"The label's text should be the alias");
@@ -106,6 +113,8 @@
     [cell prepareForReuse];
     for (UILabel *subview in [[cell contentView] subviews])
     {
+        
+        // text in label should be empty
         STAssertEqualObjects(@"", [subview text], 
                              @"A subview's text should be empty after a call to prepareForReuse");
     }
