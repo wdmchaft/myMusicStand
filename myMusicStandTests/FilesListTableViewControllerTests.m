@@ -59,7 +59,10 @@
         
         // The font size shouldn't change to fit text
         STAssertFalse([subview adjustsFontSizeToFitWidth], @"The font size shouldn't vary");
-
+        
+        // Label should have user interaction enabled
+        STAssertTrue([subview isUserInteractionEnabled], 
+                     @"The user interaction should be enabled");
     }
     
     // The content view of the cell should have 3 subviews
