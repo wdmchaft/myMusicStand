@@ -35,7 +35,16 @@
                    
 }
 
-- (void)testInitialCellHasThreeBlankLabels
+- (void)testBackgroundIsCorrectImage
+{
+    UITableView *tableView = [controller tableView];
+    UIImageView *backgroundView = (UIImageView *)[tableView backgroundView];
+    UIImage *expectedImage = [UIImage imageNamed:@"floorAndStage.png"];
+    STAssertEqualObjects(expectedImage, [backgroundView image], 
+                         @"The image should be the floorAndStage image");
+}
+
+- (void)testCellHasBeenSetupCorrectly
 {
     UITableViewCell *cell = [controller tableView:nil cellForRowAtIndexPath:indexPath];
     // Loop through all UILabels in the cell's contentView

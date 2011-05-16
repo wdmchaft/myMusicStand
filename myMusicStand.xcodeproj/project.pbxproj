@@ -34,6 +34,8 @@
 		64DB278A137C2D2C0069D076 /* CoreDataTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 64D94E5D1379B42000300349 /* CoreDataTest.m */; };
 		64DB278C137C2D2C0069D076 /* FileHelperTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 64D94E5A1379B39300300349 /* FileHelperTests.m */; };
 		64DB278E137C2DBE0069D076 /* myMusicStand.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = 64D94E0F1379B2CC00300349 /* myMusicStand.xcdatamodel */; };
+		64E380651381786700A43834 /* floorAndStage.png in Resources */ = {isa = PBXBuildFile; fileRef = 64E380641381786700A43834 /* floorAndStage.png */; };
+		64E380661381786700A43834 /* floorAndStage.png in Resources */ = {isa = PBXBuildFile; fileRef = 64E380641381786700A43834 /* floorAndStage.png */; };
 		64E47BC2137AE3E800AC5C93 /* FilesListTableViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 64E47BC1137AE3E800AC5C93 /* FilesListTableViewControllerTests.m */; };
 		64EAE5FC1379DDE900544C29 /* FilesListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64EAE5FB1379DDE900544C29 /* FilesListTableViewController.m */; };
 		64EAE5FD1379DDE900544C29 /* FilesListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64EAE5FB1379DDE900544C29 /* FilesListTableViewController.m */; };
@@ -95,6 +97,7 @@
 		64D94E871379BE1100300349 /* File.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = File.m; sourceTree = "<group>"; };
 		64D94E8A1379BEFB00300349 /* TimestampEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimestampEntity.h; sourceTree = "<group>"; };
 		64D94E8B1379BEFB00300349 /* TimestampEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimestampEntity.m; sourceTree = "<group>"; };
+		64E380641381786700A43834 /* floorAndStage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = floorAndStage.png; sourceTree = "<group>"; };
 		64E47BC0137AE3E800AC5C93 /* FilesListTableViewControllerTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilesListTableViewControllerTests.h; sourceTree = "<group>"; };
 		64E47BC1137AE3E800AC5C93 /* FilesListTableViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilesListTableViewControllerTests.m; sourceTree = "<group>"; };
 		64EAE5FA1379DDE900544C29 /* FilesListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilesListTableViewController.h; sourceTree = "<group>"; };
@@ -130,6 +133,7 @@
 		64415E9A137DD50300DADC4C /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				64E380641381786700A43834 /* floorAndStage.png */,
 				64415E89137D8EAD00DADC4C /* BlockTableViewCell.xib */,
 			);
 			name = Cell;
@@ -416,6 +420,7 @@
 				64D94E041379B2CB00300349 /* InfoPlist.strings in Resources */,
 				64D94E0D1379B2CC00300349 /* MainWindow.xib in Resources */,
 				64415E8A137D8EAD00DADC4C /* BlockTableViewCell.xib in Resources */,
+				64E380651381786700A43834 /* floorAndStage.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -424,6 +429,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				64D94E221379B2CC00300349 /* InfoPlist.strings in Resources */,
+				64E380661381786700A43834 /* floorAndStage.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
