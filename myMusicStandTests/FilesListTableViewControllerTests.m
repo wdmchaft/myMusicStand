@@ -74,6 +74,13 @@
                    @"The height for a cell should be 270");
 }
 
+- (void)testTableSeparatorStyleShouldBeNone
+{
+    UITableView *tableView = [controller tableView];
+    STAssertEquals(UITableViewCellSeparatorStyleNone, [tableView separatorStyle],
+                   @"The tableView's separator style should be none");
+}
+
 - (void)testControllerCreatesCellsCorrectly
 {
     NSArray *filenames = [NSArray arrayWithObjects:@"File1.pdf", @"File2.pdf",

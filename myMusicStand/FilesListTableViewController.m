@@ -21,12 +21,7 @@
     if (self) {
         // Custom initialization
         files = [[NSArray alloc] init];
-        // Setup tableView's background image, by creating an imageView
-        UIImage *backgroundImage = [UIImage imageNamed:@"floorAndStage.png"];
-        UIImageView *backgroundView = 
-            [[UIImageView alloc] initWithImage:backgroundImage];
-        // Set the background view
-        [[self tableView] setBackgroundView:[backgroundView autorelease]];
+        
     }
     return self;
 }
@@ -50,6 +45,15 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    // Setup tableView's background image, by creating an imageView
+    UIImage *backgroundImage = [UIImage imageNamed:@"floorAndStage.png"];
+    UIImageView *backgroundView = 
+    [[UIImageView alloc] initWithImage:backgroundImage];
+    // Set the background view
+    UITableView *tv = [self tableView];
+    [tv setBackgroundView:[backgroundView autorelease]];
+    [tv setSeparatorStyle:UITableViewCellSeparatorStyleNone];
 
 }
 
