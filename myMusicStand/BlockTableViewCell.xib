@@ -72,12 +72,13 @@
 								</object>
 								<nil key="IBUIHighlightedColor"/>
 								<int key="IBUIBaselineAdjustment">1</int>
+								<bool key="IBUIAdjustsFontSizeToFit">NO</bool>
 								<float key="IBUIMinimumFontSize">10</float>
 							</object>
 							<object class="IBUILabel" id="356712213">
 								<reference key="NSNextResponder" ref="533764306"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{621, 139}, {162, 21}}</string>
+								<string key="NSFrame">{{586, 139}, {162, 21}}</string>
 								<reference key="NSSuperview" ref="533764306"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView"/>
@@ -91,12 +92,13 @@
 								<reference key="IBUITextColor" ref="921144022"/>
 								<nil key="IBUIHighlightedColor"/>
 								<int key="IBUIBaselineAdjustment">1</int>
+								<bool key="IBUIAdjustsFontSizeToFit">NO</bool>
 								<float key="IBUIMinimumFontSize">10</float>
 							</object>
 							<object class="IBUILabel" id="755749130">
 								<reference key="NSNextResponder" ref="533764306"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{363, 139}, {162, 21}}</string>
+								<string key="NSFrame">{{303, 139}, {162, 21}}</string>
 								<reference key="NSSuperview" ref="533764306"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="356712213"/>
@@ -110,6 +112,7 @@
 								<reference key="IBUITextColor" ref="921144022"/>
 								<nil key="IBUIHighlightedColor"/>
 								<int key="IBUIBaselineAdjustment">1</int>
+								<bool key="IBUIAdjustsFontSizeToFit">NO</bool>
 								<float key="IBUIMinimumFontSize">10</float>
 							</object>
 						</object>
@@ -179,9 +182,9 @@
 						<reference key="object" ref="502540613"/>
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<reference ref="755749130"/>
-							<reference ref="356712213"/>
 							<reference ref="807535969"/>
+							<reference ref="356712213"/>
+							<reference ref="755749130"/>
 						</object>
 						<reference key="parent" ref="0"/>
 					</object>

@@ -47,6 +47,9 @@
         
         // Check the width of the label
         STAssertEquals(162, (int)subview.bounds.size.width, @"The width of the label should be 162");
+        
+        // The font size shouldn't change to fit text
+        STAssertFalse([subview adjustsFontSizeToFitWidth], @"The font size shouldn't vary");
 
     }
     
