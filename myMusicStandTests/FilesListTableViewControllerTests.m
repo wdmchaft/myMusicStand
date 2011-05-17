@@ -79,6 +79,30 @@
 
 }
 
+- (void)testEditAliasMethod
+{
+    // Create one file to display in the controller
+    [File fileWithContext:context];
+    
+    // Give the controller the files
+    [controller setFiles:[context allEntity:@"File"]];
+    
+    // Get the cell for our index
+    UITableViewCell *cell = [controller tableView:nil cellForRowAtIndexPath:indexPath];
+    
+    // Get the label for the file
+    UILabel *label = (UILabel *)[[cell contentView] viewWithTag:1];
+    
+    // call method and pass recognizer from label
+    [controller editAlias:[[label gestureRecognizers] objectAtIndex:0]];
+
+    // hit test the cell and see what view we get
+    UIView *textBox = [cell hitTest:[label center] withEvent:nil];
+    
+    STAssertTrue([textBox isKindOfClass:[UITextField class]], 
+                 @"The textbox should be vaild");
+}
+
 - (void)testCellSetupWhenControllerHasNoFiles
 {
         

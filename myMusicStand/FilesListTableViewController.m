@@ -159,6 +159,17 @@
     return cell;
 }
 
+// Handle long press on alias label in a cell
+-(void)editAlias:(UIGestureRecognizer *)recognizer
+{
+    UIView *view = [recognizer view];
+    // Create field with the same frame as the view
+    UITextField *text = [[UITextField alloc] initWithFrame:[view frame]];
+    
+    // add the field to the superview of the recognizer's view
+    [[view superview] addSubview:text];
+}
+
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath

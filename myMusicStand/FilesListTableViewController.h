@@ -17,4 +17,6 @@
 }
 
 @property (nonatomic, retain) NSArray *files;
+
+-(void)editAlias:(UIGestureRecognizer *)recognizer;
 @end
