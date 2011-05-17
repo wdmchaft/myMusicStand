@@ -147,6 +147,12 @@
         // Set font color 
         [label setTextColor:[UIColor whiteColor]];
         
+        // Add a gesture recognizer
+        UIGestureRecognizer *gr = [[UILongPressGestureRecognizer alloc] initWithTarget:self
+                                                                                action:@selector(seld)];
+        [label addGestureRecognizer:gr];
+        [gr release];
+        
         tagOffset++;
     }
     

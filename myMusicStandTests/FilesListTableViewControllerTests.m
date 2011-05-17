@@ -44,10 +44,47 @@
                          @"The image should be the floorAndStage image");
 }
 
-- (void)testCellHasBeenSetupCorrectly
+- (void)testCellHasRecognizerForModel
 {
+    // Create three files to display in the cell so we can validate the recognizers
+    [File fileWithContext:context];
+    [File fileWithContext:context];
+    
+    // Give the controller the files we have created so we can verify cell setup
+    [controller setFiles:[context allEntity:@"File"]];
+    
+    // Get the cell for the indexPath
     UITableViewCell *cell = [controller tableView:nil cellForRowAtIndexPath:indexPath];
-    // Loop through all UILabels in the cell's contentView
+    // label for the first element in the cell
+    UILabel *label;
+    int tag = 1; // tag for each label in the cell
+    int exepectedCount = 0;
+    
+    // Loop through each label and make sure it has configured correctly
+    for (; tag < 4; tag++)
+    {
+        // test cell label is configured based on files
+        label= (UILabel *)[[cell contentView] viewWithTag:tag];
+        
+        // if label's text is not empty it should have one recognizer else no recognizer
+        exepectedCount = (![[label text] isEqualToString:@""]) ? 1 : 0;
+        
+        // Label should have one gesture recognizer
+        STAssertEquals(exepectedCount, (int)[[label gestureRecognizers] count], 
+                       @"The label should have exactly one gesture recognizer");
+        
+    }
+    
+    
+
+}
+
+- (void)testCellSetupWhenControllerHasNoFiles
+{
+        
+    UITableViewCell *cell = [controller tableView:nil cellForRowAtIndexPath:indexPath];
+    // Loop through all UILabels in the cell's contentView 
+    // !!!THIS ASSUMES THAT THE CONTROLLER HAS NO!! FILES TO DISPLAY
     for (UILabel *subview in [[cell contentView] subviews])
     {
         // Check the label is blank
@@ -55,7 +92,8 @@
                              @"A subview's text should be empty after a call to prepareForReuse");
         
         // Check the width of the label
-        STAssertEquals(162, (int)subview.bounds.size.width, @"The width of the label should be 162");
+        STAssertEquals(162, (int)subview.bounds.size.width, 
+                       @"The width of the label should be 162");
         
         // The font size shouldn't change to fit text
         STAssertFalse([subview adjustsFontSizeToFitWidth], @"The font size shouldn't vary");
@@ -63,6 +101,7 @@
         // Label should have user interaction enabled
         STAssertTrue([subview isUserInteractionEnabled], 
                      @"The user interaction should be enabled");
+        
     }
     
     // The content view of the cell should have 3 subviews
