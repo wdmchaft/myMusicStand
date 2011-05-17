@@ -149,7 +149,7 @@
         
         // Add a gesture recognizer
         UIGestureRecognizer *gr = [[UILongPressGestureRecognizer alloc] initWithTarget:self
-                                                                                action:@selector(seld)];
+                                                                                action:@selector(editAlias:)];
         [label addGestureRecognizer:gr];
         [gr release];
         
@@ -165,6 +165,9 @@
     UIView *view = [recognizer view];
     // Create field with the same frame as the view
     UITextField *text = [[UITextField alloc] initWithFrame:[view frame]];
+    
+    // hide the view
+    [view setHidden:YES];
     
     // add the field to the superview of the recognizer's view
     [[view superview] addSubview:text];

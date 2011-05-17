@@ -100,7 +100,9 @@
     UIView *textBox = [cell hitTest:[label center] withEvent:nil];
     
     STAssertTrue([textBox isKindOfClass:[UITextField class]], 
-                 @"The textbox should be vaild");
+                 @"The textbox should be on top of label");
+    
+    STAssertTrue([label isHidden], @"The label should also be hidden");
 }
 
 - (void)testCellSetupWhenControllerHasNoFiles
