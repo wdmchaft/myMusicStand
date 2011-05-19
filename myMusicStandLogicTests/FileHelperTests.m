@@ -30,6 +30,8 @@
     NSArray *fileList = filesInDirectory(@"Fake Directory");    
     NSArray *addedFiles = filesDiffWithFileslistAndKnownFiles(fileList, [NSArray array], FileDiffTypeNew);
     NSArray *expectedFiles  = [NSArray arrayWithObject:@"New File.pdf"];
+    
+    // Verify diff shows files were added to the directory
     STAssertEqualObjects(expectedFiles, addedFiles, @"Should contain the correct files but %@", addedFiles);
     
 }
@@ -39,6 +41,8 @@
     NSArray *fileList = filesInDirectory(@"Another Fake Directory");
     NSArray *addedFiles = filesDiffWithFileslistAndKnownFiles(fileList, [NSArray array], FileDiffTypeNew);
     NSArray *expectedFiles  = [NSArray arrayWithObjects:@"Second File.pdf", @"New File.pdf", nil];
+    
+    // Verify diff shows added files in sorted order
     STAssertEqualObjects(expectedFiles, addedFiles, @"Should contain the correct files but %@", addedFiles);
 }
 
@@ -48,6 +52,8 @@
     NSArray *removedFiles = filesDiffWithFileslistAndKnownFiles(fileList, [NSArray arrayWithObject:@"Stale File.pdf"], 
                                                                 FileDiffTypeStale);
     NSArray *expectedFiles = [NSArray arrayWithObject:@"Stale File.pdf"];
+    
+    // Verify diff shows removed files 
     STAssertEqualObjects(expectedFiles, removedFiles, @"Should contain the correct files but %@", removedFiles);
 }
 

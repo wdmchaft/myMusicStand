@@ -20,5 +20,4 @@
 @interface NSManagedObjectContext (EntityInCreationOrder)
 
 - (NSArray *)allEntity:(NSString *)entityName;
-
 @end

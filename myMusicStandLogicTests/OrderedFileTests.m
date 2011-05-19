@@ -27,6 +27,7 @@
 
 - (void)testLearningOrderedFile
 {
+    // Verify ordered file is created
     OrderedFile *orderedFile = [OrderedFile orderedFileWithContext:context];
     STAssertNotNil(orderedFile, @"The ordered file should have been created");
 }

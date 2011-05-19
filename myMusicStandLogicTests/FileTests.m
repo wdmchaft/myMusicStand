@@ -35,20 +35,9 @@
 {
     NSString *filename = @"File1.pdf";
     [file2 setFilename:filename];
-    STAssertEqualObjects([file filename], [file2 filename], @"Both files should be equal");
-}
-
-- (void)testLearningFilesArrayEqual
-{
-    [file2 setFilename:@"aFile2.pdf"];
     
-    NSArray *array1 = [NSArray arrayWithObjects:file, file2, nil];
-    NSArray *array2 = [NSArray arrayWithObjects:file, file2, nil];
-    STAssertEqualObjects(array1, array2, @"The file arrays should be equal");
-    NSArray *array3 = [NSArray arrayWithObjects:file, nil];
-    STAssertFalse([array2 isEqual:array3], @"The file arrays shouldn't be equal");
-    NSArray *array4 = [NSArray arrayWithObjects:file2, nil];
-    STAssertFalse([array3 isEqual:array4], @"The file arrays shouldn't be equal");
+    // Test comparing filenames
+    STAssertEqualObjects([file filename], [file2 filename], @"Both files should be equal");
 }
 
 - (void)testFileForFileWithSameName
@@ -60,30 +49,24 @@
     
 }
 
-- (void)testFileCreationOrder
+- (void)testFileSettingAlias
 {
-    File *file5 = [File fileWithContext:context];
-    File *file3 = [File fileWithContext:context];
-    File *file4 = [File fileWithContext:context];
-    NSArray *files = [NSArray arrayWithObjects:file, file2, file5, file3, file4, nil];
-    STAssertEqualObjects(files, [context allEntity:@"File"],
-                         @"The files should be in the order they were created");
-}
-
-- (void)testFileSettingTitle
-{
+    // Verify file alias property
     [file setAlias:@"a cool title"];
     STAssertEquals(@"a cool title", [file alias], @"The file's title should be set");
 }
 
 - (void)testDefaultAliasIsFilename
 {
+    // Default filename and alias are the same
     STAssertEqualObjects([file filename], [file alias], 
                          @"The alias should be the filename if it is not set");
-    // Test that Filename doesn't trample the alias if 
-    // it has been set.
+    
+    // Test that Filename doesn't trample the alias if it has been set.
     [file setAlias:@"A cooler name"];
     [file setFilename:@"File1.pdf"];
+    
+    // Verify file alias has changed and filename hasn't overwritten the change
     STAssertFalse([[file filename] isEqual:[file alias]], 
                   @"The filename and alias shouldn't be equal");
 }

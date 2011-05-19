@@ -37,6 +37,7 @@
 		64E380651381786700A43834 /* floorAndStage.png in Resources */ = {isa = PBXBuildFile; fileRef = 64E380641381786700A43834 /* floorAndStage.png */; };
 		64E380661381786700A43834 /* floorAndStage.png in Resources */ = {isa = PBXBuildFile; fileRef = 64E380641381786700A43834 /* floorAndStage.png */; };
 		64E47BC2137AE3E800AC5C93 /* FilesListTableViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 64E47BC1137AE3E800AC5C93 /* FilesListTableViewControllerTests.m */; };
+		64E7F039138551D800BB54D7 /* TimestampEntityTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 64E7F038138551D800BB54D7 /* TimestampEntityTests.m */; };
 		64EAE5FC1379DDE900544C29 /* FilesListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64EAE5FB1379DDE900544C29 /* FilesListTableViewController.m */; };
 		64EAE5FD1379DDE900544C29 /* FilesListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64EAE5FB1379DDE900544C29 /* FilesListTableViewController.m */; };
 /* End PBXBuildFile section */
@@ -100,6 +101,8 @@
 		64E380641381786700A43834 /* floorAndStage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = floorAndStage.png; sourceTree = "<group>"; };
 		64E47BC0137AE3E800AC5C93 /* FilesListTableViewControllerTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilesListTableViewControllerTests.h; sourceTree = "<group>"; };
 		64E47BC1137AE3E800AC5C93 /* FilesListTableViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilesListTableViewControllerTests.m; sourceTree = "<group>"; };
+		64E7F037138551D800BB54D7 /* TimestampEntityTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimestampEntityTests.h; sourceTree = "<group>"; };
+		64E7F038138551D800BB54D7 /* TimestampEntityTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimestampEntityTests.m; sourceTree = "<group>"; };
 		64EAE5FA1379DDE900544C29 /* FilesListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilesListTableViewController.h; sourceTree = "<group>"; };
 		64EAE5FB1379DDE900544C29 /* FilesListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilesListTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -205,8 +208,8 @@
 				64D94E1E1379B2CC00300349 /* Supporting Files */,
 				64E47BC0137AE3E800AC5C93 /* FilesListTableViewControllerTests.h */,
 				64E47BC1137AE3E800AC5C93 /* FilesListTableViewControllerTests.m */,
-				64C96967137B754E002B5D10 /* DelegateTests.h */,
-				64C96968137B754E002B5D10 /* DelegateTests.m */,
+				64E7F03C1385539300BB54D7 /* Delegate tests */,
+				64E7F03B1385538300BB54D7 /* TimestampTests */,
 			);
 			path = myMusicStandTests;
 			sourceTree = "<group>";
@@ -338,6 +341,24 @@
 			);
 			name = "Setlists Testing";
 			path = ../myMusicStandLogicTests;
+			sourceTree = "<group>";
+		};
+		64E7F03B1385538300BB54D7 /* TimestampTests */ = {
+			isa = PBXGroup;
+			children = (
+				64E7F037138551D800BB54D7 /* TimestampEntityTests.h */,
+				64E7F038138551D800BB54D7 /* TimestampEntityTests.m */,
+			);
+			name = TimestampTests;
+			sourceTree = "<group>";
+		};
+		64E7F03C1385539300BB54D7 /* Delegate tests */ = {
+			isa = PBXGroup;
+			children = (
+				64C96967137B754E002B5D10 /* DelegateTests.h */,
+				64C96968137B754E002B5D10 /* DelegateTests.m */,
+			);
+			name = "Delegate tests";
 			sourceTree = "<group>";
 		};
 		64EAE5FE1379DDEF00544C29 /* Files list controller */ = {
@@ -481,6 +502,7 @@
 				64EAE5FD1379DDE900544C29 /* FilesListTableViewController.m in Sources */,
 				64E47BC2137AE3E800AC5C93 /* FilesListTableViewControllerTests.m in Sources */,
 				64C96969137B754E002B5D10 /* DelegateTests.m in Sources */,
+				64E7F039138551D800BB54D7 /* TimestampEntityTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
