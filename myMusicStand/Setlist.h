@@ -15,6 +15,7 @@
 @private
 }
 @property (nonatomic, retain) NSSet* orderedFiles;
+@property (nonatomic, retain) NSString *title;
 
 - (void)addOrderedFilesObject:(NSManagedObject *)value;
 - (void)removeOrderedFilesObject:(NSManagedObject *)value;

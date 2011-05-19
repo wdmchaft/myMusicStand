@@ -12,6 +12,7 @@
 
 @implementation Setlist
 @dynamic orderedFiles;
+@dynamic title;
 
 - (void)addOrderedFilesObject:(NSManagedObject *)value {    
     NSSet *changedObjects = [[NSSet alloc] initWithObjects:&value count:1];
