@@ -38,21 +38,6 @@
     // Release any cached data, images, etc that aren't in use.
 }
 
-#pragma mark - View lifecycle
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-
-    // Set the background view
-    UITableView *tv = [self tableView];
-    [tv setBackgroundColor:[UIColor clearColor]];
-    // Set separator style
-    [tv setSeparatorStyle:UITableViewCellSeparatorStyleNone];
-    // Set tableview to not allow selection
-    [tv setAllowsSelection:NO];
-}
-
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     // Return YES for supported orientations
@@ -60,7 +45,6 @@
 }
 
 #pragma mark - Table view data source
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     int index = [setlists count];
@@ -111,26 +95,5 @@
     return cell;
 }
 
-
-#pragma mark - Table view delegate
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath 
-{
-    return 270;
-}
-
-
 @end
 
-// Override cell's perpareForReuse method to clear all labels
-@implementation UITableViewCell (clearCellLabels)
-
--(void)prepareForReuse
-{
-    for (UILabel *subview in [[self contentView] subviews])
-    {
-        [subview setText:@""];
-    }
-}
-
-@end

@@ -9,7 +9,9 @@
 #import <UIKit/UIKit.h>
 
 
-@interface SetlistTableViewController : UITableViewController {
+#import "BlockTableViewController.h"
+
+@interface SetlistTableViewController : BlockTableViewController {
     NSMutableArray *setlists;
 }
 

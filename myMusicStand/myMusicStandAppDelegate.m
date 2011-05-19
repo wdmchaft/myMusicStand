@@ -281,7 +281,7 @@ static myMusicStandAppDelegate *sharedInstance;
 - (IBAction)tabIndexChanged:(UISegmentedControl *)sender
 {
     UIViewController *listController;
-    
+        
     if ([sender selectedSegmentIndex] == FILES_CONTROLLER_INDEX)
     {
         // display files controller
@@ -308,20 +308,35 @@ static myMusicStandAppDelegate *sharedInstance;
         [(SetlistTableViewController *)listController setSetlists:[setlists autorelease]];
     }
     
-    // replace the current controller
+    CGRect leftframe = [[rootController view] frame];
+    leftframe.origin.x -= leftframe.size.width;
+   
+    // add the new view to the window
     [[self window] addSubview:[listController view]];
     
     // move navbar to front
     [[self window] bringSubviewToFront:navBar];
     
-    // remove the rootController's view from window
-    [[rootController view] removeFromSuperview]; 
+    [UIView animateWithDuration:0.2 
+                     animations:^{
+                         
+                         [[rootController view] setFrame:leftframe];
+                     }
+                     completion:^(BOOL finished){
+                         
+                         
+                         // remove the rootController's view from window
+                         [[rootController view] removeFromSuperview]; 
+                         
+                         // release the other controller
+                         [rootController release];
+                         
+                         rootController = listController;
+
+                     }];
     
-    // release the other controller
-    [rootController release];
     
-    rootController = listController;
-    
+       
 }
 
 #pragma mark - Application's Documents directory

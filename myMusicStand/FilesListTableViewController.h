@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BlockTableViewController.h"
 
 @class myMusicStandAppDelegate;
-@interface FilesListTableViewController : UITableViewController 
+@interface FilesListTableViewController : BlockTableViewController 
 <UITableViewDelegate>
 {
     NSArray *files;

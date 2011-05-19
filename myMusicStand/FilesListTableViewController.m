@@ -42,20 +42,6 @@
 
 #pragma mark - View lifecycle
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    
-    // Set the background view
-    UITableView *tv = [self tableView];
-    [tv setBackgroundColor:[UIColor clearColor]];
-    // Set separator style
-    [tv setSeparatorStyle:UITableViewCellSeparatorStyleNone];
-    // Set tableview to not allow selection
-    [tv setAllowsSelection:NO];
-
-}
-
 - (void)viewDidUnload
 {
     [super viewDidUnload];
@@ -169,24 +155,5 @@
     [[view superview] addSubview:text];
 }
 
-#pragma mark - Table view delegate
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath 
-{
-    return 270;
-}
-
 @end
 
-// Override cell's perpareForReuse method to clear all labels
-@implementation UITableViewCell (clearCellLabels)
-
--(void)prepareForReuse
-{
-    for (UILabel *subview in [[self contentView] subviews])
-    {
-        [subview setText:@""];
-    }
-}
-
-@end
