@@ -171,6 +171,11 @@ static myMusicStandAppDelegate *sharedInstance;
     return __managedObjectModel;
 }
 
+- (NSURL *)libraryDirectory {
+    return [[[NSFileManager defaultManager] URLsForDirectory:NSLibraryDirectory 
+                                                   inDomains:NSUserDomainMask] lastObject];
+}
+
 /**
  Returns the persistent store coordinator for the application.
  If the coordinator doesn't already exist, it is created and the application's store added to it.
@@ -181,8 +186,8 @@ static myMusicStandAppDelegate *sharedInstance;
     {
         return __persistentStoreCoordinator;
     }
-    
-    NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"myMusicStand.sqlite"];
+
+    NSURL *storeURL = [[self libraryDirectory] URLByAppendingPathComponent:@"myMusicStand.sqlite"];
     
     NSError *error = nil;
     __persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
