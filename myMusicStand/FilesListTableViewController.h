@@ -11,7 +11,7 @@
 
 @class myMusicStandAppDelegate;
 @interface FilesListTableViewController : BlockTableViewController 
-<UITableViewDelegate>
+<UITableViewDelegate, UITextFieldDelegate>
 {
     NSArray *files;
     IBOutlet UITableViewCell *tvCell;

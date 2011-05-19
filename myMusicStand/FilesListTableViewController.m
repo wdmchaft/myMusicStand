@@ -154,15 +154,53 @@
 // Handle long press on alias label in a cell
 -(void)editAlias:(UIGestureRecognizer *)recognizer
 {
-    UIView *view = [recognizer view];
-    // Create field with the same frame as the view
-    UITextField *text = [[UITextField alloc] initWithFrame:[view frame]];
+    if (recognizer.state == UIGestureRecognizerStateBegan)
+    {
+        UILabel *label = (UILabel *)[recognizer view];
+        
+        // Create field with the same frame as the view
+        UITextField *text = [[UITextField alloc] initWithFrame:[label frame]];
+        
+        // make text color same as view color
+        [text setTextColor:[(UILabel*)label textColor]];
+        // make text same as view text
+        [text setText:[(UILabel *)label text]];
+        // clear the label 
+        [label setText:@""];
+        
+        // add the field to the superview of the recognizer's view
+        [[label superview] addSubview:text];
+        
+        // set us as delegate
+        [text setDelegate:self];
+        
+        // make text first responder
+        [text becomeFirstResponder];
+    }
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)field
+{
+    // get the center of the field
+    CGPoint center = [field center];
+    // get superview
+    UIView *cell = [field superview];
     
-    // hide the view
-    [view setHidden:YES];
+    // resign first responder 
+    [field resignFirstResponder];
     
-    // add the field to the superview of the recognizer's view
-    [[view superview] addSubview:text];
+    // remove the field from the cell
+    [[field retain] autorelease]; // hold onto the field for alittle while
+    [field removeFromSuperview];
+    
+    // hit test the cell for the lable at center
+    UILabel *label = (UILabel *)[cell hitTest:center withEvent:nil];
+    
+
+    [label setText:[field text]];
+    
+    // TODO: set the model to reflect the change
+    
 }
 
 @end
