@@ -311,8 +311,8 @@ static myMusicStandAppDelegate *sharedInstance;
     // replace the current controller
     [[self window] addSubview:[listController view]];
     
-    // send view to back
-    [[self window] sendSubviewToBack:[listController view]];
+    // move navbar to front
+    [[self window] bringSubviewToFront:navBar];
     
     // remove the rootController's view from window
     [[rootController view] removeFromSuperview]; 

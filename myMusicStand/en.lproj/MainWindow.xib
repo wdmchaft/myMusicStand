@@ -12,12 +12,13 @@
 		</object>
 		<object class="NSArray" key="IBDocument.IntegratedClassDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<string>IBUIWindow</string>
-			<string>IBUICustomObject</string>
-			<string>IBUINavigationItem</string>
-			<string>IBUISegmentedControl</string>
-			<string>IBUINavigationBar</string>
 			<string>IBProxyObject</string>
+			<string>IBUIImageView</string>
+			<string>IBUICustomObject</string>
+			<string>IBUIWindow</string>
+			<string>IBUISegmentedControl</string>
+			<string>IBUINavigationItem</string>
+			<string>IBUINavigationBar</string>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -45,6 +46,20 @@
 				<int key="NSvFlags">292</int>
 				<object class="NSMutableArray" key="NSSubviews">
 					<bool key="EncodedWithXMLCoder">YES</bool>
+					<object class="IBUIImageView" id="990959524">
+						<reference key="NSNextResponder" ref="62075450"/>
+						<int key="NSvFlags">274</int>
+						<string key="NSFrame">{{-17, 20}, {802, 1004}}</string>
+						<reference key="NSSuperview" ref="62075450"/>
+						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView" ref="715376646"/>
+						<bool key="IBUIUserInteractionEnabled">NO</bool>
+						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
+						<object class="NSCustomResource" key="IBUIImage">
+							<string key="NSClassName">NSImage</string>
+							<string key="NSResourceName">floorAndStage.png</string>
+						</object>
+					</object>
 					<object class="IBUINavigationBar" id="715376646">
 						<reference key="NSNextResponder" ref="62075450"/>
 						<int key="NSvFlags">290</int>
@@ -56,6 +71,7 @@
 								<string key="NSFrame">{{231, 7}, {307, 30}}</string>
 								<reference key="NSSuperview" ref="715376646"/>
 								<reference key="NSWindow"/>
+								<reference key="NSNextKeyView"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 								<int key="IBSegmentControlStyle">2</int>
@@ -91,6 +107,7 @@
 						<string key="NSFrame">{{0, 20}, {768, 44}}</string>
 						<reference key="NSSuperview" ref="62075450"/>
 						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView" ref="197730860"/>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 						<object class="NSArray" key="IBUIItems">
 							<bool key="EncodedWithXMLCoder">YES</bool>
@@ -105,7 +122,7 @@
 				<string key="NSFrameSize">{768, 1024}</string>
 				<reference key="NSSuperview"/>
 				<reference key="NSWindow"/>
-				<reference key="NSNextKeyView" ref="715376646"/>
+				<reference key="NSNextKeyView" ref="990959524"/>
 				<object class="NSColor" key="IBUIBackgroundColor">
 					<int key="NSColorSpace">1</int>
 					<bytes key="NSRGB">MSAxIDEAA</bytes>
@@ -185,6 +202,7 @@
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<reference ref="715376646"/>
+							<reference ref="990959524"/>
 						</object>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -216,6 +234,11 @@
 						<reference key="object" ref="197730860"/>
 						<reference key="parent" ref="972497922"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">20</int>
+						<reference key="object" ref="990959524"/>
+						<reference key="parent" ref="62075450"/>
+					</object>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="flattenedProperties">
@@ -229,6 +252,7 @@
 					<string>18.IBPluginDependency</string>
 					<string>2.IBEditorWindowLastContentRect</string>
 					<string>2.IBPluginDependency</string>
+					<string>20.IBPluginDependency</string>
 					<string>6.CustomClassName</string>
 					<string>6.IBPluginDependency</string>
 				</object>
@@ -240,6 +264,7 @@
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>{{226, 57}, {783, 799}}</string>
+					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>myMusicStandAppDelegate</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -257,7 +282,7 @@
 				<reference key="dict.values" ref="0"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">19</int>
+			<int key="maxID">20</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -334,6 +359,10 @@
 		</object>
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
+		<object class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
+			<string key="NS.key.0">floorAndStage.png</string>
+			<string key="NS.object.0">{768, 1024}</string>
+		</object>
 		<string key="IBCocoaTouchPluginVersion">301</string>
 	</data>
 </archive>

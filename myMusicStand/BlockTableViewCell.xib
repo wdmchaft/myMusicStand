@@ -50,7 +50,7 @@
 							<object class="IBUILabel" id="807535969">
 								<reference key="NSNextResponder" ref="533764306"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{87, 139}, {162, 21}}</string>
+								<string key="NSFrame">{{20, 229}, {162, 21}}</string>
 								<reference key="NSSuperview" ref="533764306"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="755749130"/>
@@ -77,10 +77,9 @@
 							<object class="IBUILabel" id="356712213">
 								<reference key="NSNextResponder" ref="533764306"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{586, 139}, {162, 21}}</string>
+								<string key="NSFrame">{{586, 229}, {162, 21}}</string>
 								<reference key="NSSuperview" ref="533764306"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
 								<int key="IBUIContentMode">7</int>
@@ -96,7 +95,7 @@
 							<object class="IBUILabel" id="755749130">
 								<reference key="NSNextResponder" ref="533764306"/>
 								<int key="NSvFlags">292</int>
-								<string key="NSFrame">{{303, 139}, {162, 21}}</string>
+								<string key="NSFrame">{{303, 229}, {162, 21}}</string>
 								<reference key="NSSuperview" ref="533764306"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView" ref="356712213"/>
@@ -180,8 +179,8 @@
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<reference ref="807535969"/>
-							<reference ref="356712213"/>
 							<reference ref="755749130"/>
+							<reference ref="356712213"/>
 						</object>
 						<reference key="parent" ref="0"/>
 					</object>
