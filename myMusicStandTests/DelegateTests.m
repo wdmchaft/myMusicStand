@@ -39,25 +39,6 @@
     STAssertNotNil(appDelegate, @"UIApplication failed to find the AppDelegate");
 }
 
-- (void)testWindowSubview
-{
-    // Test the window has only one subview
-    UIWindow *window = [appDelegate window];
-    STAssertEquals(1, (NSInteger)[[window subviews] count], 
-                   @"The window shoud have 1 subview but it had %lu", [[window subviews] count]);
-    
-    // Test that that subview exists and is a tableview
-    UIView *subview;
-    STAssertNoThrow(subview = [[window subviews] objectAtIndex:0], 
-                    @"Accessing the subview should be valid");
-    STAssertTrue([subview isKindOfClass:[UITableView class]], 
-                 @"The subview should be a tableview");
-    
-    // The controller's view should belong to the rootController
-    STAssertEqualObjects([rootController view], subview, 
-                         @"The subview should belong to the rootController");
-}
-
 - (void)testOutlets
 {
     
