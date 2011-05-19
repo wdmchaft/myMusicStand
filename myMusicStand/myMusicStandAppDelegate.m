@@ -15,6 +15,7 @@
 static myMusicStandAppDelegate *sharedInstance;
 
 #define FILES_CONTROLLER_INDEX 0
+#define NAV_BAR_HEIGHT 44
 
 @implementation myMusicStandAppDelegate
 
@@ -51,6 +52,14 @@ static myMusicStandAppDelegate *sharedInstance;
 	return sharedInstance;
 }
 
+- (void) shrinkViewFrame:(UIView *)aView {
+    // set view height
+    CGRect frame = [aView frame];
+    frame.origin.y += NAV_BAR_HEIGHT;
+    frame.size.height -= NAV_BAR_HEIGHT;
+    [aView setFrame:frame];
+
+}
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // First find any new files and add them to the context
@@ -66,6 +75,8 @@ static myMusicStandAppDelegate *sharedInstance;
     
     // Set root controller 
     rootController = controller;
+    
+    [self shrinkViewFrame:[rootController view]];
     
     // Add rootController's view to window
     [[self window] addSubview:[rootController view]];
@@ -308,6 +319,9 @@ static myMusicStandAppDelegate *sharedInstance;
         [(SetlistTableViewController *)listController setSetlists:[setlists autorelease]];
     }
     
+    // Shrink view frame
+    [self shrinkViewFrame:[listController view]];
+    
     CGRect leftframe = [[rootController view] frame];
     leftframe.origin.x -= leftframe.size.width;
    
@@ -323,7 +337,6 @@ static myMusicStandAppDelegate *sharedInstance;
                          [[rootController view] setFrame:leftframe];
                      }
                      completion:^(BOOL finished){
-                         
                          
                          // remove the rootController's view from window
                          [[rootController view] removeFromSuperview]; 
