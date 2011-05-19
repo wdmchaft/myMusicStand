@@ -10,6 +10,8 @@
 #import "File.h"
 
 #define NUM_BLOCKS_PER_CELL 3
+#define FIRST_LABEL_TAG 0
+#define FIRST_BLOCK_TAG 4
 
 @implementation FilesListTableViewController
 
@@ -115,17 +117,24 @@
     File *file;
     // Label to display alias of File
     UILabel *label;
+    UIView *block;
     
     // Loop through all possible blocks for the cell and attempt to set their values
-    int tagOffset = 0; // starting offset 
+    int labelTagOffset = FIRST_LABEL_TAG; // starting offset 
+    int blockTagOffset = FIRST_BLOCK_TAG;
+    
     for (int index = NUM_BLOCKS_PER_CELL * [indexPath row]; // BLOCKS * row gives us the first index we can use
-         index < [files count] && tagOffset < NUM_BLOCKS_PER_CELL; index++)
+         index < [files count] && labelTagOffset < NUM_BLOCKS_PER_CELL; index++)
     {
         
         file = [files objectAtIndex:index];
-        label = (UILabel *)[cell viewWithTag:tagOffset + 1];
+        label = (UILabel *)[cell viewWithTag:labelTagOffset + 1];
         [label setText:[file alias]];
+        block = [cell viewWithTag:blockTagOffset];
         
+        // make block not hidden
+        [block setHidden:NO];
+                 
         // Set font color 
         [label setTextColor:[UIColor whiteColor]];
         
@@ -135,7 +144,8 @@
         [label addGestureRecognizer:gr];
         [gr release];
         
-        tagOffset++;
+        labelTagOffset++;
+                 blockTagOffset++;
     }
     
     return cell;
