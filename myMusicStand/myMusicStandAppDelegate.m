@@ -9,9 +9,12 @@
 #import "myMusicStandAppDelegate.h"
 #import "File.h"
 #import "FilesListTableViewController.h"
+#import "SetlistTableViewController.h"
 #import "FileHelpers.h"
 
 static myMusicStandAppDelegate *sharedInstance;
+
+#define FILES_CONTROLLER_INDEX 0
 
 @implementation myMusicStandAppDelegate
 
@@ -53,11 +56,23 @@ static myMusicStandAppDelegate *sharedInstance;
     // First find any new files and add them to the context
     [self checkForFileDiffs];
     NSManagedObjectContext *context = [self managedObjectContext];
-    // Give our rootController those files
-    [(FilesListTableViewController *)rootController setFiles:[context allEntity:@"File"]];
+
+    // Create File controller 
+    FilesListTableViewController *controller = 
+        [[FilesListTableViewController alloc] initWithStyle:UITableViewStylePlain];
+
+    // Give file controller the files to display
+    [controller setFiles:[context allEntity:@"File"]];
+    
+    // Set root controller 
+    rootController = controller;
     
     // Add rootController's view to window
     [[self window] addSubview:[rootController view]];
+    
+    // Bring navBar to the front of the window
+    [[self window] bringSubviewToFront:navBar];
+    
     [self.window makeKeyAndVisible];
     return YES;
 }
@@ -100,6 +115,7 @@ static myMusicStandAppDelegate *sharedInstance;
 
 - (void)dealloc
 {
+    [rootController release];
     [_window release];
     [__managedObjectContext release];
     [__managedObjectModel release];
@@ -258,6 +274,53 @@ static myMusicStandAppDelegate *sharedInstance;
     {
         [[File fileWithContext:context] setFilename:newFile];
     }
+    
+}
+
+// When the tab changes we know we have to switch controllers
+- (IBAction)tabIndexChanged:(UISegmentedControl *)sender
+{
+    UIViewController *listController;
+    
+    if ([sender selectedSegmentIndex] == FILES_CONTROLLER_INDEX)
+    {
+        // display files controller
+        // else show setlists controller
+        listController = 
+            [[FilesListTableViewController alloc] initWithStyle:UITableViewStylePlain];
+        
+        // Give the controller the current setlists
+        NSMutableArray *files = 
+            [[[self managedObjectContext] allEntity:@"File"] mutableCopy];
+       
+        [(FilesListTableViewController *)listController setFiles:files];
+
+    }
+    else 
+    {
+        // else show setlists controller
+        listController = 
+            [[SetlistTableViewController alloc] initWithStyle:UITableViewStylePlain];
+        
+        // Give the controller the current setlists
+        NSMutableArray *setlists = [[[self managedObjectContext] allEntity:@"Setlist"] mutableCopy];
+        
+        [(SetlistTableViewController *)listController setSetlists:[setlists autorelease]];
+    }
+    
+    // replace the current controller
+    [[self window] addSubview:[listController view]];
+    
+    // send view to back
+    [[self window] sendSubviewToBack:[listController view]];
+    
+    // remove the rootController's view from window
+    [[rootController view] removeFromSuperview]; 
+    
+    // release the other controller
+    [rootController release];
+    
+    rootController = listController;
     
 }
 

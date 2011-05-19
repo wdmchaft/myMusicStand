@@ -34,10 +34,12 @@
 		64DB278A137C2D2C0069D076 /* CoreDataTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 64D94E5D1379B42000300349 /* CoreDataTest.m */; };
 		64DB278C137C2D2C0069D076 /* FileHelperTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 64D94E5A1379B39300300349 /* FileHelperTests.m */; };
 		64DB278E137C2DBE0069D076 /* myMusicStand.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = 64D94E0F1379B2CC00300349 /* myMusicStand.xcdatamodel */; };
+		64DFCFA213857715002672BC /* SetlistTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64E7F058138561ED00BB54D7 /* SetlistTableViewController.m */; };
 		64E380651381786700A43834 /* floorAndStage.png in Resources */ = {isa = PBXBuildFile; fileRef = 64E380641381786700A43834 /* floorAndStage.png */; };
 		64E380661381786700A43834 /* floorAndStage.png in Resources */ = {isa = PBXBuildFile; fileRef = 64E380641381786700A43834 /* floorAndStage.png */; };
 		64E47BC2137AE3E800AC5C93 /* FilesListTableViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 64E47BC1137AE3E800AC5C93 /* FilesListTableViewControllerTests.m */; };
 		64E7F039138551D800BB54D7 /* TimestampEntityTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 64E7F038138551D800BB54D7 /* TimestampEntityTests.m */; };
+		64E7F059138561ED00BB54D7 /* SetlistTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64E7F058138561ED00BB54D7 /* SetlistTableViewController.m */; };
 		64EAE5FC1379DDE900544C29 /* FilesListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64EAE5FB1379DDE900544C29 /* FilesListTableViewController.m */; };
 		64EAE5FD1379DDE900544C29 /* FilesListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64EAE5FB1379DDE900544C29 /* FilesListTableViewController.m */; };
 /* End PBXBuildFile section */
@@ -103,6 +105,8 @@
 		64E47BC1137AE3E800AC5C93 /* FilesListTableViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilesListTableViewControllerTests.m; sourceTree = "<group>"; };
 		64E7F037138551D800BB54D7 /* TimestampEntityTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimestampEntityTests.h; sourceTree = "<group>"; };
 		64E7F038138551D800BB54D7 /* TimestampEntityTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimestampEntityTests.m; sourceTree = "<group>"; };
+		64E7F057138561ED00BB54D7 /* SetlistTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetlistTableViewController.h; sourceTree = "<group>"; };
+		64E7F058138561ED00BB54D7 /* SetlistTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetlistTableViewController.m; sourceTree = "<group>"; };
 		64EAE5FA1379DDE900544C29 /* FilesListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilesListTableViewController.h; sourceTree = "<group>"; };
 		64EAE5FB1379DDE900544C29 /* FilesListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilesListTableViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -183,6 +187,8 @@
 				64D94E901379C54C00300349 /* Models */,
 				64D94E001379B2CB00300349 /* Supporting Files */,
 				64EAE5FE1379DDEF00544C29 /* Files list controller */,
+				64E7F057138561ED00BB54D7 /* SetlistTableViewController.h */,
+				64E7F058138561ED00BB54D7 /* SetlistTableViewController.m */,
 			);
 			path = myMusicStand;
 			sourceTree = "<group>";
@@ -486,6 +492,7 @@
 				64D94E881379BE1100300349 /* File.m in Sources */,
 				64D94E8C1379BEFB00300349 /* TimestampEntity.m in Sources */,
 				64EAE5FC1379DDE900544C29 /* FilesListTableViewController.m in Sources */,
+				64E7F059138561ED00BB54D7 /* SetlistTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -493,6 +500,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				64DFCFA213857715002672BC /* SetlistTableViewController.m in Sources */,
 				64DB278E137C2DBE0069D076 /* myMusicStand.xcdatamodel in Sources */,
 				64DB2784137C2D2C0069D076 /* SetlistTests.m in Sources */,
 				64DB2786137C2D2C0069D076 /* OrderedFileTests.m in Sources */,

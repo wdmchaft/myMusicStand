@@ -9,6 +9,8 @@
 #import "DelegateTests.h"
 #import "myMusicStandAppDelegate.h"
 #import "FilesListTableViewController.h"
+#import "SetlistTableViewController.h"
+#import "OCMock/OCMock.h"
 #import "File.h"
 
 @implementation DelegateTests
@@ -27,7 +29,7 @@
     [file setFilename:@"File1.pdf"];
     
     // Set the root controller to the rootController of the appDelegate
-    rootController = [appDelegate rootController];
+    rootController = (FilesListTableViewController *)[appDelegate rootController];
 }
 
 - (void)tearDown
