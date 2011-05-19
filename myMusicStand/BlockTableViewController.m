@@ -40,10 +40,18 @@
 
 -(void)prepareForReuse
 {
-    for (UILabel *subview in [[self contentView] subviews])
+    for (UIView *subview in [[self contentView] subviews])
     {
-        if ([subview respondsToSelector:@selector(setText:)])
-            [subview setText:@""];
+        if ([subview isKindOfClass:[UILabel class]])
+        {
+            [subview performSelector:@selector(setText:) withObject:@""];
+        }
+        else
+        {
+            // UIView class
+            [subview setHidden:YES];
+        }
+        
     }
 }
 
