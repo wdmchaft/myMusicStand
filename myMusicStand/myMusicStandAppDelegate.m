@@ -63,7 +63,7 @@ static myMusicStandAppDelegate *sharedInstance;
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // First find any new files and add them to the context
-    [self checkForFileDiffs];
+    [self checkForFileDiffs:[NSFileManager defaultManager]];
     NSManagedObjectContext *context = [self managedObjectContext];
 
     // Create File controller 
@@ -266,13 +266,10 @@ static myMusicStandAppDelegate *sharedInstance;
     return [[fileNames copy] autorelease];
 }
 
-- (void)checkForFileDiffs
+- (void)checkForFileDiffs:(NSFileManager *)fm
 {
     // Get the context to add new files to
     NSManagedObjectContext *context = [self managedObjectContext];
-
-    // Get a file manager
-    NSFileManager *fm = [NSFileManager defaultManager];
     
     // Diff for new files
     NSString *docsPath = [[self applicationDocumentsDirectory] path];

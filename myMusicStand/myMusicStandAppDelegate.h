@@ -26,6 +26,6 @@
 - (void)saveContext;
 - (NSURL *)applicationDocumentsDirectory;
 + (id)sharedInstance;
-- (void)checkForFileDiffs;
+- (void)checkForFileDiffs:(NSFileManager *)fmg;
 - (IBAction)tabIndexChanged:(UISegmentedControl *)sender;
 @end
