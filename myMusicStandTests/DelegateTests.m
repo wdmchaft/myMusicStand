@@ -55,26 +55,29 @@
                    @"File sharing should be turned on");
 }
 
-
-// Verfies filediffes have been found and files have been given to rootController
-- (void)testFilesAreGivenToControllerAfterLauch
+- (void)testKnownFiles
 {
-    // Simulate application launch
-    [appDelegate application:nil didFinishLaunchingWithOptions:nil];
-    
-    // The files in the rootController should have been set
-    STAssertEquals(2, (int)[[rootController files] count], 
-                   @"The files should have been given to the root controller");
+    NSArray *expectedKnownFiles = [NSArray arrayWithObjects:@"File1.pdf", nil];
+    STAssertEqualObjects(expectedKnownFiles, [appDelegate knownFileNames], 
+                         @"The known files should return the files created");
 }
 
-@end
-
-// Overriding the method for filemanager will allow for testing of delegates use of diffing
-@implementation NSFileManager (FakingDirectory)
-
-- (NSArray *)contentsOfDirectoryAtPath:(NSString *)path error:(NSError **)error
+- (void)testFilesDiffAdditions
 {
-    return [NSArray arrayWithObjects:@"File1.pdf", @"File3.pdf", nil];
+    // setup data 
+    id mockFileManager = [OCMockObject mockForClass:[NSFileManager class]];
+    NSArray *expectedFileNames = [NSArray arrayWithObjects:@"File1.pdf", @"File3.pdf", nil];
+
+    // setup expectations
+    [[[mockFileManager stub] andReturn:expectedFileNames] contentsOfDirectoryAtPath:[OCMArg any] error:[OCMArg anyPointer]];
+    
+    // exercise checkForFileDiffs method
+    [appDelegate checkForFileDiffs:mockFileManager];
+    
+    [mockFileManager verify];
+    STAssertEqualObjects(expectedFileNames, [appDelegate knownFileNames], 
+                         @"The files should have a new file");
+    
 }
 
 @end

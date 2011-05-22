@@ -191,10 +191,6 @@
 				64D94E901379C54C00300349 /* Models */,
 				64D94E001379B2CB00300349 /* Supporting Files */,
 				64EAE5FE1379DDEF00544C29 /* Files list controller */,
-				648063371385A6C600E0CA27 /* BlockTableViewController.h */,
-				648063381385A6C600E0CA27 /* BlockTableViewController.m */,
-				64E7F057138561ED00BB54D7 /* SetlistTableViewController.h */,
-				64E7F058138561ED00BB54D7 /* SetlistTableViewController.m */,
 			);
 			path = myMusicStand;
 			sourceTree = "<group>";
@@ -376,9 +372,13 @@
 		64EAE5FE1379DDEF00544C29 /* Files list controller */ = {
 			isa = PBXGroup;
 			children = (
-				64415E9A137DD50300DADC4C /* Cell */,
 				64EAE5FA1379DDE900544C29 /* FilesListTableViewController.h */,
 				64EAE5FB1379DDE900544C29 /* FilesListTableViewController.m */,
+				648063371385A6C600E0CA27 /* BlockTableViewController.h */,
+				648063381385A6C600E0CA27 /* BlockTableViewController.m */,
+				64E7F057138561ED00BB54D7 /* SetlistTableViewController.h */,
+				64E7F058138561ED00BB54D7 /* SetlistTableViewController.m */,
+				64415E9A137DD50300DADC4C /* Cell */,
 			);
 			name = "Files list controller";
 			sourceTree = "<group>";
