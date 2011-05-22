@@ -96,23 +96,8 @@
 }
 
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)configureCell:(UITableViewCell *)cell forIndexPath:(NSIndexPath *)indexPath  
 {
-    static NSString *CellIdentifier = @"Cell";
-    
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        
-        // Load the tableview cell
-        [[NSBundle mainBundle] loadNibNamed:@"BlockTableViewCell"
-                                      owner:self
-                                    options:nil];
-        // Set the cell
-        cell = tvCell;
-        // Clear pointer to cell
-        tvCell = nil;
-    }
-    
     // File to display
     File *file;
     // Label to display alias of File
@@ -147,6 +132,27 @@
         labelTagOffset++;
                  blockTagOffset++;
     }
+
+}
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *CellIdentifier = @"Cell";
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+        
+        // Load the tableview cell
+        [[NSBundle mainBundle] loadNibNamed:@"BlockTableViewCell"
+                                      owner:self
+                                    options:nil];
+        // Set the cell
+        cell = tvCell;
+        // Clear pointer to cell
+        tvCell = nil;
+    }
+    
+[self configureCell: cell forIndexPath: indexPath];
+
     
     return cell;
 }

@@ -283,7 +283,18 @@ static myMusicStandAppDelegate *sharedInstance;
         [[File fileWithContext:context] setFilename:newFile];
     }
     
+    // Save the context 
+    NSError *error = nil;
+    [context save:&error];
+    
+    // Throw exception if we fail to save
+    if (error)
+    {
+        @throw @"logic error somewhere";
+    }
+    
 }
+
 
 // When the tab changes we know we have to switch controllers
 - (IBAction)tabIndexChanged:(UISegmentedControl *)sender
