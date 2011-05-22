@@ -276,11 +276,35 @@ static myMusicStandAppDelegate *sharedInstance;
     NSArray *directoryContents = [fm contentsOfDirectoryAtPath:docsPath error:nil];
     NSArray *knownFiles = [self knownFileNames];
     NSArray *newFiles = filesDiffWithFileslistAndKnownFiles(directoryContents, knownFiles, FileDiffTypeNew);
+    NSArray *staleFiles = filesDiffWithFileslistAndKnownFiles(directoryContents, knownFiles, FileDiffTypeStale);
     
     // Loop through the new file names and add them
     for (NSString *newFile in newFiles)
     {
         [[File fileWithContext:context] setFilename:newFile];
+    }
+    
+    // Fetch the file that has the name we want to delete
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    [request setEntity:[NSEntityDescription entityForName:@"File" inManagedObjectContext:context]];
+    
+    // Loop through the stale file names and remove them
+    for (NSString *staleFile in staleFiles)
+    {
+        
+        // Predicate for request
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"filename == %@", staleFile];
+        [request setPredicate:predicate];
+        
+        // Execute the request
+        NSArray *results = [context executeFetchRequest:request error:nil];
+        
+        // we have one result
+        File *file = [results objectAtIndex:0];
+        
+        // remove the result from the context
+        [context deleteObject:file];
+        
     }
     
     // Save the context 

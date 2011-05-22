@@ -74,10 +74,28 @@
     // exercise checkForFileDiffs method
     [appDelegate checkForFileDiffs:mockFileManager];
     
+    // We expect File3.pdf to be added 
     [mockFileManager verify];
     STAssertEqualObjects(expectedFileNames, [appDelegate knownFileNames], 
                          @"The files should have a new file");
     
 }
 
+- (void)testFileDiffStale
+{
+    // setup data
+    id mockFileManager = [OCMockObject mockForClass:[NSFileManager class]];
+    NSArray *expectedFileNames = [NSArray array];
+    
+    // setup expectations 
+    [[[mockFileManager stub] andReturn:expectedFileNames] contentsOfDirectoryAtPath:[OCMArg any] error:[OCMArg anyPointer]];
+    
+    // exercise checkForFileDiffs method
+    [appDelegate checkForFileDiffs:mockFileManager];
+    
+    // we expecte File1.pdf to have been removed
+    [mockFileManager verify];
+    STAssertEqualObjects(expectedFileNames, [appDelegate knownFileNames], 
+                         @"The files should have removed the stale file");
+}
 @end
