@@ -55,11 +55,13 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    [[[myMusicStandAppDelegate sharedInstance] bottomOfStand] setHidden:NO];
 }
 
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
+    
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -194,7 +196,7 @@
     
     
     // Hide the navbar
-    UIView *bottomOfStand = [delegate navigationBar];
+    UIView *bottomOfStand = [delegate bottomOfStand];
     [bottomOfStand setHidden:YES];
     
     // show the PDFViewer

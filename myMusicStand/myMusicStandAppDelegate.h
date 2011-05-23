@@ -13,13 +13,13 @@
 @interface myMusicStandAppDelegate : NSObject <UIApplicationDelegate > {
     IBOutlet FilesListTableViewController *rootController;
     IBOutlet UINavigationController *navController;
-    IBOutlet UINavigationBar *navBar;
+    IBOutlet UINavigationBar *bottomOfStand;
     NSArray *theFiles;
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
 @property (nonatomic, readonly) UIViewController *rootController;
-@property (nonatomic, readonly) UINavigationBar *navigationBar;
+@property (nonatomic, readonly) UINavigationBar *bottomOfStand;
 @property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, retain, readonly) NSManagedObjectModel *managedObjectModel;
 @property (nonatomic, retain, readonly) NSPersistentStoreCoordinator *persistentStoreCoordinator;

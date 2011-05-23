@@ -22,7 +22,7 @@ static myMusicStandAppDelegate *sharedInstance;
 
 @synthesize window=_window;
 
-@synthesize navigationBar=navBar;
+@synthesize bottomOfStand;
 
 @synthesize rootController;
 
@@ -81,7 +81,7 @@ static myMusicStandAppDelegate *sharedInstance;
     [[self window] addSubview:[navController view]];
     
     // Bring navBar to the front of the window
-    [[self window] bringSubviewToFront:navBar];
+    [[self window] bringSubviewToFront:bottomOfStand];
     
     [self.window makeKeyAndVisible];
     return YES;
@@ -364,7 +364,7 @@ static myMusicStandAppDelegate *sharedInstance;
     [[self window] addSubview:[listController view]];
     
     // move navbar to front
-    [[self window] bringSubviewToFront:navBar];
+    [[self window] bringSubviewToFront:bottomOfStand];
     
     [UIView animateWithDuration:0.2 
                      animations:^{
