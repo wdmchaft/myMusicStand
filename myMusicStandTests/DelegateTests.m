@@ -72,7 +72,7 @@
     [[[mockFileManager stub] andReturn:expectedFileNames] contentsOfDirectoryAtPath:[OCMArg any] error:[OCMArg anyPointer]];
     
     // exercise checkForFileDiffs method
-    [appDelegate checkForFileDiffs:mockFileManager];
+    [appDelegate updateContextForDocumentDirectoryChanges:mockFileManager];
     
     // We expect File3.pdf to be added 
     [mockFileManager verify];
@@ -91,7 +91,7 @@
     [[[mockFileManager stub] andReturn:expectedFileNames] contentsOfDirectoryAtPath:[OCMArg any] error:[OCMArg anyPointer]];
     
     // exercise checkForFileDiffs method
-    [appDelegate checkForFileDiffs:mockFileManager];
+    [appDelegate updateContextForDocumentDirectoryChanges:mockFileManager];
     
     // we expecte File1.pdf to have been removed
     [mockFileManager verify];

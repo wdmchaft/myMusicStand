@@ -65,7 +65,7 @@ static myMusicStandAppDelegate *sharedInstance;
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // First find any new files and add them to the context
-    [self checkForFileDiffs:[NSFileManager defaultManager]];
+    [self updateContextForDocumentDirectoryChanges:[NSFileManager defaultManager]];
     NSManagedObjectContext *context = [self managedObjectContext];
 
     // Set navigationController's navBar to hidden
@@ -110,7 +110,7 @@ static myMusicStandAppDelegate *sharedInstance;
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
-    [self checkForFileDiffs:[NSFileManager defaultManager]];
+    [self updateContextForDocumentDirectoryChanges:[NSFileManager defaultManager]];
     
 }
 
@@ -262,7 +262,7 @@ static myMusicStandAppDelegate *sharedInstance;
     return [[fileNames copy] autorelease];
 }
 
-- (void)checkForFileDiffs:(NSFileManager *)fm
+- (void)updateContextForDocumentDirectoryChanges:(NSFileManager *)fm
 {
     // Get the context to add new files to
     NSManagedObjectContext *context = [self managedObjectContext];

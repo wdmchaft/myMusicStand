@@ -28,6 +28,6 @@
 - (void)saveContext;
 - (NSURL *)applicationDocumentsDirectory;
 + (id)sharedInstance;
-- (void)checkForFileDiffs:(NSFileManager *)fmg;
+- (void)updateContextForDocumentDirectoryChanges:(NSFileManager *)fmg;
 - (IBAction)tabIndexChanged:(UISegmentedControl *)sender;
 @end
