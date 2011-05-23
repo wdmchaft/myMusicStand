@@ -23,8 +23,6 @@
 {
     self = [super initWithStyle:style];
     if (self) {
-        // Custom initialization
-        files = [[NSArray alloc] init];
     }
     return self;
 }
@@ -52,6 +50,32 @@
     
 }
 
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+        
+    // Register for context changed events
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(reloadModel:) 
+                                                 name:NSManagedObjectContextDidSaveNotification
+                                               object:nil];
+    
+}
+
+- (void)reloadModel:(id)sender
+{
+    // Get delegate
+    myMusicStandAppDelegate *delegate = [myMusicStandAppDelegate sharedInstance];
+    
+    NSManagedObjectContext *context = [delegate managedObjectContext];
+    
+    // Give file controller the files to display
+    [self setFiles:[context allEntity:@"File"]];
+    
+    // Reload the table to show any updates
+    [[self tableView] reloadData];
+}
+
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
@@ -61,7 +85,6 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    
 }
 
 - (void)viewWillDisappear:(BOOL)animated

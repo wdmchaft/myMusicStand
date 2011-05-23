@@ -112,13 +112,6 @@ static myMusicStandAppDelegate *sharedInstance;
 {
     [self checkForFileDiffs:[NSFileManager defaultManager]];
     
-    NSManagedObjectContext *context = [self managedObjectContext];
-    
-    // Give file controller the files to display
-    [rootController setFiles:[context allEntity:@"File"]];
-    
-    // Reload the table to show any updates
-    [[rootController tableView] reloadData];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application
