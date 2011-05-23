@@ -73,6 +73,11 @@
             [subview setHidden:YES];
         }
         
+        // remove any gesture recognizers on subviews
+        for (UIGestureRecognizer *recognizer in [subview gestureRecognizers])
+        {
+            [subview removeGestureRecognizer:recognizer];
+        }
     }
 }
 
