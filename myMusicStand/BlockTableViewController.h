@@ -7,7 +7,8 @@
 //
 
 @interface BlockTableViewController : UITableViewController {
-
+    IBOutlet UITableViewCell *tvCell;
 }
 
+- (UITableViewCell *)blockCellForTableView:(UITableView *)tableView;
 @end

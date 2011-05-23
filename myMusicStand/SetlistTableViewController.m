@@ -47,7 +47,7 @@
 #pragma mark - Table view data source
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    int index = [setlists count];
+    int index = [setlists count] + 1;
     
     // Calculate if there is a remainder
     int remainder = index % NUM_BLOCKS_PER_CELL;
@@ -64,12 +64,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
-    
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
-    }
+    UITableViewCell *cell = [self blockCellForTableView:tableView];
     
     // Setlist to display
     Setlist *setlist;
@@ -79,16 +74,23 @@
     // Loop through all possible blocks for the cell and attempt to set their values
     int tagOffset = 0; // starting offset 
     for (int index = NUM_BLOCKS_PER_CELL * [indexPath row]; // BLOCKS * row gives us the first index we can use
-         index < [setlists count] && tagOffset < NUM_BLOCKS_PER_CELL; index++)
+         index < [setlists count] + 1 && tagOffset < NUM_BLOCKS_PER_CELL; index++)
     {
-        
-        setlist = [setlists objectAtIndex:index];
         label = (UILabel *)[cell viewWithTag:tagOffset + 1];
-        [label setText:[setlist title]];
-        
         // Set font color 
         [label setTextColor:[UIColor whiteColor]];
+
+        if (index == [setlists count])
+        {
+            [label setText:@"Add setlist"];
+            continue;
+        }
         
+        setlist = [setlists objectAtIndex:index];
+        
+        [label setText:[setlist title]];
+        
+                
         tagOffset++;
     }
     

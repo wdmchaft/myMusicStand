@@ -33,6 +33,27 @@
     return 270;
 }
 
+#pragma mark - helper methods
+
+// Helper method to generate a block cell for the tableView
+- (UITableViewCell *)blockCellForTableView:(UITableView *)tableView  
+{
+    static NSString *CellIdentifier = @"Cell";
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+        // Load the tableview cell
+        [[NSBundle mainBundle] loadNibNamed:@"BlockTableViewCell"
+                                      owner:self
+                                    options:nil];
+        // Set the cell
+        cell = tvCell;
+        // Clear pointer to cell
+        tvCell = nil;
+        
+    }
+    return cell;
+}
 @end
 
 // Override cell's perpareForReuse method to clear all labels
