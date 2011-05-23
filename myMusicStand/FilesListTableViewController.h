@@ -14,6 +14,9 @@
 <UITableViewDelegate, UITextFieldDelegate>
 {
     NSArray *files;
+    // mapping of blockview to a filename, this will allow us to
+    // quickly load the file when tapped
+    NSMutableDictionary *blocksToFilenames; 
     IBOutlet UITableViewCell *tvCell;
 }
 

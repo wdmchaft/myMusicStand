@@ -69,11 +69,7 @@
 				[pages setObject:dictionay forKey:absoluteNum];
 				
 			}
-			
-			// Clean up document
-			// we don't want to release the document because we will do it later
-			//CGPDFDocumentRelease(document);
-			
+                
 		}
 		
 		// Set Parent's Datasource to ourself
@@ -108,19 +104,7 @@
                                                                          target:self
                                                                          action:@selector(showActions:)];
     [[self navigationItem] setRightBarButtonItem:actionItem];
-    /*
-	// If we can print set our item action button
-	if ([UIPrintInteractionController isPrintingAvailable])
-	{
-		printItem = 
-			[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction
-														  target:self
-														  action:@selector(printPDF:)];
-		[[self navigationItem] setRightBarButtonItem:printItem];
-	}
-	// Load the print controller
-	printController = [UIPrintInteractionController sharedPrintController];
-		*/
+    
     // Make the navigation bar clear
     UINavigationBar *navBar = [[self navigationController] navigationBar];
     [navBar setBackgroundColor:[UIColor blackColor]];

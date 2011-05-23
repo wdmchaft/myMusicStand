@@ -137,6 +137,9 @@
 				<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 			</object>
 			<object class="IBUINavigationController" id="1054519123">
+				<object class="IBUISimulatedNavigationBarMetrics" key="IBUISimulatedTopBarMetrics">
+					<bool key="IBUIPrompted">NO</bool>
+				</object>
 				<object class="IBUISimulatedStatusBarMetrics" key="IBUISimulatedStatusBarMetrics">
 					<int key="IBUIStatusBarStyle">2</int>
 				</object>
@@ -149,7 +152,7 @@
 				<object class="IBUINavigationBar" key="IBUINavigationBar" id="818582752">
 					<nil key="NSNextResponder"/>
 					<int key="NSvFlags">256</int>
-					<string key="NSFrameSize">{0, 0}</string>
+					<string key="NSFrame">{{0, -44}, {0, 44}}</string>
 					<bool key="IBUIClipsSubviews">YES</bool>
 					<bool key="IBUIMultipleTouchEnabled">YES</bool>
 					<string key="targetRuntimeIdentifier">IBIPadFramework</string>
@@ -158,7 +161,6 @@
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<object class="IBUIViewController" id="838979420">
 						<object class="IBUINavigationItem" key="IBUINavigationItem" id="358870569">
-							<reference key="IBUINavigationBar"/>
 							<string key="IBUITitle">Root View Controller</string>
 							<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 						</object>
@@ -171,7 +173,6 @@
 						<bool key="IBUIHorizontal">NO</bool>
 					</object>
 				</object>
-				<bool key="IBUINavigationBarHidden">YES</bool>
 			</object>
 		</object>
 		<object class="IBObjectContainer" key="IBDocument.Objects">

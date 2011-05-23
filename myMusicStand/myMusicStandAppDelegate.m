@@ -22,6 +22,8 @@ static myMusicStandAppDelegate *sharedInstance;
 
 @synthesize window=_window;
 
+@synthesize navigationBar=navBar;
+
 @synthesize rootController;
 
 @synthesize managedObjectContext=__managedObjectContext;
@@ -66,8 +68,14 @@ static myMusicStandAppDelegate *sharedInstance;
     [self checkForFileDiffs:[NSFileManager defaultManager]];
     NSManagedObjectContext *context = [self managedObjectContext];
 
+    // Set navigationController's navBar to hidden
+    [[navController navigationBar] setHidden:YES];
+    
     // Give file controller the files to display
     [rootController setFiles:[context allEntity:@"File"]];
+    
+    // Reload the table to show any updates
+    [[rootController tableView] reloadData];
     
     // Add rootController's view to window
     [[self window] addSubview:[navController view]];
@@ -97,16 +105,20 @@ static myMusicStandAppDelegate *sharedInstance;
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
-    /*
-     Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
-     */
+   
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
-    /*
-     Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-     */
+    [self checkForFileDiffs:[NSFileManager defaultManager]];
+    
+    NSManagedObjectContext *context = [self managedObjectContext];
+    
+    // Give file controller the files to display
+    [rootController setFiles:[context allEntity:@"File"]];
+    
+    // Reload the table to show any updates
+    [[rootController tableView] reloadData];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application

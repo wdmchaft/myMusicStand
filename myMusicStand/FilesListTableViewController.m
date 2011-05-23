@@ -25,13 +25,13 @@
     if (self) {
         // Custom initialization
         files = [[NSArray alloc] init];
-        
     }
     return self;
 }
 
 - (void)dealloc
 {
+    [blocksToFilenames release];
     [files release];
     [super dealloc];
 }
@@ -76,6 +76,11 @@
 {
     // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+- (void)awakeFromNib
+{
+    blocksToFilenames = [[NSMutableDictionary alloc] init];
 }
 
 #pragma mark - Table view data source
@@ -136,9 +141,9 @@
         [block addGestureRecognizer:gr];
         [gr release];
         
-        // Add the file name as accessability label to block, this will allow us to have the name of the 
+        // Add mapping of block to filename, this will allow us to have the name of the 
         // file we want to open once the block is clicked
-        [block setAccessibilityLabel:[file filename]];
+        [blocksToFilenames setObject:[file filename] forKey:[NSValue valueWithPointer:block]];
         
         labelTagOffset++;
         blockTagOffset++;
@@ -170,15 +175,30 @@
 
 - (void)openPDF:(UITapGestureRecognizer *)recognizer
 {
-    UIView *block = [recognizer view];
-    NSURL *docsDir = [[myMusicStandAppDelegate sharedInstance] applicationDocumentsDirectory];
-    NSURL *url = [docsDir URLByAppendingPathComponent:[block accessibilityLabel]];
+    myMusicStandAppDelegate *delegate = [myMusicStandAppDelegate sharedInstance];
 
+    // Get block from recognizer
+    UIView *block = [recognizer view];
+    NSURL *docsDir = [delegate applicationDocumentsDirectory];
+    
+    // Get the filename from dict
+    NSString *filename = [blocksToFilenames objectForKey:
+                                        [NSValue valueWithPointer:block]];
+    
+    // Create the url for the PDF
+    NSURL *url = [docsDir URLByAppendingPathComponent:filename];
+
+    // Instantiate PDFViewer
     PDFPagingViewController *pdfViewer = 
         [[PDFPagingViewController alloc] initWithPDFURLArray:[NSArray arrayWithObject:url]];
     
+    
+    // Hide the navbar
+    UIView *bottomOfStand = [delegate navigationBar];
+    [bottomOfStand setHidden:YES];
+    
+    // show the PDFViewer
     [[self navigationController] pushViewController:pdfViewer animated:NO];
-
 }
 
 // Handle long press on alias label in a cell
