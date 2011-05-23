@@ -309,17 +309,9 @@ static myMusicStandAppDelegate *sharedInstance;
         [context deleteObject:file];
         
     }
-    
-    // Save the context 
-    NSError *error = nil;
-    [context save:&error];
-    
-    // Throw exception if we fail to save
-    if (error)
-    {
-        @throw @"logic error somewhere";
-    }
-    
+  
+    // Call delegate method to save changes
+    [self saveContext];
 }
 
 
