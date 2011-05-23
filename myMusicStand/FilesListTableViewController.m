@@ -48,6 +48,9 @@
 {
     [super viewDidUnload];
     
+    // Unregister for all notifications
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    
 }
 
 - (void)viewDidLoad
@@ -59,6 +62,7 @@
                                              selector:@selector(reloadModel:) 
                                                  name:NSManagedObjectContextDidSaveNotification
                                                object:nil];
+    blocksToFilenames = [[NSMutableDictionary alloc] init];
     
 }
 
@@ -79,6 +83,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
     [[[myMusicStandAppDelegate sharedInstance] bottomOfStand] setHidden:NO];
 }
 
@@ -105,7 +110,7 @@
 
 - (void)awakeFromNib
 {
-    blocksToFilenames = [[NSMutableDictionary alloc] init];
+    
 }
 
 #pragma mark - Table view data source

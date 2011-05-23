@@ -147,7 +147,6 @@
         
         // reload table
         [[self tableView] reloadData];
-        
     }
 }
 
