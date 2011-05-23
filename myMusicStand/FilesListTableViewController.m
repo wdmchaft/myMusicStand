@@ -7,6 +7,8 @@
 //
 
 #import "FilesListTableViewController.h"
+#import "PDFPagingViewController.h"
+#import "myMusicStandAppDelegate.h"
 #import "File.h"
 
 #define NUM_BLOCKS_PER_CELL 3
@@ -129,8 +131,17 @@
         [label addGestureRecognizer:gr];
         [gr release];
         
+        // Add tap recognizer to block
+        gr = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openPDF:)];
+        [block addGestureRecognizer:gr];
+        [gr release];
+        
+        // Add the file name as accessability label to block, this will allow us to have the name of the 
+        // file we want to open once the block is clicked
+        [block setAccessibilityLabel:[file filename]];
+        
         labelTagOffset++;
-                 blockTagOffset++;
+        blockTagOffset++;
     }
 
 }
@@ -155,6 +166,19 @@
 
     
     return cell;
+}
+
+- (void)openPDF:(UITapGestureRecognizer *)recognizer
+{
+    UIView *block = [recognizer view];
+    NSURL *docsDir = [[myMusicStandAppDelegate sharedInstance] applicationDocumentsDirectory];
+    NSURL *url = [docsDir URLByAppendingPathComponent:[block accessibilityLabel]];
+
+    PDFPagingViewController *pdfViewer = 
+        [[PDFPagingViewController alloc] initWithPDFURLArray:[NSArray arrayWithObject:url]];
+    
+    [[self navigationController] pushViewController:pdfViewer animated:NO];
+
 }
 
 // Handle long press on alias label in a cell

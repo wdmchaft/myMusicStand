@@ -66,20 +66,11 @@ static myMusicStandAppDelegate *sharedInstance;
     [self checkForFileDiffs:[NSFileManager defaultManager]];
     NSManagedObjectContext *context = [self managedObjectContext];
 
-    // Create File controller 
-    FilesListTableViewController *controller = 
-        [[FilesListTableViewController alloc] initWithStyle:UITableViewStylePlain];
-
     // Give file controller the files to display
-    [controller setFiles:[context allEntity:@"File"]];
-    
-    // Set root controller 
-    rootController = controller;
-    
-    [self shrinkViewFrame:[rootController view]];
+    [rootController setFiles:[context allEntity:@"File"]];
     
     // Add rootController's view to window
-    [[self window] addSubview:[rootController view]];
+    [[self window] addSubview:[navController view]];
     
     // Bring navBar to the front of the window
     [[self window] bringSubviewToFront:navBar];

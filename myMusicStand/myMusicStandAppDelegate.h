@@ -11,7 +11,8 @@
 
 @class FilesListTableViewController;
 @interface myMusicStandAppDelegate : NSObject <UIApplicationDelegate > {
-    IBOutlet UIViewController *rootController;
+    IBOutlet FilesListTableViewController *rootController;
+    IBOutlet UINavigationController *navController;
     IBOutlet UINavigationBar *navBar;
     NSArray *theFiles;
 }

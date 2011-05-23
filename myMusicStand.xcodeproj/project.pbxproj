@@ -44,6 +44,12 @@
 		64E7F059138561ED00BB54D7 /* SetlistTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64E7F058138561ED00BB54D7 /* SetlistTableViewController.m */; };
 		64EAE5FC1379DDE900544C29 /* FilesListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64EAE5FB1379DDE900544C29 /* FilesListTableViewController.m */; };
 		64EAE5FD1379DDE900544C29 /* FilesListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64EAE5FB1379DDE900544C29 /* FilesListTableViewController.m */; };
+		64F1F27013898A38003F83AB /* PDFPagingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64F1F26F13898A37003F83AB /* PDFPagingViewController.m */; };
+		64F1F27313898A5C003F83AB /* PagingScrollViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64F1F27213898A5C003F83AB /* PagingScrollViewController.m */; };
+		64F1F27613898A85003F83AB /* PDFScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 64F1F27513898A85003F83AB /* PDFScrollView.m */; };
+		64F1F27913898AA7003F83AB /* TiledPDFView.m in Sources */ = {isa = PBXBuildFile; fileRef = 64F1F27813898AA7003F83AB /* TiledPDFView.m */; };
+		64F1F27B13898AC8003F83AB /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64F1F27A13898AC8003F83AB /* MessageUI.framework */; };
+		64F1F27D13898AE0003F83AB /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64F1F27C13898AE0003F83AB /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -113,6 +119,16 @@
 		64E7F058138561ED00BB54D7 /* SetlistTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetlistTableViewController.m; sourceTree = "<group>"; };
 		64EAE5FA1379DDE900544C29 /* FilesListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilesListTableViewController.h; sourceTree = "<group>"; };
 		64EAE5FB1379DDE900544C29 /* FilesListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilesListTableViewController.m; sourceTree = "<group>"; };
+		64F1F26E13898A37003F83AB /* PDFPagingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDFPagingViewController.h; sourceTree = "<group>"; };
+		64F1F26F13898A37003F83AB /* PDFPagingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDFPagingViewController.m; sourceTree = "<group>"; };
+		64F1F27113898A5C003F83AB /* PagingScrollViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PagingScrollViewController.h; sourceTree = "<group>"; };
+		64F1F27213898A5C003F83AB /* PagingScrollViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PagingScrollViewController.m; sourceTree = "<group>"; };
+		64F1F27413898A85003F83AB /* PDFScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDFScrollView.h; sourceTree = "<group>"; };
+		64F1F27513898A85003F83AB /* PDFScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDFScrollView.m; sourceTree = "<group>"; };
+		64F1F27713898AA7003F83AB /* TiledPDFView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TiledPDFView.h; sourceTree = "<group>"; };
+		64F1F27813898AA7003F83AB /* TiledPDFView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TiledPDFView.m; sourceTree = "<group>"; };
+		64F1F27A13898AC8003F83AB /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		64F1F27C13898AE0003F83AB /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +136,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				64F1F27D13898AE0003F83AB /* QuartzCore.framework in Frameworks */,
+				64F1F27B13898AC8003F83AB /* MessageUI.framework in Frameworks */,
 				64D94DF81379B2CB00300349 /* UIKit.framework in Frameworks */,
 				64D94DFA1379B2CB00300349 /* Foundation.framework in Frameworks */,
 				64D94DFC1379B2CB00300349 /* CoreGraphics.framework in Frameworks */,
@@ -153,6 +171,8 @@
 		64D94DE81379B2CB00300349 = {
 			isa = PBXGroup;
 			children = (
+				64F1F27C13898AE0003F83AB /* QuartzCore.framework */,
+				64F1F27A13898AC8003F83AB /* MessageUI.framework */,
 				64D94E5F1379B44800300349 /* CoreData.framework */,
 				64D94DFF1379B2CB00300349 /* myMusicStand */,
 				64D94E1D1379B2CC00300349 /* myMusicStandTests */,
@@ -186,6 +206,7 @@
 		64D94DFF1379B2CB00300349 /* myMusicStand */ = {
 			isa = PBXGroup;
 			children = (
+				64F1F27E13898AF6003F83AB /* PDF Viewing */,
 				64D94E8E1379C52100300349 /* File System work */,
 				64D94E8F1379C53600300349 /* Top Level */,
 				64D94E901379C54C00300349 /* Models */,
@@ -383,6 +404,21 @@
 			name = "Files list controller";
 			sourceTree = "<group>";
 		};
+		64F1F27E13898AF6003F83AB /* PDF Viewing */ = {
+			isa = PBXGroup;
+			children = (
+				64F1F27713898AA7003F83AB /* TiledPDFView.h */,
+				64F1F27813898AA7003F83AB /* TiledPDFView.m */,
+				64F1F27413898A85003F83AB /* PDFScrollView.h */,
+				64F1F27513898A85003F83AB /* PDFScrollView.m */,
+				64F1F27113898A5C003F83AB /* PagingScrollViewController.h */,
+				64F1F27213898A5C003F83AB /* PagingScrollViewController.m */,
+				64F1F26E13898A37003F83AB /* PDFPagingViewController.h */,
+				64F1F26F13898A37003F83AB /* PDFPagingViewController.m */,
+			);
+			name = "PDF Viewing";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -500,6 +536,10 @@
 				64EAE5FC1379DDE900544C29 /* FilesListTableViewController.m in Sources */,
 				64E7F059138561ED00BB54D7 /* SetlistTableViewController.m in Sources */,
 				648063391385A6C600E0CA27 /* BlockTableViewController.m in Sources */,
+				64F1F27013898A38003F83AB /* PDFPagingViewController.m in Sources */,
+				64F1F27313898A5C003F83AB /* PagingScrollViewController.m in Sources */,
+				64F1F27613898A85003F83AB /* PDFScrollView.m in Sources */,
+				64F1F27913898AA7003F83AB /* TiledPDFView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
