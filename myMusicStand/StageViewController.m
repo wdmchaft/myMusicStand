@@ -82,39 +82,50 @@
 // When the tab changes we know we have to switch controllers
 - (IBAction)tabIndexChanged:(UISegmentedControl *)sender
 {
-    BlockTableController *listController;
+    BlockTableController *newBlockController;
+    UITableView *newTableView = [[UITableView alloc] initWithFrame:[tableView frame]
+                                                             style:UITableViewStylePlain];
     
     if ([sender selectedSegmentIndex] == FILES_CONTROLLER_INDEX)
     {
         // display files controller
         // else show setlists controller
-        listController = 
-        [[FileTableController alloc] initWithStyle:UITableViewStylePlain];
+        newBlockController = [[FileTableController alloc] init];
         
         // Give the controller the current setlists
         NSMutableArray *files = 
         [[context allEntity:@"File"] mutableCopy];
         
-        [(FileTableController *)listController setFiles:files];
+        [(FileTableController *)newBlockController setFiles:files];
         
     }
     else 
     {
         // else show setlists controller
-        listController = 
-        [[SetlistTableController alloc] initWithStyle:UITableViewStylePlain];
+        newBlockController = [[SetlistTableController alloc] init];
         
         // Give the controller the current setlists
         NSMutableArray *setlists = [[context allEntity:@"Setlist"] mutableCopy];
         
-        [(SetlistTableController *)listController setSetlists:[setlists autorelease]];
+        [(SetlistTableController *)newBlockController setSetlists:[setlists autorelease]];
     }
     
     CGRect leftframe = [[self view] frame];
     leftframe.origin.x -= leftframe.size.width;
     
     // add the new view to the window
-    [[self view] addSubview:[listController view]];
+    [[self view] addSubview:newTableView];
+    
+    // Set visual aspects of tableview
+    [newTableView setBackgroundColor:[UIColor clearColor]];
+    [newTableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+    [newTableView setAllowsSelection:NO];
+    
+    // Set blockController as delegate and datasource of our table
+    [newTableView setDelegate:newBlockController];
+    [newTableView setDataSource:newBlockController];
+    
+    [newTableView reloadData];
     
     // move navbar to front
     [[self view] bringSubviewToFront:bottomOfStand];
@@ -122,19 +133,23 @@
     [UIView animateWithDuration:0.2 
                      animations:^{
                          
-                         [[self view] setFrame:leftframe];
+                         [tableView setFrame:leftframe];
                      }
                      completion:^(BOOL finished){
                          
                          // remove the rootController's view from window
-                         [[self view] removeFromSuperview]; 
+                         [tableView removeFromSuperview]; 
                          
-                         // release the other controller
-                         [self release];
+                         // Set new tableView
+                         tableView = newTableView;
                          
-                         //self = listController;
+                         // Set new blockController
+                         [blockController release];
+                         blockController = newBlockController;
                          
-                         [[self tableView] reloadData];
+                         // Set the properties of blockController
+                         [blockController setNavigationController:[self navigationController]];
+                         
                          
                      }];
     

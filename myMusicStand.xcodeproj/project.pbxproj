@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		64415E8A137D8EAD00DADC4C /* BlockTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64415E89137D8EAD00DADC4C /* BlockTableViewCell.xib */; };
-		648063391385A6C600E0CA27 /* BlockTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 648063381385A6C600E0CA27 /* BlockTableViewController.m */; };
-		6480633A1385A6C600E0CA27 /* BlockTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 648063381385A6C600E0CA27 /* BlockTableViewController.m */; };
+		648063391385A6C600E0CA27 /* BlockTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = 648063381385A6C600E0CA27 /* BlockTableController.m */; };
+		6480633A1385A6C600E0CA27 /* BlockTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = 648063381385A6C600E0CA27 /* BlockTableController.m */; };
 		64C96969137B754E002B5D10 /* DelegateTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 64C96968137B754E002B5D10 /* DelegateTests.m */; };
 		64D94DF81379B2CB00300349 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64D94DF71379B2CB00300349 /* UIKit.framework */; };
 		64D94DFA1379B2CB00300349 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64D94DF91379B2CB00300349 /* Foundation.framework */; };
@@ -36,20 +36,22 @@
 		64DB278A137C2D2C0069D076 /* CoreDataTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 64D94E5D1379B42000300349 /* CoreDataTest.m */; };
 		64DB278C137C2D2C0069D076 /* FileHelperTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 64D94E5A1379B39300300349 /* FileHelperTests.m */; };
 		64DB278E137C2DBE0069D076 /* myMusicStand.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = 64D94E0F1379B2CC00300349 /* myMusicStand.xcdatamodel */; };
-		64DFCFA213857715002672BC /* SetlistTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64E7F058138561ED00BB54D7 /* SetlistTableViewController.m */; };
+		64DFCFA213857715002672BC /* SetlistTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64E7F058138561ED00BB54D7 /* SetlistTableController.m */; };
 		64E380651381786700A43834 /* floorAndStage.png in Resources */ = {isa = PBXBuildFile; fileRef = 64E380641381786700A43834 /* floorAndStage.png */; };
 		64E380661381786700A43834 /* floorAndStage.png in Resources */ = {isa = PBXBuildFile; fileRef = 64E380641381786700A43834 /* floorAndStage.png */; };
 		64E47BC2137AE3E800AC5C93 /* FilesListTableViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 64E47BC1137AE3E800AC5C93 /* FilesListTableViewControllerTests.m */; };
 		64E7F039138551D800BB54D7 /* TimestampEntityTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 64E7F038138551D800BB54D7 /* TimestampEntityTests.m */; };
-		64E7F059138561ED00BB54D7 /* SetlistTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64E7F058138561ED00BB54D7 /* SetlistTableViewController.m */; };
-		64EAE5FC1379DDE900544C29 /* FilesListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64EAE5FB1379DDE900544C29 /* FilesListTableViewController.m */; };
-		64EAE5FD1379DDE900544C29 /* FilesListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64EAE5FB1379DDE900544C29 /* FilesListTableViewController.m */; };
+		64E7F059138561ED00BB54D7 /* SetlistTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64E7F058138561ED00BB54D7 /* SetlistTableController.m */; };
+		64EAE5FC1379DDE900544C29 /* FileTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64EAE5FB1379DDE900544C29 /* FileTableController.m */; };
+		64EAE5FD1379DDE900544C29 /* FileTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64EAE5FB1379DDE900544C29 /* FileTableController.m */; };
 		64F1F27013898A38003F83AB /* PDFPagingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64F1F26F13898A37003F83AB /* PDFPagingViewController.m */; };
 		64F1F27313898A5C003F83AB /* PagingScrollViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64F1F27213898A5C003F83AB /* PagingScrollViewController.m */; };
 		64F1F27613898A85003F83AB /* PDFScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 64F1F27513898A85003F83AB /* PDFScrollView.m */; };
 		64F1F27913898AA7003F83AB /* TiledPDFView.m in Sources */ = {isa = PBXBuildFile; fileRef = 64F1F27813898AA7003F83AB /* TiledPDFView.m */; };
 		64F1F27B13898AC8003F83AB /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64F1F27A13898AC8003F83AB /* MessageUI.framework */; };
 		64F1F27D13898AE0003F83AB /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64F1F27C13898AE0003F83AB /* QuartzCore.framework */; };
+		64FAA48E138BFE67009465BC /* StageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64FAA48C138BFE67009465BC /* StageViewController.m */; };
+		64FAA48F138BFE67009465BC /* StageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64FAA48D138BFE67009465BC /* StageViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,8 +66,8 @@
 
 /* Begin PBXFileReference section */
 		64415E89137D8EAD00DADC4C /* BlockTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BlockTableViewCell.xib; sourceTree = "<group>"; };
-		648063371385A6C600E0CA27 /* BlockTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.c.h; path = BlockTableViewController.h; sourceTree = "<group>"; tabWidth = 4; usesTabs = 0; wrapsLines = 1; };
-		648063381385A6C600E0CA27 /* BlockTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.c.objc; path = BlockTableViewController.m; sourceTree = "<group>"; tabWidth = 4; usesTabs = 0; wrapsLines = 1; };
+		648063371385A6C600E0CA27 /* BlockTableController.h */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; path = BlockTableController.h; sourceTree = "<group>"; tabWidth = 4; usesTabs = 0; wrapsLines = 1; };
+		648063381385A6C600E0CA27 /* BlockTableController.m */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.c.objc; path = BlockTableController.m; sourceTree = "<group>"; tabWidth = 4; usesTabs = 0; wrapsLines = 1; };
 		64C96967137B754E002B5D10 /* DelegateTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DelegateTests.h; sourceTree = "<group>"; };
 		64C96968137B754E002B5D10 /* DelegateTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DelegateTests.m; sourceTree = "<group>"; };
 		64D94DF31379B2CB00300349 /* myMusicStand.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = myMusicStand.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -115,10 +117,10 @@
 		64E47BC1137AE3E800AC5C93 /* FilesListTableViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilesListTableViewControllerTests.m; sourceTree = "<group>"; };
 		64E7F037138551D800BB54D7 /* TimestampEntityTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimestampEntityTests.h; sourceTree = "<group>"; };
 		64E7F038138551D800BB54D7 /* TimestampEntityTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimestampEntityTests.m; sourceTree = "<group>"; };
-		64E7F057138561ED00BB54D7 /* SetlistTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetlistTableViewController.h; sourceTree = "<group>"; };
-		64E7F058138561ED00BB54D7 /* SetlistTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetlistTableViewController.m; sourceTree = "<group>"; };
-		64EAE5FA1379DDE900544C29 /* FilesListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilesListTableViewController.h; sourceTree = "<group>"; };
-		64EAE5FB1379DDE900544C29 /* FilesListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilesListTableViewController.m; sourceTree = "<group>"; };
+		64E7F057138561ED00BB54D7 /* SetlistTableController.h */ = {isa = PBXFileReference; fileEncoding = 4; path = SetlistTableController.h; sourceTree = "<group>"; };
+		64E7F058138561ED00BB54D7 /* SetlistTableController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetlistTableController.m; sourceTree = "<group>"; };
+		64EAE5FA1379DDE900544C29 /* FileTableController.h */ = {isa = PBXFileReference; fileEncoding = 4; path = FileTableController.h; sourceTree = "<group>"; };
+		64EAE5FB1379DDE900544C29 /* FileTableController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileTableController.m; sourceTree = "<group>"; };
 		64F1F26E13898A37003F83AB /* PDFPagingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDFPagingViewController.h; sourceTree = "<group>"; };
 		64F1F26F13898A37003F83AB /* PDFPagingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDFPagingViewController.m; sourceTree = "<group>"; };
 		64F1F27113898A5C003F83AB /* PagingScrollViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PagingScrollViewController.h; sourceTree = "<group>"; };
@@ -129,6 +131,9 @@
 		64F1F27813898AA7003F83AB /* TiledPDFView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TiledPDFView.m; sourceTree = "<group>"; };
 		64F1F27A13898AC8003F83AB /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		64F1F27C13898AE0003F83AB /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		64FAA48B138BFE66009465BC /* StageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StageViewController.h; sourceTree = "<group>"; };
+		64FAA48C138BFE67009465BC /* StageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StageViewController.m; sourceTree = "<group>"; };
+		64FAA48D138BFE67009465BC /* StageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StageViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -278,6 +283,9 @@
 				64D94E081379B2CB00300349 /* myMusicStandAppDelegate.h */,
 				64D94E091379B2CB00300349 /* myMusicStandAppDelegate.m */,
 				64D94E0B1379B2CC00300349 /* MainWindow.xib */,
+				64FAA48B138BFE66009465BC /* StageViewController.h */,
+				64FAA48C138BFE67009465BC /* StageViewController.m */,
+				64FAA48D138BFE67009465BC /* StageViewController.xib */,
 			);
 			name = "Top Level";
 			sourceTree = "<group>";
@@ -393,12 +401,12 @@
 		64EAE5FE1379DDEF00544C29 /* Files list controller */ = {
 			isa = PBXGroup;
 			children = (
-				64EAE5FA1379DDE900544C29 /* FilesListTableViewController.h */,
-				64EAE5FB1379DDE900544C29 /* FilesListTableViewController.m */,
-				648063371385A6C600E0CA27 /* BlockTableViewController.h */,
-				648063381385A6C600E0CA27 /* BlockTableViewController.m */,
-				64E7F057138561ED00BB54D7 /* SetlistTableViewController.h */,
-				64E7F058138561ED00BB54D7 /* SetlistTableViewController.m */,
+				64EAE5FA1379DDE900544C29 /* FileTableController.h */,
+				64EAE5FB1379DDE900544C29 /* FileTableController.m */,
+				648063371385A6C600E0CA27 /* BlockTableController.h */,
+				648063381385A6C600E0CA27 /* BlockTableController.m */,
+				64E7F057138561ED00BB54D7 /* SetlistTableController.h */,
+				64E7F058138561ED00BB54D7 /* SetlistTableController.m */,
 				64415E9A137DD50300DADC4C /* Cell */,
 			);
 			name = "Files list controller";
@@ -490,6 +498,7 @@
 				64D94E0D1379B2CC00300349 /* MainWindow.xib in Resources */,
 				64415E8A137D8EAD00DADC4C /* BlockTableViewCell.xib in Resources */,
 				64E380651381786700A43834 /* floorAndStage.png in Resources */,
+				64FAA48F138BFE67009465BC /* StageViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -533,13 +542,14 @@
 				64D94E841379BDCB00300349 /* OrderedFile.m in Sources */,
 				64D94E881379BE1100300349 /* File.m in Sources */,
 				64D94E8C1379BEFB00300349 /* TimestampEntity.m in Sources */,
-				64EAE5FC1379DDE900544C29 /* FilesListTableViewController.m in Sources */,
-				64E7F059138561ED00BB54D7 /* SetlistTableViewController.m in Sources */,
-				648063391385A6C600E0CA27 /* BlockTableViewController.m in Sources */,
+				64EAE5FC1379DDE900544C29 /* FileTableController.m in Sources */,
+				64E7F059138561ED00BB54D7 /* SetlistTableController.m in Sources */,
+				648063391385A6C600E0CA27 /* BlockTableController.m in Sources */,
 				64F1F27013898A38003F83AB /* PDFPagingViewController.m in Sources */,
 				64F1F27313898A5C003F83AB /* PagingScrollViewController.m in Sources */,
 				64F1F27613898A85003F83AB /* PDFScrollView.m in Sources */,
 				64F1F27913898AA7003F83AB /* TiledPDFView.m in Sources */,
+				64FAA48E138BFE67009465BC /* StageViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -547,18 +557,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				64DFCFA213857715002672BC /* SetlistTableViewController.m in Sources */,
+				64DFCFA213857715002672BC /* SetlistTableController.m in Sources */,
 				64DB278E137C2DBE0069D076 /* myMusicStand.xcdatamodel in Sources */,
 				64DB2784137C2D2C0069D076 /* SetlistTests.m in Sources */,
 				64DB2786137C2D2C0069D076 /* OrderedFileTests.m in Sources */,
 				64DB2788137C2D2C0069D076 /* FileTests.m in Sources */,
 				64DB278A137C2D2C0069D076 /* CoreDataTest.m in Sources */,
 				64DB278C137C2D2C0069D076 /* FileHelperTests.m in Sources */,
-				64EAE5FD1379DDE900544C29 /* FilesListTableViewController.m in Sources */,
+				64EAE5FD1379DDE900544C29 /* FileTableController.m in Sources */,
 				64E47BC2137AE3E800AC5C93 /* FilesListTableViewControllerTests.m in Sources */,
 				64C96969137B754E002B5D10 /* DelegateTests.m in Sources */,
 				64E7F039138551D800BB54D7 /* TimestampEntityTests.m in Sources */,
-				6480633A1385A6C600E0CA27 /* BlockTableViewController.m in Sources */,
+				6480633A1385A6C600E0CA27 /* BlockTableController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

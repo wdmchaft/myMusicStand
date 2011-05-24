@@ -16,4 +16,5 @@
     IBOutlet UINavigationBar *bottomOfStand;
 }
 
+- (IBAction)tabIndexChanged:(UISegmentedControl *)sender;
 @end

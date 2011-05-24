@@ -41,6 +41,21 @@
     }
     return cell;
 }
+
+- (NSInteger)tableView:(UITableView *)tv numberOfRowsInSection:(NSInteger)section  
+{
+    @throw @"Subclass resposibility";
+    
+    return 0;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    @throw @"Subclass responsibility";
+    
+    return nil;
+}
+
 @end
 
 // Override cell's perpareForReuse method to clear all labels
