@@ -9,16 +9,14 @@
 #import <UIKit/UIKit.h>
 #import <CoreData/CoreData.h>
 
-@class FilesListTableViewController;
+@class BlockTableController;
 @interface myMusicStandAppDelegate : NSObject <UIApplicationDelegate > {
-    IBOutlet FilesListTableViewController *rootController;
     IBOutlet UINavigationController *navController;
     IBOutlet UINavigationBar *bottomOfStand;
     NSArray *theFiles;
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
-@property (nonatomic, readonly) UIViewController *rootController;
 @property (nonatomic, readonly) UINavigationBar *bottomOfStand;
 @property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, retain, readonly) NSManagedObjectModel *managedObjectModel;
@@ -29,5 +27,4 @@
 - (NSURL *)applicationDocumentsDirectory;
 + (id)sharedInstance;
 - (void)updateContextForDocumentDirectoryChanges:(NSFileManager *)fmg;
-- (IBAction)tabIndexChanged:(UISegmentedControl *)sender;
 @end

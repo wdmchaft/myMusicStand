@@ -8,14 +8,9 @@
 
 #import "myMusicStandAppDelegate.h"
 #import "File.h"
-#import "FilesListTableViewController.h"
-#import "SetlistTableViewController.h"
 #import "FileHelpers.h"
 
 static myMusicStandAppDelegate *sharedInstance;
-
-#define FILES_CONTROLLER_INDEX 0
-#define NAV_BAR_HEIGHT 44
 
 @implementation myMusicStandAppDelegate
 
@@ -23,8 +18,6 @@ static myMusicStandAppDelegate *sharedInstance;
 @synthesize window=_window;
 
 @synthesize bottomOfStand;
-
-@synthesize rootController;
 
 @synthesize managedObjectContext=__managedObjectContext;
 
@@ -54,29 +47,14 @@ static myMusicStandAppDelegate *sharedInstance;
 	return sharedInstance;
 }
 
-- (void) shrinkViewFrame:(UIView *)aView {
-    // set view height
-    CGRect frame = [aView frame];
-    frame.origin.y += NAV_BAR_HEIGHT;
-    frame.size.height -= NAV_BAR_HEIGHT;
-    [aView setFrame:frame];
-
-}
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // First find any new files and add them to the context
     [self updateContextForDocumentDirectoryChanges:[NSFileManager defaultManager]];
-    NSManagedObjectContext *context = [self managedObjectContext];
 
     // Set navigationController's navBar to hidden
     [[navController navigationBar] setHidden:YES];
-    
-    // Give file controller the files to display
-    [rootController setFiles:[context allEntity:@"File"]];
-    
-    // Reload the table to show any updates
-    [[rootController tableView] reloadData];
-    
+        
     // Add rootController's view to window
     [[self window] addSubview:[navController view]];
     
@@ -122,7 +100,6 @@ static myMusicStandAppDelegate *sharedInstance;
 
 - (void)dealloc
 {
-    [rootController release];
     [_window release];
     [__managedObjectContext release];
     [__managedObjectModel release];
@@ -308,69 +285,6 @@ static myMusicStandAppDelegate *sharedInstance;
 }
 
 
-// When the tab changes we know we have to switch controllers
-- (IBAction)tabIndexChanged:(UISegmentedControl *)sender
-{
-    UIViewController *listController;
-        
-    if ([sender selectedSegmentIndex] == FILES_CONTROLLER_INDEX)
-    {
-        // display files controller
-        // else show setlists controller
-        listController = 
-            [[FilesListTableViewController alloc] initWithStyle:UITableViewStylePlain];
-        
-        // Give the controller the current setlists
-        NSMutableArray *files = 
-            [[[self managedObjectContext] allEntity:@"File"] mutableCopy];
-       
-        [(FilesListTableViewController *)listController setFiles:files];
-
-    }
-    else 
-    {
-        // else show setlists controller
-        listController = 
-            [[SetlistTableViewController alloc] initWithStyle:UITableViewStylePlain];
-        
-        // Give the controller the current setlists
-        NSMutableArray *setlists = [[[self managedObjectContext] allEntity:@"Setlist"] mutableCopy];
-        
-        [(SetlistTableViewController *)listController setSetlists:[setlists autorelease]];
-    }
-    
-    // Shrink view frame
-    [self shrinkViewFrame:[listController view]];
-    
-    CGRect leftframe = [[rootController view] frame];
-    leftframe.origin.x -= leftframe.size.width;
-   
-    // add the new view to the window
-    [[self window] addSubview:[listController view]];
-    
-    // move navbar to front
-    [[self window] bringSubviewToFront:bottomOfStand];
-    
-    [UIView animateWithDuration:0.2 
-                     animations:^{
-                         
-                         [[rootController view] setFrame:leftframe];
-                     }
-                     completion:^(BOOL finished){
-                         
-                         // remove the rootController's view from window
-                         [[rootController view] removeFromSuperview]; 
-                         
-                         // release the other controller
-                         [rootController release];
-                         
-                         rootController = listController;
-
-                     }];
-    
-    
-       
-}
 
 #pragma mark - Application's Documents directory
 

@@ -7,7 +7,7 @@
 //
 
 #import "FilesListTableViewControllerTests.h"
-#import "FilesListTableViewController.h"
+#import "FileTableController.h"
 #import "myMusicStandAppDelegate.h"
 #import "File.h"
 
@@ -16,7 +16,7 @@
 - (void)setUp
 {
     [super setUp];
-    controller = [[FilesListTableViewController alloc] init];
+    controller = [[FileTableController alloc] init];
     indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
 }
 

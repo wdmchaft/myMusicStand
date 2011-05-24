@@ -9,9 +9,9 @@
 #import <SenTestingKit/SenTestingKit.h>
 #import "CoreDataTest.h"
 
-@class FilesListTableViewController;
+@class FileTableController;
 @interface FilesListTableViewControllerTests : CoreDataTest {
-    FilesListTableViewController *controller;
+    FileTableController *controller;
     NSIndexPath *indexPath;
 }
 
