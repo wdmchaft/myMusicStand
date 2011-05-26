@@ -1,4 +1,4 @@
-Given /^I launch the app$/ do
+Given /^I launch the (ipad|iphone) app$/ do |device|
 
   # kill the app if it's already running, just in case this helps 
   # reduce simulator flakiness when relaunching the app. Use a timeout of 5 seconds to 
@@ -38,4 +38,24 @@ Given /^I launch the app$/ do
   # TODO: do some kind of waiting check to see that your initial app UI is ready
   # e.g. Then "I wait to see the login screen"
 
+end
+
+
+
+
+Given /^I reset the (iphone|ipad) app$/ do |device|
+  steps "When I quit the simulator"
+  SDK    = "4.3"
+  APPLICATIONS_DIR = "/Users/#{ENV['USER']}/Library/Application Support/iPhone Simulator/#{SDK}/Applications"
+  
+  USERDEFAULTS_PLIST = "Library/Preferences/com.yourcompany.#{APP_NAME}.dist.plist"
+  
+  Dir.foreach(APPLICATIONS_DIR) do |item|
+    next if item == '.' or item == '..'
+    if File::exists?( "#{APPLICATIONS_DIR}/#{item}/#{USERDEFAULTS_PLIST}")
+      FileUtils.rm "#{APPLICATIONS_DIR}/#{item}/#{USERDEFAULTS_PLIST}" 
+    end
+  end
+  
+  steps "Given I launch the #{device} app"
 end
