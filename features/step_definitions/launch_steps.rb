@@ -40,19 +40,16 @@ Given /^I launch the (ipad|iphone) app$/ do |device|
 
 end
 
-
-
-
 Given /^I reset the (iphone|ipad) app$/ do |device|
   steps "When I quit the simulator"
-  SDK    = "4.3"
+  SDK    = "4.3.2"
   APPLICATIONS_DIR = "/Users/#{ENV['USER']}/Library/Application Support/iPhone Simulator/#{SDK}/Applications"
   
   USERDEFAULTS_PLIST = "Library/Preferences/com.yourcompany.#{APP_NAME}.dist.plist"
   
   Dir.foreach(APPLICATIONS_DIR) do |item|
     next if item == '.' or item == '..'
-    if File::exists?( "#{APPLICATIONS_DIR}/#{item}/#{USERDEFAULTS_PLIST}")
+    if File.exists?( "#{APPLICATIONS_DIR}/#{item}/#{USERDEFAULTS_PLIST}")
       FileUtils.rm "#{APPLICATIONS_DIR}/#{item}/#{USERDEFAULTS_PLIST}" 
     end
   end
