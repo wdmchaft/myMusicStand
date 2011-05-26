@@ -10,8 +10,7 @@
 #import "BlockTableController.h"
 
 @class myMusicStandAppDelegate;
-@interface FileTableController : BlockTableController 
-<UITableViewDelegate, UITextFieldDelegate>
+@interface FileTableController : BlockTableController <UITextFieldDelegate>
 {
     NSArray *files;
     // mapping of blockview to a filename, this will allow us to
@@ -20,6 +19,5 @@
 }
 
 @property (nonatomic, retain) NSArray *files;
-
 -(void)editAlias:(UIGestureRecognizer *)recognizer;
 @end

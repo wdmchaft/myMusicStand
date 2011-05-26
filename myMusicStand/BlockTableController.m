@@ -7,11 +7,12 @@
 //
 
 #import "BlockTableController.h"
-
+#import "myMusicStandAppDelegate.h"
 
 @implementation BlockTableController
 
 @synthesize navigationController;
+@synthesize tableView;
 
 #pragma mark - Table view delegate
 
@@ -23,11 +24,11 @@
 #pragma mark - helper methods
 
 // Helper method to generate a block cell for the tableView
-- (UITableViewCell *)blockCellForTableView:(UITableView *)tableView  
+- (UITableViewCell *)blockCellForTableView:(UITableView *)tv  
 {
     static NSString *CellIdentifier = @"Cell";
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    UITableViewCell *cell = [tv dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
         // Load the tableview cell
         [[NSBundle mainBundle] loadNibNamed:@"BlockTableViewCell"
@@ -56,6 +57,23 @@
     return nil;
 }
 
+- (void) setUpModelWithContext:(NSManagedObjectContext *)context
+{
+    @throw @"Subclass responsibility";
+}
+
+- (void)reloadModel:(id)sender
+{
+    // Get delegate
+    myMusicStandAppDelegate *delegate = [myMusicStandAppDelegate sharedInstance];
+    
+    NSManagedObjectContext *context = [delegate managedObjectContext];
+    
+    [self setUpModelWithContext:context];
+    
+    [tableView reloadData];
+    
+}
 @end
 
 // Override cell's perpareForReuse method to clear all labels
@@ -80,6 +98,9 @@
         {
             [subview removeGestureRecognizer:recognizer];
         }
+        
+        // reset the accessibility label
+        [subview setAccessibilityLabel:@""];
     }
 }
 

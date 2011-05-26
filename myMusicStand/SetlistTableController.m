@@ -24,12 +24,14 @@
     self = [super init];
     if (self) {
         // Custom initialization
+        setlists = [[NSMutableArray alloc] init];
     }
     return self;
 }
 
 - (void)dealloc
 {
+    [setlists release];
     [super dealloc];
 }
 
@@ -51,9 +53,16 @@
     return index / NUM_BLOCKS_PER_CELL;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (void) setUpModelWithContext:(NSManagedObjectContext *)context  
 {
-    UITableViewCell *cell = [self blockCellForTableView:tableView];
+    // Reload the Setlists
+    [self setSetlists:[[[context allEntity:@"Setlist"] mutableCopy] autorelease]];
+
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tv cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = [self blockCellForTableView:tv];
     
     // Setlist to display
     Setlist *setlist;
@@ -91,6 +100,9 @@
                 [[UITapGestureRecognizer alloc] initWithTarget:self
                                                         action:@selector(createSetlist:)];
             [block addGestureRecognizer:tap];
+            
+            [block setAccessibilityLabel:@"Add Setlist block"];
+            
             [tap release];
             
             continue;
@@ -121,17 +133,13 @@
         NSManagedObjectContext *moc = [delegate managedObjectContext];
         
         // Create new setlist
-        [NSEntityDescription insertNewObjectForEntityForName:@"Setlist"
-                                      inManagedObjectContext:moc];
+        Setlist *setlist = [Setlist setlistWithContext:moc];
         
+        // Set attributes for setlist
+        [setlist setTitle:@"Unnamed Set"];
+         
         // save context
         [delegate saveContext];
-        
-        // Update setlists
-        NSMutableArray *sets = [[moc allEntity:@"Setlist"] mutableCopy];
-        setlists = sets;
-        
-        // TODO: post notification that set has been created
     }
 }
 

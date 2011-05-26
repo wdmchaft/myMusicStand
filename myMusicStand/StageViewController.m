@@ -51,6 +51,9 @@
     // Set navigationController
     [blockController setNavigationController:[self navigationController]];
     
+    // Give blockControll ref to tableView
+    [(FileTableController *)blockController setTableView:tableView];
+    
     // Set blockController as delegate and datasource of our table
     [tableView setDelegate:blockController];
     [tableView setDataSource:blockController];
@@ -59,6 +62,11 @@
     [tableView setBackgroundColor:[UIColor clearColor]];
     [tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     
+    // Register blockController for notifications
+    [[NSNotificationCenter defaultCenter] addObserver:blockController
+                                             selector:@selector(reloadModel:) 
+                                                 name:NSManagedObjectContextDidSaveNotification
+                                               object:nil];
     // Reload the data in the table
     [tableView reloadData];
 }
@@ -97,6 +105,9 @@
         [[context allEntity:@"File"] mutableCopy];
         
         [(FileTableController *)newBlockController setFiles:files];
+
+        // Give ref to tableView
+        [(FileTableController *)newBlockController setTableView:newTableView];
         
     }
     else 
@@ -139,9 +150,18 @@
                          
                          // remove the rootController's view from window
                          [tableView removeFromSuperview]; 
+                         [tableView release];
                          
                          // Set new tableView
                          tableView = newTableView;
+                         
+                         // unregister old block controller 
+                         [[NSNotificationCenter defaultCenter] removeObserver:blockController];
+                         // Register blockController for notifications
+                         [[NSNotificationCenter defaultCenter] addObserver:newBlockController
+                                                                  selector:@selector(reloadModel:) 
+                                                                      name:NSManagedObjectContextDidSaveNotification
+                                                                    object:nil];
                          
                          // Set new blockController
                          [blockController release];
@@ -149,7 +169,7 @@
                          
                          // Set the properties of blockController
                          [blockController setNavigationController:[self navigationController]];
-                         
+                         [blockController setTableView:tableView];
                          
                      }];
     

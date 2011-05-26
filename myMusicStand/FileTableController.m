@@ -26,10 +26,7 @@
     if (self)
     {
         // Register for context changed events
-        [[NSNotificationCenter defaultCenter] addObserver:self
-                                                 selector:@selector(reloadModel:) 
-                                                     name:NSManagedObjectContextDidSaveNotification
-                                                   object:nil];
+        
         blocksToFilenames = [[NSMutableDictionary alloc] init];
         
         NSManagedObjectContext *context = [[myMusicStandAppDelegate sharedInstance] managedObjectContext];
@@ -43,24 +40,17 @@
 
 - (void)dealloc
 {
-    // Unregister for all notifications
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
     [blocksToFilenames release];
     [files release];
     [super dealloc];
 }
 
-- (void)reloadModel:(id)sender
-{
-    // Get delegate
-    myMusicStandAppDelegate *delegate = [myMusicStandAppDelegate sharedInstance];
-    
-    NSManagedObjectContext *context = [delegate managedObjectContext];
-    
+- (void) setUpModelWithContext:(NSManagedObjectContext *)context  {
     // Give file controller the files to display
     [self setFiles:[context allEntity:@"File"]];
-    
+
 }
+
 
 #pragma mark - Table view data source
 
@@ -130,11 +120,10 @@
 
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (UITableViewCell *)tableView:(UITableView *)tv cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell;
-    cell = [self blockCellForTableView: tableView];
-
+    cell = [self blockCellForTableView: tv];
     
     [self configureCell: cell forIndexPath: indexPath];
     
