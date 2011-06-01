@@ -29,7 +29,13 @@
         
         blocksToFilenames = [[NSMutableDictionary alloc] init];
         
-        NSManagedObjectContext *context = moc;
+        context = moc;
+        
+        // Register for ReloadTableNotification
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(reloadFiles:) 
+                                                     name:@"ReloadTableNotification" 
+                                                   object:nil];
         
         // Give file controller the files to display
         [self setFiles:[context allEntity:@"File"]];
@@ -45,14 +51,14 @@
 
 - (void)dealloc
 {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
     [blocksToFilenames release];
     [files release];
     [super dealloc];
 }
 
-- (void) setUpModelWithContext:(NSManagedObjectContext *)context  {
-    // Give file controller the files to display
-    [self setFiles:[context allEntity:@"File"]];
+- (void) setUpModelWithContext:(NSManagedObjectContext *)ctx  {
+
 
 }
 
@@ -133,6 +139,12 @@
     [self configureCell: cell forIndexPath: indexPath];
     
     return cell;
+}
+
+- (void)reloadFiles:(NSNotification *)notification
+{
+    [self setFiles:[context allEntity:@"File"]];
+    [tableView reloadData];
 }
 
 - (void)openPDF:(UITapGestureRecognizer *)recognizer

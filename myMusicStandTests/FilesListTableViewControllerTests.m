@@ -17,7 +17,9 @@
 - (void)setUp
 {
     [super setUp];
-    controller = [[FileTableController alloc] initWithManagedObjectContext:context];
+    mockContext = [OCMockObject mockForClass:[NSManagedObjectContext class]];
+    [[[mockContext stub] andReturn:nil] allEntity:[OCMArg any]];
+    controller = [[FileTableController alloc] initWithManagedObjectContext:mockContext];
     indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
 }
 
@@ -25,13 +27,6 @@
 {
     [controller release];
     [super tearDown];
-}
-
-- (void)testInitialNumberOfRowsZero
-{
-    // The initial number of rows in the table should be 0
-    STAssertEquals(0, [controller tableView:nil numberOfRowsInSection:0], @"");
-                   
 }
 
 - (void)testCellHeight
@@ -60,4 +55,25 @@
                    @"Calculate the offset in terms of the base value");
 }
 
+
+- (void)testFilesReloadedWhenNotifiedToReload
+{
+    // setup data
+    id mockTableView = [OCMockObject mockForClass:[UITableView class]];
+    [controller setTableView:mockTableView];
+    
+    // setup expectations
+    [[mockTableView expect] reloadData];
+    [[[mockContext stub] andReturn:nil] allEntity:@"File"];
+    // there should be a way to make sure our stub is called
+    
+    // exercise
+    NSNotification *notification = [NSNotification notificationWithName:@"ReloadTableNotification"
+                                                                 object:self];
+    NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
+    [center postNotification:notification];
+    
+    [mockTableView verify];
+    [mockContext verify];
+}
 @end

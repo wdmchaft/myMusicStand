@@ -11,6 +11,7 @@
 
 @class FileTableController;
 @interface FilesListTableViewControllerTests : CoreDataTest {
+    id mockContext;
     FileTableController *controller;
     NSIndexPath *indexPath;
 }

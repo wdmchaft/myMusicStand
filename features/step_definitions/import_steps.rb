@@ -1,6 +1,6 @@
 When /^I import "([^"]*)"$/ do |filename|
   FileUtils.copy "/Users/stevesolomon/Desktop/music/charts/" + filename,
-                "/Users/stevesolomon/Library/Application Support/iPhone Simulator/4.3.2/Applications/E66F5374-7F33-4982-86B0-0F800813F389/Documents/" + filename
+                "/Users/stevesolomon/Library/Application Support/iPhone Simulator/4.3.2/Applications/5A8CEE17-1083-4777-89BC-DCB12E0DF016/Documents/" + filename
 
   press_home_on_simulator
   steps "Given I launch the app"
@@ -20,3 +20,4 @@ def simulator_hardware_menu_press( menu_label )
     end tell 
   APPLESCRIPT}   
 end 
+

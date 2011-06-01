@@ -1228,6 +1228,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+					"\"$(LOCAL_LIBRARY_DIR)/OCHamcrest-1.5\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "myMusicStandTests/myMusicStandTests-Prefix.pch";
@@ -1236,6 +1237,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(PROJECT_DIR)/Libraries\"",
+					"\"$(LOCAL_LIBRARY_DIR)/OCHamcrest-1.5/OCHamcrestIOS.framework/Versions/A\"",
 				);
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -1259,6 +1261,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+					"\"$(LOCAL_LIBRARY_DIR)/OCHamcrest-1.5\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "myMusicStandTests/myMusicStandTests-Prefix.pch";
@@ -1267,6 +1270,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(PROJECT_DIR)/Libraries\"",
+					"\"$(LOCAL_LIBRARY_DIR)/OCHamcrest-1.5/OCHamcrestIOS.framework/Versions/A\"",
 				);
 				OTHER_LDFLAGS = (
 					"-framework",
