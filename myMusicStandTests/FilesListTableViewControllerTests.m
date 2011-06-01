@@ -9,6 +9,7 @@
 #import "FilesListTableViewControllerTests.h"
 #import "FileTableController.h"
 #import "myMusicStandAppDelegate.h"
+#import "OCMock/OCMock.h"
 #import "File.h"
 
 @implementation FilesListTableViewControllerTests
@@ -16,7 +17,7 @@
 - (void)setUp
 {
     [super setUp];
-    controller = [[FileTableController alloc] init];
+    controller = [[FileTableController alloc] initWithManagedObjectContext:context];
     indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
 }
 
@@ -29,9 +30,7 @@
 - (void)testInitialNumberOfRowsZero
 {
     // The initial number of rows in the table should be 0
-    STAssertEquals(0, [controller tableView:nil numberOfRowsInSection:0], 
-                   @"The initial number of rows should be 0 but it was %d", 
-                   [controller tableView:nil numberOfRowsInSection:0]);
+    STAssertEquals(0, [controller tableView:nil numberOfRowsInSection:0], @"");
                    
 }
 

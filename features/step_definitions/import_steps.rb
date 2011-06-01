@@ -3,7 +3,7 @@ When /^I import "([^"]*)"$/ do |filename|
                 "/Users/stevesolomon/Library/Application Support/iPhone Simulator/4.3.2/Applications/E66F5374-7F33-4982-86B0-0F800813F389/Documents/" + filename
 
   press_home_on_simulator
-  simulator_hardware_menu_press APP_NAME	
+  steps "Given I launch the app"
 end
 
 

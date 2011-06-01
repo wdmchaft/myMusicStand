@@ -47,7 +47,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    blockController = [[FileTableController alloc] init];
+    blockController = [[FileTableController alloc] initWithManagedObjectContext:context];
     // Set navigationController
     [blockController setNavigationController:[self navigationController]];
     
@@ -61,6 +61,9 @@
     // Set visual aspects of tableview
     [tableView setBackgroundColor:[UIColor clearColor]];
     [tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+    
+    // Give the tableView a label of "Charts"
+    [tableView setAccessibilityLabel:@"Charts"];
     
     // Register blockController for notifications
     [[NSNotificationCenter defaultCenter] addObserver:blockController

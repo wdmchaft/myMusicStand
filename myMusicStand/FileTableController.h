@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "BlockTableController.h"
 
-@class myMusicStandAppDelegate;
+@class myMusicStandAppDelegate, NSManagedObjectContext;
 @interface FileTableController : BlockTableController <UITextFieldDelegate>
 {
     NSArray *files;
@@ -19,5 +19,6 @@
 }
 
 @property (nonatomic, retain) NSArray *files;
+- (id)initWithManagedObjectContext:(NSManagedObjectContext *)moc;
 -(void)editAlias:(UIGestureRecognizer *)recognizer;
 @end

@@ -19,7 +19,7 @@
 
 @synthesize files;
 
-- (id)init
+- (id)initWithManagedObjectContext:(NSManagedObjectContext *)moc
 {
     self = [super init];
     
@@ -29,13 +29,18 @@
         
         blocksToFilenames = [[NSMutableDictionary alloc] init];
         
-        NSManagedObjectContext *context = [[myMusicStandAppDelegate sharedInstance] managedObjectContext];
+        NSManagedObjectContext *context = moc;
         
         // Give file controller the files to display
         [self setFiles:[context allEntity:@"File"]];
     }
     
     return self;
+}
+
+- (id)init
+{
+    @throw @"Illegal instantiation! please use: initWithManagedObjectContext:";
 }
 
 - (void)dealloc

@@ -34,15 +34,10 @@
 {
     [super tearDown];
 }
+
 - (void)testAppDelegate 
 {
     STAssertNotNil(appDelegate, @"UIApplication failed to find the AppDelegate");
-}
-
-- (void)testOutlets
-{
-    
-    STAssertNotNil(rootController, @"The root controller outlet should be setup");
 }
 
 - (void)testFileSharingOn

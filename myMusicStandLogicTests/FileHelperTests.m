@@ -27,7 +27,7 @@
 
 - (void)testAddedFiles
 {
-    NSArray *fileList = filesInDirectory(@"Fake Directory");    
+    NSArray *fileList = [NSArray arrayWithObject:@"New File.pdf"];    
     NSArray *addedFiles = filesDiffWithFileslistAndKnownFiles(fileList, [NSArray array], FileDiffTypeNew);
     NSArray *expectedFiles  = [NSArray arrayWithObject:@"New File.pdf"];
     
@@ -38,7 +38,7 @@
 
 - (void)testReverseAddedFiles
 {
-    NSArray *fileList = filesInDirectory(@"Another Fake Directory");
+    NSArray *fileList = [NSArray arrayWithObjects:@"New File.pdf", @"Second File.pdf", nil];
     NSArray *addedFiles = filesDiffWithFileslistAndKnownFiles(fileList, [NSArray array], FileDiffTypeNew);
     NSArray *expectedFiles  = [NSArray arrayWithObjects:@"Second File.pdf", @"New File.pdf", nil];
     
@@ -48,7 +48,7 @@
 
 - (void)testRemovedFiles
 {
-    NSArray *fileList = filesInDirectory(@"Fake Directory");
+    NSArray *fileList = [NSArray arrayWithObject:@"New File.pdf"];
     NSArray *removedFiles = filesDiffWithFileslistAndKnownFiles(fileList, [NSArray arrayWithObject:@"Stale File.pdf"], 
                                                                 FileDiffTypeStale);
     NSArray *expectedFiles = [NSArray arrayWithObject:@"Stale File.pdf"];
