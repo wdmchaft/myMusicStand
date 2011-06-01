@@ -27,7 +27,8 @@
 
 - (void)testAddedFiles
 {
-    NSArray *fileList = [NSArray arrayWithObject:@"New File.pdf"];    
+    // Shouldn't pickup the .DSStore file 
+    NSArray *fileList = [NSArray arrayWithObjects:@"New File.pdf", @".DS_Store", nil];    
     NSArray *addedFiles = filesDiffWithFileslistAndKnownFiles(fileList, [NSArray array], FileDiffTypeNew);
     NSArray *expectedFiles  = [NSArray arrayWithObject:@"New File.pdf"];
     

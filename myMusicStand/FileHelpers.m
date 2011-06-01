@@ -31,6 +31,19 @@ NSArray *filesDiffWithFileslistAndKnownFiles(NSArray *filesInDirectory, NSArray 
     {
         [diffActualFilesSet minusSet:knownFilesSet];
         resultsSet = diffActualFilesSet;
+
+        // Create mutable copy of results
+        NSMutableSet *mutableResultsSet = [resultsSet mutableCopy];
+        
+        // remove the '.DS_Store' file if it exists
+        [mutableResultsSet removeObject:@".DS_Store"];
+        
+        // Create immutable copy of mutableresultsset without '.DS_Store'
+        resultsSet = [[mutableResultsSet copy] autorelease];
+        
+        // Cleanup mutable copy
+        [mutableResultsSet release];
+
     }
     else if (type == FileDiffTypeStale)
     {
