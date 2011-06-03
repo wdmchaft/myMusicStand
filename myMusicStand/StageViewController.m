@@ -64,14 +64,6 @@
     
     // Give the tableView a label of "Charts"
     [tableView setAccessibilityLabel:@"Charts"];
-    
-    // Register blockController for notifications
-    [[NSNotificationCenter defaultCenter] addObserver:blockController
-                                             selector:@selector(reloadModel:) 
-                                                 name:NSManagedObjectContextDidSaveNotification
-                                               object:nil];
-    // Reload the data in the table
-    [tableView reloadData];
 }
 
 - (void)viewDidUnload

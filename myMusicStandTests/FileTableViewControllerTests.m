@@ -18,7 +18,7 @@
 {
     [super setUp];
     mockContext = [OCMockObject mockForClass:[NSManagedObjectContext class]];
-    [[[mockContext stub] andReturn:nil] allEntity:[OCMArg any]];
+    
     controller = [[FileTableController alloc] initWithManagedObjectContext:mockContext];
     indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
 }
@@ -60,7 +60,7 @@
                    @"Calculate the offset in terms of the base value");
 }
 
-/*
+
 - (void)testFilesReloadedWhenNotifiedToReload
 {
     // setup data
@@ -69,7 +69,7 @@
     
     // setup expectations
     [[mockTableView expect] reloadData];
-    [[mockContext expect] allEntity:[OCMArg any]];
+    [[mockContext expect] allEntity:@"File"];
     
     // exercise
     NSNotification *notification = [NSNotification notificationWithName:@"ReloadTableNotification"
@@ -79,5 +79,5 @@
     
     [mockTableView verify];
     [mockContext verify];
-}*/
+}
 @end

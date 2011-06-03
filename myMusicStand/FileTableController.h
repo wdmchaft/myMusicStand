@@ -17,6 +17,7 @@
     NSMutableDictionary *blocksToFilenames; 
 }
 
+- (void)reloadFiles:(NSNotification *)notification;
 - (id)initWithManagedObjectContext:(NSManagedObjectContext *)moc;
 -(void)editAlias:(UIGestureRecognizer *)recognizer;
 @end

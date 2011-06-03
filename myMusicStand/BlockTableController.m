@@ -82,10 +82,6 @@
     @throw @"Subclass responsibility";
 }
 
-- (void)reloadModel:(id)sender
-{        
-    [tableView reloadData];
-}
 
 // Determine the number of rows based on the number of blocks in the table
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
