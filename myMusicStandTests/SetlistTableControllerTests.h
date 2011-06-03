@@ -8,10 +8,10 @@
 
 #import <SenTestingKit/SenTestingKit.h>
 
-
-@interface SetlistTableControllerTests : SenTestCase {
-@private
-    
+@class SetlistTableController;
+@interface SetlistTableControllerTests : SenTestCase 
+{
+    SetlistTableController *controller;
 }
 
 @end

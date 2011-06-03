@@ -15,6 +15,7 @@
 
 @synthesize navigationController;
 @synthesize tableView;
+@synthesize model;
 
 #pragma mark - Life cycle
 - (id)initWithManagedObjectContext:(NSManagedObjectContext *)moc
@@ -22,12 +23,14 @@
     self = [super init];
     if (self) {
         context = [moc retain];
+        model = [[NSArray alloc] init];
     }
     return self;
 }
 
 - (void)dealloc
 {
+    [model release];
     [context release];
     [super dealloc];
 }
@@ -80,24 +83,24 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    int index = [self index];
+    int numberOfBlocks = [self numberOfBlocks];
 
     // Calculate if there is a remainder
-    int remainder = index % NUM_BLOCKS_PER_CELL;
+    int remainder = numberOfBlocks % NUM_BLOCKS_PER_CELL;
     
     // if we have a remainder 
     if (remainder != 0)
     {
         // add one extra 
-        return index / NUM_BLOCKS_PER_CELL + 1;
+        return numberOfBlocks / NUM_BLOCKS_PER_CELL + 1;
     }
     // else we don't need an extra row
-    return index / NUM_BLOCKS_PER_CELL;
+    return numberOfBlocks / NUM_BLOCKS_PER_CELL;
 }
 
-- (int)index 
+- (int)numberOfBlocks 
 {
-    @throw @"Subclass responsibility";
+    return [model count];
 }
 
 @end

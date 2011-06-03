@@ -17,8 +17,6 @@
 
 @implementation FileTableController
 
-@synthesize model;
-
 - (id)initWithManagedObjectContext:(NSManagedObjectContext *)moc
 {
     self = [super initWithManagedObjectContext:moc];
@@ -34,9 +32,6 @@
                                                  selector:@selector(reloadFiles:) 
                                                      name:@"ReloadTableNotification" 
                                                    object:nil];
-        
-        // Give file controller the files to display
-        [self setModel:[context allEntity:@"File"]];
     }
     
     return self;
@@ -51,20 +46,10 @@
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     [blocksToFilenames release];
-    [model release];
     [super dealloc];
 }
 
 #pragma mark - Helper methods
-- (int)index
-{
-    return [model count];
-}
-
-#pragma mark - Table view data source
-
-
-
 
 - (void)configureCell:(UITableViewCell *)cell forIndexPath:(NSIndexPath *)indexPath  
 {
@@ -113,6 +98,8 @@
     }
 
 }
+
+#pragma mark - Table view data source
 
 - (UITableViewCell *)tableView:(UITableView *)tv cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {

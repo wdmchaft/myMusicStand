@@ -13,11 +13,8 @@
 
 @class NSManagedObjectContext;
 @interface SetlistTableController : BlockTableController {
-    NSMutableArray *setlists;
     
 }
-
-@property (nonatomic, retain) NSMutableArray *setlists;
 
 - (id)initWithManagedObjectContext:(NSManagedObjectContext *)moc;
 

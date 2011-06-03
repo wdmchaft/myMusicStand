@@ -17,8 +17,6 @@
 
 @implementation SetlistTableController
 
-@synthesize setlists;
-
 - (id)init
 {
     @throw @"Illegal instantiation! please use: initWithManagedObjectContext:";
@@ -29,7 +27,7 @@
     self = [super initWithManagedObjectContext:moc];
     if (self) {
         // Custom initialization
-        setlists = [[NSMutableArray alloc] init];
+        
     }
     return self;
 
@@ -37,16 +35,14 @@
 
 - (void)dealloc
 {
-    [context release];
-    [setlists release];
     [super dealloc];
 }
 
 #pragma mark - Helper methods
 
-- (int)index 
+- (int)numberOfBlocks 
 {
-    return [setlists count] + NUM_ADD_BLOCKS;
+    return [model count] + NUM_ADD_BLOCKS;
 }
 
 #pragma mark - Table view data source
@@ -66,7 +62,7 @@
     int blocTagOffset = FIRST_BLOCK_TAG; // starting block tag offset
     
     for (int index = NUM_BLOCKS_PER_CELL * [indexPath row]; // BLOCKS * row gives us the first index we can use
-         index < [setlists count] + 1 && tagOffset < NUM_BLOCKS_PER_CELL; index++)
+         index < [model count] + 1 && tagOffset < NUM_BLOCKS_PER_CELL; index++)
     {
         // get label for tag
         label = (UILabel *)[cell viewWithTag:tagOffset + 1];
@@ -82,7 +78,7 @@
         [block setHidden:NO];
 
         // If we are at the add button index
-        if (index == [setlists count])
+        if (index == [model count])
         {
             // set add set button
             [label setText:@"Add setlist"];
@@ -99,7 +95,7 @@
             continue;
         }
         
-        setlist = [setlists objectAtIndex:index];
+        setlist = [model objectAtIndex:index];
         
         [label setText:[setlist title]];
         
@@ -117,20 +113,14 @@
     // Once tapped create an empty setlist and reload the table
     if ([recognizer state] == UIGestureRecognizerStateEnded)
     {
-        // Get delegate
-        myMusicStandAppDelegate *delegate = [myMusicStandAppDelegate sharedInstance];
-        
-        // Get MOC 
-        NSManagedObjectContext *moc = [delegate managedObjectContext];
         
         // Create new setlist
-        Setlist *setlist = [Setlist setlistWithContext:moc];
+        Setlist *setlist = [Setlist setlistWithContext:context];
         
         // Set attributes for setlist
         [setlist setTitle:@"Unnamed Set"];
          
-        // save context
-        [delegate saveContext];
+        [context save:nil];
     }
 }
 

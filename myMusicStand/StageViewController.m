@@ -121,7 +121,7 @@
         // Give the controller the current setlists
         NSMutableArray *setlists = [[context allEntity:@"Setlist"] mutableCopy];
         
-        [(SetlistTableController *)newBlockController setSetlists:[setlists autorelease]];
+        [(SetlistTableController *)newBlockController setModel:[setlists autorelease]];
     }
     
     CGRect leftframe = [[self view] frame];
