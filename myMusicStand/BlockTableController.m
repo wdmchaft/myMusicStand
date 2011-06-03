@@ -18,6 +18,12 @@
 @synthesize model;
 
 #pragma mark - Life cycle
+
+- (id)init
+{
+    @throw @"Illegal instantiation! please use: initWithManagedObjectContext:";
+}
+
 - (id)initWithManagedObjectContext:(NSManagedObjectContext *)moc
 {
     self = [super init];
@@ -81,6 +87,7 @@
     [tableView reloadData];
 }
 
+// Determine the number of rows based on the number of blocks in the table
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     int numberOfBlocks = [self numberOfBlocks];
@@ -98,6 +105,7 @@
     return numberOfBlocks / NUM_BLOCKS_PER_CELL;
 }
 
+// Number of blocks to display in the table
 - (int)numberOfBlocks 
 {
     return [model count];

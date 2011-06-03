@@ -23,8 +23,6 @@
     
     if (self)
     {
-        // Register for context changed events
-        
         blocksToFilenames = [[NSMutableDictionary alloc] init];
                
         // Register for ReloadTableNotification
@@ -35,11 +33,6 @@
     }
     
     return self;
-}
-
-- (id)init
-{
-    @throw @"Illegal instantiation! please use: initWithManagedObjectContext:";
 }
 
 - (void)dealloc

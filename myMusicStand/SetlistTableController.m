@@ -17,11 +17,6 @@
 
 @implementation SetlistTableController
 
-- (id)init
-{
-    @throw @"Illegal instantiation! please use: initWithManagedObjectContext:";
-}
-
 - (id)initWithManagedObjectContext:(NSManagedObjectContext *)moc
 {
     self = [super initWithManagedObjectContext:moc];
@@ -31,11 +26,6 @@
     }
     return self;
 
-}
-
-- (void)dealloc
-{
-    [super dealloc];
 }
 
 #pragma mark - Helper methods
