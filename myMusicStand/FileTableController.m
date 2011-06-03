@@ -17,7 +17,7 @@
 
 @implementation FileTableController
 
-@synthesize files;
+@synthesize model;
 
 - (id)initWithManagedObjectContext:(NSManagedObjectContext *)moc
 {
@@ -36,7 +36,7 @@
                                                    object:nil];
         
         // Give file controller the files to display
-        [self setFiles:[context allEntity:@"File"]];
+        [self setModel:[context allEntity:@"File"]];
     }
     
     return self;
@@ -51,7 +51,7 @@
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     [blocksToFilenames release];
-    [files release];
+    [model release];
     [super dealloc];
 }
 
@@ -59,7 +59,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    int index = [files count];
+    int index = [model count];
 
     // Calculate if there is a remainder
     int remainder = index % NUM_BLOCKS_PER_CELL;
@@ -88,10 +88,10 @@
     int blockTagOffset = FIRST_BLOCK_TAG;
     
     for (int index = NUM_BLOCKS_PER_CELL * [indexPath row]; // BLOCKS * row gives us the first index we can use
-         index < [files count] && labelTagOffset < NUM_BLOCKS_PER_CELL; index++)
+         index < [model count] && labelTagOffset < NUM_BLOCKS_PER_CELL; index++)
     {
         
-        file = [files objectAtIndex:index];
+        file = [model objectAtIndex:index];
         label = (UILabel *)[cell viewWithTag:labelTagOffset + 1];
         [label setText:[file alias]];
         block = [cell viewWithTag:blockTagOffset];
@@ -135,7 +135,7 @@
 
 - (void)reloadFiles:(NSNotification *)notification
 {
-    [self setFiles:[context allEntity:@"File"]];
+    [self setModel:[context allEntity:@"File"]];
     [tableView reloadData];
 }
 

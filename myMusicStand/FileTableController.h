@@ -12,13 +12,13 @@
 @class myMusicStandAppDelegate, NSManagedObjectContext;
 @interface FileTableController : BlockTableController <UITextFieldDelegate>
 {
-    NSArray *files;
+    NSArray *model;
     // mapping of blockview to a filename, this will allow us to
     // quickly load the file when tapped
     NSMutableDictionary *blocksToFilenames; 
 }
 
-@property (nonatomic, retain) NSArray *files;
+@property (nonatomic, retain) NSArray *model;
 - (id)initWithManagedObjectContext:(NSManagedObjectContext *)moc;
 -(void)editAlias:(UIGestureRecognizer *)recognizer;
 @end

@@ -107,7 +107,7 @@
         NSMutableArray *files = 
         [[context allEntity:@"File"] mutableCopy];
         
-        [(FileTableController *)newBlockController setFiles:files];
+        [(FileTableController *)newBlockController setModel:files];
 
         // Give ref to tableView
         [(FileTableController *)newBlockController setTableView:newTableView];
