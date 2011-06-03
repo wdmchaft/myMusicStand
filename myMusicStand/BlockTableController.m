@@ -79,9 +79,7 @@
 }
 
 - (void)reloadModel:(id)sender
-{    
-    [self setUpModelWithContext:context];
-    
+{        
     [tableView reloadData];
 }
 
