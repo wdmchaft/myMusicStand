@@ -70,6 +70,7 @@
     // setup expectations
     [[mockTableView expect] reloadData];
     [[mockContext expect] allEntity:@"File"];
+    [[[mockContext stub] andReturn:nil] allEntity:@"File"];
     
     // exercise
     NSNotification *notification = [NSNotification notificationWithName:@"ReloadTableNotification"
