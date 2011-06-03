@@ -1,0 +1,13 @@
+When /^I tap "([^"]*)"$/ do |mark|
+  touchxy "view marked:'#{mark} block'", 95, 175
+end
+
+def touchxy( uiquery, x, y ) 
+  puts "I got here #{x}, #{y}"
+  views_touched = frankly_map( uiquery, 'touchxy:ycoord:', "#{x}", "#{y}"  ) 
+  raise "no matching [#{uiquery}] to touch" if views_touched.empty? 
+end 
+
+Given /^I touch the segment marked "([^"]*)"$/ do |mark|
+  touch "view:'UISegment' marked:'#{mark}'" 
+end

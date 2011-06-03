@@ -39,7 +39,7 @@
 		64DFCFA213857715002672BC /* SetlistTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64E7F058138561ED00BB54D7 /* SetlistTableController.m */; };
 		64E380651381786700A43834 /* floorAndStage.png in Resources */ = {isa = PBXBuildFile; fileRef = 64E380641381786700A43834 /* floorAndStage.png */; };
 		64E380661381786700A43834 /* floorAndStage.png in Resources */ = {isa = PBXBuildFile; fileRef = 64E380641381786700A43834 /* floorAndStage.png */; };
-		64E47BC2137AE3E800AC5C93 /* FilesListTableViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 64E47BC1137AE3E800AC5C93 /* FilesListTableViewControllerTests.m */; };
+		64E47BC2137AE3E800AC5C93 /* FileTableViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 64E47BC1137AE3E800AC5C93 /* FileTableViewControllerTests.m */; };
 		64E7F039138551D800BB54D7 /* TimestampEntityTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 64E7F038138551D800BB54D7 /* TimestampEntityTests.m */; };
 		64E7F059138561ED00BB54D7 /* SetlistTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64E7F058138561ED00BB54D7 /* SetlistTableController.m */; };
 		64EAE5FC1379DDE900544C29 /* FileTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64EAE5FB1379DDE900544C29 /* FileTableController.m */; };
@@ -205,8 +205,8 @@
 		64D94E8A1379BEFB00300349 /* TimestampEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimestampEntity.h; sourceTree = "<group>"; };
 		64D94E8B1379BEFB00300349 /* TimestampEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimestampEntity.m; sourceTree = "<group>"; };
 		64E380641381786700A43834 /* floorAndStage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = floorAndStage.png; sourceTree = "<group>"; };
-		64E47BC0137AE3E800AC5C93 /* FilesListTableViewControllerTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilesListTableViewControllerTests.h; sourceTree = "<group>"; };
-		64E47BC1137AE3E800AC5C93 /* FilesListTableViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilesListTableViewControllerTests.m; sourceTree = "<group>"; };
+		64E47BC0137AE3E800AC5C93 /* FileTableViewControllerTests.h */ = {isa = PBXFileReference; fileEncoding = 4; path = FileTableViewControllerTests.h; sourceTree = "<group>"; };
+		64E47BC1137AE3E800AC5C93 /* FileTableViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileTableViewControllerTests.m; sourceTree = "<group>"; };
 		64E7F037138551D800BB54D7 /* TimestampEntityTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimestampEntityTests.h; sourceTree = "<group>"; };
 		64E7F038138551D800BB54D7 /* TimestampEntityTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimestampEntityTests.m; sourceTree = "<group>"; };
 		64E7F057138561ED00BB54D7 /* SetlistTableController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetlistTableController.h; sourceTree = "<group>"; };
@@ -477,8 +477,8 @@
 				64D94E961379C5C700300349 /* Core Data Testing */,
 				64D94E971379C5D800300349 /* File System Work Testing */,
 				64D94E1E1379B2CC00300349 /* Supporting Files */,
-				64E47BC0137AE3E800AC5C93 /* FilesListTableViewControllerTests.h */,
-				64E47BC1137AE3E800AC5C93 /* FilesListTableViewControllerTests.m */,
+				64E47BC0137AE3E800AC5C93 /* FileTableViewControllerTests.h */,
+				64E47BC1137AE3E800AC5C93 /* FileTableViewControllerTests.m */,
 				64E7F03C1385539300BB54D7 /* Delegate tests */,
 				64E7F03B1385538300BB54D7 /* TimestampTests */,
 				64F5E1FC1399231F0048D1EF /* SetlistTableControllerTests.h */,
@@ -1035,7 +1035,7 @@
 				64DB278A137C2D2C0069D076 /* CoreDataTest.m in Sources */,
 				64DB278C137C2D2C0069D076 /* FileHelperTests.m in Sources */,
 				64EAE5FD1379DDE900544C29 /* FileTableController.m in Sources */,
-				64E47BC2137AE3E800AC5C93 /* FilesListTableViewControllerTests.m in Sources */,
+				64E47BC2137AE3E800AC5C93 /* FileTableViewControllerTests.m in Sources */,
 				64C96969137B754E002B5D10 /* DelegateTests.m in Sources */,
 				64E7F039138551D800BB54D7 /* TimestampEntityTests.m in Sources */,
 				6480633A1385A6C600E0CA27 /* BlockTableController.m in Sources */,
