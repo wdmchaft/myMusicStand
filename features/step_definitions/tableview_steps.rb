@@ -16,3 +16,6 @@ Given /^I see an empty "([^"]*)" table$/ do |mark|
   tableCells.count.should == 0
 end
 
+Then /^I should see "([^"]*)" table$/ do |expectedmark|
+  check_element_exists "tableView marked:'#{expectedmark}'"
+end

@@ -21,16 +21,25 @@
 
 - (id)init
 {
+    @throw @"Illegal instantiation! please use: initWithManagedObjectContext:";
+}
+
+- (id)initWithManagedObjectContext:(NSManagedObjectContext *)moc
+{
+    
     self = [super init];
     if (self) {
         // Custom initialization
         setlists = [[NSMutableArray alloc] init];
+        context = [moc retain];
     }
     return self;
+
 }
 
 - (void)dealloc
 {
+    [context release];
     [setlists release];
     [super dealloc];
 }
@@ -53,12 +62,6 @@
     return index / NUM_BLOCKS_PER_CELL;
 }
 
-- (void) setUpModelWithContext:(NSManagedObjectContext *)context  
-{
-    // Reload the Setlists
-    [self setSetlists:[[[context allEntity:@"Setlist"] mutableCopy] autorelease]];
-
-}
 
 - (UITableViewCell *)tableView:(UITableView *)tv cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {

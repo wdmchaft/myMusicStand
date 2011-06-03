@@ -53,6 +53,15 @@ Given /^I reset the (iphone|ipad) app$/ do |device|
       FileUtils.rm "#{APPLICATIONS_DIR}/#{item}/#{USERDEFAULTS_PLIST}" 
     end
   end
+
+  # Remove all documents 
+  DOCUMENTS_DIR = "/Users/stevesolomon/Library/Application Support/iPhone Simulator/4.3.2/Applications/5A8CEE17-1083-4777-89BC-DCB12E0DF016/Documents"
+
+  FileUtils.rm_rf DOCUMENTS_DIR  
+ 
+  # Remove SQLite3 DB
+  DB_PATH = "/Users/stevesolomon/Library/Application Support/iPhone Simulator/4.3.2/Applications/5A8CEE17-1083-4777-89BC-DCB12E0DF016/Library/myMusicStand.sqlite"
+  FileUtils.rm_f DB_PATH 
   
   steps "Given I launch the #{device} app"
 end

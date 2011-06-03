@@ -50,6 +50,7 @@
 		64F1F27913898AA7003F83AB /* TiledPDFView.m in Sources */ = {isa = PBXBuildFile; fileRef = 64F1F27813898AA7003F83AB /* TiledPDFView.m */; };
 		64F1F27B13898AC8003F83AB /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64F1F27A13898AC8003F83AB /* MessageUI.framework */; };
 		64F1F27D13898AE0003F83AB /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64F1F27C13898AE0003F83AB /* QuartzCore.framework */; };
+		64F5E1FE1399231F0048D1EF /* SetlistTableControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 64F5E1FD1399231F0048D1EF /* SetlistTableControllerTests.m */; };
 		64FAA48E138BFE67009465BC /* StageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64FAA48C138BFE67009465BC /* StageViewController.m */; };
 		64FAA48F138BFE67009465BC /* StageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64FAA48D138BFE67009465BC /* StageViewController.xib */; };
 		64FAA49A138C411F009465BC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 64D94E061379B2CB00300349 /* main.m */; };
@@ -222,6 +223,8 @@
 		64F1F27813898AA7003F83AB /* TiledPDFView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TiledPDFView.m; sourceTree = "<group>"; };
 		64F1F27A13898AC8003F83AB /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		64F1F27C13898AE0003F83AB /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		64F5E1FC1399231F0048D1EF /* SetlistTableControllerTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetlistTableControllerTests.h; sourceTree = "<group>"; };
+		64F5E1FD1399231F0048D1EF /* SetlistTableControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetlistTableControllerTests.m; sourceTree = "<group>"; };
 		64FAA48B138BFE66009465BC /* StageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StageViewController.h; sourceTree = "<group>"; };
 		64FAA48C138BFE67009465BC /* StageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StageViewController.m; sourceTree = "<group>"; };
 		64FAA48D138BFE67009465BC /* StageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StageViewController.xib; sourceTree = "<group>"; };
@@ -478,6 +481,8 @@
 				64E47BC1137AE3E800AC5C93 /* FilesListTableViewControllerTests.m */,
 				64E7F03C1385539300BB54D7 /* Delegate tests */,
 				64E7F03B1385538300BB54D7 /* TimestampTests */,
+				64F5E1FC1399231F0048D1EF /* SetlistTableControllerTests.h */,
+				64F5E1FD1399231F0048D1EF /* SetlistTableControllerTests.m */,
 			);
 			path = myMusicStandTests;
 			sourceTree = "<group>";
@@ -1034,6 +1039,7 @@
 				64C96969137B754E002B5D10 /* DelegateTests.m in Sources */,
 				64E7F039138551D800BB54D7 /* TimestampEntityTests.m in Sources */,
 				6480633A1385A6C600E0CA27 /* BlockTableController.m in Sources */,
+				64F5E1FE1399231F0048D1EF /* SetlistTableControllerTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

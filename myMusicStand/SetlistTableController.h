@@ -11,9 +11,13 @@
 
 #import "BlockTableController.h"
 
+@class NSManagedObjectContext;
 @interface SetlistTableController : BlockTableController {
     NSMutableArray *setlists;
+    NSManagedObjectContext *context;
 }
 
 @property (nonatomic, retain) NSMutableArray *setlists;
+
+- (id)initWithManagedObjectContext:(NSManagedObjectContext *)moc;
 @end
