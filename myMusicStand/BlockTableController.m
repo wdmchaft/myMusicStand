@@ -9,6 +9,8 @@
 #import "BlockTableController.h"
 #import "myMusicStandAppDelegate.h"
 
+#define NUM_BLOCKS_PER_CELL 3
+
 @implementation BlockTableController
 
 @synthesize navigationController;
@@ -59,13 +61,6 @@
     return cell;
 }
 
-- (NSInteger)tableView:(UITableView *)tv numberOfRowsInSection:(NSInteger)section  
-{
-    @throw @"Subclass resposibility";
-    
-    return 0;
-}
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     @throw @"Subclass responsibility";
@@ -81,6 +76,28 @@
 - (void)reloadModel:(id)sender
 {        
     [tableView reloadData];
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    int index = [self index];
+
+    // Calculate if there is a remainder
+    int remainder = index % NUM_BLOCKS_PER_CELL;
+    
+    // if we have a remainder 
+    if (remainder != 0)
+    {
+        // add one extra 
+        return index / NUM_BLOCKS_PER_CELL + 1;
+    }
+    // else we don't need an extra row
+    return index / NUM_BLOCKS_PER_CELL;
+}
+
+- (int)index 
+{
+    @throw @"Subclass responsibility";
 }
 
 @end

@@ -42,24 +42,14 @@
     [super dealloc];
 }
 
-#pragma mark - Table view data source
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+#pragma mark - Helper methods
+
+- (int)index 
 {
-    int index = [setlists count] + NUM_ADD_BLOCKS;
-    
-    // Calculate if there is a remainder
-    int remainder = index % NUM_BLOCKS_PER_CELL;
-    
-    // if we have a remainder 
-    if (remainder != 0)
-    {
-        // add one extra 
-        return index / NUM_BLOCKS_PER_CELL + 1;
-    }
-    // else we don't need an extra row
-    return index / NUM_BLOCKS_PER_CELL;
+    return [setlists count] + NUM_ADD_BLOCKS;
 }
 
+#pragma mark - Table view data source
 
 - (UITableViewCell *)tableView:(UITableView *)tv cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {

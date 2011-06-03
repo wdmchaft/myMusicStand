@@ -18,4 +18,5 @@
 @property (nonatomic, assign) UITableView *tableView;
 - (id)initWithManagedObjectContext:(NSManagedObjectContext *)moc;
 - (UITableViewCell *)blockCellForTableView:(UITableView *)tableView;
+- (int)index; // index for block cell
 @end

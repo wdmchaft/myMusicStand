@@ -55,24 +55,15 @@
     [super dealloc];
 }
 
+#pragma mark - Helper methods
+- (int)index
+{
+    return [model count];
+}
+
 #pragma mark - Table view data source
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    int index = [model count];
 
-    // Calculate if there is a remainder
-    int remainder = index % NUM_BLOCKS_PER_CELL;
-    
-    // if we have a remainder 
-    if (remainder != 0)
-    {
-        // add one extra 
-        return index / NUM_BLOCKS_PER_CELL + 1;
-    }
-    // else we don't need an extra row
-    return index / NUM_BLOCKS_PER_CELL;
-}
 
 
 - (void)configureCell:(UITableViewCell *)cell forIndexPath:(NSIndexPath *)indexPath  
