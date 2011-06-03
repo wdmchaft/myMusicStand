@@ -14,6 +14,22 @@
 @synthesize navigationController;
 @synthesize tableView;
 
+#pragma mark - Life cycle
+- (id)initWithManagedObjectContext:(NSManagedObjectContext *)moc
+{
+    self = [super init];
+    if (self) {
+        context = [moc retain];
+    }
+    return self;
+}
+
+- (void)dealloc
+{
+    [context release];
+    [super dealloc];
+}
+
 #pragma mark - Table view delegate
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath 
@@ -63,17 +79,12 @@
 }
 
 - (void)reloadModel:(id)sender
-{
-    // Get delegate
-    myMusicStandAppDelegate *delegate = [myMusicStandAppDelegate sharedInstance];
-    
-    NSManagedObjectContext *context = [delegate managedObjectContext];
-    
+{    
     [self setUpModelWithContext:context];
     
     [tableView reloadData];
-    
 }
+
 @end
 
 // Override cell's perpareForReuse method to clear all labels

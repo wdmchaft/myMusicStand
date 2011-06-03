@@ -16,7 +16,6 @@
     // mapping of blockview to a filename, this will allow us to
     // quickly load the file when tapped
     NSMutableDictionary *blocksToFilenames; 
-    NSManagedObjectContext *context;
 }
 
 @property (nonatomic, retain) NSArray *files;

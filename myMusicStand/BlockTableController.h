@@ -6,13 +6,16 @@
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
+@class NSManagedObjectContext;
 @interface BlockTableController : NSObject <UITableViewDelegate, UITableViewDataSource> {
     IBOutlet UITableViewCell *tvCell;
     UINavigationController *navigationController;
     UITableView *tableView;
+    NSManagedObjectContext *context;
 }
 
 @property (nonatomic, assign) UINavigationController *navigationController;
 @property (nonatomic, assign) UITableView *tableView;
+- (id)initWithManagedObjectContext:(NSManagedObjectContext *)moc;
 - (UITableViewCell *)blockCellForTableView:(UITableView *)tableView;
 @end

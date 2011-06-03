@@ -21,16 +21,14 @@
 
 - (id)initWithManagedObjectContext:(NSManagedObjectContext *)moc
 {
-    self = [super init];
+    self = [super initWithManagedObjectContext:moc];
     
     if (self)
     {
         // Register for context changed events
         
         blocksToFilenames = [[NSMutableDictionary alloc] init];
-        
-        context = moc;
-        
+               
         // Register for ReloadTableNotification
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(reloadFiles:) 

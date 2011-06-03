@@ -26,12 +26,10 @@
 
 - (id)initWithManagedObjectContext:(NSManagedObjectContext *)moc
 {
-    
-    self = [super init];
+    self = [super initWithManagedObjectContext:moc];
     if (self) {
         // Custom initialization
         setlists = [[NSMutableArray alloc] init];
-        context = [moc retain];
     }
     return self;
 
