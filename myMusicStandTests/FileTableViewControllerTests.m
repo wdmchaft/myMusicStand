@@ -19,6 +19,11 @@
     [super setUp];
     mockContext = [OCMockObject mockForClass:[NSManagedObjectContext class]];
     mockTableView = [OCMockObject mockForClass:[UITableView class]];
+    
+    // TableVie must expect it's setup
+    [[mockTableView expect] setDelegate:[OCMArg any]];
+    [[mockTableView expect] setDataSource:[OCMArg any]];
+    
     controller = [[FileTableController alloc] initWithManagedObjectContext:mockContext 
                                                               andTableView:mockTableView];
     indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
@@ -26,6 +31,9 @@
 
 - (void)tearDown
 {
+    [mockTableView verify];
+    [mockContext verify];
+    
     [controller release];
     [super tearDown];
 }
@@ -74,8 +82,6 @@
                                                                  object:self];
     NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
     [center postNotification:notification];
-    
-    [mockTableView verify];
-    [mockContext verify];
 }
+
 @end

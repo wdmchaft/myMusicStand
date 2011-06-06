@@ -91,18 +91,9 @@
     
     if ([sender selectedSegmentIndex] == FILES_CONTROLLER_INDEX)
     {
-        // display files controller
-        // else show setlists controller
-        newBlockController = [[FileTableController alloc] init];
-        
-        // Give the controller the current setlists
-        NSMutableArray *files = 
-        [[context allEntity:@"File"] mutableCopy];
-        
-        [(FileTableController *)newBlockController setModel:files];
-
-        // Give ref to tableView
-        [(FileTableController *)newBlockController setTableView:newTableView];
+        // display files controller, giving it the ability to update the tableview 
+        newBlockController = [[FileTableController alloc] initWithManagedObjectContext:context
+                                                                          andTableView:newTableView];
         
     }
     else 
@@ -126,10 +117,6 @@
     [newTableView setBackgroundColor:[UIColor clearColor]];
     [newTableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     [newTableView setAllowsSelection:NO];
-    
-    // Set blockController as delegate and datasource of our table
-    [newTableView setDelegate:newBlockController];
-    [newTableView setDataSource:newBlockController];
     
     [newTableView reloadData];
     
