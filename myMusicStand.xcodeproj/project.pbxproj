@@ -205,7 +205,7 @@
 		64D94E8A1379BEFB00300349 /* TimestampEntity.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimestampEntity.h; sourceTree = "<group>"; };
 		64D94E8B1379BEFB00300349 /* TimestampEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimestampEntity.m; sourceTree = "<group>"; };
 		64E380641381786700A43834 /* floorAndStage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = floorAndStage.png; sourceTree = "<group>"; };
-		64E47BC0137AE3E800AC5C93 /* FileTableViewControllerTests.h */ = {isa = PBXFileReference; fileEncoding = 4; path = FileTableViewControllerTests.h; sourceTree = "<group>"; };
+		64E47BC0137AE3E800AC5C93 /* FileTableViewControllerTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileTableViewControllerTests.h; sourceTree = "<group>"; };
 		64E47BC1137AE3E800AC5C93 /* FileTableViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileTableViewControllerTests.m; sourceTree = "<group>"; };
 		64E7F037138551D800BB54D7 /* TimestampEntityTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimestampEntityTests.h; sourceTree = "<group>"; };
 		64E7F038138551D800BB54D7 /* TimestampEntityTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimestampEntityTests.m; sourceTree = "<group>"; };
@@ -644,8 +644,8 @@
 				64EAE5FB1379DDE900544C29 /* FileTableController.m */,
 				648063371385A6C600E0CA27 /* BlockTableController.h */,
 				648063381385A6C600E0CA27 /* BlockTableController.m */,
-				64E7F057138561ED00BB54D7 /* SetlistTableController.h */,
 				64E7F058138561ED00BB54D7 /* SetlistTableController.m */,
+				64E7F057138561ED00BB54D7 /* SetlistTableController.h */,
 				64415E9A137DD50300DADC4C /* Cell */,
 			);
 			name = "Files list controller";

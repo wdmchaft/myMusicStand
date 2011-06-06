@@ -17,14 +17,15 @@
 
 @implementation FileTableController
 
-- (id)initWithManagedObjectContext:(NSManagedObjectContext *)moc
+- (id)initWithManagedObjectContext:(NSManagedObjectContext *)moc andTableView:(UITableView *)tv
 {
-    self = [super initWithManagedObjectContext:moc];
+    self = [super initWithManagedObjectContext:moc andTableView:tv];
     
     if (self)
     {
         blocksToFilenames = [[NSMutableDictionary alloc] init];
-               
+        tableView = [tv retain];
+        
         // Register for ReloadTableNotification
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(reloadFiles:) 
@@ -37,6 +38,7 @@
 
 - (void)dealloc
 {
+    [tableView release];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     [blocksToFilenames release];
     [super dealloc];

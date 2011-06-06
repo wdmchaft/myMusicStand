@@ -18,8 +18,9 @@
 {
     [super setUp];
     mockContext = [OCMockObject mockForClass:[NSManagedObjectContext class]];
-    
-    controller = [[FileTableController alloc] initWithManagedObjectContext:mockContext];
+    mockTableView = [OCMockObject mockForClass:[UITableView class]];
+    controller = [[FileTableController alloc] initWithManagedObjectContext:mockContext 
+                                                              andTableView:mockTableView];
     indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
 }
 
@@ -62,11 +63,7 @@
 
 
 - (void)testFilesReloadedWhenNotifiedToReload
-{
-    // setup data
-    id mockTableView = [OCMockObject mockForClass:[UITableView class]];
-    [controller setTableView:mockTableView];
-    
+{    
     // setup expectations
     [[mockTableView expect] reloadData];
     [[mockContext expect] allEntity:@"File"];
