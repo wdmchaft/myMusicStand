@@ -22,7 +22,6 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        context = [[myMusicStandAppDelegate sharedInstance] managedObjectContext];
     }
     return self;
 }
@@ -45,6 +44,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    context = [[myMusicStandAppDelegate sharedInstance] managedObjectContext];
+    
     // Do any additional setup after loading the view from its nib.
     
     blockController = [[FileTableController alloc] initWithManagedObjectContext:context andTableView:tableView];

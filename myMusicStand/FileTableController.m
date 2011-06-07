@@ -138,7 +138,6 @@
     PDFPagingViewController *pdfViewer = 
         [[PDFPagingViewController alloc] initWithPDFURLArray:[NSArray arrayWithObject:url]];
     
-    
     // Hide the navbar
     UIView *bottomOfStand = [delegate bottomOfStand];
     [bottomOfStand setHidden:YES];

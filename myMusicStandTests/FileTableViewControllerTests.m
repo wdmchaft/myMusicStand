@@ -48,6 +48,9 @@
 - (void)testIllegalSetup
 {
     STAssertThrows([[FileTableController alloc] init], @"Should be illegal");
+    
+    
+   
 }
 
 - (void)testControllerReturnsCorrectNumberOfRows
