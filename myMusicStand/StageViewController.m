@@ -47,16 +47,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    blockController = [[FileTableController alloc] initWithManagedObjectContext:context];
+    blockController = [[FileTableController alloc] initWithManagedObjectContext:context andTableView:tableView];
     // Set navigationController
     [blockController setNavigationController:[self navigationController]];
-    
-    // Give blockControll ref to tableView
-    [(FileTableController *)blockController setTableView:tableView];
-    
-    // Set blockController as delegate and datasource of our table
-    [tableView setDelegate:blockController];
-    [tableView setDataSource:blockController];
     
     // Set visual aspects of tableview
     [tableView setBackgroundColor:[UIColor clearColor]];
