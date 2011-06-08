@@ -3,7 +3,7 @@ Given /^I see an empty table$/ do
 end
 
 Then /^I should see "([^"]*)" block$/ do |expectedmark|
-  check_element_exists "tableView tableViewCell view marked:'#{expectedmark}'"
+  check_element_exists "tableView tableViewCell view marked:'#{expectedmark} block'"
 end
 
 Then /^I should see "([^"]*)" label$/ do |expectedmark|

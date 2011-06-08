@@ -94,7 +94,7 @@
         [gr release];
         
         // Set accessiblity labels
-        [block setAccessibilityLabel:[file filename]];
+        [block setAccessibilityLabel:[[file filename] stringByAppendingString:@" block"]];
         
         // Add mapping of block to filename, this will allow us to have the name of the 
         // file we want to open once the block is clicked

@@ -1,5 +1,5 @@
 When /^I tap "([^"]*)"$/ do |mark|
-  touchxy "view marked:'#{mark} block'", 95, 175
+  touchxy "view marked:'#{mark} block'", 100, 136 
 end
 
 def touchxy( uiquery, x, y ) 
