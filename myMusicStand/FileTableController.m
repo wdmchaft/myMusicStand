@@ -38,6 +38,8 @@
                                                  selector:@selector(reloadFiles:) 
                                                      name:@"ReloadTableNotification" 
                                                    object:nil];
+        
+        [self setModel:[context allEntity:@"File"]];
     }
     
     return self;
@@ -90,6 +92,9 @@
         gr = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openPDF:)];
         [block addGestureRecognizer:gr];
         [gr release];
+        
+        // Set accessiblity labels
+        [block setAccessibilityLabel:[file filename]];
         
         // Add mapping of block to filename, this will allow us to have the name of the 
         // file we want to open once the block is clicked

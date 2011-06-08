@@ -24,6 +24,10 @@
     [[mockTableView expect] setDelegate:[OCMArg any]];
     [[mockTableView expect] setDataSource:[OCMArg any]];
     
+    // Expect files to be loaded to display on instanciation
+    [[mockContext expect] allEntity:@"File"];
+    [[[mockContext stub] andReturn:nil] allEntity:@"File"];
+    
     controller = [[FileTableController alloc] initWithManagedObjectContext:mockContext 
                                                               andTableView:mockTableView];
     indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
@@ -48,9 +52,7 @@
 - (void)testIllegalSetup
 {
     STAssertThrows([[FileTableController alloc] init], @"Should be illegal");
-    
-    
-   
+       
 }
 
 - (void)testControllerReturnsCorrectNumberOfRows
@@ -77,8 +79,6 @@
 {    
     // setup expectations
     [[mockTableView expect] reloadData];
-    [[mockContext expect] allEntity:@"File"];
-    [[[mockContext stub] andReturn:nil] allEntity:@"File"];
     
     // exercise
     NSNotification *notification = [NSNotification notificationWithName:@"ReloadTableNotification"
