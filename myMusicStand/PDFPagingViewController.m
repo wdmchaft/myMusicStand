@@ -257,6 +257,9 @@ clickedButtonAtIndex:(NSInteger)buttonIndex
 
 	PDFScrollView* pdfPage = (PDFScrollView*)page;
 	
+    // Set the accessibility label for the page
+    [page setAccessibilityLabel:[NSString stringWithFormat:@"Page %ul", index + 1]];
+     
     NSLog(@"Relative Number: %d", [relativePageNum intValue]);
     // give the PDFScrollView its page
     CGPDFPageRef thePage = CGPDFDocumentGetPage(document, [relativePageNum intValue] + 1);
