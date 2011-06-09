@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		64415E8A137D8EAD00DADC4C /* BlockTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64415E89137D8EAD00DADC4C /* BlockTableViewCell.xib */; };
+		645A46E2139FFC500024B8AD /* VisibleTouch.m in Sources */ = {isa = PBXBuildFile; fileRef = 645A46DF139FF6300024B8AD /* VisibleTouch.m */; };
 		648063391385A6C600E0CA27 /* BlockTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = 648063381385A6C600E0CA27 /* BlockTableController.m */; };
 		6480633A1385A6C600E0CA27 /* BlockTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = 648063381385A6C600E0CA27 /* BlockTableController.m */; };
 		64C96969137B754E002B5D10 /* DelegateTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 64C96968137B754E002B5D10 /* DelegateTests.m */; };
@@ -158,6 +159,8 @@
 
 /* Begin PBXFileReference section */
 		64415E89137D8EAD00DADC4C /* BlockTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BlockTableViewCell.xib; sourceTree = "<group>"; };
+		645A46DE139FF6300024B8AD /* VisibleTouch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VisibleTouch.h; sourceTree = "<group>"; };
+		645A46DF139FF6300024B8AD /* VisibleTouch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VisibleTouch.m; sourceTree = "<group>"; };
 		648063371385A6C600E0CA27 /* BlockTableController.h */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.c.h; path = BlockTableController.h; sourceTree = "<group>"; tabWidth = 4; usesTabs = 0; wrapsLines = 1; };
 		648063381385A6C600E0CA27 /* BlockTableController.m */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.c.objc; path = BlockTableController.m; sourceTree = "<group>"; tabWidth = 4; usesTabs = 0; wrapsLines = 1; };
 		64C96967137B754E002B5D10 /* DelegateTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DelegateTests.h; sourceTree = "<group>"; };
@@ -802,6 +805,8 @@
 				64FAA511138C41B4009465BC /* UITraversal.m */,
 				64FAA512138C41B4009465BC /* ViewFilterSwizzler.h */,
 				64FAA513138C41B4009465BC /* ViewFilterSwizzler.m */,
+				645A46DE139FF6300024B8AD /* VisibleTouch.h */,
+				645A46DF139FF6300024B8AD /* VisibleTouch.m */,
 			);
 			path = dsl;
 			sourceTree = "<group>";
@@ -1047,6 +1052,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				645A46E2139FFC500024B8AD /* VisibleTouch.m in Sources */,
 				64FAA49A138C411F009465BC /* main.m in Sources */,
 				64FAA49B138C411F009465BC /* myMusicStandAppDelegate.m in Sources */,
 				64FAA49C138C411F009465BC /* myMusicStand.xcdatamodeld in Sources */,

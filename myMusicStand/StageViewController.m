@@ -56,6 +56,7 @@
     // Set visual aspects of tableview
     [tableView setBackgroundColor:[UIColor clearColor]];
     [tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
+    [tableView setAllowsSelection:NO];
     
     // Give the tableView a label of "Charts"
     [tableView setAccessibilityLabel:@"Charts"];
