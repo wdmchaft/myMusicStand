@@ -419,7 +419,7 @@
 	return [UIQuery withViews:views className:className];
 }
 
-- (UIQuery *)touchxy:(NSNumber *)x ycoord:(NSNumber *)y {
+- (UIQuery *)touchx:(NSNumber *)x y:(NSNumber *)y {
 	//NSLog(@"UIQuery - (UIQuery *)touchxy:(int)x ycoord:(int)y = %@, %@", x, y);
 	[[UIQueryExpectation withQuery:self] exist:@"before you can touch it"];
 	
