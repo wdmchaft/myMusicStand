@@ -28,6 +28,8 @@
 
 - (void)dealloc
 {
+    [blockController release];
+    [bottomOfStand release];
     [tableView release];
     [super dealloc];
 }
@@ -66,8 +68,12 @@
 - (void)viewDidUnload
 {
     [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
+    [blockController release];
+    blockController = nil;
+    [bottomOfStand release];
+    bottomOfStand = nil;
+    [tableView release];
+    tableView = nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
