@@ -95,13 +95,10 @@
     else 
     {
         // else show setlists controller
-        newBlockController = [[SetlistTableController alloc] init];
-        
-        // Give the controller the current setlists
-        NSMutableArray *setlists = [[context allEntity:@"Setlist"] mutableCopy];
-        
-        [(SetlistTableController *)newBlockController setModel:[setlists autorelease]];
+        newBlockController = [[SetlistTableController alloc] initWithManagedObjectContext:context
+                                                                             andTableView:newTableView];
     }
+    
     
     CGRect leftframe = [[self view] frame];
     leftframe.origin.x -= leftframe.size.width;
@@ -132,14 +129,6 @@
                          
                          // Set new tableView
                          tableView = newTableView;
-                         
-                         // unregister old block controller 
-                         [[NSNotificationCenter defaultCenter] removeObserver:blockController];
-                         // Register blockController for notifications
-                         [[NSNotificationCenter defaultCenter] addObserver:newBlockController
-                                                                  selector:@selector(reloadModel:) 
-                                                                      name:NSManagedObjectContextDidSaveNotification
-                                                                    object:nil];
                          
                          // Set new blockController
                          [blockController release];

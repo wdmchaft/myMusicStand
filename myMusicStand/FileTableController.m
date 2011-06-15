@@ -19,19 +19,12 @@
 
 - (id)initWithManagedObjectContext:(NSManagedObjectContext *)moc andTableView:(UITableView *)tv
 {
-    self = [super initWithManagedObjectContext:moc];
+    self = [super initWithManagedObjectContext:moc andTableView:tv];
     
     if (self)
     {
         // Creat our map
         blocksToFilenames = [[NSMutableDictionary alloc] init];
-        
-        // Hold onto the table
-        tableView = [tv retain];
-        
-        // set table properties 
-        [tableView setDelegate:self];
-        [tableView setDataSource:self];
         
         // Register for ReloadTableNotification
         [[NSNotificationCenter defaultCenter] addObserver:self

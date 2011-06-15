@@ -12,6 +12,8 @@
 @interface SetlistTableControllerTests : SenTestCase 
 {
     SetlistTableController *controller;
+    id mockContext;
+    id mockTableView;
 }
 
 @end

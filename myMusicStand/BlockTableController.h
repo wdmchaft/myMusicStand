@@ -18,7 +18,7 @@
 @property (nonatomic, assign) UINavigationController *navigationController;
 @property (nonatomic, assign) UITableView *tableView;
 @property (nonatomic, retain) NSArray *model;
-- (id)initWithManagedObjectContext:(NSManagedObjectContext *)moc;
+- (id)initWithManagedObjectContext:(NSManagedObjectContext *)moc andTableView:(UITableView *)tv;
 - (UITableViewCell *)blockCellForTableView:(UITableView *)tableView;
 - (int)numberOfBlocks; // index for block cell
 @end

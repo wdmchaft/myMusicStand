@@ -17,11 +17,11 @@
 
 @implementation SetlistTableController
 
-- (id)initWithManagedObjectContext:(NSManagedObjectContext *)moc
+- (id)initWithManagedObjectContext:(NSManagedObjectContext *)moc andTableView:(UITableView *)tv
 {
-    self = [super initWithManagedObjectContext:moc];
+    self = [super initWithManagedObjectContext:moc andTableView:tv];
     if (self) {
-        // Custom initialization
+        
         
     }
     return self;
@@ -95,6 +95,12 @@
     }
     
     return cell;
+}
+
+- (void)reloadFiles:(NSNotification *)notification
+{
+    [self setModel:[context allEntity:@"Setlist"]];
+    [tableView reloadData];
 }
 
 #pragma mark Gesture Response methods

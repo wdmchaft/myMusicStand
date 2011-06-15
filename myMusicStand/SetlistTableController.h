@@ -13,9 +13,9 @@
 
 @class NSManagedObjectContext;
 @interface SetlistTableController : BlockTableController {
-    
+
 }
 
-- (id)initWithManagedObjectContext:(NSManagedObjectContext *)moc;
+- (id)initWithManagedObjectContext:(NSManagedObjectContext *)moc andTableView:(UITableView *)tv;
 
 @end

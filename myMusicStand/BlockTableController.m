@@ -24,12 +24,15 @@
     @throw @"Illegal instantiation! please use: initWithManagedObjectContext:";
 }
 
-- (id)initWithManagedObjectContext:(NSManagedObjectContext *)moc
+- (id)initWithManagedObjectContext:(NSManagedObjectContext *)moc andTableView:(UITableView *)tv
 {
     self = [super init];
     if (self) {
         context = [moc retain];
         model = [[NSArray alloc] init];
+        tableView = [tv retain];
+        [tableView setDataSource:self];
+        [tableView setDelegate:self];
     }
     return self;
 }

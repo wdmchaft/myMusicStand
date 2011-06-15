@@ -16,14 +16,22 @@
 - (void)setUp
 {
     [super setUp];
-    id mockContext = [OCMockObject mockForClass:[NSManagedObjectContext class]];
-    controller = [[SetlistTableController alloc] initWithManagedObjectContext:mockContext];
+    mockContext = [OCMockObject mockForClass:[NSManagedObjectContext class]];
+    mockTableView = [OCMockObject mockForClass:[UITableView class]];
+    
+    // TableVie must expect it's setup
+    [[mockTableView expect] setDelegate:[OCMArg any]];
+    [[mockTableView expect] setDataSource:[OCMArg any]];
+
+    controller = [[SetlistTableController alloc] initWithManagedObjectContext:mockContext
+                                                                 andTableView:mockTableView];
 }
 
 - (void)tearDown
 {
     // Tear-down code here.
-    
+    [mockTableView verify];
+    [mockContext verify];
     [super tearDown];
 }
 
