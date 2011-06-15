@@ -28,6 +28,7 @@
 
 - (void)dealloc
 {
+    [tableView release];
     [super dealloc];
 }
 
@@ -85,11 +86,28 @@
     UITableView *newTableView = [[UITableView alloc] initWithFrame:[tableView frame]
                                                              style:UITableViewStylePlain];
     
+    // Define frames to use for animations
+    CGRect leftframe = [tableView frame];
+    leftframe.origin.x -= leftframe.size.width;
+    
+    CGRect rightframe = [tableView frame];
+    rightframe.origin.x += rightframe.size.width;
+    
+    // Final frame to use
+    CGRect centerframe = [tableView frame];
+    
+    // frame to use when animating out tableview
+    CGRect outframe;
+    
     if ([sender selectedSegmentIndex] == FILES_CONTROLLER_INDEX)
     {
         // display files controller, giving it the ability to update the tableview 
         newBlockController = [[FileTableController alloc] initWithManagedObjectContext:context
                                                                           andTableView:newTableView];
+        // set new view as leftframe and animate it in
+        [newTableView setFrame:leftframe];
+        
+        outframe = rightframe;
         
     }
     else 
@@ -97,11 +115,12 @@
         // else show setlists controller
         newBlockController = [[SetlistTableController alloc] initWithManagedObjectContext:context
                                                                              andTableView:newTableView];
+        // set new view as rightframe and animate it in
+        [newTableView setFrame:rightframe];
+        
+        outframe = leftframe;
     }
     
-    
-    CGRect leftframe = [[self view] frame];
-    leftframe.origin.x -= leftframe.size.width;
     
     // add the new view to the window
     [[self view] addSubview:newTableView];
@@ -116,10 +135,13 @@
     // move navbar to front
     [[self view] bringSubviewToFront:bottomOfStand];
     
+    
+    
     [UIView animateWithDuration:0.2 
                      animations:^{
                          
-                         [tableView setFrame:leftframe];
+                         [tableView setFrame:outframe];
+                         [newTableView setFrame:centerframe];
                      }
                      completion:^(BOOL finished){
                          
@@ -128,7 +150,7 @@
                          [tableView release];
                          
                          // Set new tableView
-                         tableView = newTableView;
+                         tableView = [newTableView retain];
                          
                          // Set new blockController
                          [blockController release];
