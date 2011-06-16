@@ -18,16 +18,23 @@
 
 @implementation StageViewController
 
+@synthesize horizontalSwipe;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
+        horizontalSwipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self
+                                                                    action:@selector(handleHorizontalSwipe:)];
+        [horizontalSwipe setNumberOfTouchesRequired:3];
+        [[self view] addGestureRecognizer:horizontalSwipe];
     }
     return self;
 }
 
 - (void)dealloc
 {
+    [horizontalSwipe release];
     [blockController release];
     [bottomOfStand release];
     [tableView release];
