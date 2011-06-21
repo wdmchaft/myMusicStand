@@ -60,6 +60,7 @@
 		641382D213A43A17001311E9 /* UIInspector.m in Sources */ = {isa = PBXBuildFile; fileRef = 6413829B13A43A17001311E9 /* UIInspector.m */; };
 		641382D313A43A17001311E9 /* UIProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6413829D13A43A17001311E9 /* UIProxy.m */; };
 		641382D413A43A17001311E9 /* WaitUntilIdle.m in Sources */ = {isa = PBXBuildFile; fileRef = 6413829F13A43A17001311E9 /* WaitUntilIdle.m */; };
+		641A14B013B133760028644D /* Entitlements.entitlements in Resources */ = {isa = PBXBuildFile; fileRef = 641A14AF13B133760028644D /* Entitlements.entitlements */; };
 		64415E8A137D8EAD00DADC4C /* BlockTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64415E89137D8EAD00DADC4C /* BlockTableViewCell.xib */; };
 		645E6A2F13AA9761001DB0DB /* StageViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 645E6A2E13AA9761001DB0DB /* StageViewControllerTests.m */; };
 		648063391385A6C600E0CA27 /* BlockTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = 648063381385A6C600E0CA27 /* BlockTableController.m */; };
@@ -267,6 +268,7 @@
 		6413829D13A43A17001311E9 /* UIProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIProxy.m; sourceTree = "<group>"; };
 		6413829E13A43A17001311E9 /* WaitUntilIdle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaitUntilIdle.h; sourceTree = "<group>"; };
 		6413829F13A43A17001311E9 /* WaitUntilIdle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WaitUntilIdle.m; sourceTree = "<group>"; };
+		641A14AF13B133760028644D /* Entitlements.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = Entitlements.entitlements; path = ../Entitlements.entitlements; sourceTree = "<group>"; };
 		64415E89137D8EAD00DADC4C /* BlockTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BlockTableViewCell.xib; sourceTree = "<group>"; };
 		645E6A2D13AA9761001DB0DB /* StageViewControllerTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StageViewControllerTests.h; sourceTree = "<group>"; };
 		645E6A2E13AA9761001DB0DB /* StageViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StageViewControllerTests.m; sourceTree = "<group>"; };
@@ -639,6 +641,7 @@
 		64D94E001379B2CB00300349 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				641A14AF13B133760028644D /* Entitlements.entitlements */,
 				64D94E011379B2CB00300349 /* myMusicStand-Info.plist */,
 				64D94E021379B2CB00300349 /* InfoPlist.strings */,
 				64D94E051379B2CB00300349 /* myMusicStand-Prefix.pch */,
@@ -976,6 +979,7 @@
 				64415E8A137D8EAD00DADC4C /* BlockTableViewCell.xib in Resources */,
 				64E380651381786700A43834 /* floorAndStage.png in Resources */,
 				64FAA48F138BFE67009465BC /* StageViewController.xib in Resources */,
+				641A14B013B133760028644D /* Entitlements.entitlements in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1215,13 +1219,15 @@
 			buildSettings = {
 				ADDITIONAL_SDKS = "";
 				ARCHS = "$(ARCHS_UNIVERSAL_IPHONE_OS)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_ENTITLEMENTS[sdk=*]" = Entitlements.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: William Negron";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "FDDC7BC8-5217-4D8D-AAE6-6EF2E9B5B8E4";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 2;
 			};
