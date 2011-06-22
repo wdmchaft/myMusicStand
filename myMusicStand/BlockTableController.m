@@ -11,6 +11,12 @@
 
 #define NUM_BLOCKS_PER_CELL 3
 
+@interface BlockTableController (privateMethods)
+// private methods
+- (void)configureCell:(UITableViewCell *)cell 
+         forIndexPath:(NSIndexPath *)indexPath;
+@end
+
 @implementation BlockTableController
 
 @synthesize navigationController;
@@ -73,12 +79,12 @@
     return cell;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (void)configureCell:(UITableViewCell *)cell 
+         forIndexPath:(NSIndexPath *)indexPath
 {
-    @throw @"Subclass responsibility";
-    
-    return nil;
+     @throw @"Subclass responsibility";
 }
+
 
 - (void) setUpModelWithContext:(NSManagedObjectContext *)context
 {
@@ -86,11 +92,20 @@
 }
 
 
+
+// Number of blocks to display in the table
+- (int)numberOfBlocks 
+{
+    return [model count];
+}
+
+#pragma mark TableView DataSource Methods
+
 // Determine the number of rows based on the number of blocks in the table
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     int numberOfBlocks = [self numberOfBlocks];
-
+    
     // Calculate if there is a remainder
     int remainder = numberOfBlocks % NUM_BLOCKS_PER_CELL;
     
@@ -104,10 +119,14 @@
     return numberOfBlocks / NUM_BLOCKS_PER_CELL;
 }
 
-// Number of blocks to display in the table
-- (int)numberOfBlocks 
+
+- (UITableViewCell *)tableView:(UITableView *)tv cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return [model count];
+    UITableViewCell *cell = [self blockCellForTableView:tv];
+    
+    [self configureCell:cell forIndexPath:indexPath];
+
+    return cell;
 }
 
 @end

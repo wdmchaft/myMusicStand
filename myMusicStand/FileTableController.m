@@ -48,7 +48,8 @@
 
 #pragma mark - Helper methods
 
-- (void)configureCell:(UITableViewCell *)cell forIndexPath:(NSIndexPath *)indexPath  
+- (void)configureCell:(UITableViewCell *)cell 
+         forIndexPath:(NSIndexPath *)indexPath  
 {
     // File to display
     File *file;
@@ -76,8 +77,9 @@
         [label setTextColor:[UIColor whiteColor]];
         
         // Add a gesture recognizer
-        UIGestureRecognizer *gr = [[UILongPressGestureRecognizer alloc] initWithTarget:self
-                                                                                action:@selector(editAlias:)];
+        UIGestureRecognizer *gr = 
+            [[UILongPressGestureRecognizer alloc] initWithTarget:self
+                                                          action:@selector(editAlias:)];
         [label addGestureRecognizer:gr];
         [gr release];
         
@@ -100,16 +102,6 @@
 }
 
 #pragma mark - Table view data source
-
-- (UITableViewCell *)tableView:(UITableView *)tv cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    UITableViewCell *cell;
-    cell = [self blockCellForTableView: tv];
-    
-    [self configureCell: cell forIndexPath: indexPath];
-    
-    return cell;
-}
 
 - (void)reloadFiles:(NSNotification *)notification
 {
