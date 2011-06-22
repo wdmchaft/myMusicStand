@@ -61,6 +61,7 @@
 		641382D313A43A17001311E9 /* UIProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6413829D13A43A17001311E9 /* UIProxy.m */; };
 		641382D413A43A17001311E9 /* WaitUntilIdle.m in Sources */ = {isa = PBXBuildFile; fileRef = 6413829F13A43A17001311E9 /* WaitUntilIdle.m */; };
 		641A14B013B133760028644D /* Entitlements.entitlements in Resources */ = {isa = PBXBuildFile; fileRef = 641A14AF13B133760028644D /* Entitlements.entitlements */; };
+		64204D6E13B246B50048AE91 /* Path.m in Sources */ = {isa = PBXBuildFile; fileRef = 64204D6D13B246B50048AE91 /* Path.m */; };
 		64415E8A137D8EAD00DADC4C /* BlockTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64415E89137D8EAD00DADC4C /* BlockTableViewCell.xib */; };
 		645E6A2F13AA9761001DB0DB /* StageViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 645E6A2E13AA9761001DB0DB /* StageViewControllerTests.m */; };
 		648063391385A6C600E0CA27 /* BlockTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = 648063381385A6C600E0CA27 /* BlockTableController.m */; };
@@ -269,6 +270,8 @@
 		6413829E13A43A17001311E9 /* WaitUntilIdle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaitUntilIdle.h; sourceTree = "<group>"; };
 		6413829F13A43A17001311E9 /* WaitUntilIdle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WaitUntilIdle.m; sourceTree = "<group>"; };
 		641A14AF13B133760028644D /* Entitlements.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = Entitlements.entitlements; path = ../Entitlements.entitlements; sourceTree = "<group>"; };
+		64204D6C13B246B50048AE91 /* Path.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Path.h; sourceTree = "<group>"; };
+		64204D6D13B246B50048AE91 /* Path.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Path.m; sourceTree = "<group>"; };
 		64415E89137D8EAD00DADC4C /* BlockTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BlockTableViewCell.xib; sourceTree = "<group>"; };
 		645E6A2D13AA9761001DB0DB /* StageViewControllerTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StageViewControllerTests.h; sourceTree = "<group>"; };
 		645E6A2E13AA9761001DB0DB /* StageViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StageViewControllerTests.m; sourceTree = "<group>"; };
@@ -509,6 +512,8 @@
 		6413826213A43A17001311E9 /* dsl */ = {
 			isa = PBXGroup;
 			children = (
+				64204D6C13B246B50048AE91 /* Path.h */,
+				64204D6D13B246B50048AE91 /* Path.m */,
 				6413826313A43A17001311E9 /* EventSynthesis.h */,
 				6413826413A43A17001311E9 /* EventSynthesis.m */,
 				6413826513A43A17001311E9 /* InvisibleFinger.h */,
@@ -1157,6 +1162,7 @@
 				641382D213A43A17001311E9 /* UIInspector.m in Sources */,
 				641382D313A43A17001311E9 /* UIProxy.m in Sources */,
 				641382D413A43A17001311E9 /* WaitUntilIdle.m in Sources */,
+				64204D6E13B246B50048AE91 /* Path.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
