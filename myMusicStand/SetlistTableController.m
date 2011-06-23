@@ -20,13 +20,26 @@
 - (id)initWithManagedObjectContext:(NSManagedObjectContext *)moc andTableView:(UITableView *)tv
 {
     self = [super initWithManagedObjectContext:moc andTableView:tv];
-    if (self) {
+    
+    if (self) 
+    {
+        // setup model with Setlists
         [self setModel:[context allEntity:@"Setlist"]];
+        // Register to receive SaveNotifications
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(reloadFiles:)
+                                                     name:NSManagedObjectContextDidSaveNotification 
+                                                   object:nil];
     }
     return self;
 
 }
 
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [super dealloc];
+}
 #pragma mark - Helper methods
 
 - (int)numberOfBlocks 

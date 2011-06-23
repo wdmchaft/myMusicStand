@@ -18,6 +18,5 @@
 }
 
 - (void)reloadFiles:(NSNotification *)notification;
-- (id)initWithManagedObjectContext:(NSManagedObjectContext *)moc andTableView:(UITableView *)tv;
 -(void)editAlias:(UIGestureRecognizer *)recognizer;
 @end

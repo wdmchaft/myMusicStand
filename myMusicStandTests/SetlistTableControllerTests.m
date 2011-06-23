@@ -29,6 +29,7 @@
     
     controller = [[SetlistTableController alloc] initWithManagedObjectContext:mockContext
                                                                  andTableView:mockTableView];
+    
 }
 
 - (void)tearDown
@@ -36,6 +37,9 @@
     // Tear-down code here.
     [mockTableView verify];
     [mockContext verify];
+    mockTableView = nil;
+    mockContext = nil;
+    [controller release];
     [super tearDown];
 }
 
@@ -68,4 +72,14 @@
                    @"Should have returned the number of rows");
 }
 
+- (void)testSetlistReloadForSaveNotification
+{
+    [[mockTableView expect] reloadData];
+    [[mockContext expect] allEntity:@"Setlist"];
+    [[[mockContext stub] andReturn:nil] allEntity:@"Setlist"];
+    
+    // Post notification for save
+    [[NSNotificationCenter defaultCenter] postNotificationName:NSManagedObjectContextDidSaveNotification
+                                                        object:nil];
+}
 @end

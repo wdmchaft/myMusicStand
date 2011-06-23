@@ -37,7 +37,6 @@
 {
     [mockTableView verify];
     [mockContext verify];
-    
     [controller release];
     [super tearDown];
 }
