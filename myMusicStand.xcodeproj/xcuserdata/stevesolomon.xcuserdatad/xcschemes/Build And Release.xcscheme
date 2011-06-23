@@ -4,15 +4,6 @@
    <BuildAction
       parallelizeBuildables = "YES"
       buildImplicitDependencies = "YES">
-      <PostActions>
-         <ExecutionAction
-            ActionType = "Xcode.IDEStandardExecutionActionsCore.ExecutionActionType.ShellScriptAction">
-            <ActionContent
-               title = "Run Script"
-               scriptText = "# copy the app into the dropbox directory &#10;# and let dropbox sync it&#10;cp -r /Users/stevesolomon/Library/Developer/Xcode/DerivedData/myMusicStand-hkyeqrmwoapwjgbcxbmskdnrvwss/Build/Products/Release-iphoneos/myMusicStand.app /Users/stevesolomon/Dropbox/our\ app/&#10;&#10;">
-            </ActionContent>
-         </ExecutionAction>
-      </PostActions>
       <BuildActionEntries>
          <BuildActionEntry
             buildForTesting = "NO"
@@ -78,5 +69,14 @@
    <ArchiveAction
       buildConfiguration = "Release"
       revealArchiveInOrganizer = "YES">
+      <PostActions>
+         <ExecutionAction
+            ActionType = "Xcode.IDEStandardExecutionActionsCore.ExecutionActionType.ShellScriptAction">
+            <ActionContent
+               title = "Run Script"
+               scriptText = "# copy the app into the dropbox directory &#10;# and let dropbox sync it&#10;cp -r /Users/stevesolomon/Library/Developer/Xcode/DerivedData/myMusicStand-hkyeqrmwoapwjgbcxbmskdnrvwss/Build/Products/Release-iphoneos/myMusicStand.app /Users/stevesolomon/Dropbox/our\ app/&#10;&#10;# copy the archives into dropbox&#10;cp -r /Users/stevesolomon/Library/Developer/Xcode/Archives /Users/stevesolomon/Dropbox/our\ app/">
+            </ActionContent>
+         </ExecutionAction>
+      </PostActions>
    </ArchiveAction>
 </Scheme>

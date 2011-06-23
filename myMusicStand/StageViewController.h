@@ -14,9 +14,6 @@
     NSManagedObjectContext *context;
     IBOutlet UITableView *tableView;
     IBOutlet UINavigationBar *bottomOfStand;
-    UISwipeGestureRecognizer *horizontalSwipe;
 }
-
-@property (nonatomic, readonly) UISwipeGestureRecognizer *horizontalSwipe;
 - (IBAction)tabIndexChanged:(UISegmentedControl *)sender;
 @end
