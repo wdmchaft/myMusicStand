@@ -48,21 +48,17 @@
 
 - (void)testControllerReturnsCorrectNumberOfRows
 {
-    // Test 1 additional value increment the row
-    [controller setModel:[NSArray arrayWithObjects:@"", @"", @"", @"", @"", @"", @"", nil]];
-    STAssertEquals(3, [controller tableView:nil numberOfRowsInSection:0], 
-                   @"Calculate the offset in terms of the base value");
+    [controller setModel:[NSArray arrayWithObjects:@"", @"", nil]];
+    STAssertEquals(1, [controller tableView:nil numberOfRowsInSection:0], 
+                   @"Should have returned the number of rows");
     
-    // Test 2 additional values increment the row
-    [controller setModel:[NSArray arrayWithObjects:@"", @"", @"", @"", @"",nil]];
+    [controller setModel:[NSArray arrayWithObjects:@"", nil]];
+    STAssertEquals(1, [controller tableView:nil numberOfRowsInSection:0], 
+                   @"Should have returned the number of rows");
+    
+    [controller setModel:[NSArray arrayWithObjects:@"", @"", @"", nil]];
     STAssertEquals(2, [controller tableView:nil numberOfRowsInSection:0], 
-                   @"The number of rows should be 2");
-    
-    // Test 3 additional values incremente the row
-    [controller setModel:[NSArray arrayWithObjects:@"", @"", @"", @"", @"", @"", @"", 
-                          @"", @"", @"", @"", @"", nil]];
-    STAssertEquals(5, [controller tableView:nil numberOfRowsInSection:0], 
-                   @"Calculate the offset in terms of the base value");
+                   @"Should have returned the number of rows");
 }
 
 @end
