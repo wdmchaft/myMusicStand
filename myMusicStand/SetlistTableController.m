@@ -21,8 +21,7 @@
 {
     self = [super initWithManagedObjectContext:moc andTableView:tv];
     if (self) {
-        
-        
+        [self setModel:[context allEntity:@"Setlist"]];
     }
     return self;
 
@@ -32,7 +31,7 @@
 
 - (int)numberOfBlocks 
 {
-    return [model count] + NUM_ADD_BLOCKS;
+    return [super numberOfBlocks] + NUM_ADD_BLOCKS;
 }
 
 #pragma mark - Table view data source

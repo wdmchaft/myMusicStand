@@ -8,6 +8,7 @@
 
 #import "SetlistTableControllerTests.h"
 #import "SetlistTableController.h"
+#import "Setlist.h"
 #import <OCMock/OCMock.h>
 #import <CoreData/CoreData.h>
 
@@ -23,6 +24,9 @@
     [[mockTableView expect] setDelegate:[OCMArg any]];
     [[mockTableView expect] setDataSource:[OCMArg any]];
 
+    // Expect files to be loaded to display on instanciation
+    [[mockContext expect] allEntity:@"Setlist"];
+    
     controller = [[SetlistTableController alloc] initWithManagedObjectContext:mockContext
                                                                  andTableView:mockTableView];
 }
@@ -48,14 +52,17 @@
 
 - (void)testControllerReturnsCorrectNumberOfRows
 {
+    // Two setlists and one add block
     [controller setModel:[NSArray arrayWithObjects:@"", @"", nil]];
     STAssertEquals(1, [controller tableView:nil numberOfRowsInSection:0], 
                    @"Should have returned the number of rows");
     
+    // One setlist and one add block
     [controller setModel:[NSArray arrayWithObjects:@"", nil]];
     STAssertEquals(1, [controller tableView:nil numberOfRowsInSection:0], 
                    @"Should have returned the number of rows");
     
+    // Three setlists and one add block
     [controller setModel:[NSArray arrayWithObjects:@"", @"", @"", nil]];
     STAssertEquals(2, [controller tableView:nil numberOfRowsInSection:0], 
                    @"Should have returned the number of rows");
