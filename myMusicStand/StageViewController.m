@@ -29,6 +29,8 @@
 
 - (void)dealloc
 {
+    [tabControl release];
+    [actionItem release];
     [blockController release];
     [bottomOfStand release];
     [tableView release];
@@ -75,6 +77,10 @@
     bottomOfStand = nil;
     [tableView release];
     tableView = nil;
+    [tabControl release];
+    tabControl = nil;
+    [actionItem release];
+    actionItem = nil;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -90,6 +96,8 @@
 {
     // Nav item is container for action item options
     UINavigationItem *navItem = [[UINavigationItem alloc] init];
+    
+    // Create bbi for navItem
     UIBarButtonItem *emailItem = [[UIBarButtonItem alloc] initWithTitle:@"Email"
                                                                   style:UIBarButtonItemStyleBordered
                                                                  target:self
@@ -122,9 +130,21 @@
     [cancelItem release];
 }
 
+/*
+ *  Reset the bottomOfStand back to its original configuration
+ */ 
 - (IBAction)hideActionItems:(UIBarButtonItem *)sender
 {
-    NSLog(@"Hide Action Items");
+    UINavigationItem *navItem = [[UINavigationItem alloc] init];
+
+    // set original navItems 
+    [navItem setRightBarButtonItem:actionItem];
+    [navItem setTitleView:tabControl];
+    
+    NSArray *navArray = [NSArray arrayWithObject:navItem];
+    [bottomOfStand setItems:navArray animated:NO];
+    
+    [navItem release];
 }
 
 /*

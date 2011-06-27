@@ -14,6 +14,8 @@
     NSManagedObjectContext *context;
     IBOutlet UITableView *tableView;
     IBOutlet UINavigationBar *bottomOfStand;
+    IBOutlet UISegmentedControl *tabControl;
+    IBOutlet UIBarButtonItem *actionItem;
 }
 - (IBAction)tabIndexChanged:(UISegmentedControl *)sender;
 - (IBAction)showActionItems:(UIBarButtonItem *)sender;
