@@ -14,6 +14,13 @@
 #define NUM_BLOCKS_PER_CELL 3
 #define FIRST_LABEL_TAG 0
 #define FIRST_BLOCK_TAG 4
+#define FIRST_CHECK_TAG 7
+
+@interface FileTableController (PrivateMethods)
+
+- (void)openPDF:(UITapGestureRecognizer *)recognizer;
+- (void)toggleBlockSelection:(UITapGestureRecognizer *)recognizer;
+@end
 
 @implementation FileTableController
 
@@ -56,10 +63,12 @@
     // Label to display alias of File
     UILabel *label;
     UIView *block;
+    UIImageView *check;
     
     // Loop through all possible blocks for the cell and attempt to set their values
     int labelTagOffset = FIRST_LABEL_TAG; // starting offset 
     int blockTagOffset = FIRST_BLOCK_TAG;
+    int checkTagOffset = FIRST_CHECK_TAG;
     
     for (int index = NUM_BLOCKS_PER_CELL * [indexPath row]; // BLOCKS * row gives us the first index we can use
          index < [model count] && labelTagOffset < NUM_BLOCKS_PER_CELL; index++)
@@ -84,7 +93,7 @@
         [gr release];
         
         // Add tap recognizer to block
-        gr = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openPDF:)];
+        gr = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
         [block addGestureRecognizer:gr];
         [gr release];
         
@@ -95,8 +104,17 @@
         // file we want to open once the block is clicked
         [blocksToFilenames setObject:[file filename] forKey:[NSValue valueWithPointer:block]];
         
+        // Show check if filename is in selectedModels
+        if ([selectedModels containsObject:[file filename]])
+        {
+            // show check
+            check = (UIImageView *)[cell viewWithTag:checkTagOffset];
+            [check setHidden:NO];
+        }
+        
         labelTagOffset++;
         blockTagOffset++;
+        checkTagOffset++;
     }
 
 }
@@ -107,6 +125,22 @@
 {
     [self setModel:[context allEntity:@"File"]];
     [tableView reloadData];
+}
+
+- (void)handleTap:(UITapGestureRecognizer *)recognizer
+{
+    if ([recognizer state] == UIGestureRecognizerStateEnded)
+    {
+        if (!isSelectingBlocks)
+        {
+            [self openPDF:recognizer];
+        }
+        else
+        {
+            [self toggleBlockSelection:recognizer];
+            [[self tableView] reloadData];
+        }
+    }
 }
 
 - (void)openPDF:(UITapGestureRecognizer *)recognizer
@@ -134,6 +168,29 @@
     
     // show the PDFViewer
     [[self navigationController] pushViewController:pdfViewer animated:NO];
+}
+
+// Add the filename to the selectedModels array
+- (void)toggleBlockSelection:(UITapGestureRecognizer *)recognizer
+{  
+    // Get block from recognizer
+    UIView *block = [recognizer view];
+    
+    // Get the filename from dict
+    NSString *filename = [blocksToFilenames objectForKey:[NSValue valueWithPointer:block]];
+    
+    // If filename it is already in selectedModels
+    if ([selectedModels containsObject:filename])
+    {
+        [selectedModels removeObject:filename];
+    }
+    else // select not yet selected filename block
+    {
+        // Add filename to selectedModels
+        [selectedModels addObject:filename];
+    }
+    
+    
 }
 
 // Handle long press on alias label in a cell

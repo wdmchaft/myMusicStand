@@ -128,6 +128,9 @@
     [deleteItem release];
     [emailItem release];
     [cancelItem release];
+    
+    // Allow block selection
+    [blockController setIsSelectingBlocks:YES];
 }
 
 /*
@@ -145,6 +148,9 @@
     [bottomOfStand setItems:navArray animated:NO];
     
     [navItem release];
+    
+    // stop block selection
+    [blockController setIsSelectingBlocks:NO];
 }
 
 /*

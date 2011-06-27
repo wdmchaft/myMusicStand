@@ -22,6 +22,7 @@
 @synthesize navigationController;
 @synthesize tableView;
 @synthesize model;
+@synthesize isSelectingBlocks;
 
 #pragma mark - Life cycle
 
@@ -39,12 +40,15 @@
         tableView = [tv retain];
         [tableView setDataSource:self];
         [tableView setDelegate:self];
+        isSelectingBlocks = NO; // By default selection of blocks is disabled 
+        selectedModels = [[NSMutableArray alloc] init];
     }
     return self;
 }
 
 - (void)dealloc
 {
+    [selectedModels release];
     [model release];
     [context release];
     [super dealloc];
@@ -85,13 +89,10 @@
      @throw @"Subclass responsibility";
 }
 
-
 - (void) setUpModelWithContext:(NSManagedObjectContext *)context
 {
     @throw @"Subclass responsibility";
 }
-
-
 
 // Number of blocks to display in the table
 - (int)numberOfBlocks 

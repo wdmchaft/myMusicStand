@@ -48,9 +48,6 @@
 }
 
 #pragma mark - Table view data source
-
-
-
 - (void)reloadFiles:(NSNotification *)notification
 {
     [self setModel:[context allEntity:@"Setlist"]];
