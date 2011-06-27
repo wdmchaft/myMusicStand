@@ -86,6 +86,72 @@
 
 #pragma mark Action Methods
 
+- (IBAction)showActionItems:(UIBarButtonItem *)sender
+{
+    // Nav item is container for action item options
+    UINavigationItem *navItem = [[UINavigationItem alloc] init];
+    UIBarButtonItem *emailItem = [[UIBarButtonItem alloc] initWithTitle:@"Email"
+                                                                  style:UIBarButtonItemStyleBordered
+                                                                 target:self
+                                                                 action:@selector(attemptToSendEmail:)];
+    UIBarButtonItem *printItem = [[UIBarButtonItem alloc] initWithTitle:@"Print" 
+                                                                  style:UIBarButtonItemStyleBordered 
+                                                                 target:self
+                                                                 action:@selector(attemptToPrint:)];
+    UIBarButtonItem *deleteItem = [[UIBarButtonItem alloc] initWithTitle:@"Delete"
+                                                                   style:UIBarButtonItemStyleBordered
+                                                                  target:self
+                                                                  action:@selector(delete:)];
+    UIBarButtonItem *cancelItem = [[UIBarButtonItem alloc] initWithTitle:@"Cancel"
+                                                                   style:UIBarButtonItemStyleBordered 
+                                                                  target:self
+                                                                  action:@selector(hideActionItems:)];
+    // pack all the bbis into nav item
+    [navItem setLeftBarButtonItems:[NSArray arrayWithObjects:emailItem, printItem, deleteItem, nil]];
+    [navItem setRightBarButtonItem:cancelItem];
+    
+    // put navitem onto bottom of stand
+    [bottomOfStand setItems:[NSArray arrayWithObject:navItem] 
+                   animated:YES];
+    
+    // Cleanup
+    [navItem release];
+    [printItem release];
+    [deleteItem release];
+    [emailItem release];
+    [cancelItem release];
+}
+
+- (IBAction)hideActionItems:(UIBarButtonItem *)sender
+{
+    NSLog(@"Hide Action Items");
+}
+
+/*
+ *  Display print options for selected blocks
+ */
+- (void)attemptToPrint:(UIBarButtonItem *)sender 
+{
+    NSLog(@"Print selected blocks");
+}
+
+/*
+ *  Email selected blocks only if the total file size
+ *  is less than the maximum email file size (tbd)
+ */
+- (void)attemptToSendEmail:(UIBarButtonItem *)sender
+{
+    NSLog(@"Email selected blocks");
+}
+
+/*
+ *  Delete selected blocks
+ */
+- (void)delete:(UIBarButtonItem *)sender
+{
+    NSLog(@"Delete selected blocks");
+}
+
 // When the tab changes we know we have to switch controllers
 - (IBAction)tabIndexChanged:(UISegmentedControl *)sender
 {

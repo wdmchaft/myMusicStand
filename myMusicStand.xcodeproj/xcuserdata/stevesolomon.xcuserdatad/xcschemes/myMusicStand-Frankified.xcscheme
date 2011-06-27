@@ -36,6 +36,15 @@
       useCustomWorkingDirectory = "NO"
       buildConfiguration = "Debug"
       enablesOpenGLESFrameCapture = "YES">
+      <PostActions>
+         <ExecutionAction
+            ActionType = "Xcode.IDEStandardExecutionActionsCore.ExecutionActionType.ShellScriptAction">
+            <ActionContent
+               title = "Run Script"
+               scriptText = "cucumber features/action_items.feature">
+            </ActionContent>
+         </ExecutionAction>
+      </PostActions>
       <BuildableProductRunnable>
          <BuildableReference
             BuildableIdentifier = "primary"

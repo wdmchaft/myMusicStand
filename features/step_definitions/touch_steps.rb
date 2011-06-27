@@ -7,3 +7,7 @@ end
 Given /^I touch the segment marked "([^"]*)"$/ do |mark|
   touch "view:'UISegment' marked:'#{mark}'" 
 end
+
+#When /^I touch the button marked "([^"]*)"$/ do |mark|
+ # touch "view:'UIButton' marked:'#{mark}'" 
+#end
