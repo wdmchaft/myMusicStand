@@ -54,6 +54,17 @@
     [super dealloc];
 }
 
+#pragma mark - Setter methods
+
+// Since we are no longer able to select blocks 
+// clear out selectedModels
+- (void)setIsSelectingBlocks:(BOOL)newIsSelectingBlocks
+{
+    // clear out models
+    [selectedModels removeAllObjects];
+    isSelectingBlocks = newIsSelectingBlocks;
+}
+
 #pragma mark - Table view delegate
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath 

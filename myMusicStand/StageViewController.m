@@ -151,6 +151,8 @@
     
     // stop block selection
     [blockController setIsSelectingBlocks:NO];
+    // reload table to show removal of all selections
+    [[blockController tableView] reloadData];
 }
 
 /*
