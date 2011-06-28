@@ -42,12 +42,14 @@
         [tableView setDelegate:self];
         isSelectingBlocks = NO; // By default selection of blocks is disabled 
         selectedModels = [[NSMutableArray alloc] init];
+        blocksToModel = [[NSMutableDictionary alloc] init];
     }
     return self;
 }
 
 - (void)dealloc
 {
+    [blocksToModel release];
     [selectedModels release];
     [model release];
     [context release];
@@ -92,6 +94,28 @@
         
     }
     return cell;
+}
+
+// Add the model to the selectedModels array
+- (void)toggleBlockSelection:(UITapGestureRecognizer *)recognizer
+{  
+    // Get block from recognizer
+    UIView *block = [recognizer view];
+    
+    // Get the title from dict
+    id aModel = [blocksToModel objectForKey:[NSValue valueWithPointer:block]];
+    
+    // If filename it is already in selectedModels
+    if ([selectedModels containsObject:aModel])
+    {
+        // remove it
+        [selectedModels removeObject:aModel];
+    }
+    else // select not yet selected filename block
+    {
+        // add to selectedModels
+        [selectedModels addObject:aModel];
+    }    
 }
 
 - (void)configureCell:(UITableViewCell *)cell 
@@ -141,6 +165,7 @@
     return cell;
 }
 
+#pragma mark Helper Methods
 @end
 
 // Override cell's perpareForReuse method to clear all labels

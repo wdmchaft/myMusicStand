@@ -12,9 +12,6 @@
 @class myMusicStandAppDelegate, NSManagedObjectContext;
 @interface FileTableController : BlockTableController <UITextFieldDelegate>
 {
-    // mapping of blockview to a filename, this will allow us to
-    // quickly load the file when tapped
-    NSMutableDictionary *blocksToFilenames; 
 }
 
 - (void)reloadFiles:(NSNotification *)notification;

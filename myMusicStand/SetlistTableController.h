@@ -12,8 +12,8 @@
 #import "BlockTableController.h"
 
 @class NSManagedObjectContext;
-@interface SetlistTableController : BlockTableController {
-    NSMutableDictionary *blocksToSetlistId;
+@interface SetlistTableController : BlockTableController 
+{
 }
 - (void)deleteFilesForSelectedModels;
 @end

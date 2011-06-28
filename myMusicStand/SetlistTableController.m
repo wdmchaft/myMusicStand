@@ -37,8 +37,6 @@
                                                  selector:@selector(reloadFiles:)
                                                      name:NSManagedObjectContextDidSaveNotification 
                                                    object:nil];
-        
-        blocksToSetlistId = [[NSMutableDictionary alloc] init];
     }
     return self;
 
@@ -47,7 +45,6 @@
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-    [blocksToSetlistId release];
     [super dealloc];
 }
 #pragma mark - Helper methods
@@ -55,28 +52,6 @@
 - (int)numberOfBlocks 
 {
     return [super numberOfBlocks] + NUM_ADD_BLOCKS;
-}
-
-// Add the filename to the selectedModels array
-- (void)toggleBlockSelection:(UITapGestureRecognizer *)recognizer
-{  
-    // Get block from recognizer
-    UIView *block = [recognizer view];
-    
-    // Get the title from dict
-    id managedObject = [blocksToSetlistId objectForKey:[NSValue valueWithPointer:block]];
-    
-    // If filename it is already in selectedModels
-    if ([selectedModels containsObject:managedObject])
-    {
-        // remove it
-        [selectedModels removeObject:managedObject];
-    }
-    else // select not yet selected filename block
-    {
-        // add to selectedModels
-        [selectedModels addObject:managedObject];
-    }    
 }
 
 #pragma mark - Table view data source
@@ -168,7 +143,7 @@
             [tap release];
             
             // remove this block from mapping so it can't be used 
-            [blocksToSetlistId removeObjectForKey:[NSValue valueWithPointer:block]];
+            [blocksToModel removeObjectForKey:[NSValue valueWithPointer:block]];
             
             continue; // skip rest of code
         }
@@ -194,7 +169,7 @@
         [tap release];
         
         // Add block mapping from block to setlist title
-        [blocksToSetlistId setObject:setlist forKey:[NSValue valueWithPointer:block]];
+        [blocksToModel setObject:setlist forKey:[NSValue valueWithPointer:block]];
         
         // Show title of setlist
         [label setText:[setlist title]];

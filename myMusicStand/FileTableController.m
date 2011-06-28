@@ -19,7 +19,6 @@
 @interface FileTableController (PrivateMethods)
 
 - (void)openPDF:(UITapGestureRecognizer *)recognizer;
-- (void)toggleBlockSelection:(UITapGestureRecognizer *)recognizer;
 - (NSURL *)URLForFileName:(NSString *)filename;
 
 @end
@@ -32,9 +31,6 @@
     
     if (self)
     {
-        // Creat our map
-        blocksToFilenames = [[NSMutableDictionary alloc] init];
-        
         // Register for SaveNotification any context
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(reloadFiles:) 
@@ -51,7 +47,6 @@
 {
     [tableView release];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-    [blocksToFilenames release];
     [super dealloc];
 }
 
@@ -65,7 +60,7 @@
     for (File *file in model)
     {
         // if a selected model has the same file name
-        if ([selectedModels containsObject:[file filename]])
+        if ([selectedModels containsObject:file])
         {
             [filesToDelete addObject:file];
         }
@@ -93,29 +88,6 @@
 }
 
 #pragma mark - Helper methods
-
-// Add the filename to the selectedModels array
-- (void)toggleBlockSelection:(UITapGestureRecognizer *)recognizer
-{  
-    // Get block from recognizer
-    UIView *block = [recognizer view];
-    
-    // Get the filename from dict
-    NSString *filename = [blocksToFilenames objectForKey:[NSValue valueWithPointer:block]];
-    
-    // If filename it is already in selectedModels
-    if ([selectedModels containsObject:filename])
-    {
-        [selectedModels removeObject:filename];
-    }
-    else // select not yet selected filename block
-    {
-        // Add filename to selectedModels
-        [selectedModels addObject:filename];
-    }
-    
-    
-}
 
 - (void)configureCell:(UITableViewCell *)cell 
          forIndexPath:(NSIndexPath *)indexPath  
@@ -164,10 +136,10 @@
         
         // Add mapping of block to filename, this will allow us to have the name of the 
         // file we want to open once the block is clicked
-        [blocksToFilenames setObject:[file filename] forKey:[NSValue valueWithPointer:block]];
+        [blocksToModel setObject:file forKey:[NSValue valueWithPointer:block]];
         
-        // Show check if filename is in selectedModels
-        if ([selectedModels containsObject:[file filename]])
+        // Show check if file is in selectedModels
+        if ([selectedModels containsObject:file])
         {
             // show check
             check = (UIImageView *)[cell viewWithTag:checkTagOffset];
@@ -224,8 +196,10 @@
     UIView *block = [recognizer view];
     
     // Get the filename from dict
-    NSString *filename = [blocksToFilenames objectForKey:
+    File *file = [blocksToModel objectForKey:
                                         [NSValue valueWithPointer:block]];
+    
+    NSString *filename = [file filename];
     
     NSURL *url = [self URLForFileName:filename];
 
