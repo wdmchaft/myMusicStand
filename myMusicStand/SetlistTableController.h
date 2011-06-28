@@ -13,6 +13,7 @@
 
 @class NSManagedObjectContext;
 @interface SetlistTableController : BlockTableController {
-
+    NSMutableDictionary *blocksToSetlistId;
 }
+- (void)deleteFilesForSelectedModels;
 @end

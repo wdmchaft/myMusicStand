@@ -94,6 +94,29 @@
 
 #pragma mark - Helper methods
 
+// Add the filename to the selectedModels array
+- (void)toggleBlockSelection:(UITapGestureRecognizer *)recognizer
+{  
+    // Get block from recognizer
+    UIView *block = [recognizer view];
+    
+    // Get the filename from dict
+    NSString *filename = [blocksToFilenames objectForKey:[NSValue valueWithPointer:block]];
+    
+    // If filename it is already in selectedModels
+    if ([selectedModels containsObject:filename])
+    {
+        [selectedModels removeObject:filename];
+    }
+    else // select not yet selected filename block
+    {
+        // Add filename to selectedModels
+        [selectedModels addObject:filename];
+    }
+    
+    
+}
+
 - (void)configureCell:(UITableViewCell *)cell 
          forIndexPath:(NSIndexPath *)indexPath  
 {
@@ -216,29 +239,6 @@
     
     // show the PDFViewer
     [[self navigationController] pushViewController:pdfViewer animated:NO];
-}
-
-// Add the filename to the selectedModels array
-- (void)toggleBlockSelection:(UITapGestureRecognizer *)recognizer
-{  
-    // Get block from recognizer
-    UIView *block = [recognizer view];
-    
-    // Get the filename from dict
-    NSString *filename = [blocksToFilenames objectForKey:[NSValue valueWithPointer:block]];
-    
-    // If filename it is already in selectedModels
-    if ([selectedModels containsObject:filename])
-    {
-        [selectedModels removeObject:filename];
-    }
-    else // select not yet selected filename block
-    {
-        // Add filename to selectedModels
-        [selectedModels addObject:filename];
-    }
-    
-    
 }
 
 // Handle long press on alias label in a cell

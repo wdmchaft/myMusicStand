@@ -205,10 +205,12 @@
  */
 - (void)delete:(UIBarButtonItem *)sender
 {
-    if ([[blockController class] isEqual:[FileTableController class]])
+    SEL deleteModels = @selector(deleteFilesForSelectedModels);
+    
+    if ([blockController respondsToSelector:deleteModels])
     {
-        // Assuming deleting only works for files
-        [(FileTableController *)blockController deleteFilesForSelectedModels];
+        // delete selected model
+        [blockController performSelector:deleteModels];
     }
 }
 
