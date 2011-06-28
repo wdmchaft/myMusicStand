@@ -114,13 +114,40 @@
                                                                    style:UIBarButtonItemStyleBordered 
                                                                   target:self
                                                                   action:@selector(hideActionItems:)];
-    // pack all the bbis into nav item
-    [navItem setLeftBarButtonItems:[NSArray arrayWithObjects:emailItem, printItem, deleteItem, nil]];
-    [navItem setRightBarButtonItem:cancelItem];
     
-    // put navitem onto bottom of stand
+    // Array of items to show on screen
+    NSArray *itemsArray = [NSArray arrayWithObjects:emailItem, printItem, deleteItem, nil];
+    
+    // If we are using new 5.0 api 
+    if ([navItem respondsToSelector:@selector(setLeftBarButtonItems:)])
+    {
+        // pack all the bbis into navitem
+        [navItem setLeftBarButtonItems:itemsArray];
+    }
+    else // Assuming 4.3 api 
+    {
+        // create frame for toolbar
+        CGRect toolbarFrame = [bottomOfStand bounds];
+        toolbarFrame.size.width = 400;
+        
+        // Put all items in a toolbar
+        UIToolbar *toolbar = [[UIToolbar alloc] initWithFrame:toolbarFrame];
+        [toolbar setItems:itemsArray];
+        
+        // Put toolbar into navItem, which will be put into the bottomOfStand
+        UIBarButtonItem *toolBarContainer = [[UIBarButtonItem alloc] initWithCustomView:toolbar];
+        [navItem setLeftBarButtonItem:toolBarContainer];
+        
+        [toolbar release];
+        [toolBarContainer release];
+    }
+    
+    // show items we created
     [bottomOfStand setItems:[NSArray arrayWithObject:navItem] 
                    animated:YES];
+    
+    // Show cancel item
+    [navItem setRightBarButtonItem:cancelItem];
     
     // Cleanup
     [navItem release];
@@ -151,7 +178,7 @@
     
     // stop block selection
     [blockController setIsSelectingBlocks:NO];
-    // reload table to show removal of all selections
+    // reload table
     [[blockController tableView] reloadData];
 }
 
