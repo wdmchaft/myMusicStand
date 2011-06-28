@@ -9,6 +9,7 @@
 #import "StageViewController.h"
 #import "BlockTableController.h"
 #import "FileTableController.h"
+#import "File.h"
 #import "SetlistTableController.h"
 #import "myMusicStandAppDelegate.h"
 #import "TimestampEntity.h"
@@ -204,7 +205,11 @@
  */
 - (void)delete:(UIBarButtonItem *)sender
 {
-    NSLog(@"Delete selected blocks");
+    if ([[blockController class] isEqual:[FileTableController class]])
+    {
+        // Assuming deleting only works for files
+        [(FileTableController *)blockController deleteFilesForSelectedModels];
+    }
 }
 
 // When the tab changes we know we have to switch controllers

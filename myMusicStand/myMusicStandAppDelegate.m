@@ -35,10 +35,6 @@ static myMusicStandAppDelegate *sharedInstance;
 	[super init];
 	sharedInstance = self;
 	
-	/*
-	 Class privateClass = NSClassFromString(@"NSSQLCore");
-	 // You will get a compiler warning here, ignore it
-	 [privateClass setDebugDefault:YES];*/
 	return self;
 }
 

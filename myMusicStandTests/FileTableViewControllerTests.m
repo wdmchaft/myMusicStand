@@ -80,7 +80,7 @@
     [[mockTableView expect] reloadData];
     
     // exercise
-    NSNotification *notification = [NSNotification notificationWithName:@"ReloadTableNotification"
+    NSNotification *notification = [NSNotification notificationWithName:NSManagedObjectContextDidSaveNotification
                                                                  object:self];
     NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
     [center postNotification:notification];

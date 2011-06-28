@@ -20,6 +20,8 @@
 
 - (void)openPDF:(UITapGestureRecognizer *)recognizer;
 - (void)toggleBlockSelection:(UITapGestureRecognizer *)recognizer;
+- (NSURL *)URLForFileName:(NSString *)filename;
+
 @end
 
 @implementation FileTableController
@@ -33,10 +35,10 @@
         // Creat our map
         blocksToFilenames = [[NSMutableDictionary alloc] init];
         
-        // Register for ReloadTableNotification
+        // Register for SaveNotification any context
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(reloadFiles:) 
-                                                     name:@"ReloadTableNotification" 
+                                                     name:NSManagedObjectContextDidSaveNotification
                                                    object:nil];
         
         [self setModel:[context allEntity:@"File"]];
@@ -51,6 +53,43 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     [blocksToFilenames release];
     [super dealloc];
+}
+
+#pragma mark Modifiers
+- (void)deleteFilesForSelectedModels
+{    
+    // File objects to delete
+    NSMutableArray *filesToDelete = [[NSMutableArray alloc] init];
+    
+    // Figure out what files to delete
+    for (File *file in model)
+    {
+        // if a selected model has the same file name
+        if ([selectedModels containsObject:[file filename]])
+        {
+            [filesToDelete addObject:file];
+        }
+    }
+    
+    // Used to delete file in documents dir
+    NSFileManager *fm = [NSFileManager defaultManager];
+    NSError *error = nil;
+    
+    // Delete the files 
+    for (id file in filesToDelete)
+    {
+        // delete that file (in docs and context)
+        [context deleteObject:file];
+        
+        NSURL *url = [self URLForFileName:[file filename]];
+        [fm removeItemAtURL:url error:&error];
+    }
+    
+    // Save all changes
+    [context save:nil];
+    
+    // Clean up
+    [filesToDelete release];
 }
 
 #pragma mark - Helper methods
@@ -119,6 +158,18 @@
 
 }
 
+// Returns a url in the docs directory with the filename provided
+- (NSURL *)URLForFileName:(NSString *)filename
+{
+    myMusicStandAppDelegate *delegate = [myMusicStandAppDelegate sharedInstance];
+
+    NSURL *docsDir = [delegate applicationDocumentsDirectory];
+    // Create the url for the PDF
+    NSURL *url = [docsDir URLByAppendingPathComponent:filename];
+    
+    return url;
+}
+
 #pragma mark - Table view data source
 
 - (void)reloadFiles:(NSNotification *)notification
@@ -146,17 +197,14 @@
 - (void)openPDF:(UITapGestureRecognizer *)recognizer
 {
     myMusicStandAppDelegate *delegate = [myMusicStandAppDelegate sharedInstance];
-
     // Get block from recognizer
     UIView *block = [recognizer view];
-    NSURL *docsDir = [delegate applicationDocumentsDirectory];
     
     // Get the filename from dict
     NSString *filename = [blocksToFilenames objectForKey:
                                         [NSValue valueWithPointer:block]];
     
-    // Create the url for the PDF
-    NSURL *url = [docsDir URLByAppendingPathComponent:filename];
+    NSURL *url = [self URLForFileName:filename];
 
     // Instantiate PDFViewer
     PDFPagingViewController *pdfViewer = 
