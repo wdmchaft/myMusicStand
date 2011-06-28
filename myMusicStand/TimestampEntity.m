@@ -16,6 +16,7 @@
 
 @implementation NSManagedObjectContext (EntityInCreationOrder)
 
+// Get the all entitys with the name of entityName
 - (NSArray *)allEntity:(NSString *)entityName 
 {
     NSFetchRequest *request = [[NSFetchRequest alloc] init];
@@ -24,6 +25,9 @@
                                    inManagedObjectContext:self]];
     NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"timestamp" ascending:YES];
     [request setSortDescriptors:[NSArray arrayWithObject:sort]];
+    
+    // Make sure fetch request is cleaned up
+    [request autorelease];
     
     return [self executeFetchRequest:request error:nil];
     
