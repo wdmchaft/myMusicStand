@@ -10,6 +10,9 @@
 #import "myMusicStandAppDelegate.h"
 
 #define NUM_BLOCKS_PER_CELL 3
+#define FIRST_BLOCK_TAG 4
+#define FIRST_LABEL_TAG 1
+#define FIRST_CHECK_TAG 7
 
 @interface BlockTableController (privateMethods)
 // private methods
@@ -75,6 +78,47 @@
 }
 
 #pragma mark - helper methods
+- (void)configureCell:(UITableViewCell *)cell 
+         forIndexPath:(NSIndexPath *)indexPath    
+{
+    // Parts of cell that are related to a block
+    UILabel *label;
+    UIView *block;
+    UIImageView *checkMark; 
+    
+    // Loop through all possible blocks for the cell and attempt to set their values
+    int labelTagOffset = FIRST_LABEL_TAG; 
+    int blocTagOffset = FIRST_BLOCK_TAG; 
+    int checkTagOffset = FIRST_CHECK_TAG; 
+    
+    for (int index = NUM_BLOCKS_PER_CELL * [indexPath row]; // BLOCKS * row gives us the first index in model we can use
+         index < [self numberOfBlocks] && labelTagOffset <= NUM_BLOCKS_PER_CELL; index++)
+    {
+        // Get label for tag
+        label = (UILabel *)[cell viewWithTag:labelTagOffset];
+        // Get block for tag
+        block = [cell viewWithTag:blocTagOffset];
+        checkMark = (UIImageView *)[cell viewWithTag:checkTagOffset];
+        
+        // Make block visible
+        [block setHidden:NO];
+        
+        [self customConfigurationForBlock:block label:label checkMark:checkMark atIndex:index];
+        
+        labelTagOffset++;
+        blocTagOffset++;
+        checkTagOffset++;
+        
+    }
+}
+
+- (void)customConfigurationForBlock:(UIView *)block 
+                              label:(UILabel *)label 
+                          checkMark:(UIImageView *)check 
+                            atIndex:(int)index
+{
+    // No-op method allows for block customization by subclasses
+}
 
 // Helper method to generate a block cell for the tableView
 - (UITableViewCell *)blockCellForTableView:(UITableView *)tv  
@@ -118,12 +162,6 @@
     }    
 }
 
-- (void)configureCell:(UITableViewCell *)cell 
-         forIndexPath:(NSIndexPath *)indexPath
-{
-     @throw @"Subclass responsibility";
-}
-
 - (void) setUpModelWithContext:(NSManagedObjectContext *)context
 {
     @throw @"Subclass responsibility";
@@ -165,7 +203,6 @@
     return cell;
 }
 
-#pragma mark Helper Methods
 @end
 
 // Override cell's perpareForReuse method to clear all labels

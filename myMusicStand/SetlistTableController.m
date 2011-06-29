@@ -10,15 +10,14 @@
 #import "myMusicStandAppDelegate.h"
 #import "Setlist.h"
 
-#define NUM_BLOCKS_PER_CELL 3
 #define NUM_ADD_BLOCKS 1
-#define FIRST_BLOCK_TAG 4
-#define FIRST_LABEL_TAG 0
-#define FIRST_CHECK_TAG 7
 
 @interface SetlistTableController (PrivateMethods)
 
 - (void)handleTap:(UITapGestureRecognizer *)recognizer;
+- (void)customConfigurationForBlock:(UIView *)block label:(UILabel *)label 
+                           checkMark:(UIImageView *)check 
+                            atIndex:(int)index;
 
 @end
 
@@ -96,90 +95,57 @@
 }
 
 #pragma mark - Helper methods
-- (void)configureCell:(UITableViewCell *)cell 
-         forIndexPath:(NSIndexPath *)indexPath    
+- (void)customConfigurationForBlock:(UIView *)block label:(UILabel *)label checkMark:(UIImageView *)check atIndex:(int)index
 {
-    // Setlist to display
-    Setlist *setlist;
-    // Label to display alias of File
-    UILabel *label;
-    UIView *block;
-    UIImageView *check; // check image
+    // Action selector to be used for tapGestureRecognizer
+    SEL tapSelector;
     
-    // Loop through all possible blocks for the cell and attempt to set their values
-    int tagOffset = FIRST_LABEL_TAG; // starting label tag offset 
-    int blocTagOffset = FIRST_BLOCK_TAG; // starting block tag offset
-    int checkTagOffset = FIRST_CHECK_TAG; // starting check offset
+    // Hide the spinner in the block (it hides when not animating), this is hidden for all setlist blocks
+    [(UIActivityIndicatorView *)[[block subviews] objectAtIndex:0] stopAnimating];
     
-    for (int index = NUM_BLOCKS_PER_CELL * [indexPath row]; // BLOCKS * row gives us the first index we can use
-         index < [model count] + 1 && tagOffset < NUM_BLOCKS_PER_CELL; index++)
+    // Configure add button in this block
+    if (index == [model count])
     {
-        // get label for tag
-        label = (UILabel *)[cell viewWithTag:tagOffset + 1];
-        // Set font color 
-        [label setTextColor:[UIColor whiteColor]];
+        // set add set button
+        [label setText:@"Add setlist"];
         
-        // get block for tag
-        block = [cell viewWithTag:blocTagOffset];
-        // hide the spinner in the block
-        [(UIActivityIndicatorView *)[[block subviews] objectAtIndex:0] stopAnimating];
+        // set tap gesture handling action
+        tapSelector = @selector(createSetlist:);
         
-        // make block not hidden
-        [block setHidden:NO];
+        [block setAccessibilityLabel:@"Add Setlist block"];
         
-        // If we are at the add button index
-        if (index == [model count])
-        {
-            // set add set button
-            [label setText:@"Add setlist"];
-            
-            UITapGestureRecognizer *tap = 
-            [[UITapGestureRecognizer alloc] initWithTarget:self
-                                                    action:@selector(createSetlist:)];
-            [block addGestureRecognizer:tap];
-            
-            [block setAccessibilityLabel:@"Add Setlist block"];
-            
-            [tap release];
-            
-            // remove this block from mapping so it can't be used 
-            [blocksToModel removeObjectForKey:[NSValue valueWithPointer:block]];
-            
-            continue; // skip rest of code
-        }
-        
-        // normal block configuration
-        
-        
-        setlist = [model objectAtIndex:index];
+        // remove this block from mapping so it can't be used 
+        [blocksToModel removeObjectForKey:[NSValue valueWithPointer:block]];
+    }
+    else 
+    {
+        // Display a setlist in block
+        Setlist *setlist = [model objectAtIndex:index];
         
         // Show check if setlist is in selectedModels
         if ([selectedModels containsObject:setlist])
         {
-            // show check
-            check = (UIImageView *)[cell viewWithTag:checkTagOffset];
+            // show checkMark
             [check setHidden:NO];
         }
         
-        // add tap recognizer to block
-        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self 
-                                                                              action:@selector(handleTap:)];
-        [block addGestureRecognizer:tap];
-        
-        [tap release];
-        
-        // Add block mapping from block to setlist title
-        [blocksToModel setObject:setlist forKey:[NSValue valueWithPointer:block]];
+        // tap gesture handling selector
+        tapSelector = @selector(handleTap:);
         
         // Show title of setlist
         [label setText:[setlist title]];
+        [label setAccessibilityLabel:[setlist title]];
         
-        
-        tagOffset++;
-        blocTagOffset++;
-        checkTagOffset++;
-        
+        // Add block mapping from block to setlist title
+        [blocksToModel setObject:setlist forKey:[NSValue valueWithPointer:block]];
     }
+    
+    
+    // add tap recognizer to block
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self 
+                                                                          action:tapSelector];
+    [block addGestureRecognizer:tap];
+    [tap release];  
     
 }
 

@@ -28,4 +28,6 @@
 - (int)numberOfBlocks; // index for block cell
 // Helper method for adding model coresponding to ui block to selectedModels (DONOT CALL DIRECTLY)
 - (void)toggleBlockSelection:(UITapGestureRecognizer *)recognizer;
+// No-op method that is used by by subclasses to create custom block configurations
+- (void)customConfigurationForBlock:(UIView *)block label:(UILabel *)label checkMark:(UIImageView *)check atIndex:(int)index;
 @end

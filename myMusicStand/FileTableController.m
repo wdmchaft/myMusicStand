@@ -11,11 +11,6 @@
 #import "myMusicStandAppDelegate.h"
 #import "File.h"
 
-#define NUM_BLOCKS_PER_CELL 3
-#define FIRST_LABEL_TAG 0
-#define FIRST_BLOCK_TAG 4
-#define FIRST_CHECK_TAG 7
-
 @interface FileTableController (PrivateMethods)
 
 - (void)openPDF:(UITapGestureRecognizer *)recognizer;
@@ -88,68 +83,31 @@
 }
 
 #pragma mark - Helper methods
-
-- (void)configureCell:(UITableViewCell *)cell 
-         forIndexPath:(NSIndexPath *)indexPath  
+- (void)customConfigurationForBlock:(UIView *)block label:(UILabel *)label checkMark:(UIImageView *)check atIndex:(int)index
 {
-    // File to display
-    File *file;
-    // Label to display alias of File
-    UILabel *label;
-    UIView *block;
-    UIImageView *check;
+    File *file = [model objectAtIndex:index];
     
-    // Loop through all possible blocks for the cell and attempt to set their values
-    int labelTagOffset = FIRST_LABEL_TAG; // starting offset 
-    int blockTagOffset = FIRST_BLOCK_TAG;
-    int checkTagOffset = FIRST_CHECK_TAG;
+    [label setText:[file alias]];
     
-    for (int index = NUM_BLOCKS_PER_CELL * [indexPath row]; // BLOCKS * row gives us the first index we can use
-         index < [model count] && labelTagOffset < NUM_BLOCKS_PER_CELL; index++)
+    // Set accessiblity labels
+    [block setAccessibilityLabel:[[file alias] stringByAppendingString:@" block"]];
+    
+    // Add mapping of block to filename, this will allow us to have the name of the 
+    // file we want to open once the block is clicked
+    [blocksToModel setObject:file forKey:[NSValue valueWithPointer:block]];
+    
+    // Show check if file is in selectedModels
+    if ([selectedModels containsObject:file])
     {
-        
-        file = [model objectAtIndex:index];
-        label = (UILabel *)[cell viewWithTag:labelTagOffset + 1];
-        [label setText:[file alias]];
-        block = [cell viewWithTag:blockTagOffset];
-        
-        // make block not hidden
-        [block setHidden:NO];
-                 
-        // Set font color 
-        [label setTextColor:[UIColor whiteColor]];
-        
-        // Add a gesture recognizer
-        UIGestureRecognizer *gr = 
-            [[UILongPressGestureRecognizer alloc] initWithTarget:self
-                                                          action:@selector(editAlias:)];
-        [label addGestureRecognizer:gr];
-        [gr release];
-        
-        // Add tap recognizer to block
-        gr = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
-        [block addGestureRecognizer:gr];
-        [gr release];
-        
-        // Set accessiblity labels
-        [block setAccessibilityLabel:[[file filename] stringByAppendingString:@" block"]];
-        
-        // Add mapping of block to filename, this will allow us to have the name of the 
-        // file we want to open once the block is clicked
-        [blocksToModel setObject:file forKey:[NSValue valueWithPointer:block]];
-        
-        // Show check if file is in selectedModels
-        if ([selectedModels containsObject:file])
-        {
-            // show check
-            check = (UIImageView *)[cell viewWithTag:checkTagOffset];
-            [check setHidden:NO];
-        }
-        
-        labelTagOffset++;
-        blockTagOffset++;
-        checkTagOffset++;
+        // show check
+        [check setHidden:NO];
     }
+    
+    // add tap recognizer to block
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self 
+                                                                          action:@selector(handleTap:)];
+    [block addGestureRecognizer:tap];
+    [tap release];  
 
 }
 
