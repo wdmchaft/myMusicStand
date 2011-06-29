@@ -45,44 +45,20 @@
     [super dealloc];
 }
 
-#pragma mark Modifiers
-- (void)deleteFilesForSelectedModels
-{    
-    // File objects to delete
-    NSMutableArray *filesToDelete = [[NSMutableArray alloc] init];
-    
-    // Figure out what files to delete
-    for (File *file in model)
-    {
-        // if a selected model has the same file name
-        if ([selectedModels containsObject:file])
-        {
-            [filesToDelete addObject:file];
-        }
-    }
+#pragma mark - Helper methods
+- (void)customStepForDeletionOfModel:(NSManagedObject *)aModel
+{
+    File *file = (File *)aModel;
     
     // Used to delete file in documents dir
     NSFileManager *fm = [NSFileManager defaultManager];
     NSError *error = nil;
     
-    // Delete the files 
-    for (id file in filesToDelete)
-    {
-        // delete that file (in docs and context)
-        [context deleteObject:file];
-        
-        NSURL *url = [self URLForFileName:[file filename]];
-        [fm removeItemAtURL:url error:&error];
-    }
-    
-    // Save all changes
-    [context save:nil];
-    
-    // Clean up
-    [filesToDelete release];
+    // Remove file from disk
+    NSURL *url = [self URLForFileName:[file filename]];
+    [fm removeItemAtURL:url error:&error];
 }
 
-#pragma mark - Helper methods
 - (void)customConfigurationForBlock:(UIView *)block label:(UILabel *)label checkMark:(UIImageView *)check atIndex:(int)index
 {
     File *file = [model objectAtIndex:index];

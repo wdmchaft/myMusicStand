@@ -30,4 +30,9 @@
 - (void)toggleBlockSelection:(UITapGestureRecognizer *)recognizer;
 // No-op method that is used by by subclasses to create custom block configurations
 - (void)customConfigurationForBlock:(UIView *)block label:(UILabel *)label checkMark:(UIImageView *)check atIndex:(int)index;
+// Delete all selectedModels and allow for subclass to customize process
+- (void)deleteSelectedModels;
+// Called before a managedObject will be deleted (by user selection), 
+// to allow for a custom event to occur such as removing the file from disk
+- (void)customStepForDeletionOfModel:(NSManagedObject *)model;
 @end

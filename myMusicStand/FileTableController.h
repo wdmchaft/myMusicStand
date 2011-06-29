@@ -16,6 +16,4 @@
 
 - (void)reloadFiles:(NSNotification *)notification;
 -(void)editAlias:(UIGestureRecognizer *)recognizer;
-// Remove all files from backing store and documents that match these names
-- (void)deleteFilesForSelectedModels;
 @end

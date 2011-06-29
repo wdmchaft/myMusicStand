@@ -149,24 +149,5 @@
     
 }
 
-- (void)deleteFilesForSelectedModels
-{    
-    // File objects to delete
-    NSMutableArray *modelsToDelete = [[NSMutableArray alloc] init];
-    
-    // Delete the selectedModels
-    for (id object in selectedModels)
-    {
-        // delete that file (in docs and context)
-        [context deleteObject:object];
-    }
-    
-    // Save all changes
-    [context save:nil];
-    
-    // Clean up
-    [modelsToDelete release];
-}
-
 @end
 

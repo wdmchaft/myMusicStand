@@ -210,7 +210,7 @@
  */
 - (void)delete:(UIBarButtonItem *)sender
 {
-    SEL deleteModels = @selector(deleteFilesForSelectedModels);
+    SEL deleteModels = @selector(deleteSelectedModels);
     
     if ([blockController respondsToSelector:deleteModels])
     {

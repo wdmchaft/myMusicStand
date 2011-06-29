@@ -15,5 +15,4 @@
 @interface SetlistTableController : BlockTableController 
 {
 }
-- (void)deleteFilesForSelectedModels;
 @end

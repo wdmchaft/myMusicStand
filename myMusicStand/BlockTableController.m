@@ -120,6 +120,29 @@
     // No-op method allows for block customization by subclasses
 }
 
+// Delete all selectedModels and allow for subclass to customize 
+// predelete steps
+// NOTE: this method isn't under test
+- (void)deleteSelectedModels
+{
+    // Delete the selectedModels
+    for (id aModel in selectedModels)
+    {
+        [self customStepForDeletionOfModel:aModel];
+        
+        // delete that file (in docs and context)
+        [context deleteObject:aModel];
+    }
+    
+    // Save all changes
+    [context save:nil];
+}
+
+- (void)customStepForDeletionOfModel:(NSManagedObject *)aModel
+{
+    // do nothing
+}
+
 // Helper method to generate a block cell for the tableView
 - (UITableViewCell *)blockCellForTableView:(UITableView *)tv  
 {
@@ -202,7 +225,6 @@
 
     return cell;
 }
-
 @end
 
 // Override cell's perpareForReuse method to clear all labels
