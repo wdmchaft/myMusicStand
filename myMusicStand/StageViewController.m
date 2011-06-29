@@ -103,10 +103,15 @@
                                                                   style:UIBarButtonItemStyleBordered
                                                                  target:self
                                                                  action:@selector(attemptToSendEmail:)];
+    [emailItem setEnabled:NO];
+    
     UIBarButtonItem *printItem = [[UIBarButtonItem alloc] initWithTitle:@"Print" 
                                                                   style:UIBarButtonItemStyleBordered 
                                                                  target:self
                                                                  action:@selector(attemptToPrint:)];
+    
+    [printItem setEnabled:NO];
+    
     UIBarButtonItem *deleteItem = [[UIBarButtonItem alloc] initWithTitle:@"Delete"
                                                                    style:UIBarButtonItemStyleBordered
                                                                   target:self
