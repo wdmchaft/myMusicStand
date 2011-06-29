@@ -43,14 +43,7 @@
 
 - (void)dealloc
 {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
     [super dealloc];
-}
-#pragma mark - Helper methods
-
-- (int)numberOfBlocks 
-{
-    return [super numberOfBlocks] + NUM_ADD_BLOCKS;
 }
 
 #pragma mark - Table view data source
@@ -95,6 +88,12 @@
 }
 
 #pragma mark - Helper methods
+- (int)numberOfBlocks 
+{
+    return [super numberOfBlocks] + NUM_ADD_BLOCKS;
+}
+
+
 - (void)customConfigurationForBlock:(UIView *)block label:(UILabel *)label checkMark:(UIImageView *)check atIndex:(int)index
 {
     // Action selector to be used for tapGestureRecognizer

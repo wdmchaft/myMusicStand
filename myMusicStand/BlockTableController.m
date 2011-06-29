@@ -52,6 +52,8 @@
 
 - (void)dealloc
 {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [tableView release];
     [blocksToModel release];
     [selectedModels release];
     [model release];
