@@ -7,6 +7,7 @@
 //
 
 #import "PDFDocumentViewController.h"
+#import "PDFScrollView.h"
 #import "PDFDocument.h"
 
 @implementation PDFDocumentViewController
@@ -47,7 +48,36 @@
     [super dealloc];
 }
 
+#pragma mark - Helper methods
+- (void)documentStateHasBeenUpdated
+{
+    // Get the first page in the document
+    CGPDFPageRef firstPage = CGPDFDocumentGetPage([document data], 1);
+    
+    // Display the page in the pdfView
+    [pdfView setPDFPage:firstPage];
+    [pdfView setNeedsDisplay];
+}
+
 #pragma mark - View lifecycle
+- (void)loadView
+{
+    [super loadView];
+    
+    // open the file
+    [document openWithCompletionHandler:^(BOOL fileIsOpen){
+        [self documentStateHasBeenUpdated];
+    }];
+    
+    // Create the pdfView to display
+    CGRect pdfViewFrame = [[self view] bounds];
+    pdfView = [[PDFScrollView alloc] initWithFrame:pdfViewFrame];
+    
+    // Add the pdfView as a subview of our main view
+    [[self view] addSubview:pdfView];
+    [pdfView release];
+}
+
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     // Return YES for supported orientations

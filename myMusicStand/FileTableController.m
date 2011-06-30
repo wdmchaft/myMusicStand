@@ -8,6 +8,7 @@
 
 #import "FileTableController.h"
 #import "PDFPagingViewController.h"
+#import "PDFDocumentViewController.h"
 #import "myMusicStandAppDelegate.h"
 #import "File.h"
 
@@ -135,16 +136,15 @@
     
     NSURL *url = [self URLForFileName:filename];
 
-    // Instantiate PDFViewer
-    PDFPagingViewController *pdfViewer = 
-        [[PDFPagingViewController alloc] initWithPDFURLArray:[NSArray arrayWithObject:url]];
-    
+    // Open pdf document
+    PDFDocumentViewController *pdfDocumentController = [[PDFDocumentViewController alloc] initWithURL:url];
+      
     // Hide the navbar
     UIView *bottomOfStand = [delegate bottomOfStand];
     [bottomOfStand setHidden:YES];
     
     // show the PDFViewer
-    [[self navigationController] pushViewController:pdfViewer animated:NO];
+    [[self navigationController] pushViewController:pdfDocumentController animated:NO];
 }
 
 // Handle long press on alias label in a cell

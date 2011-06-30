@@ -2,20 +2,27 @@
 //  PDFDocumentViewController.h
 //  myMusicStand
 //
+//  This class is used to handle displaying a PDFDocument across
+//  a scrollable interface
+//  
 //  Created by Steve Solomon on 6/30/11.
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 
-@class PDFDocument;
+@class PDFDocument, PDFScrollView;
 @interface PDFDocumentViewController : UIViewController
 {
+    // The document we will display
     PDFDocument *document;
+    PDFScrollView *pdfView;
 }
 
 @property (nonatomic, readonly) PDFDocument *document;
 
-// Designated initializer
+// Designated initializer, which creates the document from the url passed
 - (id)initWithURL:(NSURL *)url;
+// Helper method used as a callback to display the pdf once loaded
+- (void)documentStateHasBeenUpdated;
 @end

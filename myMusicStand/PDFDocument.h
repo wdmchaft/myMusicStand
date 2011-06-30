@@ -10,7 +10,10 @@
 
 @interface PDFDocument : UIDocument
 {
-    CGPDFDocumentRef document;
+    // The backing data for this document
+    CGPDFDocumentRef data;
 }
+
+@property (nonatomic, readonly) CGPDFDocumentRef data;
 
 @end

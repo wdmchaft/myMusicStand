@@ -12,6 +12,8 @@
 
 @implementation PDFDocument
 
+@synthesize data;
+
 /*
  *  Load the pdf document from the NSData we are passed in contents param
  */
@@ -23,11 +25,11 @@
     // create a data provider for pdf using NSData and toll free bridging
     CGDataProviderRef provider = CGDataProviderCreateWithCFData((CFDataRef)contents);
     // create pdf document from provider
-    document = CGPDFDocumentCreateWithProvider(provider);
+    data = CGPDFDocumentCreateWithProvider(provider);
     CGDataProviderRelease(provider);
     
     // Check if we failed to open document
-    if (document == nil)
+    if (data == nil)
     {
         return DOCUMENT_FAILED_TO_OPEN;
     }
@@ -38,7 +40,7 @@
 
 - (void)dealloc
 {
-    CGPDFDocumentRelease(document);
+    CGPDFDocumentRelease(data);
     [super dealloc];
 }
 
