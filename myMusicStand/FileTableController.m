@@ -40,8 +40,6 @@
 
 - (void)dealloc
 {
-    [tableView release];
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
     [super dealloc];
 }
 
