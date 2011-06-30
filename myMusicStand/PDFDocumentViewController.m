@@ -12,6 +12,11 @@
 
 - (id)initWithURL:(NSURL *)url
 {
+    if (!url)
+    {
+        @throw @"Param url must not be nil";
+    }
+    
     self = [super initWithNibName:nil bundle:nil];
     if (self) {
         // Custom initialization
@@ -22,11 +27,7 @@
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
+    @throw @"Illegal instance instead use initWithURL:";
 }
 
 - (void)didReceiveMemoryWarning

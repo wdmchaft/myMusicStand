@@ -10,5 +10,6 @@
 
 @interface PDFDocumentViewController : UIViewController
 
+// Designated initializer
 - (id)initWithURL:(NSURL *)url;
 @end
