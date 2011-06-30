@@ -67,6 +67,9 @@
 		645E6A2F13AA9761001DB0DB /* StageViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 645E6A2E13AA9761001DB0DB /* StageViewControllerTests.m */; };
 		648063391385A6C600E0CA27 /* BlockTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = 648063381385A6C600E0CA27 /* BlockTableController.m */; };
 		6480633A1385A6C600E0CA27 /* BlockTableController.m in Sources */ = {isa = PBXBuildFile; fileRef = 648063381385A6C600E0CA27 /* BlockTableController.m */; };
+		64886D3213BCCE68009C3EDA /* PDFDocumentViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 64886D3113BCCE68009C3EDA /* PDFDocumentViewControllerTests.m */; };
+		64886D3613BCCEBC009C3EDA /* PDFDocumentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64886D3513BCCEBC009C3EDA /* PDFDocumentViewController.m */; };
+		64886D3713BCCEBC009C3EDA /* PDFDocumentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64886D3513BCCEBC009C3EDA /* PDFDocumentViewController.m */; };
 		64C96969137B754E002B5D10 /* DelegateTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 64C96968137B754E002B5D10 /* DelegateTests.m */; };
 		64D94DF81379B2CB00300349 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64D94DF71379B2CB00300349 /* UIKit.framework */; };
 		64D94DFA1379B2CB00300349 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64D94DF91379B2CB00300349 /* Foundation.framework */; };
@@ -279,6 +282,10 @@
 		645E6A2E13AA9761001DB0DB /* StageViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StageViewControllerTests.m; sourceTree = "<group>"; };
 		648063371385A6C600E0CA27 /* BlockTableController.h */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.c.h; path = BlockTableController.h; sourceTree = "<group>"; tabWidth = 4; usesTabs = 0; wrapsLines = 1; };
 		648063381385A6C600E0CA27 /* BlockTableController.m */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 4; lastKnownFileType = sourcecode.c.objc; path = BlockTableController.m; sourceTree = "<group>"; tabWidth = 4; usesTabs = 0; wrapsLines = 1; };
+		64886D3013BCCE68009C3EDA /* PDFDocumentViewControllerTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDFDocumentViewControllerTests.h; sourceTree = "<group>"; };
+		64886D3113BCCE68009C3EDA /* PDFDocumentViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDFDocumentViewControllerTests.m; sourceTree = "<group>"; };
+		64886D3413BCCEBC009C3EDA /* PDFDocumentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDFDocumentViewController.h; sourceTree = "<group>"; };
+		64886D3513BCCEBC009C3EDA /* PDFDocumentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDFDocumentViewController.m; sourceTree = "<group>"; };
 		64C96967137B754E002B5D10 /* DelegateTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DelegateTests.h; sourceTree = "<group>"; };
 		64C96968137B754E002B5D10 /* DelegateTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DelegateTests.m; sourceTree = "<group>"; };
 		64D94DF31379B2CB00300349 /* myMusicStand.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = myMusicStand.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -674,6 +681,8 @@
 				64F5E1FD1399231F0048D1EF /* SetlistTableControllerTests.m */,
 				645E6A2D13AA9761001DB0DB /* StageViewControllerTests.h */,
 				645E6A2E13AA9761001DB0DB /* StageViewControllerTests.m */,
+				64886D3013BCCE68009C3EDA /* PDFDocumentViewControllerTests.h */,
+				64886D3113BCCE68009C3EDA /* PDFDocumentViewControllerTests.m */,
 			);
 			path = myMusicStandTests;
 			sourceTree = "<group>";
@@ -853,6 +862,8 @@
 				64F1F27213898A5C003F83AB /* PagingScrollViewController.m */,
 				64F1F26E13898A37003F83AB /* PDFPagingViewController.h */,
 				64F1F26F13898A37003F83AB /* PDFPagingViewController.m */,
+				64886D3413BCCEBC009C3EDA /* PDFDocumentViewController.h */,
+				64886D3513BCCEBC009C3EDA /* PDFDocumentViewController.m */,
 			);
 			name = "PDF Viewing";
 			sourceTree = "<group>";
@@ -1059,6 +1070,7 @@
 				64F1F27613898A85003F83AB /* PDFScrollView.m in Sources */,
 				64F1F27913898AA7003F83AB /* TiledPDFView.m in Sources */,
 				64FAA48E138BFE67009465BC /* StageViewController.m in Sources */,
+				64886D3613BCCEBC009C3EDA /* PDFDocumentViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1080,6 +1092,8 @@
 				6480633A1385A6C600E0CA27 /* BlockTableController.m in Sources */,
 				64F5E1FE1399231F0048D1EF /* SetlistTableControllerTests.m in Sources */,
 				645E6A2F13AA9761001DB0DB /* StageViewControllerTests.m in Sources */,
+				64886D3213BCCE68009C3EDA /* PDFDocumentViewControllerTests.m in Sources */,
+				64886D3713BCCEBC009C3EDA /* PDFDocumentViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
