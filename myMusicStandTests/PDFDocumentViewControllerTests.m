@@ -27,14 +27,16 @@
 
 - (void)testInitilization
 {
-    NSURL *url = [[NSURL alloc] initWithString:@""];
-    PDFDocumentViewController *controller = [[PDFDocumentViewController alloc] initWithURL:url];
-    STAssertNotNil(controller, @"Controller shouldn't be nil");
-    
+    // Invalid ways to init
     STAssertThrows([[PDFDocumentViewController alloc] initWithNibName:nil bundle:nil], 
                    @"Should be illegal to use this initializer");
     
     STAssertThrows([[PDFDocumentViewController alloc] initWithURL:nil], 
                    @"Should be illegal to pass nil");
+    
+    // Valid way to init
+    NSURL *url = [[NSURL alloc] initWithString:@"/Documents"];
+    PDFDocumentViewController *controller = [[PDFDocumentViewController alloc] initWithURL:url];
+    STAssertNotNil(controller, @"Controller shouldn't be nil");
 }
 @end

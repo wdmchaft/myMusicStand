@@ -70,6 +70,8 @@
 		64886D3213BCCE68009C3EDA /* PDFDocumentViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 64886D3113BCCE68009C3EDA /* PDFDocumentViewControllerTests.m */; };
 		64886D3613BCCEBC009C3EDA /* PDFDocumentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64886D3513BCCEBC009C3EDA /* PDFDocumentViewController.m */; };
 		64886D3713BCCEBC009C3EDA /* PDFDocumentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 64886D3513BCCEBC009C3EDA /* PDFDocumentViewController.m */; };
+		64886D3A13BCD1C0009C3EDA /* PDFDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 64886D3913BCD1C0009C3EDA /* PDFDocument.m */; };
+		64886D3B13BCD1C0009C3EDA /* PDFDocument.m in Sources */ = {isa = PBXBuildFile; fileRef = 64886D3913BCD1C0009C3EDA /* PDFDocument.m */; };
 		64C96969137B754E002B5D10 /* DelegateTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 64C96968137B754E002B5D10 /* DelegateTests.m */; };
 		64D94DF81379B2CB00300349 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64D94DF71379B2CB00300349 /* UIKit.framework */; };
 		64D94DFA1379B2CB00300349 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64D94DF91379B2CB00300349 /* Foundation.framework */; };
@@ -286,6 +288,8 @@
 		64886D3113BCCE68009C3EDA /* PDFDocumentViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDFDocumentViewControllerTests.m; sourceTree = "<group>"; };
 		64886D3413BCCEBC009C3EDA /* PDFDocumentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDFDocumentViewController.h; sourceTree = "<group>"; };
 		64886D3513BCCEBC009C3EDA /* PDFDocumentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDFDocumentViewController.m; sourceTree = "<group>"; };
+		64886D3813BCD1C0009C3EDA /* PDFDocument.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDFDocument.h; sourceTree = "<group>"; };
+		64886D3913BCD1C0009C3EDA /* PDFDocument.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDFDocument.m; sourceTree = "<group>"; };
 		64C96967137B754E002B5D10 /* DelegateTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DelegateTests.h; sourceTree = "<group>"; };
 		64C96968137B754E002B5D10 /* DelegateTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DelegateTests.m; sourceTree = "<group>"; };
 		64D94DF31379B2CB00300349 /* myMusicStand.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = myMusicStand.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -864,6 +868,8 @@
 				64F1F26F13898A37003F83AB /* PDFPagingViewController.m */,
 				64886D3413BCCEBC009C3EDA /* PDFDocumentViewController.h */,
 				64886D3513BCCEBC009C3EDA /* PDFDocumentViewController.m */,
+				64886D3813BCD1C0009C3EDA /* PDFDocument.h */,
+				64886D3913BCD1C0009C3EDA /* PDFDocument.m */,
 			);
 			name = "PDF Viewing";
 			sourceTree = "<group>";
@@ -1071,6 +1077,7 @@
 				64F1F27913898AA7003F83AB /* TiledPDFView.m in Sources */,
 				64FAA48E138BFE67009465BC /* StageViewController.m in Sources */,
 				64886D3613BCCEBC009C3EDA /* PDFDocumentViewController.m in Sources */,
+				64886D3A13BCD1C0009C3EDA /* PDFDocument.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1094,6 +1101,7 @@
 				645E6A2F13AA9761001DB0DB /* StageViewControllerTests.m in Sources */,
 				64886D3213BCCE68009C3EDA /* PDFDocumentViewControllerTests.m in Sources */,
 				64886D3713BCCEBC009C3EDA /* PDFDocumentViewController.m in Sources */,
+				64886D3B13BCD1C0009C3EDA /* PDFDocument.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
