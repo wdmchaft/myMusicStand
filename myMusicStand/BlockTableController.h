@@ -6,7 +6,7 @@
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
-@class NSManagedObjectContext;
+@class NSManagedObjectContext, NSManagedObject;
 @interface BlockTableController : NSObject <UITableViewDelegate, UITableViewDataSource> {
     IBOutlet UITableViewCell *tvCell;
     UINavigationController *navigationController;
