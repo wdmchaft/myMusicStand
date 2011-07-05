@@ -20,11 +20,11 @@
     mockContext = [OCMockObject mockForClass:[NSManagedObjectContext class]];
     mockTableView = [OCMockObject mockForClass:[UITableView class]];
     
-    // TableVie must expect it's setup
+    // TableView must expect it's setup
     [[mockTableView expect] setDelegate:[OCMArg any]];
     [[mockTableView expect] setDataSource:[OCMArg any]];
     
-    // Expect files to be loaded to display on instanciation
+    // Expect files to be loaded to display on instantiation
     [[mockContext expect] allEntity:@"File"];
     [[[mockContext stub] andReturn:nil] allEntity:@"File"];
     

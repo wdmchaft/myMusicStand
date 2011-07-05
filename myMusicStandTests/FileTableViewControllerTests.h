@@ -10,7 +10,8 @@
 #import "CoreDataTest.h"
 
 @class FileTableController;
-@interface FileTableViewControllerTests : CoreDataTest {
+@interface FileTableViewControllerTests : SenTestCase
+{
     id mockContext;
     id mockTableView;
     FileTableController *controller;
