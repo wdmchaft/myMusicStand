@@ -157,6 +157,7 @@
 		64FD3BC413A109D6008163F3 /* RoutingHTTPConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 64FD3B8313A109D6008163F3 /* RoutingHTTPConnection.m */; };
 		64FD3BC513A109D6008163F3 /* StaticResourcesRoute.m in Sources */ = {isa = PBXBuildFile; fileRef = 64FD3B8513A109D6008163F3 /* StaticResourcesRoute.m */; };
 		64FD3BC613A109D6008163F3 /* UISpecCommandReceiver.m in Sources */ = {isa = PBXBuildFile; fileRef = 64FD3B8713A109D6008163F3 /* UISpecCommandReceiver.m */; };
+		69D45F2513C397E30041AF71 /* firsttime.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 69D45F2413C397E30041AF71 /* firsttime.pdf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -387,6 +388,7 @@
 		64FD3B8513A109D6008163F3 /* StaticResourcesRoute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StaticResourcesRoute.m; sourceTree = "<group>"; };
 		64FD3B8613A109D6008163F3 /* UISpecCommandReceiver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UISpecCommandReceiver.h; sourceTree = "<group>"; };
 		64FD3B8713A109D6008163F3 /* UISpecCommandReceiver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UISpecCommandReceiver.m; sourceTree = "<group>"; };
+		69D45F2413C397E30041AF71 /* firsttime.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = firsttime.pdf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -672,6 +674,7 @@
 		64D94E1D1379B2CC00300349 /* myMusicStandTests */ = {
 			isa = PBXGroup;
 			children = (
+				69D45F2413C397E30041AF71 /* firsttime.pdf */,
 				64D94E981379C5EF00300349 /* Setlists Testing */,
 				64D94E951379C5B200300349 /* File related tests */,
 				64D94E961379C5C700300349 /* Core Data Testing */,
@@ -1018,6 +1021,7 @@
 			files = (
 				64D94E221379B2CC00300349 /* InfoPlist.strings in Resources */,
 				64E380661381786700A43834 /* floorAndStage.png in Resources */,
+				69D45F2513C397E30041AF71 /* firsttime.pdf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

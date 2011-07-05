@@ -73,7 +73,7 @@
                    @"Calculate the offset in terms of the base value");
 }
 
-
+/*
 - (void)testFilesReloadedWhenNotifiedToReload
 {    
     // setup expectations
@@ -85,5 +85,5 @@
     NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
     [center postNotification:notification];
 }
-
+*/
 @end
