@@ -1,1 +1,6 @@
 .DS_Store
+<<<<<<< HEAD
+myMusicStand.xcodeproj/project.xcworkspace/xcuserdata/stevensolomon.xcuserdatad/
+=======
+myMusicStand.xcodeproj/project.xcworkspace/xcuserdata/stevensolomon.xcuserdatad/UserInterfaceState.xcuserstate
+>>>>>>> llvm_switch
