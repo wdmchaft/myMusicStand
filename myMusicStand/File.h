@@ -15,13 +15,14 @@ typedef enum {
     FilenameNotAvailable
 } FilenameAvailability;
 
-@class OrderedFile;
+@class OrderedFile, Thumbnail;
 @interface File : TimestampEntity {
 @private
 }
 @property (nonatomic, retain) NSString * filename;
 @property (nonatomic, retain) NSSet* orderedFiles;
 @property (nonatomic, retain) NSString *alias;
+@property (nonatomic, retain) Thumbnail *thumbnail; 
 
 + (File *)fileWithContext:(NSManagedObjectContext *)moc;
 - (void)addOrderedFilesObject:(OrderedFile *)value;

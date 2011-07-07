@@ -14,6 +14,7 @@
 @dynamic filename;
 @dynamic orderedFiles;
 @dynamic alias;
+@dynamic thumbnail;
 
 - (void)addOrderedFilesObject:(OrderedFile *)value {    
     NSSet *changedObjects = [[NSSet alloc] initWithObjects:&value count:1];

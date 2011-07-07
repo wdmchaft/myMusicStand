@@ -158,6 +158,7 @@
 		64FD3BC513A109D6008163F3 /* StaticResourcesRoute.m in Sources */ = {isa = PBXBuildFile; fileRef = 64FD3B8513A109D6008163F3 /* StaticResourcesRoute.m */; };
 		64FD3BC613A109D6008163F3 /* UISpecCommandReceiver.m in Sources */ = {isa = PBXBuildFile; fileRef = 64FD3B8713A109D6008163F3 /* UISpecCommandReceiver.m */; };
 		69D45F2513C397E30041AF71 /* firsttime.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 69D45F2413C397E30041AF71 /* firsttime.pdf */; };
+		69F39AED13C5FD6800B7B939 /* Thumbnail.m in Sources */ = {isa = PBXBuildFile; fileRef = 69F39AEC13C5FD6800B7B939 /* Thumbnail.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -389,6 +390,8 @@
 		64FD3B8613A109D6008163F3 /* UISpecCommandReceiver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UISpecCommandReceiver.h; sourceTree = "<group>"; };
 		64FD3B8713A109D6008163F3 /* UISpecCommandReceiver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UISpecCommandReceiver.m; sourceTree = "<group>"; };
 		69D45F2413C397E30041AF71 /* firsttime.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = firsttime.pdf; sourceTree = "<group>"; };
+		69F39AEB13C5FD6800B7B939 /* Thumbnail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Thumbnail.h; sourceTree = "<group>"; };
+		69F39AEC13C5FD6800B7B939 /* Thumbnail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Thumbnail.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -769,6 +772,7 @@
 		64D94E931379C58100300349 /* Files (aka Charts) */ = {
 			isa = PBXGroup;
 			children = (
+				69F39AEF13C5FDF800B7B939 /* Thumbnail */,
 				64D94E861379BE1100300349 /* File.h */,
 				64D94E871379BE1100300349 /* File.m */,
 			);
@@ -915,6 +919,15 @@
 				64FD3B8713A109D6008163F3 /* UISpecCommandReceiver.m */,
 			);
 			path = src;
+			sourceTree = "<group>";
+		};
+		69F39AEF13C5FDF800B7B939 /* Thumbnail */ = {
+			isa = PBXGroup;
+			children = (
+				69F39AEB13C5FD6800B7B939 /* Thumbnail.h */,
+				69F39AEC13C5FD6800B7B939 /* Thumbnail.m */,
+			);
+			name = Thumbnail;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1082,6 +1095,7 @@
 				64FAA48E138BFE67009465BC /* StageViewController.m in Sources */,
 				64886D3613BCCEBC009C3EDA /* PDFDocumentViewController.m in Sources */,
 				64886D3A13BCD1C0009C3EDA /* PDFDocument.m in Sources */,
+				69F39AED13C5FD6800B7B939 /* Thumbnail.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
