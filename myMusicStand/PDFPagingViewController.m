@@ -127,6 +127,7 @@
                                                     otherButtonTitles:emailButtonText, @"Print", nil];
     [actionSheet showFromBarButtonItem:sender
                               animated:YES];
+    [actionSheet release];
 }
 
 #pragma mark Action sheet delegate methods

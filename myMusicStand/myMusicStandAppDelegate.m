@@ -32,7 +32,7 @@ static myMusicStandAppDelegate *sharedInstance;
 		NSLog(@"Error: You are creating a second AppController");
 	}
 	
-	[super init];
+	self = [super init];
 	sharedInstance = self;
 	
 	return self;
@@ -229,6 +229,7 @@ static myMusicStandAppDelegate *sharedInstance;
     for (File *file in files)
     {
         [fileNames addObject:[file filename]];
+
     }
     
     // return an immutable copy of the filenames array 
@@ -237,6 +238,9 @@ static myMusicStandAppDelegate *sharedInstance;
 
 - (void)updateContextForDocumentDirectoryChanges:(NSFileManager *)fm
 {
+    // TODO have delegate hold onto this
+    dispatch_queue_t queue = dispatch_queue_create("com.glassnerd.mymusicstand.thumbnails", DISPATCH_QUEUE_SERIAL);
+    
     // Get the context to add new files to
     NSManagedObjectContext *context = [self managedObjectContext];
     
@@ -251,6 +255,11 @@ static myMusicStandAppDelegate *sharedInstance;
     for (NSString *newFile in newFiles)
     {
         [[File fileWithContext:context] setFilename:newFile];
+        
+        dispatch_async(queue, ^{
+            NSLog(@"Creating thumbnail for: %@", newFile);
+        });
+        
     }
     
     // Fetch the file that has the name we want to delete
@@ -276,6 +285,8 @@ static myMusicStandAppDelegate *sharedInstance;
         
     }
   
+    [request release];
+    
     // Call delegate method to save changes
     [self saveContext];
 }

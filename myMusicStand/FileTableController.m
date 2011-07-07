@@ -145,6 +145,7 @@
     
     // show the PDFViewer
     [[self navigationController] pushViewController:pdfDocumentController animated:NO];
+    [pdfDocumentController release];
 }
 
 // Handle long press on alias label in a cell
