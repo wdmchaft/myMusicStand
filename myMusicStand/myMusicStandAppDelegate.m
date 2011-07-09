@@ -54,6 +54,7 @@ static myMusicStandAppDelegate *sharedInstance;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {  
+    backgroundQueue = dispatch_queue_create("com.glassnerd.mymusicstand.thumbnails", DISPATCH_QUEUE_SERIAL);
     // Set navigationController's navBar to hidden
     [[navController navigationBar] setHidden:YES];
         
@@ -98,6 +99,7 @@ static myMusicStandAppDelegate *sharedInstance;
 
 - (void)dealloc
 {
+    dispatch_release(backgroundQueue);
     [_window release];
     [__managedObjectContext release];
     [__managedObjectModel release];
@@ -242,12 +244,10 @@ static myMusicStandAppDelegate *sharedInstance;
 - (void)updateContextForDocumentDirectoryChanges:(NSFileManager *)fm
 {
     
-    dispatch_queue_t queue = dispatch_queue_create("com.glassnerd.mymusicstand.thumbnails", DISPATCH_QUEUE_SERIAL);
-    
     // Get the context to add new files to
     NSManagedObjectContext *mainContext = [self managedObjectContext];    
     
-    dispatch_async(queue, ^{
+    dispatch_async(backgroundQueue, ^{
         
         // Diff for new files
         NSString *docsPath = [[self applicationDocumentsDirectory] path];

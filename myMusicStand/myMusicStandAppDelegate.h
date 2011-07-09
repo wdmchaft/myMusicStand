@@ -14,6 +14,7 @@
     IBOutlet UINavigationController *navController;
     IBOutlet UINavigationBar *bottomOfStand;
     NSArray *theFiles;
+    dispatch_queue_t backgroundQueue;
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
