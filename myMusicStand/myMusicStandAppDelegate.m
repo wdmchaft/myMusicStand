@@ -245,7 +245,7 @@ static myMusicStandAppDelegate *sharedInstance;
     dispatch_queue_t queue = dispatch_queue_create("com.glassnerd.mymusicstand.thumbnails", DISPATCH_QUEUE_SERIAL);
     
     // Get the context to add new files to
-    NSManagedObjectContext *context = [self managedObjectContext];    
+    NSManagedObjectContext *mainContext = [self managedObjectContext];    
     
     dispatch_async(queue, ^{
         
@@ -263,7 +263,7 @@ static myMusicStandAppDelegate *sharedInstance;
         // Setup child context for this queue
         NSManagedObjectContext *childContext = 
             [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
-        [childContext setParentContext:context];
+        [childContext setParentContext:mainContext];
 
         // Add new entities for new files
         [newFiles enumerateObjectsUsingBlock:^(NSString *newFileName, NSUInteger idx, BOOL *stop)
