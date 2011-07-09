@@ -89,9 +89,6 @@
         // display image within block's bounds
         [imageView setFrame:[block bounds]];
         
-        // stop block spinner 
-        [[[block subviews] objectAtIndex:0] setHidden:YES];
-        
         // show thumbnail in block
         [block addSubview:imageView];
          
