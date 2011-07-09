@@ -27,11 +27,11 @@
     
     if (self)
     {
-        // Register for SaveNotification any context
+        // Register for SaveNotification from the mainContext
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(reloadFiles:) 
                                                      name:NSManagedObjectContextDidSaveNotification
-                                                   object:nil];
+                                                   object:moc];
         
         [self setModel:[context allEntity:@"File"]];
     }
@@ -76,6 +76,28 @@
     {
         // show check
         [check setHidden:NO];
+    }
+    
+    // Determine if we can display a thumbnail
+    Thumbnail *thumbnail = [file thumbnail];
+    if (thumbnail != nil)
+    {
+        // Load image for thumbnail
+        UIImage *image = [[UIImage alloc] initWithData:[thumbnail data]];
+        UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
+
+        // display image within block's bounds
+        [imageView setFrame:[block bounds]];
+        
+        // stop block spinner 
+        [[[block subviews] objectAtIndex:0] setHidden:YES];
+        
+        // show thumbnail in block
+        [block addSubview:imageView];
+         
+        // clean up
+        [imageView release];
+        [image release];
     }
     
     // add tap recognizer to block

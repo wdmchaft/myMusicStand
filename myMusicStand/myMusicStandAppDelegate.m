@@ -9,6 +9,15 @@
 #import "myMusicStandAppDelegate.h"
 #import "File.h"
 #import "FileHelpers.h"
+#import "PDFHelpers.h"
+#import "Thumbnail.h"
+#import "BlockTableController.h"
+
+// Private methods
+@interface myMusicStandAppDelegate (privateMethods)
+// save child context then save parent context asynchronously 
+- (void)populateSaveUpToParentsFromChild:(NSManagedObjectContext *)childContext;
+@end
 
 static myMusicStandAppDelegate *sharedInstance;
 
@@ -44,10 +53,7 @@ static myMusicStandAppDelegate *sharedInstance;
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-{
-    // First find any new files and add them to the context
-    [self updateContextForDocumentDirectoryChanges:[NSFileManager defaultManager]];
-
+{  
     // Set navigationController's navBar to hidden
     [[navController navigationBar] setHidden:YES];
         
@@ -77,13 +83,9 @@ static myMusicStandAppDelegate *sharedInstance;
      */
 }
 
-- (void)applicationWillEnterForeground:(UIApplication *)application
-{
-   
-}
-
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
+    // Check for new files
     [self updateContextForDocumentDirectoryChanges:[NSFileManager defaultManager]];
     
 }
@@ -146,7 +148,8 @@ static myMusicStandAppDelegate *sharedInstance;
     NSPersistentStoreCoordinator *coordinator = [self persistentStoreCoordinator];
     if (coordinator != nil)
     {
-        __managedObjectContext = [[NSManagedObjectContext alloc] init];
+        __managedObjectContext = 
+            [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
         [__managedObjectContext setPersistentStoreCoordinator:coordinator];
     }
     return __managedObjectContext;
@@ -238,60 +241,121 @@ static myMusicStandAppDelegate *sharedInstance;
 
 - (void)updateContextForDocumentDirectoryChanges:(NSFileManager *)fm
 {
-    // TODO have delegate hold onto this
+    
     dispatch_queue_t queue = dispatch_queue_create("com.glassnerd.mymusicstand.thumbnails", DISPATCH_QUEUE_SERIAL);
     
     // Get the context to add new files to
-    NSManagedObjectContext *context = [self managedObjectContext];
+    NSManagedObjectContext *context = [self managedObjectContext];    
     
-    // Diff for new files
-    NSString *docsPath = [[self applicationDocumentsDirectory] path];
-    NSArray *directoryContents = [fm contentsOfDirectoryAtPath:docsPath error:nil];
-    NSArray *knownFiles = [self knownFileNames];
-    NSArray *newFiles = filesDiffWithFileslistAndKnownFiles(directoryContents, knownFiles, FileDiffTypeNew);
-    NSArray *staleFiles = filesDiffWithFileslistAndKnownFiles(directoryContents, knownFiles, FileDiffTypeStale);
+    dispatch_async(queue, ^{
+        
+        // Diff for new files
+        NSString *docsPath = [[self applicationDocumentsDirectory] path];
+        NSArray *directoryContents = [fm contentsOfDirectoryAtPath:docsPath error:nil];
+        NSArray *knownFiles = [self knownFileNames];
+        NSArray *newFiles = filesDiffWithFileslistAndKnownFiles(directoryContents, knownFiles, FileDiffTypeNew);
+        NSArray *staleFiles = filesDiffWithFileslistAndKnownFiles(directoryContents, knownFiles, FileDiffTypeStale);
+        
+        [newFiles enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop){
+            NSLog(@"%@", obj);
+         }];
+        
+        // Setup child context for this queue
+        NSManagedObjectContext *childContext = 
+            [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
+        [childContext setParentContext:context];
+
+        // Add new entities for new files
+        [newFiles enumerateObjectsUsingBlock:^(NSString *newFileName, NSUInteger idx, BOOL *stop)
+         {
+             // Create new file 
+             File *newFile = [File fileWithContext:childContext];
+             [newFile setFilename:newFileName];
+             
+             // Create url for file
+             NSURL *url = [self applicationDocumentsDirectory];
+             url = [url URLByAppendingPathComponent:newFileName isDirectory:NO];
+             
+             // Create newThumbnail
+             Thumbnail *newThumbnail = (Thumbnail *)[NSEntityDescription insertNewObjectForEntityForName:@"Thumbnail"
+                                                                                  inManagedObjectContext:childContext];
+             // set relationships
+             [newThumbnail setFile:newFile];
+             [newFile setThumbnail:newThumbnail];
+             
+             // Generate image of first page in PDF
+             UIImage *backgroundImage = imageForPDFAtURLForSize(url, BLOCK_WIDTH, BLOCK_HEIGHT);
+             
+             // set image data for thumbnail
+             [newThumbnail setData:UIImagePNGRepresentation(backgroundImage)];
+             
+             // Save context
+             [self populateSaveUpToParentsFromChild:childContext];
+         }];
+              
+        // Fetch the file that has the name we want to delete
+        NSFetchRequest *request = [[NSFetchRequest alloc] init];
+        [request setEntity:[NSEntityDescription entityForName:@"File" inManagedObjectContext:childContext]];
+        
+        // Remove stale files
+        [staleFiles enumerateObjectsUsingBlock:^(NSString *staleFile, NSUInteger idx, BOOL *stop)
+        {
+            // Predicate for request
+            NSPredicate *predicate = [NSPredicate predicateWithFormat:@"filename == %@", staleFile];
+            [request setPredicate:predicate];
+            
+            // Execute the request
+            NSArray *results = [childContext executeFetchRequest:request error:nil];
+            
+            // we should have one result
+            if ([results count] > 0)
+            {
+                File *file = [results objectAtIndex:0];
+                
+                // remove the result from the context
+                [childContext deleteObject:file];
+        
+                [self populateSaveUpToParentsFromChild:childContext];
+                                
+            }
+
+        }];
+        
+        [request release];
+        
+        if ([childContext hasChanges])
+        {
+            @throw @"should not have any changes left";
+        }        
+      
+    });
     
-    // Loop through the new file names and add them
-    for (NSString *newFile in newFiles)
-    {
-        [[File fileWithContext:context] setFilename:newFile];
-        
-        dispatch_async(queue, ^{
-            NSLog(@"Creating thumbnail for: %@", newFile);
-        });
-        
-    }
-    
-    // Fetch the file that has the name we want to delete
-    NSFetchRequest *request = [[NSFetchRequest alloc] init];
-    [request setEntity:[NSEntityDescription entityForName:@"File" inManagedObjectContext:context]];
-    
-    // Loop through the stale file names and remove them
-    for (NSString *staleFile in staleFiles)
-    {
-        
-        // Predicate for request
-        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"filename == %@", staleFile];
-        [request setPredicate:predicate];
-        
-        // Execute the request
-        NSArray *results = [context executeFetchRequest:request error:nil];
-        
-        // we have one result
-        File *file = [results objectAtIndex:0];
-        
-        // remove the result from the context
-        [context deleteObject:file];
-        
-    }
-  
-    [request release];
-    
-    // Call delegate method to save changes
+    // Call delegate method to save changes to context
     [self saveContext];
 }
 
-
+- (void)populateSaveUpToParentsFromChild:(NSManagedObjectContext *)childContext
+{
+    // Save childContext
+    NSError *childError = nil;
+    [childContext save:&childError];
+    if (childError)
+    {
+        NSLog(@"Error saving child context: %@", [childError localizedDescription]);
+    }
+    
+    NSManagedObjectContext *parentContext = [childContext parentContext];
+    
+    // save main context async
+    [parentContext performBlock:^{
+        NSError *parentError = nil;
+        [parentContext save:&parentError];
+        if (parentError)
+        {
+            NSLog(@"Error while saving main context %@", [parentError localizedDescription]);
+        }
+    }];
+}
 
 #pragma mark - Application's Documents directory
 

@@ -6,6 +6,10 @@
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
+extern const CGFloat BLOCK_WIDTH;
+extern const CGFloat BLOCK_HEIGHT;
+extern const CGFloat CELL_HEIGHT;
+
 @class NSManagedObjectContext, NSManagedObject;
 @interface BlockTableController : NSObject <UITableViewDelegate, UITableViewDataSource> {
     IBOutlet UITableViewCell *tvCell;

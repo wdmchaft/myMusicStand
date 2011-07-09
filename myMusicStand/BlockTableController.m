@@ -14,6 +14,10 @@
 #define FIRST_LABEL_TAG 1
 #define FIRST_CHECK_TAG 7
 
+const CGFloat BLOCK_WIDTH = 162.0;
+const CGFloat BLOCK_HEIGHT = 201.0;
+const CGFloat CELL_HEIGHT = 270.0;
+
 @interface BlockTableController (privateMethods)
 // private methods
 - (void)configureCell:(UITableViewCell *)cell 
@@ -76,7 +80,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath 
 {
-    return 270;
+    return CELL_HEIGHT;
 }
 
 #pragma mark - helper methods
@@ -244,6 +248,14 @@
         {
             // UIView class
             [subview setHidden:YES];
+            
+            for (UIView *innerSubview in [subview subviews])
+            {
+                if ([innerSubview isKindOfClass:[UIImageView class]])
+                {
+                    [innerSubview removeFromSuperview];
+                }
+            }
         }
         
         // remove any gesture recognizers on subviews
