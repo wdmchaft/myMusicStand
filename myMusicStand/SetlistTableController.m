@@ -99,9 +99,6 @@
     // Action selector to be used for tapGestureRecognizer
     SEL tapSelector;
     
-    // Hide the spinner in the block (it hides when not animating), this is hidden for all setlist blocks
-    [(UIActivityIndicatorView *)[[block subviews] objectAtIndex:0] stopAnimating];
-    
     // Configure add button in this block
     if (index == [model count])
     {
