@@ -9,6 +9,7 @@
 #import "PDFDocumentViewController.h"
 #import "PDFScrollView.h"
 #import "PDFDocument.h"
+#import "PDFHelpers.h"
 
 @implementation PDFDocumentViewController
 
@@ -51,12 +52,22 @@
 #pragma mark - Helper methods
 - (void)documentStateHasBeenUpdated
 {
-    // Get the first page in the document
-    CGPDFPageRef firstPage = CGPDFDocumentGetPage([document data], 1);
+    // Get bounds in which to draw the image
+    CGRect bounds = [[self view] bounds];
     
-    // Display the page in the pdfView
-    [pdfView setPDFPage:firstPage];
+    // Get the first page in the document    
+    UIImage *image = imageForPDFDocumentInSize([document data], bounds.size.width, bounds.size.height);
+    UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
+    [pdfView addSubview:imageView];
+    
+    // center the image
+    [imageView setCenter:[pdfView center]];
+    
+    // show the view
     [pdfView setNeedsDisplay];
+    
+    // clean up
+    [imageView release];
 }
 
 #pragma mark - View lifecycle
@@ -71,7 +82,7 @@
     
     // Create the pdfView to display
     CGRect pdfViewFrame = [[self view] bounds];
-    pdfView = [[PDFScrollView alloc] initWithFrame:pdfViewFrame];
+    pdfView = [[UIView alloc] initWithFrame:pdfViewFrame];
     
     // Add the pdfView as a subview of our main view
     [[self view] addSubview:pdfView];

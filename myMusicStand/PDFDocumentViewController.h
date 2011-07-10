@@ -11,12 +11,12 @@
 
 #import <UIKit/UIKit.h>
 
-@class PDFDocument, PDFScrollView;
+@class PDFDocument, PDFView;
 @interface PDFDocumentViewController : UIViewController
 {
     // The document we will display
     PDFDocument *document;
-    PDFScrollView *pdfView;
+    UIView *pdfView;
 }
 
 @property (nonatomic, readonly) PDFDocument *document;

@@ -9,5 +9,6 @@
 //
 
 UIImage *imageForPDFAtURLForSize(NSURL *url, CGFloat width, CGFloat height);
+UIImage *imageForPDFDocumentInSize(CGPDFDocumentRef document, CGFloat width, CGFloat height);
 
 

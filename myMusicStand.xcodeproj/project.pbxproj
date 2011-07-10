@@ -741,7 +741,6 @@
 				64FAA48B138BFE66009465BC /* StageViewController.h */,
 				64FAA48C138BFE67009465BC /* StageViewController.m */,
 				64FAA48D138BFE67009465BC /* StageViewController.xib */,
-				69958E1113C8C6D400A6911E /* PDFHelpers */,
 			);
 			name = "Top Level";
 			sourceTree = "<group>";
@@ -872,6 +871,7 @@
 		64F1F27E13898AF6003F83AB /* PDF Viewing */ = {
 			isa = PBXGroup;
 			children = (
+				69958E1113C8C6D400A6911E /* PDFHelpers */,
 				64F1F27713898AA7003F83AB /* TiledPDFView.h */,
 				64F1F27813898AA7003F83AB /* TiledPDFView.m */,
 				64F1F27413898A85003F83AB /* PDFScrollView.h */,
