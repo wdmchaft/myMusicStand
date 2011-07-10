@@ -18,6 +18,7 @@
     PDFDocument *document;
     UIImageView *imageView;
     UIView *pdfView;
+    UIScrollView *scrollView; // same as view
 }
 
 @property (nonatomic, readonly) PDFDocument *document;

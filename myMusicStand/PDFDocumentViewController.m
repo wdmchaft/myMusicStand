@@ -70,6 +70,11 @@
 {
     [super loadView];
     
+    // Create our view
+    CGRect frame = [[self view] frame];
+    scrollView = [[UIScrollView alloc] initWithFrame:frame];
+    [self setView:scrollView];
+    
     // open the file
     [document openWithCompletionHandler:^(BOOL fileIsOpen){
         [self documentStateHasBeenUpdated];
@@ -100,10 +105,12 @@
     // if we now in a landscape orientation
     if (UIInterfaceOrientationIsLandscape([self interfaceOrientation]))
     {
-        bounds.size.height *= 2;
+        bounds.size.height *= 2;     
     }
-    
     UIImage *image = imageForPDFDocumentInSize([document data], bounds.size.width, bounds.size.height);        
+    
+    // Allow scrolling only when image needs it
+    [scrollView setContentSize:image.size];
     
     // Toss old image
     [imageView removeFromSuperview];
