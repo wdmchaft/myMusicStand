@@ -7,7 +7,7 @@
 //
 
 #import "PDFDocumentViewController.h"
-#import "PDFScrollView.h"
+#import "PDFScrollView.h" 
 #import "PDFDocument.h"
 #import "PDFHelpers.h"
 
@@ -93,26 +93,33 @@
 	return YES;
 }
 
-- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
 {
-    [super willRotateToInterfaceOrientation:toInterfaceOrientation duration:duration];
-    
-    // Render larger image
     CGRect bounds = [[self view] bounds];
-    bounds.size.width *= 2;
-    UIImage *largeImage = imageForPDFDocumentInSize((CGPDFDocumentRef)[document data], bounds.size.height, bounds.size.width);
+    
+    // if we now in a landscape orientation
+    if (UIInterfaceOrientationIsLandscape([self interfaceOrientation]))
+    {
+        bounds.size.height *= 2;
+    }
+    
+    UIImage *image = imageForPDFDocumentInSize([document data], bounds.size.width, bounds.size.height);        
     
     // Toss old image
     [imageView removeFromSuperview];
     [imageView release];
     
     // Display new image
-    imageView = [[UIImageView alloc] initWithImage:largeImage];
+    imageView = [[UIImageView alloc] initWithImage:image];
+    
+    // Center the imageView
     CGPoint center = [imageView center];
-    center.x = (bounds.size.height + 22) / 2;
+    center.x = bounds.size.width / 2;
     [imageView setCenter:center];
+    
     [[self view] addSubview:imageView];
     [[self view] setNeedsDisplay];
-    
+
 }
+
 @end
