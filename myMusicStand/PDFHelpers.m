@@ -14,12 +14,16 @@ UIImage *imageForPDFAtURLForSize(NSURL *url, CGFloat width, CGFloat height)
     CGPDFDocumentRef document = CGPDFDocumentCreateWithURL((CFURLRef)url);
     
     // get the image for the document
-    return imageForPDFDocumentInSize(document, width, height);
+    UIImage *image = imageForPDFDocumentInSize(document, width, height);
+    
+    CGPDFDocumentRelease(document);
+    
+    return image;
 
 }
 
 UIImage *imageForPDFDocumentInSize(CGPDFDocumentRef document, CGFloat width, CGFloat height)
-{
+{    
     CGPDFPageRef pdfPage = CGPDFDocumentGetPage(document, 1);
     
     // generate thumbnail data for thumbnail by determine the size of the PDF page
@@ -62,9 +66,6 @@ UIImage *imageForPDFDocumentInSize(CGPDFDocumentRef document, CGFloat width, CGF
     UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
     
     UIGraphicsEndImageContext();
-    
-    // Clean up document
-    CGPDFDocumentRelease(document);
     
     return image;
 }

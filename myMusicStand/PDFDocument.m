@@ -26,6 +26,7 @@
     CGDataProviderRef provider = CGDataProviderCreateWithCFData((CFDataRef)contents);
     // create pdf document from provider
     data = CGPDFDocumentCreateWithProvider(provider);
+    
     CGDataProviderRelease(provider);
     
     // Check if we failed to open document

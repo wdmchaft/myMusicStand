@@ -16,6 +16,7 @@
 {
     // The document we will display
     PDFDocument *document;
+    UIImageView *imageView;
     UIView *pdfView;
 }
 

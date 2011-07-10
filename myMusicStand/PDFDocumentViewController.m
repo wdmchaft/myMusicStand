@@ -57,17 +57,12 @@
     
     // Get the first page in the document    
     UIImage *image = imageForPDFDocumentInSize([document data], bounds.size.width, bounds.size.height);
-    UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
-    [pdfView addSubview:imageView];
+    imageView = [[UIImageView alloc] initWithImage:image];
+    [[self view] addSubview:imageView];
     
-    // center the image
-    [imageView setCenter:[pdfView center]];
-    
-    // show the view
-    [pdfView setNeedsDisplay];
-    
-    // clean up
-    [imageView release];
+    // center the imageView
+    [imageView setCenter:[[self view] center]];
+
 }
 
 #pragma mark - View lifecycle
@@ -84,6 +79,9 @@
     CGRect pdfViewFrame = [[self view] bounds];
     pdfView = [[UIView alloc] initWithFrame:pdfViewFrame];
     
+    // Adjust visual attributes on pdfView
+    [pdfView setBackgroundColor:[UIColor greenColor]];
+    
     // Add the pdfView as a subview of our main view
     [[self view] addSubview:pdfView];
     [pdfView release];
@@ -95,4 +93,26 @@
 	return YES;
 }
 
+- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+{
+    [super willRotateToInterfaceOrientation:toInterfaceOrientation duration:duration];
+    
+    // Render larger image
+    CGRect bounds = [[self view] bounds];
+    bounds.size.width *= 2;
+    UIImage *largeImage = imageForPDFDocumentInSize((CGPDFDocumentRef)[document data], bounds.size.height, bounds.size.width);
+    
+    // Toss old image
+    [imageView removeFromSuperview];
+    [imageView release];
+    
+    // Display new image
+    imageView = [[UIImageView alloc] initWithImage:largeImage];
+    CGPoint center = [imageView center];
+    center.x = (bounds.size.height + 22) / 2;
+    [imageView setCenter:center];
+    [[self view] addSubview:imageView];
+    [[self view] setNeedsDisplay];
+    
+}
 @end
