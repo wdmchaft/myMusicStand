@@ -282,7 +282,7 @@ static myMusicStandAppDelegate *sharedInstance;
              UIImage *backgroundImage = imageForPDFAtURLForSize(url, BLOCK_WIDTH, BLOCK_HEIGHT);
              
              // set image data for thumbnail
-             [newThumbnail setData:UIImagePNGRepresentation(backgroundImage)];
+             [newThumbnail setData:UIImageJPEGRepresentation(backgroundImage, 0.5)];
              
              // Save context
              [self populateSaveUpToParentsFromChild:childContext];
