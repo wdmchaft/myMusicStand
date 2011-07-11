@@ -92,28 +92,23 @@ const CGFloat CELL_HEIGHT = 270.0;
     UIImageView *checkMark; 
     
     // Loop through all possible blocks for the cell and attempt to set their values
-    int labelTagOffset = FIRST_LABEL_TAG; 
-    int blocTagOffset = FIRST_BLOCK_TAG; 
-    int checkTagOffset = FIRST_CHECK_TAG; 
+    int tagOffset = 0;
     
     for (int index = NUM_BLOCKS_PER_CELL * [indexPath row]; // BLOCKS * row gives us the first index in model we can use
-         index < [self numberOfBlocks] && labelTagOffset <= NUM_BLOCKS_PER_CELL; index++)
+         index < [self numberOfBlocks] && tagOffset < NUM_BLOCKS_PER_CELL; index++)
     {
         // Get label for tag
-        label = (UILabel *)[cell viewWithTag:labelTagOffset];
+        label = (UILabel *)[cell viewWithTag:FIRST_LABEL_TAG + tagOffset];
         // Get block for tag
-        block = [cell viewWithTag:blocTagOffset];
-        checkMark = (UIImageView *)[cell viewWithTag:checkTagOffset];
+        block = [cell viewWithTag:FIRST_BLOCK_TAG + tagOffset];
+        checkMark = (UIImageView *)[cell viewWithTag:FIRST_CHECK_TAG + tagOffset];
         
         // Make block visible
         [block setHidden:NO];
         
         [self customConfigurationForBlock:block label:label checkMark:checkMark atIndex:index];
         
-        labelTagOffset++;
-        blocTagOffset++;
-        checkTagOffset++;
-        
+        tagOffset++;        
     }
 }
 
