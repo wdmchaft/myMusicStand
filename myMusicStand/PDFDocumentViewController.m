@@ -101,7 +101,7 @@
         bounds.size.height *= 2;     
     }
     
-    UIImage *image = imageForPDFDocumentInSize([document data], bounds.size.width, bounds.size.height, kCGInterpolationHigh);        
+    UIImage *image = imageForPDFDocumentInSize([document data], bounds.size.width, bounds.size.height);        
     
     // Allow scrolling only when image needs it
     CGSize contentSize = image.size;

@@ -9,6 +9,10 @@
 //
 
 UIImage *imageForPDFAtURLForSize(NSURL *url, CGFloat width, CGFloat height);
-UIImage *imageForPDFDocumentInSize(CGPDFDocumentRef document, CGFloat width, CGFloat height, CGInterpolationQuality quality);
+
+// Render pdf page with interpolationQuality of high
+UIImage *imageForPDFDocumentInSize(CGPDFDocumentRef document, CGFloat width, CGFloat height);
+
+UIImage *imageForPDFDocumentInSizeWithQuality(CGPDFDocumentRef document, CGFloat width, CGFloat height, CGInterpolationQuality quality);
 
 

@@ -46,8 +46,7 @@
     // draw image
     UIImage *image = imageForPDFDocumentInSize(document, 
                                                rect.size.width, 
-                                               rect.size.height, 
-                                               kCGInterpolationHigh);
+                                               rect.size.height);
     
     //CGContextDrawImage(ctx, rect, (CGImageRef)image);
     

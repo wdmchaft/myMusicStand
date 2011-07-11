@@ -14,7 +14,7 @@ UIImage *imageForPDFAtURLForSize(NSURL *url, CGFloat width, CGFloat height)
     CGPDFDocumentRef document = CGPDFDocumentCreateWithURL((__bridge CFURLRef)url);
     
     // get the image for the document
-    UIImage *image = imageForPDFDocumentInSize(document, width, height, kCGInterpolationHigh);
+    UIImage *image = imageForPDFDocumentInSizeWithQuality(document, width, height, kCGInterpolationHigh);
     
     CGPDFDocumentRelease(document);
     
@@ -22,7 +22,12 @@ UIImage *imageForPDFAtURLForSize(NSURL *url, CGFloat width, CGFloat height)
 
 }
 
-UIImage *imageForPDFDocumentInSize(CGPDFDocumentRef document, CGFloat width, CGFloat height, CGInterpolationQuality quality)
+UIImage *imageForPDFDocumentInSize(CGPDFDocumentRef document, CGFloat width, CGFloat height)
+{
+    return imageForPDFDocumentInSizeWithQuality(document, width, height, kCGInterpolationHigh);
+}
+                        
+UIImage *imageForPDFDocumentInSizeWithQuality(CGPDFDocumentRef document, CGFloat width, CGFloat height, CGInterpolationQuality quality)
 {    
     CGPDFPageRef pdfPage = CGPDFDocumentGetPage(document, 1);
     
