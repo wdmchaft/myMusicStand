@@ -62,6 +62,14 @@
     
     // center the imageView
     [imageView setCenter:[[self view] center]];
+    
+    // Make sure the scrollView can display all the pages of the pdf
+    CGSize size = [scrollView frame].size;
+    size.width *= [document numberOfPages];
+    [scrollView setContentSize:size];
+    
+    // We only want to scroll in one axis at a time
+    [scrollView setDirectionalLockEnabled:YES];
 
 }
 
@@ -73,6 +81,8 @@
     // Create our view
     CGRect frame = [[self view] frame];
     scrollView = [[UIScrollView alloc] initWithFrame:frame];
+    [scrollView setPagingEnabled:YES];
+    [scrollView setBackgroundColor:[UIColor lightGrayColor]];
     [self setView:scrollView];
     
     // open the file
@@ -83,9 +93,6 @@
     // Create the pdfView to display
     CGRect pdfViewFrame = [[self view] bounds];
     pdfView = [[UIView alloc] initWithFrame:pdfViewFrame];
-    
-    // Adjust visual attributes on pdfView
-    [pdfView setBackgroundColor:[UIColor greenColor]];
     
     // Add the pdfView as a subview of our main view
     [[self view] addSubview:pdfView];
@@ -107,10 +114,13 @@
     {
         bounds.size.height *= 2;     
     }
+    
     UIImage *image = imageForPDFDocumentInSize([document data], bounds.size.width, bounds.size.height);        
     
     // Allow scrolling only when image needs it
-    [scrollView setContentSize:image.size];
+    CGSize contentSize = image.size;
+    contentSize.width *= [document numberOfPages];
+    [scrollView setContentSize:contentSize];
     
     // Toss old image
     [imageView removeFromSuperview];

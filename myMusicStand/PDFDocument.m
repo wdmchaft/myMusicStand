@@ -13,6 +13,7 @@
 @implementation PDFDocument
 
 @synthesize data;
+@synthesize numberOfPages;
 
 /*
  *  Load the pdf document from the NSData we are passed in contents param
@@ -34,6 +35,9 @@
     {
         return DOCUMENT_FAILED_TO_OPEN;
     }
+    
+    // store the number of pages
+    numberOfPages = CGPDFDocumentGetNumberOfPages(data);
     
     return DOCUMENT_HAS_OPENED;
     

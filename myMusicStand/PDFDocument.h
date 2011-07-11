@@ -12,8 +12,9 @@
 {
     // The backing data for this document
     CGPDFDocumentRef data;
+    int numberOfPages;
 }
 
 @property (nonatomic, readonly) CGPDFDocumentRef data;
-
+@property (nonatomic, readonly) int numberOfPages;
 @end
