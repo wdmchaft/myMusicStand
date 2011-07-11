@@ -27,7 +27,6 @@
     [request setSortDescriptors:[NSArray arrayWithObject:sort]];
     
     // Make sure fetch request is cleaned up
-    [request autorelease];
     
     return [self executeFetchRequest:request error:nil];
     

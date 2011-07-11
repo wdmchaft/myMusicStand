@@ -13,8 +13,8 @@ extern const CGFloat CELL_HEIGHT;
 @class NSManagedObjectContext, NSManagedObject;
 @interface BlockTableController : NSObject <UITableViewDelegate, UITableViewDataSource> {
     IBOutlet UITableViewCell *tvCell;
-    UINavigationController *navigationController;
-    UITableView *tableView;
+    UINavigationController *__weak navigationController;
+    UITableView *__weak tableView;
     NSManagedObjectContext *context;
     NSArray *model;
     BOOL isSelectingBlocks; // when charts can be selected
@@ -22,8 +22,8 @@ extern const CGFloat CELL_HEIGHT;
     NSMutableDictionary *blocksToModel; // mapping of blocks to model
 }
 
-@property (nonatomic, assign) UINavigationController *navigationController;
-@property (nonatomic, assign) UITableView *tableView;
+@property (nonatomic, weak) UINavigationController *navigationController;
+@property (nonatomic, weak) UITableView *tableView;
 @property (nonatomic, retain) NSArray *model;
 @property (nonatomic, assign) BOOL isSelectingBlocks;
 

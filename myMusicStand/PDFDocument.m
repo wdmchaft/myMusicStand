@@ -24,7 +24,7 @@
 {
     
     // create a data provider for pdf using NSData and toll free bridging
-    CGDataProviderRef provider = CGDataProviderCreateWithCFData((CFDataRef)contents);
+    CGDataProviderRef provider = CGDataProviderCreateWithCFData((__bridge CFDataRef)contents);
     // create pdf document from provider
     data = CGPDFDocumentCreateWithProvider(provider);
     
@@ -46,7 +46,6 @@
 - (void)dealloc
 {
     CGPDFDocumentRelease(data);
-    [super dealloc];
 }
 
 

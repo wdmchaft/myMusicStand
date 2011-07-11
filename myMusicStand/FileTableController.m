@@ -10,6 +10,7 @@
 #import "PDFDocumentViewController.h"
 #import "myMusicStandAppDelegate.h"
 #import "File.h"
+#import "Thumbnail.h"
 
 @interface FileTableController (PrivateMethods)
 
@@ -38,10 +39,6 @@
     return self;
 }
 
-- (void)dealloc
-{
-    [super dealloc];
-}
 
 #pragma mark - Helper methods
 - (void)customStepForDeletionOfModel:(NSManagedObject *)aModel
@@ -66,9 +63,10 @@
     // Set accessiblity labels
     [block setAccessibilityLabel:[[file alias] stringByAppendingString:@" block"]];
     
+
     // Add mapping of block to filename, this will allow us to have the name of the 
     // file we want to open once the block is clicked
-    [blocksToModel setObject:file forKey:[NSValue valueWithPointer:block]];
+    [blocksToModel setObject:file forKey:[NSValue valueWithNonretainedObject:block]];
     
     // Show check if file is in selectedModels
     if ([selectedModels containsObject:file])
@@ -92,15 +90,12 @@
         [block addSubview:imageView];
          
         // clean up
-        [imageView release];
-        [image release];
     }
     
     // add tap recognizer to block
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self 
                                                                           action:@selector(handleTap:)];
     [block addGestureRecognizer:tap];
-    [tap release];  
 
 }
 
@@ -147,8 +142,7 @@
     UIView *block = [recognizer view];
     
     // Get the filename from dict
-    File *file = [blocksToModel objectForKey:
-                                        [NSValue valueWithPointer:block]];
+    File *file = [blocksToModel objectForKey:[NSValue valueWithNonretainedObject:block]];
     
     NSString *filename = [file filename];
     
@@ -163,7 +157,6 @@
     
     // show the PDFViewer
     [[self navigationController] pushViewController:pdfDocumentController animated:NO];
-    [pdfDocumentController release];
 }
 
 // Handle long press on alias label in a cell
@@ -205,7 +198,7 @@
     [field resignFirstResponder];
     
     // remove the field from the cell
-    [[field retain] autorelease]; // hold onto the field for alittle while
+     // hold onto the field for alittle while
     [field removeFromSuperview];
     
     // hit test the cell for the lable at center

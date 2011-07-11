@@ -43,11 +43,6 @@
     // Release any cached data, images, etc that aren't in use.
 }
 
-- (void)dealloc
-{
-    [document release];
-    [super dealloc];
-}
 
 #pragma mark - Helper methods
 - (void)documentStateHasBeenUpdated
@@ -57,7 +52,6 @@
     
     pdfView = [[PDFView alloc] initWithFrame:bounds andPDFDocument:[document data]];
     [scrollView addSubview:pdfView];
-    [pdfView release];
     
     // center the imageView
     [imageView setCenter:[[self view] center]];
@@ -116,7 +110,6 @@
     
     // Toss old image
     [imageView removeFromSuperview];
-    [imageView release];
     
     // Display new image
     imageView = [[UIImageView alloc] initWithImage:image];

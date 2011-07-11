@@ -28,7 +28,6 @@
 - (void)dealloc
 {
     CGPDFDocumentRelease(document);
-    [super dealloc];
 }
 
 

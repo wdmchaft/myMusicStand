@@ -14,12 +14,13 @@ static FrankServer *sFrankServer;
 
 int main(int argc, char *argv[])
 {
-    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+    int retVal;
+    @autoreleasepool {
 #ifdef FRANK
-    sFrankServer = [[FrankServer alloc] initWithDefaultBundle];
-    [sFrankServer startServer];
+        sFrankServer = [[FrankServer alloc] initWithDefaultBundle];
+        [sFrankServer startServer];
 #endif
-    int retVal = UIApplicationMain(argc, argv, nil, nil);
-    [pool release];
+        retVal = UIApplicationMain(argc, argv, nil, nil);
+    }
     return retVal;
 }

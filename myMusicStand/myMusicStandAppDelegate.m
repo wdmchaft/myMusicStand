@@ -100,11 +100,6 @@ static myMusicStandAppDelegate *sharedInstance;
 - (void)dealloc
 {
     dispatch_release(backgroundQueue);
-    [_window release];
-    [__managedObjectContext release];
-    [__managedObjectModel release];
-    [__persistentStoreCoordinator release];
-    [super dealloc];
 }
 
 - (void)awakeFromNib
@@ -228,7 +223,7 @@ static myMusicStandAppDelegate *sharedInstance;
 {
     
     NSArray *files = [[self managedObjectContext] allEntity:@"File"];
-    NSMutableArray *fileNames = [[[NSMutableArray alloc] init] autorelease];    
+    NSMutableArray *fileNames = [[NSMutableArray alloc] init];    
  
     // Loop through all the known files and build up an array of filenames
     for (File *file in files)
@@ -238,7 +233,7 @@ static myMusicStandAppDelegate *sharedInstance;
     }
     
     // return an immutable copy of the filenames array 
-    return [[fileNames copy] autorelease];
+    return [fileNames copy];
 }
 
 - (void)updateContextForDocumentDirectoryChanges:(NSFileManager *)fm
@@ -321,7 +316,6 @@ static myMusicStandAppDelegate *sharedInstance;
 
         }];
         
-        [request release];
         
         if ([childContext hasChanges])
         {

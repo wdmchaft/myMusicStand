@@ -21,7 +21,6 @@
     [self willChangeValueForKey:@"orderedFiles" withSetMutation:NSKeyValueUnionSetMutation usingObjects:changedObjects];
     [[self primitiveValueForKey:@"orderedFiles"] addObject:value];
     [self didChangeValueForKey:@"orderedFiles" withSetMutation:NSKeyValueUnionSetMutation usingObjects:changedObjects];
-    [changedObjects release];
 }
 
 - (void)removeOrderedFilesObject:(OrderedFile *)value {
@@ -29,7 +28,6 @@
     [self willChangeValueForKey:@"orderedFiles" withSetMutation:NSKeyValueMinusSetMutation usingObjects:changedObjects];
     [[self primitiveValueForKey:@"orderedFiles"] removeObject:value];
     [self didChangeValueForKey:@"orderedFiles" withSetMutation:NSKeyValueMinusSetMutation usingObjects:changedObjects];
-    [changedObjects release];
 }
 
 - (void)addOrderedFiles:(NSSet *)value {    

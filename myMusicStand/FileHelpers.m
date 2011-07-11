@@ -15,8 +15,8 @@ NSArray *filesDiffWithFileslistAndKnownFiles(NSArray *filesInDirectory, NSArray 
     NSSet *resultsSet = nil;
     
     // Mutable Sets to use to generate diffs
-    NSMutableSet *diffKnownSet = [[[NSSet setWithArray:knownFiles] mutableCopy] autorelease];
-    NSMutableSet *diffActualFilesSet = [[[NSSet setWithArray:filesInDirectory] mutableCopy] autorelease];
+    NSMutableSet *diffKnownSet = [[NSSet setWithArray:knownFiles] mutableCopy];
+    NSMutableSet *diffActualFilesSet = [[NSSet setWithArray:filesInDirectory] mutableCopy];
     // Immutable Sets to use to diff against
     NSSet *actualFilesSet = [NSSet setWithArray:filesInDirectory];
     NSSet *knownFilesSet = [NSSet setWithArray:knownFiles];
@@ -39,10 +39,9 @@ NSArray *filesDiffWithFileslistAndKnownFiles(NSArray *filesInDirectory, NSArray 
         [mutableResultsSet removeObject:@".DS_Store"];
         
         // Create immutable copy of mutableresultsset without '.DS_Store'
-        resultsSet = [[mutableResultsSet copy] autorelease];
+        resultsSet = [mutableResultsSet copy];
         
         // Cleanup mutable copy
-        [mutableResultsSet release];
 
     }
     else if (type == FileDiffTypeStale)

@@ -41,10 +41,6 @@
 
 }
 
-- (void)dealloc
-{
-    [super dealloc];
-}
 
 #pragma mark - Table view data source
 - (void)reloadFiles:(NSNotification *)notification
@@ -111,7 +107,7 @@
         [block setAccessibilityLabel:@"Add Setlist block"];
         
         // remove this block from mapping so it can't be used 
-        [blocksToModel removeObjectForKey:[NSValue valueWithPointer:block]];
+        [blocksToModel removeObjectForKey:[NSValue valueWithNonretainedObject:block]];
     }
     else 
     {
@@ -133,7 +129,7 @@
         [label setAccessibilityLabel:[setlist title]];
         
         // Add block mapping from block to setlist title
-        [blocksToModel setObject:setlist forKey:[NSValue valueWithPointer:block]];
+        [blocksToModel setObject:setlist forKey:[NSValue valueWithNonretainedObject:block]];
     }
     
     
@@ -141,7 +137,6 @@
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self 
                                                                           action:tapSelector];
     [block addGestureRecognizer:tap];
-    [tap release];  
     
 }
 

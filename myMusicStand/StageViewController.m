@@ -28,15 +28,6 @@
     return self;
 }
 
-- (void)dealloc
-{
-    [tabControl release];
-    [actionItem release];
-    [blockController release];
-    [bottomOfStand release];
-    [tableView release];
-    [super dealloc];
-}
 
 - (void)didReceiveMemoryWarning
 {
@@ -72,15 +63,10 @@
 - (void)viewDidUnload
 {
     [super viewDidUnload];
-    [blockController release];
     blockController = nil;
-    [bottomOfStand release];
     bottomOfStand = nil;
-    [tableView release];
     tableView = nil;
-    [tabControl release];
     tabControl = nil;
-    [actionItem release];
     actionItem = nil;
 }
 
@@ -144,8 +130,6 @@
         UIBarButtonItem *toolBarContainer = [[UIBarButtonItem alloc] initWithCustomView:toolbar];
         [navItem setLeftBarButtonItem:toolBarContainer];
         
-        [toolbar release];
-        [toolBarContainer release];
     }
     
     // show items we created
@@ -156,11 +140,6 @@
     [navItem setRightBarButtonItem:cancelItem];
     
     // Cleanup
-    [navItem release];
-    [printItem release];
-    [deleteItem release];
-    [emailItem release];
-    [cancelItem release];
     
     // Allow block selection
     [blockController setIsSelectingBlocks:YES];
@@ -180,7 +159,6 @@
     NSArray *navArray = [NSArray arrayWithObject:navItem];
     [bottomOfStand setItems:navArray animated:NO];
     
-    [navItem release];
     
     // stop block selection
     [blockController setIsSelectingBlocks:NO];
@@ -287,13 +265,11 @@
                          
                          // remove the rootController's view from window
                          [tableView removeFromSuperview]; 
-                         [tableView release];
                          
                          // Set new tableView
-                         tableView = [newTableView retain];
+                         tableView = newTableView;
                          
                          // Set new blockController
-                         [blockController release];
                          blockController = newBlockController;
                          
                          // Set the properties of blockController

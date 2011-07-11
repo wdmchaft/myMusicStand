@@ -11,7 +11,7 @@
 UIImage *imageForPDFAtURLForSize(NSURL *url, CGFloat width, CGFloat height)
 {
     // Get pdf page 
-    CGPDFDocumentRef document = CGPDFDocumentCreateWithURL((CFURLRef)url);
+    CGPDFDocumentRef document = CGPDFDocumentCreateWithURL((__bridge CFURLRef)url);
     
     // get the image for the document
     UIImage *image = imageForPDFDocumentInSize(document, width, height, kCGInterpolationHigh);

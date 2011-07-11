@@ -42,9 +42,9 @@ const CGFloat CELL_HEIGHT = 270.0;
 {
     self = [super init];
     if (self) {
-        context = [moc retain];
+        context = moc;
         model = [[NSArray alloc] init];
-        tableView = [tv retain];
+        tableView = tv;
         [tableView setDataSource:self];
         [tableView setDelegate:self];
         isSelectingBlocks = NO; // By default selection of blocks is disabled 
@@ -57,12 +57,6 @@ const CGFloat CELL_HEIGHT = 270.0;
 - (void)dealloc
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-    [tableView release];
-    [blocksToModel release];
-    [selectedModels release];
-    [model release];
-    [context release];
-    [super dealloc];
 }
 
 #pragma mark - Setter methods
@@ -176,7 +170,7 @@ const CGFloat CELL_HEIGHT = 270.0;
     UIView *block = [recognizer view];
     
     // Get the title from dict
-    id aModel = [blocksToModel objectForKey:[NSValue valueWithPointer:block]];
+    id aModel = [blocksToModel objectForKey:[NSValue valueWithNonretainedObject:block]];
     
     // If filename it is already in selectedModels
     if ([selectedModels containsObject:aModel])
