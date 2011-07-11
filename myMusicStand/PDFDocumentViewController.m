@@ -7,7 +7,6 @@
 //
 
 #import "PDFDocumentViewController.h"
-#import "PDFScrollView.h" 
 #import "PDFDocument.h"
 #import "PDFHelpers.h"
 
