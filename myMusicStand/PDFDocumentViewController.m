@@ -56,7 +56,7 @@
     CGRect bounds = [[self view] bounds];
     
     // Get the first page in the document    
-    UIImage *image = imageForPDFDocumentInSize([document data], bounds.size.width, bounds.size.height);
+    UIImage *image = imageForPDFDocumentInSize([document data], bounds.size.width, bounds.size.height, kCGInterpolationHigh);
     imageView = [[UIImageView alloc] initWithImage:image];
     [[self view] addSubview:imageView];
     
@@ -115,7 +115,7 @@
         bounds.size.height *= 2;     
     }
     
-    UIImage *image = imageForPDFDocumentInSize([document data], bounds.size.width, bounds.size.height);        
+    UIImage *image = imageForPDFDocumentInSize([document data], bounds.size.width, bounds.size.height, kCGInterpolationHigh);        
     
     // Allow scrolling only when image needs it
     CGSize contentSize = image.size;

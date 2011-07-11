@@ -14,7 +14,7 @@ UIImage *imageForPDFAtURLForSize(NSURL *url, CGFloat width, CGFloat height)
     CGPDFDocumentRef document = CGPDFDocumentCreateWithURL((CFURLRef)url);
     
     // get the image for the document
-    UIImage *image = imageForPDFDocumentInSize(document, width, height);
+    UIImage *image = imageForPDFDocumentInSize(document, width, height, kCGInterpolationHigh);
     
     CGPDFDocumentRelease(document);
     
@@ -22,7 +22,7 @@ UIImage *imageForPDFAtURLForSize(NSURL *url, CGFloat width, CGFloat height)
 
 }
 
-UIImage *imageForPDFDocumentInSize(CGPDFDocumentRef document, CGFloat width, CGFloat height)
+UIImage *imageForPDFDocumentInSize(CGPDFDocumentRef document, CGFloat width, CGFloat height, CGInterpolationQuality quality)
 {    
     CGPDFPageRef pdfPage = CGPDFDocumentGetPage(document, 1);
     
@@ -50,7 +50,7 @@ UIImage *imageForPDFDocumentInSize(CGPDFDocumentRef document, CGFloat width, CGF
     CGContextFillRect(ctx,pageRect);
     
     CGContextSaveGState(ctx);
-    CGContextSetInterpolationQuality(ctx, kCGInterpolationHigh);
+    CGContextSetInterpolationQuality(ctx, quality);
     
     // Flip the ctx so that the PDF page is rendered
     // right side up.
