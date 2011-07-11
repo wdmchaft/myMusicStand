@@ -12,7 +12,6 @@ extern const CGFloat CELL_HEIGHT;
 
 @class NSManagedObjectContext, NSManagedObject;
 @interface BlockTableController : NSObject <UITableViewDelegate, UITableViewDataSource> {
-    IBOutlet UITableViewCell *tvCell;
     UINavigationController *__weak navigationController;
     UITableView *__weak tableView;
     NSManagedObjectContext *context;

@@ -42,6 +42,7 @@ const CGFloat CELL_HEIGHT = 270.0;
 {
     self = [super init];
     if (self) {
+        
         context = moc;
         model = [[NSArray alloc] init];
         tableView = tv;
@@ -50,6 +51,10 @@ const CGFloat CELL_HEIGHT = 270.0;
         isSelectingBlocks = NO; // By default selection of blocks is disabled 
         selectedModels = [[NSMutableArray alloc] init];
         blocksToModel = [[NSMutableDictionary alloc] init];
+        
+        // Register tableView to use our cell
+        UINib *cellNib = [UINib nibWithNibName:@"BlockTableViewCell" bundle:[NSBundle mainBundle]];
+        [tableView registerNib:cellNib forCellReuseIdentifier:@"Cell"];
     }
     return self;
 }
@@ -149,17 +154,7 @@ const CGFloat CELL_HEIGHT = 270.0;
     static NSString *CellIdentifier = @"Cell";
     
     UITableViewCell *cell = [tv dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        // Load the tableview cell
-        [[NSBundle mainBundle] loadNibNamed:@"BlockTableViewCell"
-                                      owner:self
-                                    options:nil];
-        // Set the cell
-        cell = tvCell;
-        // Clear pointer to cell
-        tvCell = nil;
-        
-    }
+
     return cell;
 }
 
