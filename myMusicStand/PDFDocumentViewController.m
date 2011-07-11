@@ -9,6 +9,7 @@
 #import "PDFDocumentViewController.h"
 #import "PDFDocument.h"
 #import "PDFHelpers.h"
+#import "PDFView.h"
 
 @implementation PDFDocumentViewController
 
@@ -54,10 +55,9 @@
     // Get bounds in which to draw the image
     CGRect bounds = [[self view] bounds];
     
-    // Get the first page in the document    
-    UIImage *image = imageForPDFDocumentInSize([document data], bounds.size.width, bounds.size.height, kCGInterpolationHigh);
-    imageView = [[UIImageView alloc] initWithImage:image];
-    [[self view] addSubview:imageView];
+    pdfView = [[PDFView alloc] initWithFrame:bounds andPDFDocument:[document data]];
+    [scrollView addSubview:pdfView];
+    [pdfView release];
     
     // center the imageView
     [imageView setCenter:[[self view] center]];
@@ -88,14 +88,7 @@
     [document openWithCompletionHandler:^(BOOL fileIsOpen){
         [self documentStateHasBeenUpdated];
     }];
-    
-    // Create the pdfView to display
-    CGRect pdfViewFrame = [[self view] bounds];
-    pdfView = [[UIView alloc] initWithFrame:pdfViewFrame];
-    
-    // Add the pdfView as a subview of our main view
-    [[self view] addSubview:pdfView];
-    [pdfView release];
+        
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

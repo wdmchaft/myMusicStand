@@ -149,6 +149,7 @@
 		64FD3BC413A109D6008163F3 /* RoutingHTTPConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 64FD3B8313A109D6008163F3 /* RoutingHTTPConnection.m */; };
 		64FD3BC513A109D6008163F3 /* StaticResourcesRoute.m in Sources */ = {isa = PBXBuildFile; fileRef = 64FD3B8513A109D6008163F3 /* StaticResourcesRoute.m */; };
 		64FD3BC613A109D6008163F3 /* UISpecCommandReceiver.m in Sources */ = {isa = PBXBuildFile; fileRef = 64FD3B8713A109D6008163F3 /* UISpecCommandReceiver.m */; };
+		693D5B5B13CB4A3A00840F67 /* PDFView.m in Sources */ = {isa = PBXBuildFile; fileRef = 693D5B5A13CB4A3A00840F67 /* PDFView.m */; };
 		69958E1013C8C6CE00A6911E /* PDFHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 69958E0F13C8C6CE00A6911E /* PDFHelpers.m */; };
 		69958E2213C9259D00A6911E /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 69958E2113C9259D00A6911E /* icon.png */; };
 		69D45F2513C397E30041AF71 /* firsttime.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 69D45F2413C397E30041AF71 /* firsttime.pdf */; };
@@ -375,6 +376,8 @@
 		64FD3B8513A109D6008163F3 /* StaticResourcesRoute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StaticResourcesRoute.m; sourceTree = "<group>"; };
 		64FD3B8613A109D6008163F3 /* UISpecCommandReceiver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UISpecCommandReceiver.h; sourceTree = "<group>"; };
 		64FD3B8713A109D6008163F3 /* UISpecCommandReceiver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UISpecCommandReceiver.m; sourceTree = "<group>"; };
+		693D5B5913CB4A3A00840F67 /* PDFView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDFView.h; sourceTree = "<group>"; };
+		693D5B5A13CB4A3A00840F67 /* PDFView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDFView.m; sourceTree = "<group>"; };
 		69958E0E13C8C6CE00A6911E /* PDFHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDFHelpers.h; sourceTree = "<group>"; };
 		69958E0F13C8C6CE00A6911E /* PDFHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDFHelpers.m; sourceTree = "<group>"; };
 		69958E2113C9259D00A6911E /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon.png; path = ../icon.png; sourceTree = "<group>"; };
@@ -860,6 +863,8 @@
 				64886D3513BCCEBC009C3EDA /* PDFDocumentViewController.m */,
 				64886D3813BCD1C0009C3EDA /* PDFDocument.h */,
 				64886D3913BCD1C0009C3EDA /* PDFDocument.m */,
+				693D5B5913CB4A3A00840F67 /* PDFView.h */,
+				693D5B5A13CB4A3A00840F67 /* PDFView.m */,
 			);
 			name = "PDF Viewing";
 			sourceTree = "<group>";
@@ -1086,6 +1091,7 @@
 				64886D3A13BCD1C0009C3EDA /* PDFDocument.m in Sources */,
 				69F39AED13C5FD6800B7B939 /* Thumbnail.m in Sources */,
 				69958E1013C8C6CE00A6911E /* PDFHelpers.m in Sources */,
+				693D5B5B13CB4A3A00840F67 /* PDFView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
