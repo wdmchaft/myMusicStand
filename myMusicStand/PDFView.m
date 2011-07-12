@@ -15,7 +15,8 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        document = CGPDFDocumentRetain(pdf);        
+        document = CGPDFDocumentRetain(pdf);       
+        [self setBackgroundColor:[UIColor whiteColor]];
     }
     return self;
 }
@@ -38,17 +39,13 @@
     CGContextRef ctx = UIGraphicsGetCurrentContext();
     
     CGContextSaveGState(ctx);
-    
-    // fill rect with white
-    [[UIColor whiteColor] setFill];
-    CGContextFillRect(ctx, rect);
-    
+
     // draw image
     UIImage *image = imageForPDFDocumentInSize(document, 
                                                rect.size.width, 
                                                rect.size.height);
     
-    //CGContextDrawImage(ctx, rect, (CGImageRef)image);
+    [image drawInRect:rect];
     
     CGContextRestoreGState(ctx);
     
