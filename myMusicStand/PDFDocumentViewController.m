@@ -53,6 +53,12 @@
     pdfView = [[PDFView alloc] initWithFrame:bounds andPDFDocument:[document data]];
     [scrollView addSubview:pdfView];
     
+    // Get bounds in which to draw the image
+    bounds.origin.x += bounds.size.width;  
+
+    pdfView2 = [[PDFView alloc] initWithFrame:bounds andPDFDocument:[document data]];
+    [[self view] addSubview:pdfView2];
+        
     // center the imageView
     [imageView setCenter:[[self view] center]];
     
@@ -77,6 +83,9 @@
     [scrollView setPagingEnabled:YES];
     [scrollView setBackgroundColor:[UIColor lightGrayColor]];
     [self setView:scrollView];
+    
+    // Allow us to handle scrollevents
+    [scrollView setDelegate:self];
     
     // open the file
     [document openWithCompletionHandler:^(BOOL fileIsOpen){
@@ -123,5 +132,7 @@
     [[self view] setNeedsDisplay];
 
 }
+
+#pragma mark UIScrollViewDelegate Methods
 
 @end

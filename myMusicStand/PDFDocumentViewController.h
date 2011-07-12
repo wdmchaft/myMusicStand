@@ -12,12 +12,13 @@
 #import <UIKit/UIKit.h>
 
 @class PDFDocument, PDFView;
-@interface PDFDocumentViewController : UIViewController
+@interface PDFDocumentViewController : UIViewController <UIScrollViewDelegate>
 {
     // The document we will display
     PDFDocument *document;
     UIImageView *imageView;
     PDFView *pdfView;
+    PDFView *pdfView2;
     UIScrollView *scrollView; // same as view
 }
 
