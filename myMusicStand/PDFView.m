@@ -10,6 +10,12 @@
 #import "PDFHelpers.h"
 
 @implementation PDFView
+{
+    CGPDFDocumentRef document;
+    int pageNumber;
+}
+
+@synthesize pageNumber;
 
 - (id)initWithFrame:(CGRect)frame andPDFDocument:(CGPDFDocumentRef)pdf 
 {
@@ -41,9 +47,11 @@
     CGContextSaveGState(ctx);
 
     // draw image
-    UIImage *image = imageForPDFDocumentInSize(document, 
-                                               rect.size.width, 
-                                               rect.size.height);
+    UIImage *image = imageForPDFPageInDocumentWithSizeAndQuality(document, 
+                                                                 pageNumber, 
+                                                                 rect.size.width, 
+                                                                 rect.size.height, 
+                                                                 kCGInterpolationHigh);
     
     [image drawInRect:rect];
     

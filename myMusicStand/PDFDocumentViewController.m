@@ -51,12 +51,14 @@
     CGRect bounds = [[self view] bounds];
     
     pdfView = [[PDFView alloc] initWithFrame:bounds andPDFDocument:[document data]];
+    [pdfView setPageNumber:1];
     [scrollView addSubview:pdfView];
     
     // Get bounds in which to draw the image
     bounds.origin.x += bounds.size.width;  
 
     pdfView2 = [[PDFView alloc] initWithFrame:bounds andPDFDocument:[document data]];
+    [pdfView2 setPageNumber:2];
     [[self view] addSubview:pdfView2];
         
     // center the imageView

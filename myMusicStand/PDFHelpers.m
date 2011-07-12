@@ -26,10 +26,11 @@ UIImage *imageForPDFDocumentInSize(CGPDFDocumentRef document, CGFloat width, CGF
 {
     return imageForPDFDocumentInSizeWithQuality(document, width, height, kCGInterpolationHigh);
 }
-                        
-UIImage *imageForPDFDocumentInSizeWithQuality(CGPDFDocumentRef document, CGFloat width, CGFloat height, CGInterpolationQuality quality)
-{    
-    CGPDFPageRef pdfPage = CGPDFDocumentGetPage(document, 1);
+   
+UIImage *imageForPDFPageInDocumentWithSizeAndQuality(CGPDFDocumentRef document, size_t pageNumber, 
+                                                     CGFloat width, CGFloat height, CGInterpolationQuality quality)
+{
+    CGPDFPageRef pdfPage = CGPDFDocumentGetPage(document, pageNumber);
     
     // generate thumbnail data for thumbnail by determine the size of the PDF page
     CGRect pageRect = CGPDFPageGetBoxRect(pdfPage, kCGPDFMediaBox);
@@ -73,4 +74,10 @@ UIImage *imageForPDFDocumentInSizeWithQuality(CGPDFDocumentRef document, CGFloat
     UIGraphicsEndImageContext();
     
     return image;
+
+}
+
+UIImage *imageForPDFDocumentInSizeWithQuality(CGPDFDocumentRef document, CGFloat width, CGFloat height, CGInterpolationQuality quality)
+{    
+    return imageForPDFPageInDocumentWithSizeAndQuality(document, 1, width, height, quality);
 }

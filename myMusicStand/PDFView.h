@@ -11,9 +11,9 @@
 #import <UIKit/UIKit.h>
 
 @interface PDFView : UIView
-{
-    CGPDFDocumentRef document;
-}
+
+// PDF page number to be displayed from the document
+@property (nonatomic, assign) int pageNumber;
 
 - (id)initWithFrame:(CGRect)frame andPDFDocument:(CGPDFDocumentRef)pdf;
 

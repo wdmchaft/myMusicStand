@@ -15,4 +15,6 @@ UIImage *imageForPDFDocumentInSize(CGPDFDocumentRef document, CGFloat width, CGF
 
 UIImage *imageForPDFDocumentInSizeWithQuality(CGPDFDocumentRef document, CGFloat width, CGFloat height, CGInterpolationQuality quality);
 
-
+// Render a specific page in a pdf document
+UIImage *imageForPDFPageInDocumentWithSizeAndQuality(CGPDFDocumentRef document, size_t pageNumber, 
+                                                     CGFloat width, CGFloat height, CGInterpolationQuality quality);
