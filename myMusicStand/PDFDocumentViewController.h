@@ -13,14 +13,6 @@
 
 @class PDFDocument, PDFView;
 @interface PDFDocumentViewController : UIViewController <UIScrollViewDelegate>
-{
-    // The document we will display
-    PDFDocument *document;
-    UIImageView *imageView;
-    PDFView *pdfView;
-    PDFView *pdfView2;
-    UIScrollView *scrollView; // same as view
-}
 
 @property (nonatomic, readonly) PDFDocument *document;
 

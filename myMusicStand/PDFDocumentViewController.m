@@ -12,6 +12,14 @@
 #import "PDFView.h"
 
 @implementation PDFDocumentViewController
+{
+    // The document we will display
+    PDFDocument *document;
+    UIImageView *imageView;
+    PDFView *pdfView;
+    PDFView *pdfView2;
+    UIScrollView *scrollView; // same as view
+}
 
 @synthesize document;
 

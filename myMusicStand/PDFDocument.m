@@ -11,6 +11,11 @@
 #define DOCUMENT_FAILED_TO_OPEN NO
 
 @implementation PDFDocument
+{
+    // The backing data for this document
+    CGPDFDocumentRef data;
+    int numberOfPages;
+}
 
 @synthesize data;
 @synthesize numberOfPages;

@@ -18,6 +18,14 @@
 #define NAV_BAR_HEIGHT 44
 
 @implementation StageViewController
+{
+    BlockTableController *blockController;
+    NSManagedObjectContext *context;
+    IBOutlet UITableView *tableView;
+    IBOutlet UINavigationBar *bottomOfStand;
+    IBOutlet UISegmentedControl *tabControl;
+    IBOutlet UIBarButtonItem *actionItem;
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {

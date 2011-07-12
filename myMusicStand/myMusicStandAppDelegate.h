@@ -10,12 +10,7 @@
 #import <CoreData/CoreData.h>
 
 @class BlockTableController;
-@interface myMusicStandAppDelegate : NSObject <UIApplicationDelegate > {
-    IBOutlet UINavigationController *navController;
-    IBOutlet UINavigationBar *bottomOfStand;
-    NSArray *theFiles;
-    dispatch_queue_t backgroundQueue;
-}
+@interface myMusicStandAppDelegate : NSObject <UIApplicationDelegate > 
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
 @property (nonatomic, readonly) UINavigationBar *bottomOfStand;

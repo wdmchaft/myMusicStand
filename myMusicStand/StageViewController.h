@@ -9,14 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @class BlockTableController;
-@interface StageViewController : UIViewController {
-    BlockTableController *blockController;
-    NSManagedObjectContext *context;
-    IBOutlet UITableView *tableView;
-    IBOutlet UINavigationBar *bottomOfStand;
-    IBOutlet UISegmentedControl *tabControl;
-    IBOutlet UIBarButtonItem *actionItem;
-}
+@interface StageViewController : UIViewController 
+
 - (IBAction)tabIndexChanged:(UISegmentedControl *)sender;
 - (IBAction)showActionItems:(UIBarButtonItem *)sender;
 @end

@@ -22,7 +22,12 @@
 static myMusicStandAppDelegate *sharedInstance;
 
 @implementation myMusicStandAppDelegate
-
+{
+    IBOutlet UINavigationController *navController;
+    IBOutlet UINavigationBar *bottomOfStand;
+    NSArray *theFiles;
+    dispatch_queue_t backgroundQueue;
+}
 
 @synthesize window=_window;
 
