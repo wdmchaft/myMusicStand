@@ -46,6 +46,8 @@
     
     CGContextSaveGState(ctx);
 
+    rect = [self bounds];
+    
     // draw image
     UIImage *image = imageForPDFPageInDocumentWithSizeAndQuality(document, 
                                                                  pageNumber, 

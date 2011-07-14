@@ -11,14 +11,22 @@
 #import "PDFHelpers.h"
 #import "PDFView.h"
 
+#define PDF_PAGE_SPACE 10
+#define DOUBLE_PAGE_SPACE (2 * PDF_PAGE_SPACE)
+
+@interface PDFDocumentViewController ()
+#pragma mark Private Methods
+// Helper method used as a callback to display the pdf once loaded
+- (void)documentStateHasBeenUpdated;
+@end
+
 @implementation PDFDocumentViewController
 {
     // The document we will display
     PDFDocument *document;
     UIImageView *imageView;
-    PDFView *pdfView;
-    PDFView *pdfView2;
-    UIScrollView *scrollView; // same as view
+    UIButton *backButton;
+    UIScrollView *pagingScrollView; // same as view
 }
 
 @synthesize document;
@@ -33,6 +41,12 @@
     self = [super initWithNibName:nil bundle:nil];
     if (self) {
         document = [[PDFDocument alloc] initWithFileURL:url];
+        
+        // open the file, in the callback we will setup the view structure
+        [document openWithCompletionHandler:^(BOOL fileIsOpen){
+            [self documentStateHasBeenUpdated];
+        }];
+        
     }
     return self;
 
@@ -55,92 +69,50 @@
 #pragma mark - Helper methods
 - (void)documentStateHasBeenUpdated
 {
-    // Get bounds in which to draw the image
-    CGRect bounds = [[self view] bounds];
+    CGRect frame = [pagingScrollView bounds];
     
-    pdfView = [[PDFView alloc] initWithFrame:bounds andPDFDocument:[document data]];
-    [pdfView setPageNumber:1];
-    [scrollView addSubview:pdfView];
+    [pagingScrollView setContentSize:CGSizeMake(frame.size.width * [document numberOfPages], 
+                                                frame.size.height)];
     
-    // Get bounds in which to draw the image
-    bounds.origin.x += bounds.size.width;  
-
-    pdfView2 = [[PDFView alloc] initWithFrame:bounds andPDFDocument:[document data]];
-    [pdfView2 setPageNumber:2];
-    [[self view] addSubview:pdfView2];
-        
-    // center the imageView
-    [imageView setCenter:[[self view] center]];
+    // Once the document has opened display it's pages
+    for (int i = 0; i < [document numberOfPages]; i++)
+    {
+        frame.origin.x = frame.size.width * i;
+        PDFView *aView = [[PDFView alloc] initWithFrame:frame andPDFDocument:[document data]];
+        [aView setPageNumber:(i + 1)];
+        [pagingScrollView addSubview:aView];
+    }
     
-    // Make sure the scrollView can display all the pages of the pdf
-    CGSize size = [scrollView frame].size;
-    size.width *= [document numberOfPages];
-    [scrollView setContentSize:size];
-    
-    // We only want to scroll in one axis at a time
-    [scrollView setDirectionalLockEnabled:YES];
+    // Bring the button to the front
+    [pagingScrollView bringSubviewToFront:backButton];
 
 }
 
 #pragma mark - View lifecycle
 - (void)loadView
 {
-    [super loadView];
+    // Size of pagingScrollView
+    CGRect pagingScrollViewFrame = [[UIScreen mainScreen] bounds];
+    // cause 10px gap on each side of subview
+    pagingScrollViewFrame.origin.x -= PDF_PAGE_SPACE;
+    pagingScrollViewFrame.size.width += DOUBLE_PAGE_SPACE;
     
-    // Create our view
-    CGRect frame = [[self view] frame];
-    scrollView = [[UIScrollView alloc] initWithFrame:frame];
-    [scrollView setPagingEnabled:YES];
-    [scrollView setBackgroundColor:[UIColor lightGrayColor]];
-    [self setView:scrollView];
+    pagingScrollView = [[UIScrollView alloc] initWithFrame:pagingScrollViewFrame];
     
-    // Allow us to handle scrollevents
-    [scrollView setDelegate:self];
+    [pagingScrollView setPagingEnabled:YES];
+    [pagingScrollView setBackgroundColor:[UIColor lightGrayColor]];
     
-    // open the file
-    [document openWithCompletionHandler:^(BOOL fileIsOpen){
-        [self documentStateHasBeenUpdated];
-    }];
-        
+    [self setView:pagingScrollView]; 
+
+    // Display the button
+    [pagingScrollView addSubview:backButton];
+   
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     // Return YES for supported orientations
 	return YES;
-}
-
-- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation
-{
-    CGRect bounds = [[self view] bounds];
-    
-    // if we now in a landscape orientation
-    if (UIInterfaceOrientationIsLandscape([self interfaceOrientation]))
-    {
-        bounds.size.height *= 2;     
-    }
-    
-    UIImage *image = imageForPDFDocumentInSize([document data], bounds.size.width, bounds.size.height);        
-    
-    // Allow scrolling only when image needs it
-    CGSize contentSize = image.size;
-    contentSize.width *= [document numberOfPages];
-    [scrollView setContentSize:contentSize];
-    
-    // Toss old image
-    [imageView removeFromSuperview];
-    
-    // Display new image
-    imageView = [[UIImageView alloc] initWithImage:image];
-    
-    // Center the imageView
-    CGPoint center = [imageView center];
-    center.x = bounds.size.width / 2;
-    [imageView setCenter:center];
-    
-    [[self view] addSubview:imageView];
-    [[self view] setNeedsDisplay];
-
 }
 
 #pragma mark UIScrollViewDelegate Methods
