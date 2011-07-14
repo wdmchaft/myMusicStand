@@ -862,14 +862,9 @@
 			isa = PBXGroup;
 			children = (
 				69958E1113C8C6D400A6911E /* PDFHelpers */,
-				64886D3413BCCEBC009C3EDA /* PDFDocumentViewController.h */,
-				64886D3513BCCEBC009C3EDA /* PDFDocumentViewController.m */,
-				64886D3813BCD1C0009C3EDA /* PDFDocument.h */,
-				64886D3913BCD1C0009C3EDA /* PDFDocument.m */,
-				693D5B5913CB4A3A00840F67 /* PDFView.h */,
-				693D5B5A13CB4A3A00840F67 /* PDFView.m */,
-				69945F1813CFA0C300D9BF72 /* PDFScrollView.h */,
-				69945F1913CFA0C300D9BF72 /* PDFScrollView.m */,
+				69945F1D13CFB2A800D9BF72 /* Controller */,
+				69945F1C13CFB29A00D9BF72 /* Model */,
+				69945F1E13CFB2BF00D9BF72 /* Views */,
 			);
 			name = "PDF Viewing";
 			sourceTree = "<group>";
@@ -912,6 +907,35 @@
 				64FD3B8713A109D6008163F3 /* UISpecCommandReceiver.m */,
 			);
 			path = src;
+			sourceTree = "<group>";
+		};
+		69945F1C13CFB29A00D9BF72 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				64886D3813BCD1C0009C3EDA /* PDFDocument.h */,
+				64886D3913BCD1C0009C3EDA /* PDFDocument.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		69945F1D13CFB2A800D9BF72 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				64886D3413BCCEBC009C3EDA /* PDFDocumentViewController.h */,
+				64886D3513BCCEBC009C3EDA /* PDFDocumentViewController.m */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		69945F1E13CFB2BF00D9BF72 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				693D5B5913CB4A3A00840F67 /* PDFView.h */,
+				693D5B5A13CB4A3A00840F67 /* PDFView.m */,
+				69945F1813CFA0C300D9BF72 /* PDFScrollView.h */,
+				69945F1913CFA0C300D9BF72 /* PDFScrollView.m */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 		69958E1113C8C6D400A6911E /* PDFHelpers */ = {
