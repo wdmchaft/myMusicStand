@@ -9,7 +9,7 @@
 #import "PDFDocumentViewController.h"
 #import "PDFDocument.h"
 #import "PDFHelpers.h"
-#import "PDFView.h"
+#import "PDFScrollView.h"
 
 #define PDF_PAGE_SPACE 10
 #define DOUBLE_PAGE_SPACE (2 * PDF_PAGE_SPACE)
@@ -78,7 +78,7 @@
     for (int i = 0; i < [document numberOfPages]; i++)
     {
         frame.origin.x = frame.size.width * i;
-        PDFView *aView = [[PDFView alloc] initWithFrame:frame andPDFDocument:[document data]];
+        PDFScrollView *aView = [[PDFScrollView alloc] initWithFrame:frame andPDFDocument:[document data]];
         [aView setPageNumber:(i + 1)];
         [pagingScrollView addSubview:aView];
     }
