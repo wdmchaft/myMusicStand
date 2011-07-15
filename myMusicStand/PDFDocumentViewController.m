@@ -13,12 +13,17 @@
 
 #define PDF_PAGE_SPACE 10
 #define DOUBLE_PAGE_SPACE (2 * PDF_PAGE_SPACE)
+#define RECOGNIZER_SHOULD_RECIEVE_TOUCH YES
+#define RECOGNIZER_SHOULD_NOT_RECIEVE_TOUCH NO
+#define UNTOUCHABLE_AREA_HEIGHT 60
+#define BACK_BUTTON_X_OFFSET 20
 
 @interface PDFDocumentViewController ()
 #pragma mark Private Methods
 // Helper method used as a callback to display the pdf once loaded
 - (void)documentStateHasBeenUpdated;
 - (IBAction)backToLibrary:(UIButton *)sender;
+- (void)handleTap:(UIGestureRecognizer *)recognizer;
 @end
 
 @implementation PDFDocumentViewController
@@ -92,26 +97,21 @@
 }
 
 #pragma mark - View lifecycle
-/*
-- (void)loadView
+- (void)viewDidLoad
 {
-    // Size of pagingScrollView
-    CGRect pagingScrollViewFrame = [[UIScreen mainScreen] bounds];
-    // cause 10px gap on each side of subview
-    pagingScrollViewFrame.origin.x -= PDF_PAGE_SPACE;
-    pagingScrollViewFrame.size.width += DOUBLE_PAGE_SPACE;
+    [super viewDidLoad];
     
-    pagingScrollView = [[UIScrollView alloc] initWithFrame:pagingScrollViewFrame];
+    // Hide our back button
+    [backButton setHidden:YES];    
     
-    [pagingScrollView setPagingEnabled:YES];
-    [pagingScrollView setBackgroundColor:[UIColor lightGrayColor]];
-    
-    [self setView:pagingScrollView]; 
-
-    // Display the button
-    [pagingScrollView addSubview:backButton];
-   
-}*/
+    // Add a tap recognizer that will show the button again
+    UITapGestureRecognizer *tapRecognizer = 
+        [[UITapGestureRecognizer alloc] initWithTarget:self 
+                                                action:@selector(handleTap:)];
+    [tapRecognizer setDelegate:self];
+         
+    [[self view] addGestureRecognizer:tapRecognizer];
+}
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
@@ -127,6 +127,61 @@
     [navController popViewControllerAnimated:NO];
 }
 
+#pragma mark Gesture Handling Methods
+- (void)handleTap:(UITapGestureRecognizer *)recognizer
+{
+    switch ([recognizer state]) {
+        
+        case UIGestureRecognizerStateEnded:
+            
+            if ([backButton isHidden])
+            {
+                // Show the button
+                [backButton setHidden:NO];
+                
+                // Keep it not visible 
+                [backButton setAlpha:0.0];
+                
+                //Animate it in
+                [UIView animateWithDuration:0.3
+                                 animations:^{
+                                     [backButton setAlpha:1.0]; 
+                                 }];
+            }
+            else // it's visible
+            {
+                [UIView animateWithDuration:0.3
+                                 animations:^{
+                                     [backButton setAlpha:0.0];
+                                 }
+                                 completion:^(BOOL finished){
+                                     [backButton setHidden:YES];                                     
+                                 }];
+            }
+            
+            break;
+        default:
+            break;
+    }
+}
+
+#pragma mark UIGestureRecognizer Delegate Methods
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch
+{
+    // Check if the touch is in bounds of allowable toggleButtonArea
+    CGPoint touchPoint = [touch locationInView:pagingScrollView];
+
+    CGRect toggleButtonArea= [pagingScrollView bounds];
+    toggleButtonArea.origin.y += UNTOUCHABLE_AREA_HEIGHT;    
+    
+    if (CGRectContainsPoint(toggleButtonArea, touchPoint))
+    {
+        return RECOGNIZER_SHOULD_RECIEVE_TOUCH;
+    }
+    
+    return RECOGNIZER_SHOULD_NOT_RECIEVE_TOUCH;
+}
+
 #pragma mark UIScrollView Delegate Methods
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView 
 {
@@ -136,7 +191,7 @@
     
     // Move the backButton over enough to appear to not have moved
     CGRect buttonFrame = [backButton frame];
-    buttonFrame.origin.x = minimumVisibleX + 20;
+    buttonFrame.origin.x = minimumVisibleX + BACK_BUTTON_X_OFFSET;
     [backButton setFrame:buttonFrame];
     
 }

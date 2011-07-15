@@ -12,7 +12,7 @@
 #import <UIKit/UIKit.h>
 
 @class PDFDocument, PDFView;
-@interface PDFDocumentViewController : UIViewController <UIScrollViewDelegate>
+@interface PDFDocumentViewController : UIViewController <UIScrollViewDelegate, UIGestureRecognizerDelegate>
 
 @property (nonatomic, readonly) PDFDocument *document;
 
