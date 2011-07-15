@@ -60,7 +60,6 @@
 		641382D213A43A17001311E9 /* UIInspector.m in Sources */ = {isa = PBXBuildFile; fileRef = 6413829B13A43A17001311E9 /* UIInspector.m */; };
 		641382D313A43A17001311E9 /* UIProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6413829D13A43A17001311E9 /* UIProxy.m */; };
 		641382D413A43A17001311E9 /* WaitUntilIdle.m in Sources */ = {isa = PBXBuildFile; fileRef = 6413829F13A43A17001311E9 /* WaitUntilIdle.m */; };
-		641A14B013B133760028644D /* Entitlements.entitlements in Resources */ = {isa = PBXBuildFile; fileRef = 641A14AF13B133760028644D /* Entitlements.entitlements */; };
 		64204D6E13B246B50048AE91 /* Path.m in Sources */ = {isa = PBXBuildFile; fileRef = 64204D6D13B246B50048AE91 /* Path.m */; };
 		64415E8A137D8EAD00DADC4C /* BlockTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 64415E89137D8EAD00DADC4C /* BlockTableViewCell.xib */; };
 		645BC56D13B928CE00C20507 /* check.png in Resources */ = {isa = PBXBuildFile; fileRef = 645BC56C13B928CE00C20507 /* check.png */; };
@@ -274,7 +273,6 @@
 		6413829D13A43A17001311E9 /* UIProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIProxy.m; sourceTree = "<group>"; };
 		6413829E13A43A17001311E9 /* WaitUntilIdle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaitUntilIdle.h; sourceTree = "<group>"; };
 		6413829F13A43A17001311E9 /* WaitUntilIdle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WaitUntilIdle.m; sourceTree = "<group>"; };
-		641A14AF13B133760028644D /* Entitlements.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = Entitlements.entitlements; path = ../Entitlements.entitlements; sourceTree = "<group>"; };
 		64204D6C13B246B50048AE91 /* Path.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Path.h; sourceTree = "<group>"; };
 		64204D6D13B246B50048AE91 /* Path.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Path.m; sourceTree = "<group>"; };
 		64415E89137D8EAD00DADC4C /* BlockTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BlockTableViewCell.xib; sourceTree = "<group>"; };
@@ -663,7 +661,6 @@
 			children = (
 				69958E2113C9259D00A6911E /* icon.png */,
 				645BC56C13B928CE00C20507 /* check.png */,
-				641A14AF13B133760028644D /* Entitlements.entitlements */,
 				64D94E011379B2CB00300349 /* myMusicStand-Info.plist */,
 				64D94E021379B2CB00300349 /* InfoPlist.strings */,
 				64D94E051379B2CB00300349 /* myMusicStand-Prefix.pch */,
@@ -1052,7 +1049,6 @@
 				64415E8A137D8EAD00DADC4C /* BlockTableViewCell.xib in Resources */,
 				64E380651381786700A43834 /* floorAndStage.png in Resources */,
 				64FAA48F138BFE67009465BC /* StageViewController.xib in Resources */,
-				641A14B013B133760028644D /* Entitlements.entitlements in Resources */,
 				645BC56D13B928CE00C20507 /* check.png in Resources */,
 				69958E2213C9259D00A6911E /* icon.png in Resources */,
 				69945F2013CFB40300D9BF72 /* PDFDocumentViewController.xib in Resources */,
@@ -1325,6 +1321,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: William Negron (DUK369WAQW)";
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1332,6 +1329,7 @@
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "myMusicStand/myMusicStand-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "B6D84494-6545-4F94-AF51-FDB6627B04F3";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1341,12 +1339,15 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_ENTITLEMENTS[sdk=*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: William Negron (DUK369WAQW)";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "myMusicStand/myMusicStand-Prefix.pch";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "myMusicStand/myMusicStand-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "B6D84494-6545-4F94-AF51-FDB6627B04F3";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
 			};
