@@ -126,4 +126,18 @@
     UINavigationController *navController = [self navigationController];
     [navController popViewControllerAnimated:NO];
 }
+
+#pragma mark UIScrollView Delegate Methods
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView 
+{
+    // Figure out what is being displayed
+    CGRect bounds = [scrollView bounds];
+    CGFloat minimumVisibleX = CGRectGetMinX(bounds);
+    
+    // Move the backButton over enough to appear to not have moved
+    CGRect buttonFrame = [backButton frame];
+    buttonFrame.origin.x = minimumVisibleX + 20;
+    [backButton setFrame:buttonFrame];
+    
+}
 @end
