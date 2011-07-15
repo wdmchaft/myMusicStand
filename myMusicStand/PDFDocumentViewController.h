@@ -17,6 +17,7 @@
 @property (nonatomic, readonly) PDFDocument *document;
 
 // Designated initializer, which creates the document from the url passed
-- (id)initWithURL:(NSURL *)url;
+// and loads view setup from nib
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil URL:(NSURL *)url;
 
 @end

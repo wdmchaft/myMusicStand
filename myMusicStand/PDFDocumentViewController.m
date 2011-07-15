@@ -18,27 +18,29 @@
 #pragma mark Private Methods
 // Helper method used as a callback to display the pdf once loaded
 - (void)documentStateHasBeenUpdated;
+- (IBAction)backToLibrary:(UIButton *)sender;
 @end
 
 @implementation PDFDocumentViewController
 {
+#pragma mark Instance Variables
     // The document we will display
     PDFDocument *document;
-    UIImageView *imageView;
-    UIButton *backButton;
-    UIScrollView *pagingScrollView; // same as view
+    IBOutlet UIButton *backButton;
+    IBOutlet UIScrollView *pagingScrollView; // same as view
 }
 
 @synthesize document;
 
-- (id)initWithURL:(NSURL *)url
+#pragma mark Initializers
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil URL:(NSURL *)url
 {
     if (!url)
     {
         @throw @"Param url must not be nil";
     }
     
-    self = [super initWithNibName:nil bundle:nil];
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         document = [[PDFDocument alloc] initWithFileURL:url];
         
@@ -57,6 +59,7 @@
     @throw @"Illegal instance instead use initWithURL:";
 }
 
+#pragma mark Memory Warning
 - (void)didReceiveMemoryWarning
 {
     // Releases the view if it doesn't have a superview.
@@ -89,6 +92,7 @@
 }
 
 #pragma mark - View lifecycle
+/*
 - (void)loadView
 {
     // Size of pagingScrollView
@@ -107,7 +111,7 @@
     // Display the button
     [pagingScrollView addSubview:backButton];
    
-}
+}*/
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
@@ -115,6 +119,11 @@
 	return YES;
 }
 
-#pragma mark UIScrollViewDelegate Methods
-
+#pragma mark Action Methods
+- (IBAction)backToLibrary:(UIButton *)sender
+{
+    // Pop us off the nav stack
+    UINavigationController *navController = [self navigationController];
+    [navController popViewControllerAnimated:NO];
+}
 @end

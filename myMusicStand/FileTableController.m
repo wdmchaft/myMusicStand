@@ -148,8 +148,11 @@
     
     NSURL *url = [self URLForFileName:filename];
 
-    // Open pdf document
-    PDFDocumentViewController *pdfDocumentController = [[PDFDocumentViewController alloc] initWithURL:url];
+    // Load controller for document
+    PDFDocumentViewController *pdfDocumentController = 
+        [[PDFDocumentViewController alloc] initWithNibName:@"PDFDocumentViewController"
+                                                    bundle:nil 
+                                                       URL:url];
       
     // Hide the navbar
     UIView *bottomOfStand = [delegate bottomOfStand];
