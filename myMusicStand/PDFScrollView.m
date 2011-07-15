@@ -51,8 +51,12 @@
 #pragma mark Setters
 - (void)setPageNumber:(int)newPageNumber
 {
+    // set our page number properties
     pageNumber = newPageNumber;
     [pdfView setPageNumber:newPageNumber];
+    // ask our subview to redraw new page
+    [pdfView setNeedsDisplay];
+    [self setZoomScale:1.0]; // reset our zoom scale for the new page
 }
 
 @end
