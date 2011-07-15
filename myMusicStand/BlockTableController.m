@@ -134,6 +134,9 @@ const CGFloat CELL_HEIGHT = 270.0;
         [context deleteObject:aModel];
     }
     
+    // throw out selected models
+    [selectedModels removeAllObjects];
+    
     // Save all changes
     [context save:nil];
 }
