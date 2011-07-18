@@ -10,6 +10,8 @@
 #import "PDFDocument.h"
 #import "PDFHelpers.h"
 #import "PDFScrollView.h"
+#import "StageViewController.h"
+#import <MessageUI/MessageUI.h>
 
 #define PDF_PAGE_SPACE 10
 #define DOUBLE_PAGE_SPACE (2 * PDF_PAGE_SPACE)
@@ -24,7 +26,6 @@
 #pragma mark Private Methods
 // Helper method used as a callback to display the pdf once loaded
 - (void)documentStateHasBeenUpdated;
-- (IBAction)backToLibrary:(UIButton *)sender;
 - (void)handleTap:(UIGestureRecognizer *)recognizer;
 // returns a PDFScrollView from the recycledPages set
 - (PDFScrollView *)dequeRecycledPage; 
@@ -39,7 +40,9 @@
     // The document we will display
     PDFDocument *document;
     IBOutlet UIButton *backButton;
+    IBOutlet UIButton *emailButton;
     IBOutlet UIScrollView *pagingScrollView; // same as view
+    StageViewController *__weak delegate;
     
     // Sets for tiling PDFScrollViews
     NSMutableSet *recycledPages;
@@ -47,6 +50,7 @@
 }
 
 @synthesize document;
+@synthesize delegate;
 
 #pragma mark Initializers
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil URL:(NSURL *)url
@@ -223,6 +227,13 @@
     [navController popViewControllerAnimated:NO];
 }
 
+- (IBAction)emailPDF:(UIButton *)sender
+{
+    // Show the email with this file as an attachment
+    NSURL *fileURL = [document fileURL];
+    [delegate displayEmailWith:[NSArray arrayWithObject:fileURL]];
+}
+
 #pragma mark Gesture Handling Methods
 - (void)handleTap:(UITapGestureRecognizer *)recognizer
 {
@@ -230,18 +241,21 @@
         
         case UIGestureRecognizerStateEnded:
             
-            if ([backButton isHidden])
+            if ([backButton isHidden] && [emailButton isHidden])
             {
                 // Show the button
                 [backButton setHidden:NO];
+                [emailButton setHidden:NO];
                 
                 // Keep it not visible 
                 [backButton setAlpha:0.0];
+                [emailButton setAlpha:0.0];
                 
                 //Animate it in
                 [UIView animateWithDuration:0.3
                                  animations:^{
                                      [backButton setAlpha:1.0]; 
+                                     [emailButton setAlpha:1.0];
                                  }];
             }
             else // it's visible
@@ -249,9 +263,11 @@
                 [UIView animateWithDuration:0.3
                                  animations:^{
                                      [backButton setAlpha:0.0];
+                                     [emailButton setAlpha:0.0];
                                  }
                                  completion:^(BOOL finished){
-                                     [backButton setHidden:YES];                                     
+                                     [backButton setHidden:YES];   
+                                     [emailButton setHidden:YES];
                                  }];
             }
             

@@ -858,7 +858,6 @@
 				69945F1D13CFB2A800D9BF72 /* Controller */,
 				69945F1C13CFB29A00D9BF72 /* Model */,
 				69945F1E13CFB2BF00D9BF72 /* Views */,
-				69945F1F13CFB40300D9BF72 /* PDFDocumentViewController.xib */,
 			);
 			name = "PDF Viewing";
 			sourceTree = "<group>";
@@ -915,6 +914,7 @@
 		69945F1D13CFB2A800D9BF72 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				69945F1F13CFB40300D9BF72 /* PDFDocumentViewController.xib */,
 				64886D3413BCCEBC009C3EDA /* PDFDocumentViewController.h */,
 				64886D3513BCCEBC009C3EDA /* PDFDocumentViewController.m */,
 			);

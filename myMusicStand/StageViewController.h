@@ -15,4 +15,5 @@
 - (IBAction)tabIndexChanged:(UISegmentedControl *)sender;
 - (IBAction)showActionItems:(UIBarButtonItem *)sender;
 - (void)setEmailButtonEnabled:(BOOL)enabled;
+- (void)displayEmailWith:(NSArray *)attachmentURLs;
 @end

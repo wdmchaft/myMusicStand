@@ -99,7 +99,7 @@
     emailItem = [[UIBarButtonItem alloc] initWithTitle:@"Email"
                                                  style:UIBarButtonItemStyleBordered
                                                 target:self
-                                                action:@selector(attemptToSendEmail:)];
+                                                action:@selector(sendEmail:)];
 
     UIBarButtonItem *printItem = [[UIBarButtonItem alloc] initWithTitle:@"Print" 
                                                                   style:UIBarButtonItemStyleBordered 
@@ -194,14 +194,34 @@
  *  Email selected blocks only if the total file size
  *  is less than the maximum email file size (tbd)
  */
-- (void)attemptToSendEmail:(UIBarButtonItem *)sender
+- (void)sendEmail:(UIBarButtonItem *)sender
 {    
+    NSArray *selectedModels = [blockController selectedModels];
+    
+    // Build array of attachment urls
+    NSMutableArray *attachments = [[NSMutableArray alloc] init];
+    for (File *file in selectedModels)
+    {
+        myMusicStandAppDelegate *appDelegate = [myMusicStandAppDelegate sharedInstance];
+        NSURL *url = [appDelegate applicationDocumentsDirectory];
+        url = [url URLByAppendingPathComponent:[file filename] isDirectory:NO];
+        [attachments addObject:url];
+    }
+    
+    // display the email
+    [self displayEmailWith:attachments];
+    
+   
+}
+
+- (void)displayEmailWith:(NSArray *)attachmentURLs
+{
     // Handle email account not being setup
     if (![MFMailComposeViewController canSendMail])
     {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Email not setup"
                                                         message:@"Please set up an email account in the Mail app,"
-                                                                @" so we can help you share your charts"
+                              @" so we can help you share your charts"
                                                        delegate:nil 
                                               cancelButtonTitle:@"Ok" 
                                               otherButtonTitles:nil];
@@ -216,20 +236,14 @@
     // Set up message
     [composer setSubject:@"Checkout out this chart from myMusicStand"];
     
-    NSArray *selectedModels = [blockController selectedModels];
-    
-    for (File *file in selectedModels)
+    for (NSURL *url in attachmentURLs)
     {
-        myMusicStandAppDelegate *appDelegate = [myMusicStandAppDelegate sharedInstance];
-        NSURL *url = [appDelegate applicationDocumentsDirectory];
-        url = [url URLByAppendingPathComponent:[file filename] isDirectory:NO];
         NSData *data = [NSData dataWithContentsOfURL:url];
-        [composer addAttachmentData:data mimeType:@"pdf" fileName:[file filename]];
+        [composer addAttachmentData:data mimeType:@"pdf" fileName:[url lastPathComponent]];
     }
     
     // Display composer
     [self presentModalViewController:composer animated:YES];
-   
 }
 
 /*

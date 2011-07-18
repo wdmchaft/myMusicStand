@@ -190,7 +190,10 @@
         [[PDFDocumentViewController alloc] initWithNibName:@"PDFDocumentViewController"
                                                     bundle:nil 
                                                        URL:url];
-      
+
+    // Allow pdfDocument to tie into delegate to send emails
+    [pdfDocumentController setDelegate:delegate];
+    
     // Hide the navbar
     UIView *bottomOfStand = [appDelegate bottomOfStand];
     [bottomOfStand setHidden:YES];
