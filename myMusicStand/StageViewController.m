@@ -251,13 +251,7 @@
  */
 - (void)delete:(UIBarButtonItem *)sender
 {
-    SEL deleteModels = @selector(deleteSelectedModels);
-    
-    if ([blockController respondsToSelector:deleteModels])
-    {
-        // delete selected model
-        [blockController performSelector:deleteModels];
-    }
+    [blockController deleteSelectedModels];
 }
 
 // When the tab changes we know we have to switch controllers
