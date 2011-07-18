@@ -12,6 +12,8 @@
 #import "File.h"
 #import "Thumbnail.h"
 
+#define MAXIMUM_EMAIL_ATTACHMENT_SIZE 20 * 1024 // 20 MB in terms of kb
+
 @interface FileTableController (PrivateMethods)
 
 - (void)openPDF:(UITapGestureRecognizer *)recognizer;
@@ -20,6 +22,10 @@
 @end
 
 @implementation FileTableController
+{
+    // the sum of all the selected Models file sizes
+    NSNumber *totalSelectedFileSize;
+}
 
 - (id)initWithManagedObjectContext:(NSManagedObjectContext *)moc andTableView:(UITableView *)tv
 {
@@ -34,6 +40,8 @@
                                                    object:moc];
         
         [self setModel:[context allEntity:@"File"]];
+        
+        totalSelectedFileSize = [NSNumber numberWithInt:0];
     }
     
     return self;
@@ -88,8 +96,7 @@
         
         // show thumbnail in block
         [block addSubview:imageView];
-         
-        // clean up
+
     }
     
     // add tap recognizer to block
@@ -97,6 +104,23 @@
                                                                           action:@selector(handleTap:)];
     [block addGestureRecognizer:tap];
 
+}
+
+// when a model was added to the selectedModels we add in it's fileSize
+- (void)customStepforAddingSelectedModel:(NSManagedObject *)aModel
+{
+    long newTotal = [totalSelectedFileSize longValue] + [[(TimestampEntity *)aModel size] longValue];
+    totalSelectedFileSize = [NSNumber numberWithLong:newTotal]; 
+    
+    NSLog(@"Total is %lu:", newTotal);
+}
+
+- (void)customStepforRemovingSelectedModel:(NSManagedObject *)aModel
+{
+    long newTotal = [totalSelectedFileSize longValue] - [[(TimestampEntity *)aModel size] longValue];
+    totalSelectedFileSize = [NSNumber numberWithLong:newTotal];
+    
+    NSLog(@"Total is %lu", newTotal);
 }
 
 // Returns a url in the docs directory with the filename provided

@@ -11,8 +11,6 @@
 
 @class myMusicStandAppDelegate, NSManagedObjectContext;
 @interface FileTableController : BlockTableController <UITextFieldDelegate>
-{
-}
 
 - (void)reloadFiles:(NSNotification *)notification;
 -(void)editAlias:(UIGestureRecognizer *)recognizer;

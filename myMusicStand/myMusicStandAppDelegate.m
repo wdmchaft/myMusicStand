@@ -289,6 +289,12 @@ static myMusicStandAppDelegate *sharedInstance;
              // set image data for thumbnail
              [newThumbnail setData:UIImageJPEGRepresentation(backgroundImage, 0.7)];
              
+             // Keep track of the file size of the document
+             NSDictionary *attrs = [fm attributesOfItemAtPath:[url path]
+                                                        error:nil];
+             NSNumber *fileSize = [attrs objectForKey:NSFileSize];
+             [newFile setSize:fileSize];
+             
              // Save context
              [self populateSaveUpToParentsFromChild:childContext];
          }];

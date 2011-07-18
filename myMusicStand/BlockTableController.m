@@ -146,6 +146,16 @@ const CGFloat CELL_HEIGHT = 270.0;
     // do nothing
 }
 
+- (void)customStepforAddingSelectedModel:(NSManagedObject *)aModel
+{
+    // do nothing
+}
+
+- (void)customStepforRemovingSelectedModel:(NSManagedObject *)aModel
+{
+    // do nothing
+}
+
 // Helper method to generate a block cell for the tableView
 - (UITableViewCell *)blockCellForTableView:(UITableView *)tv  
 {
@@ -170,11 +180,15 @@ const CGFloat CELL_HEIGHT = 270.0;
     {
         // remove it
         [selectedModels removeObject:aModel];
+        // perform any custom work
+        [self customStepforRemovingSelectedModel:aModel];
     }
     else // select not yet selected filename block
     {
         // add to selectedModels
         [selectedModels addObject:aModel];
+        // perform any custom work
+        [self customStepforAddingSelectedModel:aModel];
     }    
 }
 

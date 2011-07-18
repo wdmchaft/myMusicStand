@@ -97,7 +97,6 @@
                                                                   style:UIBarButtonItemStyleBordered
                                                                  target:self
                                                                  action:@selector(attemptToSendEmail:)];
-    [emailItem setEnabled:NO];
     
     UIBarButtonItem *printItem = [[UIBarButtonItem alloc] initWithTitle:@"Print" 
                                                                   style:UIBarButtonItemStyleBordered 

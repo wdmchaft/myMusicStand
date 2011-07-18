@@ -38,4 +38,8 @@ extern const CGFloat CELL_HEIGHT;
 // Called before a managedObject will be deleted (by user selection), 
 // to allow for a custom event to occur such as removing the file from disk
 - (void)customStepForDeletionOfModel:(NSManagedObject *)model;
+// Called when file was be added to selectedModels 
+- (void)customStepforAddingSelectedModel:(NSManagedObject *)aModel;
+// Called when file is removed from selectedModels
+- (void)customStepforRemovingSelectedModel:(NSManagedObject *)aModel;
 @end
