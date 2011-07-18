@@ -32,8 +32,6 @@
 - (void)tearDown
 {
     // Tear-down code here.
-    [context release];
-    [coordinator release];
     [super tearDown];
 }
 

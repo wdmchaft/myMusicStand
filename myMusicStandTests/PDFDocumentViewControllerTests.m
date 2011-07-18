@@ -28,10 +28,10 @@
 - (void)testInitilization
 {
     // Invalid ways to init
-    STAssertThrows([[PDFDocumentViewController alloc] initWithNibName:nil bundle:nil], 
+    STAssertThrows((void)[[PDFDocumentViewController alloc] initWithNibName:nil bundle:nil], 
                    @"Should be illegal to use this initializer");
     
-    STAssertThrows([[PDFDocumentViewController alloc] initWithURL:nil], 
+    STAssertThrows((void)[[PDFDocumentViewController alloc] initWithNibName:nil bundle:nil URL:nil], 
                    @"Should be illegal to pass nil");
     
     // Copy a file from our tests bundle to app on simulator docs folder
@@ -43,7 +43,7 @@
                                isDirectory:NO];
     [[NSFileManager defaultManager] copyItemAtURL:fileToAdd toURL:docsURL error:nil];
     
-    PDFDocumentViewController *controller = [[PDFDocumentViewController alloc] initWithURL:docsURL];
+    PDFDocumentViewController *controller = [[PDFDocumentViewController alloc] initWithNibName:nil bundle:nil URL:docsURL];
     STAssertNotNil(controller, @"Controller shouldn't be nil");
 }
 @end

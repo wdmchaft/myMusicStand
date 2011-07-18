@@ -56,7 +56,7 @@
         @throw @"Param url must not be nil";
     }
     
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    self = [super initWithNibName:@"PDFDocumentViewController" bundle:nibBundleOrNil];
     if (self) {
         document = [[PDFDocument alloc] initWithFileURL:url];
         

@@ -35,9 +35,8 @@
 
 - (void)tearDown
 {
-    [mockTableView verify];
-    [mockContext verify];
-    [controller release];
+    mockContext = nil;
+    mockTableView = nil;
     [super tearDown];
 }
 
@@ -50,7 +49,7 @@
 
 - (void)testIllegalSetup
 {
-    STAssertThrows([[FileTableController alloc] init], @"Should be illegal");
+    STAssertThrows((void)[[FileTableController alloc] init], @"Should be illegal");
        
 }
 
@@ -73,17 +72,4 @@
                    @"Calculate the offset in terms of the base value");
 }
 
-/*
-- (void)testFilesReloadedWhenNotifiedToReload
-{    
-    // setup expectations
-    [[mockTableView expect] reloadData];
-    
-    // exercise
-    NSNotification *notification = [NSNotification notificationWithName:NSManagedObjectContextDidSaveNotification
-                                                                 object:self];
-    NSNotificationCenter *center = [NSNotificationCenter defaultCenter];
-    [center postNotification:notification];
-}
-*/
 @end
