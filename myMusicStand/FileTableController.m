@@ -9,10 +9,11 @@
 #import "FileTableController.h"
 #import "PDFDocumentViewController.h"
 #import "myMusicStandAppDelegate.h"
+#import "StageViewController.h"
 #import "File.h"
 #import "Thumbnail.h"
 
-#define MAXIMUM_EMAIL_ATTACHMENT_SIZE 20 * 1024 // 20 MB in terms of kb
+#define MAXIMUM_EMAIL_ATTACHMENT_SIZE 20 * 1024 * 1024 // 20 MB in terms of bytes
 
 @interface FileTableController (PrivateMethods)
 
@@ -25,7 +26,11 @@
 {
     // the sum of all the selected Models file sizes
     NSNumber *totalSelectedFileSize;
+    StageViewController *__weak delegate;
+    
 }
+
+@synthesize delegate;
 
 - (id)initWithManagedObjectContext:(NSManagedObjectContext *)moc andTableView:(UITableView *)tv
 {
@@ -112,7 +117,11 @@
     long newTotal = [totalSelectedFileSize longValue] + [[(TimestampEntity *)aModel size] longValue];
     totalSelectedFileSize = [NSNumber numberWithLong:newTotal]; 
     
-    NSLog(@"Total is %lu:", newTotal);
+    // determine if we should disable the email action button
+    if (newTotal >= MAXIMUM_EMAIL_ATTACHMENT_SIZE)
+    {
+        [delegate setEmailButtonEnabled:NO];
+    }
 }
 
 - (void)customStepforRemovingSelectedModel:(NSManagedObject *)aModel
@@ -120,15 +129,19 @@
     long newTotal = [totalSelectedFileSize longValue] - [[(TimestampEntity *)aModel size] longValue];
     totalSelectedFileSize = [NSNumber numberWithLong:newTotal];
     
-    NSLog(@"Total is %lu", newTotal);
+    // determine if we should enable the email action button
+    if (newTotal < MAXIMUM_EMAIL_ATTACHMENT_SIZE)
+    {
+        [delegate setEmailButtonEnabled:YES];
+    }
 }
 
 // Returns a url in the docs directory with the filename provided
 - (NSURL *)URLForFileName:(NSString *)filename
 {
-    myMusicStandAppDelegate *delegate = [myMusicStandAppDelegate sharedInstance];
+    myMusicStandAppDelegate *appDelegate = [myMusicStandAppDelegate sharedInstance];
 
-    NSURL *docsDir = [delegate applicationDocumentsDirectory];
+    NSURL *docsDir = [appDelegate applicationDocumentsDirectory];
     // Create the url for the PDF
     NSURL *url = [docsDir URLByAppendingPathComponent:filename];
     

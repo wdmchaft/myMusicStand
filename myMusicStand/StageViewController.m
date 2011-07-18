@@ -25,6 +25,7 @@
     IBOutlet UINavigationBar *bottomOfStand;
     IBOutlet UISegmentedControl *tabControl;
     IBOutlet UIBarButtonItem *actionItem;
+    UIBarButtonItem *emailItem;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -58,6 +59,8 @@
     blockController = [[FileTableController alloc] initWithManagedObjectContext:context andTableView:tableView];
     // Set navigationController
     [blockController setNavigationController:[self navigationController]];
+    // Add us as delegate
+    [(FileTableController *)blockController setDelegate:self];
     
     // Set visual aspects of tableview
     [tableView setBackgroundColor:[UIColor clearColor]];
@@ -93,11 +96,11 @@
     UINavigationItem *navItem = [[UINavigationItem alloc] init];
     
     // Create bbi for navItem
-    UIBarButtonItem *emailItem = [[UIBarButtonItem alloc] initWithTitle:@"Email"
-                                                                  style:UIBarButtonItemStyleBordered
-                                                                 target:self
-                                                                 action:@selector(attemptToSendEmail:)];
-    
+    emailItem = [[UIBarButtonItem alloc] initWithTitle:@"Email"
+                                                 style:UIBarButtonItemStyleBordered
+                                                target:self
+                                                action:@selector(attemptToSendEmail:)];
+
     UIBarButtonItem *printItem = [[UIBarButtonItem alloc] initWithTitle:@"Print" 
                                                                   style:UIBarButtonItemStyleBordered 
                                                                  target:self
@@ -173,6 +176,12 @@
     [[blockController tableView] reloadData];
 }
 
+// allow for public way to setEnabled attr on email action button
+- (void)setEmailButtonEnabled:(BOOL)enabled
+{
+    [emailItem setEnabled:enabled];
+}
+
 /*
  *  Display print options for selected blocks
  */
@@ -187,7 +196,7 @@
  */
 - (void)attemptToSendEmail:(UIBarButtonItem *)sender
 {
-    NSLog(@"Email selected blocks");
+    NSLog(@"We are gonna send an email");
 }
 
 /*
@@ -229,6 +238,10 @@
         // display files controller, giving it the ability to update the tableview 
         newBlockController = [[FileTableController alloc] initWithManagedObjectContext:context
                                                                           andTableView:newTableView];
+        
+        // Add us as delegate
+        [(FileTableController *)newBlockController setDelegate:self];
+        
         // set new view as leftframe and animate it in
         [newTableView setFrame:leftframe];
         

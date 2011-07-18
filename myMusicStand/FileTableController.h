@@ -9,8 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "BlockTableController.h"
 
-@class myMusicStandAppDelegate, NSManagedObjectContext;
+@class myMusicStandAppDelegate, NSManagedObjectContext, StageViewController;
 @interface FileTableController : BlockTableController <UITextFieldDelegate>
+
+@property (nonatomic, weak) StageViewController *delegate;
 
 - (void)reloadFiles:(NSNotification *)notification;
 -(void)editAlias:(UIGestureRecognizer *)recognizer;
