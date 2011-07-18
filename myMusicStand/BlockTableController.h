@@ -10,7 +10,7 @@ extern const CGFloat BLOCK_WIDTH;
 extern const CGFloat BLOCK_HEIGHT;
 extern const CGFloat CELL_HEIGHT;
 
-@class NSManagedObjectContext, NSManagedObject;
+@class NSManagedObjectContext, NSManagedObject, StageViewController;
 @interface BlockTableController : NSObject <UITableViewDelegate, UITableViewDataSource> {
     UINavigationController *__weak navigationController;
     UITableView *__weak tableView;
@@ -19,6 +19,7 @@ extern const CGFloat CELL_HEIGHT;
     BOOL isSelectingBlocks; // when charts can be selected
     NSMutableArray *selectedModels; // models selected by ui    
     NSMutableDictionary *blocksToModel; // mapping of blocks to model
+    StageViewController *__weak delegate;
 }
 
 @property (nonatomic, weak) UINavigationController *navigationController;
@@ -26,6 +27,7 @@ extern const CGFloat CELL_HEIGHT;
 @property (nonatomic, retain) NSArray *model;
 @property (nonatomic, assign) BOOL isSelectingBlocks;
 @property (nonatomic, readonly) NSArray *selectedModels;
+@property (nonatomic, weak) StageViewController *delegate;
 
 - (id)initWithManagedObjectContext:(NSManagedObjectContext *)moc andTableView:(UITableView *)tv;
 - (UITableViewCell *)blockCellForTableView:(UITableView *)tableView;

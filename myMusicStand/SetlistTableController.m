@@ -8,6 +8,7 @@
 
 #import "SetlistTableController.h"
 #import "myMusicStandAppDelegate.h"
+#import "StageViewController.h"
 #import "Setlist.h"
 
 #define NUM_ADD_BLOCKS 1
@@ -84,6 +85,12 @@
 }
 
 #pragma mark - Helper methods
+- (void)customStepforAddingSelectedModel:(NSManagedObject *)aModel
+{
+    // don't allow the email button to be enabled
+    [delegate setEmailButtonEnabled:NO];
+}
+
 - (int)numberOfBlocks 
 {
     return [super numberOfBlocks] + NUM_ADD_BLOCKS;

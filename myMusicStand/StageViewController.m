@@ -60,7 +60,7 @@
     // Set navigationController
     [blockController setNavigationController:[self navigationController]];
     // Add us as delegate
-    [(FileTableController *)blockController setDelegate:self];
+    [blockController setDelegate:self];
     
     // Set visual aspects of tableview
     [tableView setBackgroundColor:[UIColor clearColor]];
@@ -280,9 +280,6 @@
         newBlockController = [[FileTableController alloc] initWithManagedObjectContext:context
                                                                           andTableView:newTableView];
         
-        // Add us as delegate
-        [(FileTableController *)newBlockController setDelegate:self];
-        
         // set new view as leftframe and animate it in
         [newTableView setFrame:leftframe];
         
@@ -300,6 +297,8 @@
         outframe = leftframe;
     }
     
+    // Add us as delegate
+    [newBlockController setDelegate:self];
     
     // add the new view to the window
     [[self view] addSubview:newTableView];

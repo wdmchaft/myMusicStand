@@ -8,6 +8,7 @@
 
 #import "BlockTableController.h"
 #import "myMusicStandAppDelegate.h"
+#import "StageViewController.h"
 
 #define NUM_BLOCKS_PER_CELL 3
 #define FIRST_BLOCK_TAG 4
@@ -30,6 +31,7 @@ const CGFloat CELL_HEIGHT = 270.0;
 @synthesize tableView;
 @synthesize model;
 @synthesize isSelectingBlocks;
+@synthesize delegate;
 
 #pragma mark - Life cycle
 

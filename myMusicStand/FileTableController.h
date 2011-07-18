@@ -12,7 +12,7 @@
 @class myMusicStandAppDelegate, NSManagedObjectContext, StageViewController;
 @interface FileTableController : BlockTableController <UITextFieldDelegate>
 
-@property (nonatomic, weak) StageViewController *delegate;
+
 
 - (void)reloadFiles:(NSNotification *)notification;
 -(void)editAlias:(UIGestureRecognizer *)recognizer;

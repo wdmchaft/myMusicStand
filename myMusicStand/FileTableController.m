@@ -25,12 +25,8 @@
 @implementation FileTableController
 {
     // the sum of all the selected Models file sizes
-    NSNumber *totalSelectedFileSize;
-    StageViewController *__weak delegate;
-    
+    NSNumber *totalSelectedFileSize;    
 }
-
-@synthesize delegate;
 
 - (id)initWithManagedObjectContext:(NSManagedObjectContext *)moc andTableView:(UITableView *)tv
 {
