@@ -2,7 +2,7 @@
 //  TimestampEntity.h
 //  myMusicStand
 //
-//  Created by Steve Solomon on 5/10/11.
+//  Created by Steven Solomon on 7/18/11.
 //  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
 //
 
@@ -14,10 +14,11 @@
 @private
 }
 @property (nonatomic, retain) NSDate * timestamp;
+@property (nonatomic, retain) NSNumber * size;
 
 @end
 
 @interface NSManagedObjectContext (EntityInCreationOrder)
-
+// Get the all entitys with the name of entityName
 - (NSArray *)allEntity:(NSString *)entityName;
 @end

@@ -2,7 +2,7 @@
 //  TimestampEntity.m
 //  myMusicStand
 //
-//  Created by Steve Solomon on 5/10/11.
+//  Created by Steven Solomon on 7/18/11.
 //  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
 //
 
@@ -11,6 +11,7 @@
 
 @implementation TimestampEntity
 @dynamic timestamp;
+@dynamic size;
 
 @end
 
