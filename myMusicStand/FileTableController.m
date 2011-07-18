@@ -174,7 +174,7 @@
 
 - (void)openPDF:(UITapGestureRecognizer *)recognizer
 {
-    myMusicStandAppDelegate *delegate = [myMusicStandAppDelegate sharedInstance];
+    myMusicStandAppDelegate *appDelegate = [myMusicStandAppDelegate sharedInstance];
     // Get block from recognizer
     UIView *block = [recognizer view];
     
@@ -192,7 +192,7 @@
                                                        URL:url];
       
     // Hide the navbar
-    UIView *bottomOfStand = [delegate bottomOfStand];
+    UIView *bottomOfStand = [appDelegate bottomOfStand];
     [bottomOfStand setHidden:YES];
     
     // show the PDFViewer

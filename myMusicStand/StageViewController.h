@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MessageUI/MessageUI.h>
 
 @class BlockTableController;
-@interface StageViewController : UIViewController 
+@interface StageViewController : UIViewController <MFMailComposeViewControllerDelegate>
 
 - (IBAction)tabIndexChanged:(UISegmentedControl *)sender;
 - (IBAction)showActionItems:(UIBarButtonItem *)sender;

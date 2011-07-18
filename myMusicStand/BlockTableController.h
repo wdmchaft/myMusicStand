@@ -25,6 +25,7 @@ extern const CGFloat CELL_HEIGHT;
 @property (nonatomic, weak) UITableView *tableView;
 @property (nonatomic, retain) NSArray *model;
 @property (nonatomic, assign) BOOL isSelectingBlocks;
+@property (nonatomic, readonly) NSArray *selectedModels;
 
 - (id)initWithManagedObjectContext:(NSManagedObjectContext *)moc andTableView:(UITableView *)tv;
 - (UITableViewCell *)blockCellForTableView:(UITableView *)tableView;

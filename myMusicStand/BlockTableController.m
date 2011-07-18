@@ -192,6 +192,12 @@ const CGFloat CELL_HEIGHT = 270.0;
     }    
 }
 
+// Return an immutable copy of selected Models
+- (NSArray *)selectedModels
+{
+    return [selectedModels copy];
+}
+
 - (void) setUpModelWithContext:(NSManagedObjectContext *)context
 {
     @throw @"Subclass responsibility";

@@ -195,8 +195,41 @@
  *  is less than the maximum email file size (tbd)
  */
 - (void)attemptToSendEmail:(UIBarButtonItem *)sender
-{
-    NSLog(@"We are gonna send an email");
+{    
+    // Handle email account not being setup
+    if (![MFMailComposeViewController canSendMail])
+    {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Email not setup"
+                                                        message:@"Please set up an email account in the Mail app,"
+                                                                @" so we can help you share your charts"
+                                                       delegate:nil 
+                                              cancelButtonTitle:@"Ok" 
+                                              otherButtonTitles:nil];
+        [alert show];
+        
+        return;
+    }
+    
+    MFMailComposeViewController *composer = [[MFMailComposeViewController alloc] init];
+    [composer setMailComposeDelegate:self];
+    
+    // Set up message
+    [composer setSubject:@"Checkout out this chart from myMusicStand"];
+    
+    NSArray *selectedModels = [blockController selectedModels];
+    
+    for (File *file in selectedModels)
+    {
+        myMusicStandAppDelegate *appDelegate = [myMusicStandAppDelegate sharedInstance];
+        NSURL *url = [appDelegate applicationDocumentsDirectory];
+        url = [url URLByAppendingPathComponent:[file filename] isDirectory:NO];
+        NSData *data = [NSData dataWithContentsOfURL:url];
+        [composer addAttachmentData:data mimeType:@"pdf" fileName:[file filename]];
+    }
+    
+    // Display composer
+    [self presentModalViewController:composer animated:YES];
+   
 }
 
 /*
@@ -300,6 +333,15 @@
     
     
     
+}
+
+#pragma mark MFMailComposeDelegate Methods
+- (void)mailComposeController:(MFMailComposeViewController*)controller 
+          didFinishWithResult:(MFMailComposeResult)result 
+                        error:(NSError*)error
+{
+    // close the composer 
+    [controller dismissModalViewControllerAnimated:YES];
 }
 
 @end
