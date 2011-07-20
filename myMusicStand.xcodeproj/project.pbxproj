@@ -86,7 +86,7 @@
 		64D94E191379B2CC00300349 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64D94DFB1379B2CB00300349 /* CoreGraphics.framework */; };
 		64D94E1A1379B2CC00300349 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64D94DFD1379B2CB00300349 /* CoreData.framework */; };
 		64D94E221379B2CC00300349 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 64D94E201379B2CC00300349 /* InfoPlist.strings */; };
-		64D94E561379B35D00300349 /* FileHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 64D94E551379B35D00300349 /* FileHelpers.m */; };
+		64D94E561379B35D00300349 /* FileHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 64D94E551379B35D00300349 /* FileHelper.m */; };
 		64D94E801379BC3A00300349 /* Setlist.m in Sources */ = {isa = PBXBuildFile; fileRef = 64D94E7F1379BC3A00300349 /* Setlist.m */; };
 		64D94E841379BDCB00300349 /* OrderedFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 64D94E831379BDCB00300349 /* OrderedFile.m */; };
 		64D94E881379BE1100300349 /* File.m in Sources */ = {isa = PBXBuildFile; fileRef = 64D94E871379BE1100300349 /* File.m */; };
@@ -111,7 +111,7 @@
 		64FAA49A138C411F009465BC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 64D94E061379B2CB00300349 /* main.m */; };
 		64FAA49B138C411F009465BC /* myMusicStandAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 64D94E091379B2CB00300349 /* myMusicStandAppDelegate.m */; };
 		64FAA49C138C411F009465BC /* myMusicStand.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 64D94E0E1379B2CC00300349 /* myMusicStand.xcdatamodeld */; };
-		64FAA49D138C411F009465BC /* FileHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 64D94E551379B35D00300349 /* FileHelpers.m */; };
+		64FAA49D138C411F009465BC /* FileHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 64D94E551379B35D00300349 /* FileHelper.m */; };
 		64FAA49E138C411F009465BC /* Setlist.m in Sources */ = {isa = PBXBuildFile; fileRef = 64D94E7F1379BC3A00300349 /* Setlist.m */; };
 		64FAA49F138C411F009465BC /* OrderedFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 64D94E831379BDCB00300349 /* OrderedFile.m */; };
 		64FAA4A0138C411F009465BC /* File.m in Sources */ = {isa = PBXBuildFile; fileRef = 64D94E871379BE1100300349 /* File.m */; };
@@ -311,8 +311,8 @@
 		64D94E391379B2F500300349 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		64D94E3A1379B2F500300349 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		64D94E3B1379B2F500300349 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		64D94E541379B35D00300349 /* FileHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileHelpers.h; sourceTree = "<group>"; };
-		64D94E551379B35D00300349 /* FileHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileHelpers.m; sourceTree = "<group>"; };
+		64D94E541379B35D00300349 /* FileHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; path = FileHelper.h; sourceTree = "<group>"; };
+		64D94E551379B35D00300349 /* FileHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileHelper.m; sourceTree = "<group>"; };
 		64D94E591379B39300300349 /* FileHelperTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileHelperTests.h; sourceTree = "<group>"; };
 		64D94E5A1379B39300300349 /* FileHelperTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileHelperTests.m; sourceTree = "<group>"; };
 		64D94E5C1379B42000300349 /* CoreDataTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataTest.h; sourceTree = "<group>"; };
@@ -718,8 +718,8 @@
 		64D94E8E1379C52100300349 /* File System work */ = {
 			isa = PBXGroup;
 			children = (
-				64D94E541379B35D00300349 /* FileHelpers.h */,
-				64D94E551379B35D00300349 /* FileHelpers.m */,
+				64D94E541379B35D00300349 /* FileHelper.h */,
+				64D94E551379B35D00300349 /* FileHelper.m */,
 			);
 			name = "File System work";
 			sourceTree = "<group>";
@@ -1112,7 +1112,7 @@
 				64D94E071379B2CB00300349 /* main.m in Sources */,
 				64D94E0A1379B2CB00300349 /* myMusicStandAppDelegate.m in Sources */,
 				64D94E101379B2CC00300349 /* myMusicStand.xcdatamodeld in Sources */,
-				64D94E561379B35D00300349 /* FileHelpers.m in Sources */,
+				64D94E561379B35D00300349 /* FileHelper.m in Sources */,
 				64D94E801379BC3A00300349 /* Setlist.m in Sources */,
 				64D94E841379BDCB00300349 /* OrderedFile.m in Sources */,
 				64D94E881379BE1100300349 /* File.m in Sources */,
@@ -1163,7 +1163,7 @@
 				64FAA49A138C411F009465BC /* main.m in Sources */,
 				64FAA49B138C411F009465BC /* myMusicStandAppDelegate.m in Sources */,
 				64FAA49C138C411F009465BC /* myMusicStand.xcdatamodeld in Sources */,
-				64FAA49D138C411F009465BC /* FileHelpers.m in Sources */,
+				64FAA49D138C411F009465BC /* FileHelper.m in Sources */,
 				64FAA49E138C411F009465BC /* Setlist.m in Sources */,
 				64FAA49F138C411F009465BC /* OrderedFile.m in Sources */,
 				64FAA4A0138C411F009465BC /* File.m in Sources */,

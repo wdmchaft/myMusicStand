@@ -8,7 +8,7 @@
 
 #import "myMusicStandAppDelegate.h"
 #import "File.h"
-#import "FileHelpers.h"
+#import "FileHelper.h"
 #import "PDFHelpers.h"
 #import "Thumbnail.h"
 #import "BlockTableController.h"
@@ -253,8 +253,8 @@ static myMusicStandAppDelegate *sharedInstance;
         NSString *docsPath = [[self applicationDocumentsDirectory] path];
         NSArray *directoryContents = [fm contentsOfDirectoryAtPath:docsPath error:nil];
         NSArray *knownFiles = [self knownFileNames];
-        NSArray *newFiles = filesDiffWithFileslistAndKnownFiles(directoryContents, knownFiles, FileDiffTypeNew);
-        NSArray *staleFiles = filesDiffWithFileslistAndKnownFiles(directoryContents, knownFiles, FileDiffTypeStale);
+        NSArray *newFiles = [FileHelper diffForType:FileDiffTypeNew forFilesInDir:directoryContents andKnownFiles:knownFiles];
+        NSArray *staleFiles = [FileHelper diffForType:FileDiffTypeStale forFilesInDir:directoryContents andKnownFiles:knownFiles];
         
         // Setup child context for this queue
         NSManagedObjectContext *childContext = 

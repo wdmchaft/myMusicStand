@@ -7,7 +7,7 @@
 //
 
 #import "FileHelperTests.h"
-#import "FileHelpers.h"
+#import "FileHelper.h"
 
 @implementation FileHelperTests
 
@@ -28,7 +28,9 @@
 - (void)testReverseAddedFiles
 {
     NSArray *fileList = [NSArray arrayWithObjects:@"New File.pdf", @"Second File.pdf", nil];
-    NSArray *addedFiles = filesDiffWithFileslistAndKnownFiles(fileList, [NSArray array], FileDiffTypeNew);
+    
+    NSArray *addedFiles = [FileHelper diffForType:FileDiffTypeNew forFilesInDir:fileList andKnownFiles:[NSArray array]];
+    
     NSArray *expectedFiles  = [NSArray arrayWithObjects:@"Second File.pdf", @"New File.pdf", nil];
     
     // Verify diff shows added files in sorted order
@@ -38,8 +40,10 @@
 - (void)testRemovedFiles
 {
     NSArray *fileList = [NSArray arrayWithObject:@"New File.pdf"];
-    NSArray *removedFiles = filesDiffWithFileslistAndKnownFiles(fileList, [NSArray arrayWithObject:@"Stale File.pdf"], 
-                                                                FileDiffTypeStale);
+    NSArray *removedFiles = [FileHelper diffForType:FileDiffTypeStale 
+                                      forFilesInDir:fileList 
+                                      andKnownFiles:[NSArray arrayWithObject:@"Stale File.pdf"]];
+    
     NSArray *expectedFiles = [NSArray arrayWithObject:@"Stale File.pdf"];
     
     // Verify diff shows removed files 
@@ -49,7 +53,10 @@
 - (void)testAddedFiles
 {
     NSArray *fileList = [NSArray arrayWithObjects:@"NewFile.pdf", @"inbox", nil];
-    NSArray *addedFiles = filesDiffWithFileslistAndKnownFiles(fileList, [NSArray array], FileDiffTypeNew);
+    NSArray *addedFiles = [FileHelper diffForType:FileDiffTypeNew 
+                                    forFilesInDir:fileList 
+                                    andKnownFiles:[NSArray array]];
+
     NSArray *expectedFiles = [NSArray arrayWithObject:@"NewFile.pdf"];
     STAssertEqualObjects(expectedFiles, addedFiles, @"Added files shouldn't contain anything unsupported");
 }
