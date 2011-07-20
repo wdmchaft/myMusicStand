@@ -256,10 +256,6 @@ static myMusicStandAppDelegate *sharedInstance;
         NSArray *newFiles = filesDiffWithFileslistAndKnownFiles(directoryContents, knownFiles, FileDiffTypeNew);
         NSArray *staleFiles = filesDiffWithFileslistAndKnownFiles(directoryContents, knownFiles, FileDiffTypeStale);
         
-        [newFiles enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop){
-            NSLog(@"%@", obj);
-         }];
-        
         // Setup child context for this queue
         NSManagedObjectContext *childContext = 
             [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
