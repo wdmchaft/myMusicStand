@@ -367,11 +367,6 @@ static myMusicStandAppDelegate *sharedInstance;
     return NO;
 }
 
-- (void)loadNewFileURL:(NSURL *)url withFileManger:(NSFileManager *)fileManger
-{
-    [fileManger copyItemAtURL:url toURL:url error:nil];
-}
-
 #pragma mark - Application's Documents directory
 
 /**

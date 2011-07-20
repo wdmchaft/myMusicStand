@@ -151,6 +151,9 @@
 		69945F2013CFB40300D9BF72 /* PDFDocumentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69945F1F13CFB40300D9BF72 /* PDFDocumentViewController.xib */; };
 		69958E1013C8C6CE00A6911E /* PDFHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 69958E0F13C8C6CE00A6911E /* PDFHelpers.m */; };
 		69958E2213C9259D00A6911E /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 69958E2113C9259D00A6911E /* icon.png */; };
+		699D0F2013D780D0009D467A /* FileImporter.m in Sources */ = {isa = PBXBuildFile; fileRef = 699D0F1F13D780D0009D467A /* FileImporter.m */; };
+		699D0F2413D780F1009D467A /* FileImporterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 699D0F2313D780F1009D467A /* FileImporterTests.m */; };
+		699D0F2513D78115009D467A /* FileImporter.m in Sources */ = {isa = PBXBuildFile; fileRef = 699D0F1F13D780D0009D467A /* FileImporter.m */; };
 		69D45F2513C397E30041AF71 /* firsttime.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 69D45F2413C397E30041AF71 /* firsttime.pdf */; };
 		69F39AED13C5FD6800B7B939 /* Thumbnail.m in Sources */ = {isa = PBXBuildFile; fileRef = 69F39AEC13C5FD6800B7B939 /* Thumbnail.m */; };
 /* End PBXBuildFile section */
@@ -380,6 +383,10 @@
 		69958E0E13C8C6CE00A6911E /* PDFHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDFHelpers.h; sourceTree = "<group>"; };
 		69958E0F13C8C6CE00A6911E /* PDFHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDFHelpers.m; sourceTree = "<group>"; };
 		69958E2113C9259D00A6911E /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon.png; path = ../icon.png; sourceTree = "<group>"; };
+		699D0F1E13D780D0009D467A /* FileImporter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileImporter.h; sourceTree = "<group>"; };
+		699D0F1F13D780D0009D467A /* FileImporter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileImporter.m; sourceTree = "<group>"; };
+		699D0F2213D780F1009D467A /* FileImporterTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileImporterTests.h; sourceTree = "<group>"; };
+		699D0F2313D780F1009D467A /* FileImporterTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileImporterTests.m; sourceTree = "<group>"; };
 		69D45F2413C397E30041AF71 /* firsttime.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = firsttime.pdf; sourceTree = "<group>"; };
 		69F39AEB13C5FD6800B7B939 /* Thumbnail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Thumbnail.h; sourceTree = "<group>"; };
 		69F39AEC13C5FD6800B7B939 /* Thumbnail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Thumbnail.m; sourceTree = "<group>"; };
@@ -682,6 +689,8 @@
 				645E6A2E13AA9761001DB0DB /* StageViewControllerTests.m */,
 				64886D3013BCCE68009C3EDA /* PDFDocumentViewControllerTests.h */,
 				64886D3113BCCE68009C3EDA /* PDFDocumentViewControllerTests.m */,
+				699D0F2213D780F1009D467A /* FileImporterTests.h */,
+				699D0F2313D780F1009D467A /* FileImporterTests.m */,
 			);
 			path = myMusicStandTests;
 			sourceTree = "<group>";
@@ -724,6 +733,8 @@
 				64FAA48B138BFE66009465BC /* StageViewController.h */,
 				64FAA48C138BFE67009465BC /* StageViewController.m */,
 				64FAA48D138BFE67009465BC /* StageViewController.xib */,
+				699D0F1E13D780D0009D467A /* FileImporter.h */,
+				699D0F1F13D780D0009D467A /* FileImporter.m */,
 			);
 			name = "Top Level";
 			sourceTree = "<group>";
@@ -1116,6 +1127,7 @@
 				693D5B5B13CB4A3A00840F67 /* PDFView.m in Sources */,
 				69945F1A13CFA0C300D9BF72 /* PDFScrollView.m in Sources */,
 				691F733013D48461004C1008 /* TimestampEntity.m in Sources */,
+				699D0F2013D780D0009D467A /* FileImporter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1139,6 +1151,8 @@
 				64886D3213BCCE68009C3EDA /* PDFDocumentViewControllerTests.m in Sources */,
 				64886D3713BCCEBC009C3EDA /* PDFDocumentViewController.m in Sources */,
 				64886D3B13BCD1C0009C3EDA /* PDFDocument.m in Sources */,
+				699D0F2413D780F1009D467A /* FileImporterTests.m in Sources */,
+				699D0F2513D78115009D467A /* FileImporter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

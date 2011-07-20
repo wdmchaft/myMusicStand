@@ -55,16 +55,6 @@
                          @"The known files should return the files created");
 }
 
-- (void)testCopyFileIntoDocuments
-{
-    id mockManager = [OCMockObject mockForClass:[NSFileManager class]];
-    
-    [[mockManager expect] copyItemAtURL:[OCMArg any] toURL:[OCMArg any] error:nil];
-    
-    [appDelegate loadNewFileURL:nil withFileManger:mockManager];
-    
-    [mockManager verify];
-}
 @end
 
 
