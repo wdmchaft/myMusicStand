@@ -25,18 +25,6 @@
     [super tearDown];
 }
 
-- (void)testAddedFiles
-{
-    // Shouldn't pickup the .DSStore file 
-    NSArray *fileList = [NSArray arrayWithObjects:@"New File.pdf", @".DS_Store", nil];    
-    NSArray *addedFiles = filesDiffWithFileslistAndKnownFiles(fileList, [NSArray array], FileDiffTypeNew);
-    NSArray *expectedFiles  = [NSArray arrayWithObject:@"New File.pdf"];
-    
-    // Verify diff shows files were added to the directory
-    STAssertEqualObjects(expectedFiles, addedFiles, @"Should contain the correct files but %@", addedFiles);
-    
-}
-
 - (void)testReverseAddedFiles
 {
     NSArray *fileList = [NSArray arrayWithObjects:@"New File.pdf", @"Second File.pdf", nil];
@@ -56,6 +44,14 @@
     
     // Verify diff shows removed files 
     STAssertEqualObjects(expectedFiles, removedFiles, @"Should contain the correct files but %@", removedFiles);
+}
+
+- (void)testAddedFiles
+{
+    NSArray *fileList = [NSArray arrayWithObjects:@"NewFile.pdf", @"inbox", nil];
+    NSArray *addedFiles = filesDiffWithFileslistAndKnownFiles(fileList, [NSArray array], FileDiffTypeNew);
+    NSArray *expectedFiles = [NSArray arrayWithObject:@"NewFile.pdf"];
+    STAssertEqualObjects(expectedFiles, addedFiles, @"Added files shouldn't contain anything unsupported");
 }
 
 @end

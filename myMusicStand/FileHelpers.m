@@ -35,13 +35,18 @@ NSArray *filesDiffWithFileslistAndKnownFiles(NSArray *filesInDirectory, NSArray 
         // Create mutable copy of results
         NSMutableSet *mutableResultsSet = [resultsSet mutableCopy];
         
-        // remove the '.DS_Store' file if it exists
-        [mutableResultsSet removeObject:@".DS_Store"];
+        // Check if the strings returned have anything that isn't a pdf
+        for (NSString *fileName in resultsSet)
+        {
+            // if it isn't a pdf remove it from the list
+            if (![fileName hasSuffix:@".pdf"])
+            {
+                [mutableResultsSet removeObject:fileName];
+            }
+        }
         
-        // Create immutable copy of mutableresultsset without '.DS_Store'
+        // create an immutable copy that will only contain the pdfs type
         resultsSet = [mutableResultsSet copy];
-        
-        // Cleanup mutable copy
 
     }
     else if (type == FileDiffTypeStale)
