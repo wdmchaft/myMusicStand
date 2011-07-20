@@ -23,4 +23,5 @@
 - (NSURL *)applicationDocumentsDirectory;
 + (id)sharedInstance;
 - (void)updateContextForDocumentDirectoryChanges:(NSFileManager *)fmg;
+- (void)loadNewFileURL:(NSURL *)url withFileManger:(NSFileManager *)fileManger;
 @end
