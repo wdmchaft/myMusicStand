@@ -22,7 +22,7 @@
     fileImporter = [[FileImporter alloc] init];
 }
 
-- (void)testCopyFileIntoDocuments
+- (void)testFileCopiedIntoDocumentsDir
 {
     id mockManager = [OCMockObject mockForClass:[NSFileManager class]];
     
@@ -33,7 +33,7 @@
     [mockManager verify];
 }
 
-- (void)testLastPathComponentsInDestIsDocumentsAndFile
+- (void)testDestURLcontainsTheNameOfTheFile
 {
     myMusicStandAppDelegate *appDelegate = [myMusicStandAppDelegate sharedInstance];
     
