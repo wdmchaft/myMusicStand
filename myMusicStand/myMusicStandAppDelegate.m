@@ -9,6 +9,7 @@
 #import "myMusicStandAppDelegate.h"
 #import "File.h"
 #import "FileDiffer.h"
+#import "FileImporter.h"
 #import "PDFHelpers.h"
 #import "Thumbnail.h"
 #import "BlockTableController.h"
@@ -363,8 +364,17 @@ static myMusicStandAppDelegate *sharedInstance;
   sourceApplication:(NSString *)sourceApplication 
          annotation:(id)annotation
 {
+    FileImporter *importer = [[FileImporter alloc] init];
+    [importer importFileAtURL:url withFileManger:[NSFileManager defaultManager]];
+    [self updateContextForDocumentDirectoryChanges:[NSFileManager defaultManager]];
     
-    return NO;
+    // if we have more than one viewController, then pop it off the stack
+    if ([[navController viewControllers] count] > 1)
+    {
+        [navController popViewControllerAnimated:NO];
+    }
+    
+    return YES;
 }
 
 #pragma mark - Application's Documents directory
