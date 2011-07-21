@@ -14,12 +14,18 @@
 @implementation FileImporterTests
 {
     FileImporter *fileImporter;
+    NSURL *src;
 }
 
 - (void)setUp
 {
     [super setUp];
     fileImporter = [[FileImporter alloc] init];
+    
+    myMusicStandAppDelegate *appDelegate = [myMusicStandAppDelegate sharedInstance];
+    
+    src = [[appDelegate applicationDocumentsDirectory] URLByAppendingPathComponent:@"example.pdf"
+                                                                       isDirectory:NO];
 }
 
 - (void)testFileCopiedIntoDocumentsDir
@@ -28,17 +34,13 @@
     
     [[mockManager expect] copyItemAtURL:[OCMArg any] toURL:[OCMArg any] error:nil];
     
-    [fileImporter loadNewFileURL:nil withFileManger:mockManager];
+    [fileImporter importFileAtURL:src withFileManger:mockManager];
     
     [mockManager verify];
 }
 
 - (void)testDestURLcontainsTheNameOfTheFile
 {
-    myMusicStandAppDelegate *appDelegate = [myMusicStandAppDelegate sharedInstance];
-    
-    NSURL *src = [[appDelegate applicationDocumentsDirectory] URLByAppendingPathComponent:@"example.pdf"
-                                                                              isDirectory:NO];
     
     NSURL *dest = [fileImporter createDocumentURLfromSrcURL:src];
     
