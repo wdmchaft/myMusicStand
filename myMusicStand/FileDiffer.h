@@ -12,4 +12,8 @@ typedef enum {
     FileDiffTypeStale
 } FileDiffType;
 
-NSArray *filesDiffWithFileslistAndKnownFiles(NSArray *filesInDirectory, NSArray *knownFiles, FileDiffType type);
+@interface FileDiffer : NSObject {
+
+}
++ (NSArray *)diffForType:(FileDiffType)type forFilesInDir:(NSArray *)files andKnownFiles:(NSArray *)known;
+@end

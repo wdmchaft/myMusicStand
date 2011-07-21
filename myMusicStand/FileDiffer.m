@@ -7,9 +7,11 @@
  *
  */
 
-#include "FileHelpers.h"
+#include "FileDiffer.h"
 
-NSArray *filesDiffWithFileslistAndKnownFiles(NSArray *filesInDirectory, NSArray *knownFiles, FileDiffType type)
+@implementation FileDiffer
+
++ (NSArray *)diffForType:(FileDiffType)type forFilesInDir:(NSArray *)filesInDirectory andKnownFiles:(NSArray *)knownFiles
 {
     // Results of diff operation
     NSSet *resultsSet = nil;
@@ -31,7 +33,7 @@ NSArray *filesDiffWithFileslistAndKnownFiles(NSArray *filesInDirectory, NSArray 
     {
         [diffActualFilesSet minusSet:knownFilesSet];
         resultsSet = diffActualFilesSet;
-
+        
         // Create mutable copy of results
         NSMutableSet *mutableResultsSet = [resultsSet mutableCopy];
         
@@ -47,14 +49,16 @@ NSArray *filesDiffWithFileslistAndKnownFiles(NSArray *filesInDirectory, NSArray 
         
         // create an immutable copy that will only contain the pdfs type
         resultsSet = [mutableResultsSet copy];
-
+        
     }
     else if (type == FileDiffTypeStale)
     {
         [diffKnownSet minusSet:actualFilesSet];
         resultsSet = diffKnownSet;
     }    
-
+    
     
     return [[resultsSet allObjects] sortedArrayUsingDescriptors:descriptors];
 }
+@end
+
