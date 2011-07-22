@@ -32,11 +32,16 @@
 {
     id mockManager = [OCMockObject mockForClass:[NSFileManager class]];
     
-    [[mockManager expect] copyItemAtURL:[OCMArg any] toURL:[OCMArg any] error:nil];
+    NSError __autoreleasing *error = nil;
     
-    [fileImporter importFileAtURL:src withFileManger:mockManager];
+    [[mockManager expect] copyItemAtURL:[OCMArg any] toURL:[OCMArg any] 
+                                  error:(__bridge NSError *)[OCMArg anyPointer]];
     
-    [mockManager verify];
+    BOOL success = [fileImporter importFileAtURL:src withFileManger:mockManager error:&error];
+    
+    STAssertEquals(YES, success, @"The file should return that it has been successfully imported");
+    
+    //[mockManager verify];
 }
 
 - (void)testDestURLcontainsTheNameOfTheFile
