@@ -29,6 +29,8 @@ typedef enum
 #pragma mark Private Helper Methods
 // move the musicstand ui from one state to passed in state
 - (void)moveMusicStandToState:(MusicStandState)toState;
+// update the setlists display the add block based on isAddBlockShowing flag
+- (void)updateAddBlockDisplay;
 @end
 
 @implementation StageViewController
@@ -42,6 +44,7 @@ typedef enum
     IBOutlet UISegmentedControl *tabControl;
     IBOutlet UIBarButtonItem *actionItem;
     UIBarButtonItem *emailItem;
+    BOOL isAddBlockShowing; // flag to keep track of setlist's addBlockShowing property
     
     // flag to keep track of when stand and it's components are down
     MusicStandState musicStandState; 
@@ -72,6 +75,7 @@ typedef enum
     [super awakeFromNib];
     // setup states of none ui ivars
     musicStandState = MusicStandStateUp;
+    isAddBlockShowing = YES;
 }
 
 - (void)viewDidLoad
@@ -175,10 +179,12 @@ typedef enum
     // Show cancel item
     [navItem setRightBarButtonItem:cancelItem];
     
-    // Cleanup
-    
     // Allow block selection
     [blockController setIsSelectingBlocks:YES];
+    
+    // Stop display of add button in setlistsTableController
+    isAddBlockShowing = NO;
+    [self updateAddBlockDisplay];
 }
 
 /*
@@ -200,6 +206,10 @@ typedef enum
     [blockController setIsSelectingBlocks:NO];
     // reload table
     [[blockController tableView] reloadData];
+    
+    // reshow add block after cancel is hit in action menu
+    isAddBlockShowing = YES;
+    [self updateAddBlockDisplay];
 }
 
 // allow for public way to setEnabled attr on email action button
@@ -317,6 +327,10 @@ typedef enum
         // else show setlists controller
         newBlockController = [[SetlistTableController alloc] initWithManagedObjectContext:context
                                                                              andTableView:newTableView];
+        
+        // set up to display the isAddBlockShowing
+        [self updateAddBlockDisplay];
+        
         // set new view as rightframe and animate it in
         [newTableView setFrame:rightframe];
         
@@ -378,6 +392,9 @@ typedef enum
 - (void)slideStandUp
 {
     [self moveMusicStandToState:MusicStandStateUp];
+    isAddBlockShowing = YES; // reset to display add block
+    [self updateAddBlockDisplay];
+    
 }
 
 #pragma mark Helper Methods
@@ -466,6 +483,14 @@ typedef enum
 
 }
 
+-(void)updateAddBlockDisplay
+{
+    // if we are showing a setlistTableController's content
+    if ([blockController isKindOfClass:[SetlistTableController class]])
+    {
+        [(SetlistTableController *)blockController setAddBlockShowing:isAddBlockShowing];
+    }
+}
 #pragma mark MFMailComposeDelegate Methods
 - (void)mailComposeController:(MFMailComposeViewController*)controller 
           didFinishWithResult:(MFMailComposeResult)result 

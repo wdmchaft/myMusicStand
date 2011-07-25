@@ -13,6 +13,8 @@
 
 @class NSManagedObjectContext;
 @interface SetlistTableController : BlockTableController 
-{
-}
+
+// Accessors for setting the add block display
+-(void)setAddBlockShowing:(BOOL)enabled;
+-(BOOL)isAddBlockShowing;
 @end

@@ -23,6 +23,9 @@
 @end
 
 @implementation SetlistTableController
+{
+    BOOL shouldDisplayAddBlock;
+}
 
 - (id)initWithManagedObjectContext:(NSManagedObjectContext *)moc andTableView:(UITableView *)tv
 {
@@ -37,6 +40,7 @@
                                                  selector:@selector(reloadFiles:)
                                                      name:NSManagedObjectContextDidSaveNotification 
                                                    object:nil];
+        shouldDisplayAddBlock = YES;
     }
     return self;
 
@@ -77,6 +81,9 @@
         // slide down the stand
         [delegate slideStandDown];
         
+        // hide the add button
+        [self setAddBlockShowing:NO];
+        
         // Create new setlist
         Setlist *setlist = [Setlist setlistWithContext:context];
         
@@ -96,7 +103,12 @@
 
 - (int)numberOfBlocks 
 {
-    return [super numberOfBlocks] + NUM_ADD_BLOCKS;
+    if (shouldDisplayAddBlock)
+    {
+        return [super numberOfBlocks] + NUM_ADD_BLOCKS;
+    }
+    
+    return [super numberOfBlocks];
 }
 
 
@@ -108,16 +120,19 @@
     // Configure add button in this block
     if (index == [model count])
     {
-        // set add set button
-        [label setText:@"Add setlist"];
-        
-        // set tap gesture handling action
-        tapSelector = @selector(createSetlist:);
-        
-        [block setAccessibilityLabel:@"Add Setlist block"];
-        
-        // remove this block from mapping so it can't be used 
-        [blocksToModel removeObjectForKey:[NSValue valueWithNonretainedObject:block]];
+        if (shouldDisplayAddBlock)
+        {
+            // set add set button
+            [label setText:@"Add setlist"];
+            
+            // set tap gesture handling action
+            tapSelector = @selector(createSetlist:);
+            
+            [block setAccessibilityLabel:@"Add Setlist block"];
+            
+            // remove this block from mapping so it can't be used 
+            [blocksToModel removeObjectForKey:[NSValue valueWithNonretainedObject:block]];
+        }
     }
     else 
     {
@@ -148,6 +163,18 @@
                                                                           action:tapSelector];
     [block addGestureRecognizer:tap];
     
+}
+
+-(void)setAddBlockShowing:(BOOL)enabled
+{
+    shouldDisplayAddBlock = enabled;
+    
+    [tableView reloadData];
+}
+
+-(BOOL)isAddBlockShowing
+{
+    return shouldDisplayAddBlock;
 }
 
 @end
