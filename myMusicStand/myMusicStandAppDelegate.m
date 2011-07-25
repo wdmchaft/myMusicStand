@@ -348,19 +348,15 @@ static myMusicStandAppDelegate *sharedInstance;
     
     NSManagedObjectContext *parentContext = [childContext parentContext];
     
-    // Make sure we have 
-    if ([parentContext hasChanges])
-    {
-        // save main context async
-        [parentContext performBlock:^{
-            NSError *parentError = nil;
-            [parentContext save:&parentError];
-            if (parentError)
-            {
-                NSLog(@"Error while saving main context %@", [parentError localizedDescription]);
-            }
-        }];
-    }
+    // save main context async
+    [parentContext performBlock:^{
+        NSError *parentError = nil;
+        [parentContext save:&parentError];
+        if (parentError)
+        {
+            NSLog(@"Error while saving main context %@", [parentError localizedDescription]);
+        }
+    }];
 }
 
 - (BOOL)application:(UIApplication *)application 
@@ -369,8 +365,7 @@ static myMusicStandAppDelegate *sharedInstance;
          annotation:(id)annotation
 {
     FileImporter *importer = [[FileImporter alloc] init];
-    [importer importFileAtURL:url withFileManger:[NSFileManager defaultManager] error:nil];
-    
+    [importer importFileAtURL:url withFileManger:[NSFileManager defaultManager]];
     [self updateContextForDocumentDirectoryChanges:[NSFileManager defaultManager]];
     
     // if we have more than one viewController, then pop it off the stack

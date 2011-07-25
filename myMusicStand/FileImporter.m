@@ -12,18 +12,10 @@
 @implementation FileImporter
 
 #pragma mark - Import file Methods
-- (BOOL)importFileAtURL:(NSURL *)url withFileManger:(NSFileManager *)fileManger error:(NSError **)error
+- (void)importFileAtURL:(NSURL *)url withFileManger:(NSFileManager *)fileManger
 {
     NSURL *toURL = [self createDocumentURLfromSrcURL:url];
-    
-    [fileManger copyItemAtURL:url toURL:toURL error:&error];
-    
-    if (error)
-    {
-        return NO;
-    }
-    
-    return YES;
+    [fileManger copyItemAtURL:url toURL:toURL error:nil];
 }
 
 - (NSURL *)createDocumentURLfromSrcURL:(NSURL *)srcURL
