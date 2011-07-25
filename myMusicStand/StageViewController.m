@@ -16,6 +16,13 @@
 
 #define FILES_CONTROLLER_INDEX 0
 #define NAV_BAR_HEIGHT 44
+#define BACK_OF_STAND_Y_OFFSET 208
+
+typedef enum 
+{
+    MusicStandPositionUp = 0,
+    MusicStandPositionDown
+} MusicStandPosition;
 
 @implementation StageViewController
 {
@@ -23,9 +30,12 @@
     NSManagedObjectContext *context;
     IBOutlet UITableView *tableView;
     IBOutlet UINavigationBar *bottomOfStand;
+    IBOutlet UIView *backOfStand;
     IBOutlet UISegmentedControl *tabControl;
     IBOutlet UIBarButtonItem *actionItem;
     UIBarButtonItem *emailItem;
+    
+    MusicStandPosition standPosition; // flag to keep track of when stand and it's components are down
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -47,6 +57,13 @@
 }
 
 #pragma mark - View lifecycle
+
+- (void)awakeFromNib
+{
+    [super awakeFromNib];
+    // setup states of none ui ivars
+    standPosition = MusicStandPositionUp;
+}
 
 - (void)viewDidLoad
 {
@@ -339,6 +356,45 @@
                      }];
     
     
+    
+}
+
+#pragma mark Stand Moving Methods
+- (void)slideStandDown
+{
+    if (standPosition == MusicStandPositionDown)
+    {
+        return;
+    }
+    
+    // else mark stand as down
+    standPosition = MusicStandPositionDown;
+    
+    CGRect newTableFrame = [tableView frame];
+    newTableFrame.origin.y += BACK_OF_STAND_Y_OFFSET;
+    newTableFrame.size.height -= BACK_OF_STAND_Y_OFFSET;
+    
+    CGRect newBottomOfStandFrame = [bottomOfStand frame];
+    newBottomOfStandFrame.origin.y += BACK_OF_STAND_Y_OFFSET;
+    
+    CGRect newBackOfStandFrame = [backOfStand frame];
+    newBackOfStandFrame.origin.y += BACK_OF_STAND_Y_OFFSET;
+    
+    [UIView animateWithDuration:0.2 
+                     animations:^{                         
+                         // move all the components of the stand down
+                         [tableView setFrame:newTableFrame];
+                         [bottomOfStand setFrame:newBottomOfStandFrame];
+                         [backOfStand setFrame:newBackOfStandFrame];
+
+                     }
+                     completion:^(BOOL finished){
+                         
+                     }];
+}
+
+- (void)slideStandUp
+{
     
 }
 

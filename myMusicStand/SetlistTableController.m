@@ -74,6 +74,9 @@
     if ([recognizer state] == UIGestureRecognizerStateEnded)
     {
         
+        // slide down the stand
+        [delegate slideStandDown];
+        
         // Create new setlist
         Setlist *setlist = [Setlist setlistWithContext:context];
         

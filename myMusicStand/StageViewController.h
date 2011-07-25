@@ -16,4 +16,6 @@
 - (IBAction)showActionItems:(UIBarButtonItem *)sender;
 - (void)setEmailButtonEnabled:(BOOL)enabled;
 - (void)displayEmailWith:(NSArray *)attachmentURLs;
+- (void)slideStandDown;
+- (void)slideStandUp;
 @end
