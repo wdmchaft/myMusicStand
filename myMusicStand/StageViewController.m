@@ -17,12 +17,19 @@
 #define FILES_CONTROLLER_INDEX 0
 #define NAV_BAR_HEIGHT 44
 #define BACK_OF_STAND_Y_OFFSET 208
+#define DONE_BUTTON_Y_INSET 7
 
 typedef enum 
 {
-    MusicStandPositionUp = 0,
-    MusicStandPositionDown
-} MusicStandPosition;
+    MusicStandStateUp = 0,
+    MusicStandStateDown
+} MusicStandState;
+
+@interface StageViewController ()
+#pragma mark Private Helper Methods
+// move the musicstand ui from one state to passed in state
+- (void)moveMusicStandToState:(MusicStandState)toState;
+@end
 
 @implementation StageViewController
 {
@@ -31,11 +38,13 @@ typedef enum
     IBOutlet UITableView *tableView;
     IBOutlet UINavigationBar *bottomOfStand;
     IBOutlet UIView *backOfStand;
+    IBOutlet UIButton *doneButton; // button for finishing edit of a setlist
     IBOutlet UISegmentedControl *tabControl;
     IBOutlet UIBarButtonItem *actionItem;
     UIBarButtonItem *emailItem;
     
-    MusicStandPosition standPosition; // flag to keep track of when stand and it's components are down
+    // flag to keep track of when stand and it's components are down
+    MusicStandState musicStandState; 
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -62,7 +71,7 @@ typedef enum
 {
     [super awakeFromNib];
     // setup states of none ui ivars
-    standPosition = MusicStandPositionUp;
+    musicStandState = MusicStandStateUp;
 }
 
 - (void)viewDidLoad
@@ -362,40 +371,99 @@ typedef enum
 #pragma mark Stand Moving Methods
 - (void)slideStandDown
 {
-    if (standPosition == MusicStandPositionDown)
+    [self moveMusicStandToState:MusicStandStateDown];
+    
+}
+
+- (void)slideStandUp
+{
+    [self moveMusicStandToState:MusicStandStateUp];
+}
+
+#pragma mark Helper Methods
+// Method to move the MusicStand UI to the desired state
+- (void)moveMusicStandToState:(MusicStandState)toState
+{
+    // if we are already in the desired state do nothing
+    if (musicStandState == toState)
     {
         return;
     }
     
     // else mark stand as down
-    standPosition = MusicStandPositionDown;
+    musicStandState = toState;
     
+    // new rects to move the ui
     CGRect newTableFrame = [tableView frame];
-    newTableFrame.origin.y += BACK_OF_STAND_Y_OFFSET;
-    newTableFrame.size.height -= BACK_OF_STAND_Y_OFFSET;
-    
     CGRect newBottomOfStandFrame = [bottomOfStand frame];
-    newBottomOfStandFrame.origin.y += BACK_OF_STAND_Y_OFFSET;
-    
     CGRect newBackOfStandFrame = [backOfStand frame];
-    newBackOfStandFrame.origin.y += BACK_OF_STAND_Y_OFFSET;
+    CGRect newDoneButtonFrame = [doneButton frame];
     
+    
+    // determine how to set the UI
+    if (toState == MusicStandStateDown)
+    {
+        newTableFrame.origin.y += BACK_OF_STAND_Y_OFFSET;
+        newTableFrame.size.height -= BACK_OF_STAND_Y_OFFSET;
+        
+
+        newBottomOfStandFrame.origin.y += BACK_OF_STAND_Y_OFFSET;
+        
+        
+        newBackOfStandFrame.origin.y += BACK_OF_STAND_Y_OFFSET;
+        
+        
+        newDoneButtonFrame.origin.y += (BACK_OF_STAND_Y_OFFSET + DONE_BUTTON_Y_INSET);
+    }
+    else // State up
+    {
+        newTableFrame.origin.y -= BACK_OF_STAND_Y_OFFSET;
+        newTableFrame.size.height += BACK_OF_STAND_Y_OFFSET;
+        
+        newBottomOfStandFrame.origin.y -= BACK_OF_STAND_Y_OFFSET;
+        
+        newBackOfStandFrame.origin.y -= BACK_OF_STAND_Y_OFFSET;
+        
+        newDoneButtonFrame.origin.y -= (BACK_OF_STAND_Y_OFFSET - DONE_BUTTON_Y_INSET);
+    }
+    
+    // Animate UI to new positioning
     [UIView animateWithDuration:0.2 
                      animations:^{                         
                          // move all the components of the stand down
                          [tableView setFrame:newTableFrame];
                          [bottomOfStand setFrame:newBottomOfStandFrame];
                          [backOfStand setFrame:newBackOfStandFrame];
-
+                         [doneButton setFrame:newDoneButtonFrame];
+                         
                      }
                      completion:^(BOOL finished){
                          
+                         // add buttons for cancel and done to bottomOfStand
+                         UINavigationItem *navItem = [[bottomOfStand items] objectAtIndex:0];
+                         
+                         if (musicStandState == MusicStandStateDown)
+                         {
+                             UIBarButtonItem *bbi = 
+                             [[UIBarButtonItem alloc] initWithTitle:@"Done"
+                                                              style:UIBarButtonItemStyleDone 
+                                                             target:self 
+                                                             action:@selector(slideStandUp)];
+                             [navItem setRightBarButtonItem:bbi];
+                             
+                             bbi = [[UIBarButtonItem alloc] initWithTitle:@"Cancel"
+                                                                    style:UIBarButtonItemStylePlain
+                                                                   target:self
+                                                                   action:@selector(slideStandUp)];
+                             [navItem setLeftBarButtonItems:[NSArray arrayWithObject:bbi]];
+                         }
+                         else // State down
+                         {
+                             [navItem setRightBarButtonItem:actionItem];
+                             [navItem setLeftBarButtonItems:nil];
+                         }
                      }];
-}
 
-- (void)slideStandUp
-{
-    
 }
 
 #pragma mark MFMailComposeDelegate Methods
