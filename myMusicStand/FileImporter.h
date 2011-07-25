@@ -15,7 +15,7 @@
 @interface FileImporter : NSObject
 
 // copy url from inbox to documents, on success return YES
-- (BOOL)importFileAtURL:(NSURL *)url withFileManger:(NSFileManager *)fileManger error:(NSError **)error;
+- (BOOL)importFileAtURL:(NSURL *)url withFileManger:(NSFileManager *)fileManger error:(NSError *)error;
 // create a dest url in our documents directory from inbox
 - (NSURL *)createDocumentURLfromSrcURL:(NSURL *)srcURL;
 @end
