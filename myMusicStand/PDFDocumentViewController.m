@@ -18,7 +18,7 @@
 #define RECOGNIZER_SHOULD_RECIEVE_TOUCH YES
 #define RECOGNIZER_SHOULD_NOT_RECIEVE_TOUCH NO
 #define UNTOUCHABLE_AREA_HEIGHT 60
-#define BACK_BUTTON_X_OFFSET 20
+#define BUTTON_X_OFFSET 20
 #define PAGE_NOT_FOUND NO
 #define PAGE_FOUND YES
 
@@ -300,11 +300,18 @@
     // Figure out what is being displayed
     CGRect bounds = [scrollView bounds];
     CGFloat minimumVisibleX = CGRectGetMinX(bounds);
+    CGFloat maximumVisibleX = CGRectGetMaxX(bounds);
     
     // Move the backButton over enough to appear to not have moved
     CGRect buttonFrame = [backButton frame];
-    buttonFrame.origin.x = minimumVisibleX + BACK_BUTTON_X_OFFSET;
+    buttonFrame.origin.x = minimumVisibleX + BUTTON_X_OFFSET;
     [backButton setFrame:buttonFrame];
+    
+    // Move email button so it doesn't appear to move
+    buttonFrame = [emailButton frame];
+    buttonFrame.origin.x = maximumVisibleX - (buttonFrame.size.width + BUTTON_X_OFFSET);
+    
+    [emailButton setFrame:buttonFrame];
     
     // Retile the pages of the PDF
     [self tilePages];    
