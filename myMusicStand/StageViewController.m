@@ -9,11 +9,13 @@
 #import "StageViewController.h"
 #import "BlockTableController.h"
 #import "FileTableController.h"
+#import "Thumbnail.h"
 #import "File.h"
 #import "SetlistTableController.h"
 #import "myMusicStandAppDelegate.h"
 #import "TimestampEntity.h"
 #import "MailComposerController.h"
+#import "BlockDragController.h"
 
 #define FILES_CONTROLLER_INDEX 0
 #define NAV_BAR_HEIGHT 44
@@ -51,14 +53,17 @@ typedef enum
     MusicStandState musicStandState; 
     
     MailComposerController *composerController; // responsible for handling email UI
+    
+    BlockDragController *dragController; // handles dragging blocks on screen
+    
 }
+
+@synthesize blockController;
 
 - (void)didReceiveMemoryWarning
 {
     // Releases the view if it doesn't have a superview.
     [super didReceiveMemoryWarning];
-    
-    // Release any cached data, images, etc that aren't in use.
 }
 
 #pragma mark - View lifecycle
@@ -79,8 +84,6 @@ typedef enum
     [super viewDidLoad];
     
     context = [[myMusicStandAppDelegate sharedInstance] managedObjectContext];
-    
-    // Do any additional setup after loading the view from its nib.
     
     blockController = [[FileTableController alloc] initWithManagedObjectContext:context andTableView:tableView];
     // Set navigationController
@@ -197,7 +200,6 @@ typedef enum
     NSArray *navArray = [NSArray arrayWithObject:navItem];
     [bottomOfStand setItems:navArray animated:NO];
     
-    
     // stop block selection
     [blockController setIsSelectingBlocks:NO];
     // reload table
@@ -290,13 +292,16 @@ typedef enum
         
         outframe = rightframe;
         
+        // give FileTableController the method we want it to use for long presses
+        [(FileTableController *)newBlockController setLongPressTarget:dragController];
+        [(FileTableController *)newBlockController setLongPressSelector:[dragController dragEvenHandler]];
+        
     }
     else 
     {
         // else show setlists controller
         newBlockController = [[SetlistTableController alloc] initWithManagedObjectContext:context
                                                                              andTableView:newTableView];
-        
         // set up to display the isAddBlockShowing
         [self updateAddBlockDisplay];
         
@@ -355,6 +360,10 @@ typedef enum
 - (void)slideStandDown
 {
     [self moveMusicStandToState:MusicStandStateDown];
+    isAddBlockShowing = NO;
+    
+    // allow dragging by setting the dragController 
+    dragController = [[BlockDragController alloc] initWithStageViewController:self];
     
 }
 
@@ -363,6 +372,16 @@ typedef enum
     [self moveMusicStandToState:MusicStandStateUp];
     isAddBlockShowing = YES; // reset to display add block
     [self updateAddBlockDisplay];
+    
+    // disable dragging of views, if we are in viewing teh file controller
+    if ([blockController isKindOfClass:[FileTableController class]])
+    {
+        [(FileTableController *)blockController setLongPressTarget:nil];
+        [tableView reloadData];
+    }
+    
+    // trash dragController
+    dragController = nil;
     
 }
 
@@ -458,7 +477,9 @@ typedef enum
     if ([blockController isKindOfClass:[SetlistTableController class]])
     {
         [(SetlistTableController *)blockController setAddBlockShowing:isAddBlockShowing];
+        [tableView reloadData];
     }
 }
+
 
 @end

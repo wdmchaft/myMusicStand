@@ -26,7 +26,14 @@
 {
     // the sum of all the selected Models file sizes
     NSNumber *totalSelectedFileSize;    
+    
+    SEL longPressSelector; // used by delegate to control which methond long press should call
+    id __weak longPressTarget; // object responsible for handling long press events on a block
 }
+
+@synthesize canDragBlocks;
+@synthesize longPressSelector;
+@synthesize longPressTarget;
 
 - (id)initWithManagedObjectContext:(NSManagedObjectContext *)moc andTableView:(UITableView *)tv
 {
@@ -43,6 +50,8 @@
         [self setModel:[context allEntity:@"File"]];
         
         totalSelectedFileSize = [NSNumber numberWithInt:0];
+        
+        canDragBlocks = NO;
     }
     
     return self;
@@ -100,10 +109,21 @@
 
     }
     
-    // add tap recognizer to block
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self 
-                                                                          action:@selector(handleTap:)];
-    [block addGestureRecognizer:tap];
+    
+    // if we allow dragging (we do when we have a target and it responds to the selector we were given)
+    if (longPressTarget != nil && [longPressTarget respondsToSelector:longPressSelector])
+    {
+        UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:longPressTarget
+                                                                                                action:longPressSelector];
+        [block addGestureRecognizer:longPress];
+    }
+    else // when we can't drag blocks
+    {
+        // add tap recognizer to block
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self 
+                                                                              action:@selector(handleTap:)];
+        [block addGestureRecognizer:tap];
+    }
 
 }
 
@@ -250,5 +270,16 @@
     
 }
 
+- (void)setCanDragBlocks:(BOOL)newValue
+{
+    // when the value changes reload the table to show the new value
+    canDragBlocks = newValue;
+    [tableView reloadData];
+}
+
+- (File *)fileForBlock:(UIView *)block
+{
+    return (File *)[blocksToModel objectForKey:[NSValue valueWithNonretainedObject:block]];
+}
 @end
 

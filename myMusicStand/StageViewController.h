@@ -11,6 +11,8 @@
 @class BlockTableController;
 @interface StageViewController : UIViewController 
 
+@property (nonatomic, readonly) BlockTableController *blockController;
+
 - (IBAction)tabIndexChanged:(UISegmentedControl *)sender;
 - (IBAction)showActionItems:(UIBarButtonItem *)sender;
 - (void)setEmailButtonEnabled:(BOOL)enabled;
