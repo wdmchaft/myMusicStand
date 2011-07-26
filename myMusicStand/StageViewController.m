@@ -13,6 +13,7 @@
 #import "SetlistTableController.h"
 #import "myMusicStandAppDelegate.h"
 #import "TimestampEntity.h"
+#import "MailComposerController.h"
 
 #define FILES_CONTROLLER_INDEX 0
 #define NAV_BAR_HEIGHT 44
@@ -48,17 +49,9 @@ typedef enum
     
     // flag to keep track of when stand and it's components are down
     MusicStandState musicStandState; 
+    
+    MailComposerController *composerController; // responsible for handling email UI
 }
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-
-    }
-    return self;
-}
-
 
 - (void)didReceiveMemoryWarning
 {
@@ -76,6 +69,9 @@ typedef enum
     // setup states of none ui ivars
     musicStandState = MusicStandStateUp;
     isAddBlockShowing = YES;
+    
+    // composer for email messages
+    composerController = [[MailComposerController alloc] initWithStageViewController:self];
 }
 
 - (void)viewDidLoad
@@ -247,39 +243,12 @@ typedef enum
     // display the email
     [self displayEmailWith:attachments];
     
-   
 }
 
 - (void)displayEmailWith:(NSArray *)attachmentURLs
 {
-    // Handle email account not being setup
-    if (![MFMailComposeViewController canSendMail])
-    {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Email not setup"
-                                                        message:@"Please set up an email account in the Mail app,"
-                              @" so we can help you share your charts"
-                                                       delegate:nil 
-                                              cancelButtonTitle:@"Ok" 
-                                              otherButtonTitles:nil];
-        [alert show];
-        
-        return;
-    }
-    
-    MFMailComposeViewController *composer = [[MFMailComposeViewController alloc] init];
-    [composer setMailComposeDelegate:self];
-    
-    // Set up message
-    [composer setSubject:@"Checkout out this chart from myMusicStand"];
-    
-    for (NSURL *url in attachmentURLs)
-    {
-        NSData *data = [NSData dataWithContentsOfURL:url];
-        [composer addAttachmentData:data mimeType:@"pdf" fileName:[url lastPathComponent]];
-    }
-    
-    // Display composer
-    [self presentModalViewController:composer animated:YES];
+    // delegate the handling of email stuff to composerController
+    [composerController displayEmailWith:attachmentURLs];
 }
 
 /*
@@ -490,14 +459,6 @@ typedef enum
     {
         [(SetlistTableController *)blockController setAddBlockShowing:isAddBlockShowing];
     }
-}
-#pragma mark MFMailComposeDelegate Methods
-- (void)mailComposeController:(MFMailComposeViewController*)controller 
-          didFinishWithResult:(MFMailComposeResult)result 
-                        error:(NSError*)error
-{
-    // close the composer 
-    [controller dismissModalViewControllerAnimated:YES];
 }
 
 @end

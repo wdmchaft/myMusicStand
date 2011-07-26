@@ -7,10 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <MessageUI/MessageUI.h>
 
 @class BlockTableController;
-@interface StageViewController : UIViewController <MFMailComposeViewControllerDelegate>
+@interface StageViewController : UIViewController 
 
 - (IBAction)tabIndexChanged:(UISegmentedControl *)sender;
 - (IBAction)showActionItems:(UIBarButtonItem *)sender;
@@ -18,4 +17,5 @@
 - (void)displayEmailWith:(NSArray *)attachmentURLs;
 - (void)slideStandDown;
 - (void)slideStandUp;
+
 @end
