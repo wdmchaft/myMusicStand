@@ -18,7 +18,7 @@
     // Offsets in dragged view
     CGFloat xOffset;
     CGFloat yOffset;
-    UIView *dragView;
+    __block UIView *dragView;
     
     StageViewController *__weak delegate;
 }
@@ -68,10 +68,12 @@
         CGAffineTransform transform = [dragView transform];
         transform = CGAffineTransformMakeScale(1.15, 1.15);
         CGFloat alpha = 0.75;
+        
         [UIView animateWithDuration:0.2 
                          animations:^{
-                             [dragView setTransform:transform];
-                             [dragView setAlpha:alpha];
+
+                                 [dragView setTransform:transform];
+                                 [dragView setAlpha:alpha];
                          }];
        
         
@@ -91,8 +93,25 @@
     }
     else if ([recognizer state] == UIGestureRecognizerStateEnded)
     {
-        [dragView removeFromSuperview];
-        dragView = nil;
+        // hittest dragview with backOfStand 
+        BOOL standContainsPoint = CGRectContainsPoint([[delegate backOfStand] frame], 
+                                                      [dragView center]);
+        
+        if (standContainsPoint)
+        {            
+            // animate dragview back to normal
+            [UIView animateWithDuration:0.2 
+                             animations:^{
+ 
+                                     [dragView setTransform:CGAffineTransformIdentity];
+                                     [dragView setAlpha:1.0];
+                             }
+                             completion:^(BOOL finished){
+                                     [[delegate backOfStand] addSubview:dragView];
+                                     dragView = nil;
+                             }];
+
+        }
     }
 }
 

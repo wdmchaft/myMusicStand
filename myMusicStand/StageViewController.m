@@ -42,7 +42,7 @@ typedef enum
     NSManagedObjectContext *context;
     IBOutlet UITableView *tableView;
     IBOutlet UINavigationBar *bottomOfStand;
-    IBOutlet UIView *backOfStand;
+    IBOutlet UIScrollView *backOfStand;
     IBOutlet UIButton *doneButton; // button for finishing edit of a setlist
     IBOutlet UISegmentedControl *tabControl;
     IBOutlet UIBarButtonItem *actionItem;
@@ -59,6 +59,7 @@ typedef enum
 }
 
 @synthesize blockController;
+@synthesize backOfStand;
 
 - (void)didReceiveMemoryWarning
 {
@@ -98,6 +99,7 @@ typedef enum
     
     // Give the tableView a label of "Charts"
     [tableView setAccessibilityLabel:@"Charts"];
+
 }
 
 - (void)viewDidUnload
