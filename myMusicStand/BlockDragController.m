@@ -52,20 +52,28 @@
     {
         // create a dragging view that is the same dimensions as targetview in terms of this view
         CGRect dragViewFrame = [[targetView superview] convertRect:[targetView frame] toView:[delegate view]];
-        
+
+        // show the dragging view        
         dragView = [[UIView alloc] initWithFrame:dragViewFrame];
-        [dragView setBackgroundColor:[UIColor greenColor]];
-        
-        // show the dragging view
         [[delegate view] addSubview:dragView];
         
         // make the dragView look like the targetView   
-        
         File *fileObject = [(FileTableController *)blockController fileForBlock:targetView];
         UIImage *image = [[UIImage alloc] initWithData:[[fileObject thumbnail] data]];
         UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
         [imageView setFrame:[dragView bounds]];
         [dragView addSubview:imageView];
+        
+        // animate dragview to show it has been grabbed
+        CGAffineTransform transform = [dragView transform];
+        transform = CGAffineTransformMakeScale(1.15, 1.15);
+        CGFloat alpha = 0.75;
+        [UIView animateWithDuration:0.2 
+                         animations:^{
+                             [dragView setTransform:transform];
+                             [dragView setAlpha:alpha];
+                         }];
+       
         
         // current center
         CGPoint center = [[delegate view] convertPoint:[targetView center] fromView:[targetView superview]];
