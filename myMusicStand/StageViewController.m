@@ -33,7 +33,7 @@ typedef enum
 // move the musicstand ui from one state to passed in state
 - (void)moveMusicStandToState:(MusicStandState)toState;
 // update the setlists display the add block based on isAddBlockShowing flag
-- (void)updateAddBlockDisplay;
+-(void)updateAddBlockDisplayOnBlockController:(BlockTableController *)aBlockController;
 @end
 
 @implementation StageViewController
@@ -183,7 +183,7 @@ typedef enum
     
     // Stop display of add button in setlistsTableController
     isAddBlockShowing = NO;
-    [self updateAddBlockDisplay];
+    [self updateAddBlockDisplayOnBlockController:blockController];
 }
 
 /*
@@ -207,7 +207,7 @@ typedef enum
     
     // reshow add block after cancel is hit in action menu
     isAddBlockShowing = YES;
-    [self updateAddBlockDisplay];
+    [self updateAddBlockDisplayOnBlockController:blockController];
 }
 
 // allow for public way to setEnabled attr on email action button
@@ -303,7 +303,7 @@ typedef enum
         newBlockController = [[SetlistTableController alloc] initWithManagedObjectContext:context
                                                                              andTableView:newTableView];
         // set up to display the isAddBlockShowing
-        [self updateAddBlockDisplay];
+        [self updateAddBlockDisplayOnBlockController:newBlockController];
         
         // set new view as rightframe and animate it in
         [newTableView setFrame:rightframe];
@@ -371,7 +371,7 @@ typedef enum
 {
     [self moveMusicStandToState:MusicStandStateUp];
     isAddBlockShowing = YES; // reset to display add block
-    [self updateAddBlockDisplay];
+    [self updateAddBlockDisplayOnBlockController:blockController];
     
     // disable dragging of views, if we are in viewing teh file controller
     if ([blockController isKindOfClass:[FileTableController class]])
@@ -471,12 +471,12 @@ typedef enum
 
 }
 
--(void)updateAddBlockDisplay
+-(void)updateAddBlockDisplayOnBlockController:(BlockTableController *)aBlockController
 {
     // if we are showing a setlistTableController's content
-    if ([blockController isKindOfClass:[SetlistTableController class]])
+    if ([aBlockController isKindOfClass:[SetlistTableController class]])
     {
-        [(SetlistTableController *)blockController setAddBlockShowing:isAddBlockShowing];
+        [(SetlistTableController *)aBlockController setAddBlockShowing:isAddBlockShowing];
         [tableView reloadData];
     }
 }
