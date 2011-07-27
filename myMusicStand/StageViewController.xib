@@ -55,7 +55,7 @@
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 						<object class="NSCustomResource" key="IBUIImage">
 							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">floorAndStage.png</string>
+							<string key="NSResourceName">stage.png</string>
 						</object>
 					</object>
 					<object class="IBUIView" id="325879617">
@@ -78,6 +78,7 @@
 						<string key="NSFrame">{{0, 44}, {768, 960}}</string>
 						<reference key="NSSuperview" ref="766721923"/>
 						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView"/>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">3</int>
 							<bytes key="NSWhite">MQA</bytes>
@@ -426,8 +427,8 @@
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 		<object class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
-			<string key="NS.key.0">floorAndStage.png</string>
-			<string key="NS.object.0">{768, 1024}</string>
+			<string key="NS.key.0">stage.png</string>
+			<string key="NS.object.0">{768, 1004}</string>
 		</object>
 		<string key="IBCocoaTouchPluginVersion">894</string>
 	</data>
