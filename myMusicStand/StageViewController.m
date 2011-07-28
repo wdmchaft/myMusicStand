@@ -361,6 +361,12 @@ typedef enum
 #pragma mark Stand Moving Methods
 - (void)slideStandDown
 {
+    // clear out the stand of subviews
+    for (UIView *subview in [backOfStand subviews])
+    {
+        [subview removeFromSuperview];
+    }
+    
     [self moveMusicStandToState:MusicStandStateDown];
     isAddBlockShowing = NO;
     
@@ -383,8 +389,7 @@ typedef enum
     }
     
     // trash dragController
-    dragController = nil;
-    
+    dragController = nil;    
 }
 
 #pragma mark Helper Methods
