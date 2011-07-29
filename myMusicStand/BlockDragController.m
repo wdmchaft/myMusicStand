@@ -11,7 +11,9 @@
 #import "BlockTableController.h"
 #import "FileTableController.h"
 #import "File.h"
+#import "Setlist.h"
 #import "Thumbnail.h"
+#import "myMusicStandAppDelegate.h"
 
 @implementation BlockDragController
 {
@@ -21,6 +23,9 @@
     __block UIView *dragView;
     
     StageViewController *__weak delegate;
+    NSManagedObjectContext *setlistContext;
+    Setlist *newSetlist;
+    UIView *targetView;
 }
 
 - (id)initWithStageViewController:(StageViewController *)aDelegate
@@ -28,6 +33,14 @@
     self = [super init];
     if (self) {
         delegate = aDelegate;
+        NSManagedObjectContext *context = [[myMusicStandAppDelegate sharedInstance] managedObjectContext];
+        // create a context just for editing the setlist
+        setlistContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
+        [setlistContext setParentContext:context];
+        
+        // create a new setlist
+        newSetlist = [NSEntityDescription insertNewObjectForEntityForName:@"Setlist" inManagedObjectContext:setlistContext];
+
     }
     
     return self;
@@ -40,7 +53,7 @@
 
 -(void)handleLongPress:(UILongPressGestureRecognizer *)recognizer
 {
-    UIView *targetView = [recognizer view];
+    targetView = [recognizer view];
     
     // touched point
     CGPoint point = [recognizer locationInView:[delegate view]];
@@ -115,7 +128,16 @@
                                 [dragView setFrame:viewsFrame];
                                 dragView = nil;
                              }];
-
+            
+            // Add File to setlist
+            File *file = [(FileTableController *)[delegate blockController] fileForBlock:targetView];
+            // add the file object to the local context
+            File *localContextFile = (File *)[setlistContext objectWithID:[file objectID]];
+            // finally add the file to the setlist
+            [newSetlist insertFile:localContextFile 
+                          forIndex:[[newSetlist orderedFiles] count] 
+                         inContext:setlistContext];
+            
         }
         else
         {
