@@ -119,12 +119,12 @@
             // animate dragview back to normal
             [UIView animateWithDuration:0.2 
                              animations:^{
-                                [dragView setTransform:CGAffineTransformIdentity];
-                                [dragView setAlpha:1.0];
+                                 [dragView setTransform:CGAffineTransformIdentity];
+                                 [dragView setAlpha:1.0];
+                                 [dragView setFrame:viewsFrame];
                              }
                              completion:^(BOOL finished){
                                 [[delegate backOfStand] addSubview:dragView];
-                                [dragView setFrame:viewsFrame];
                                 dragView = nil;
                              }];
             
