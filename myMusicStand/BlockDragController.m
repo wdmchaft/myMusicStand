@@ -99,16 +99,21 @@
         
         if (standContainsPoint)
         {            
+            NSArray *subviews = [[delegate backOfStand] subviews];
+            int numSubviews = [subviews count];
+            CGRect viewsFrame = [dragView frame];
+            viewsFrame.origin.x = viewsFrame.size.width * numSubviews;
+            viewsFrame.origin.y = 6;
             // animate dragview back to normal
             [UIView animateWithDuration:0.2 
                              animations:^{
- 
-                                     [dragView setTransform:CGAffineTransformIdentity];
-                                     [dragView setAlpha:1.0];
+                                [dragView setTransform:CGAffineTransformIdentity];
+                                [dragView setAlpha:1.0];
                              }
                              completion:^(BOOL finished){
-                                     [[delegate backOfStand] addSubview:dragView];
-                                     dragView = nil;
+                                [[delegate backOfStand] addSubview:dragView];
+                                [dragView setFrame:viewsFrame];
+                                dragView = nil;
                              }];
 
         }
