@@ -112,8 +112,7 @@
         
         if (standContainsPoint)
         {            
-            NSArray *subviews = [[delegate backOfStand] subviews];
-            int numSubviews = [subviews count];
+            int numSubviews = [[newSetlist orderedFiles] count]; // get the number of files in the set
             CGRect viewsFrame = [dragView frame];
             viewsFrame.origin.x = viewsFrame.size.width * numSubviews;
             viewsFrame.origin.y = 6;
