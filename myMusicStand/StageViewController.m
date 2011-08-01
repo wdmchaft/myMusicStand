@@ -46,6 +46,8 @@ typedef enum
     IBOutlet UIButton *doneButton; // button for finishing edit of a setlist
     IBOutlet UISegmentedControl *tabControl;
     IBOutlet UIBarButtonItem *actionItem;
+    IBOutlet UIImageView *imageOfStand;
+    
     UIBarButtonItem *emailItem;
     BOOL isAddBlockShowing; // flag to keep track of setlist's addBlockShowing property
     
@@ -410,6 +412,7 @@ typedef enum
     CGRect newBottomOfStandFrame = [bottomOfStand frame];
     CGRect newBackOfStandFrame = [backOfStand frame];
     CGRect newDoneButtonFrame = [doneButton frame];
+    CGRect newImageOfStandFrame = [imageOfStand frame];
     
     
     // determine how to set the UI
@@ -420,10 +423,10 @@ typedef enum
         
 
         newBottomOfStandFrame.origin.y += BACK_OF_STAND_Y_OFFSET;
-        
-        
+    
         newBackOfStandFrame.origin.y += BACK_OF_STAND_Y_OFFSET;
         
+        newImageOfStandFrame.origin.y += BACK_OF_STAND_Y_OFFSET;        
         
         newDoneButtonFrame.origin.y += (BACK_OF_STAND_Y_OFFSET + DONE_BUTTON_Y_INSET);
     }
@@ -436,6 +439,8 @@ typedef enum
         
         newBackOfStandFrame.origin.y -= BACK_OF_STAND_Y_OFFSET;
         
+        newImageOfStandFrame.origin.y -= BACK_OF_STAND_Y_OFFSET;
+        
         newDoneButtonFrame.origin.y -= (BACK_OF_STAND_Y_OFFSET - DONE_BUTTON_Y_INSET);
     }
     
@@ -447,6 +452,7 @@ typedef enum
                          [bottomOfStand setFrame:newBottomOfStandFrame];
                          [backOfStand setFrame:newBackOfStandFrame];
                          [doneButton setFrame:newDoneButtonFrame];
+                         [imageOfStand setFrame:newImageOfStandFrame];
                          
                      }
                      completion:^(BOOL finished){
