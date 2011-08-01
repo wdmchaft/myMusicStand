@@ -296,7 +296,7 @@ typedef enum
         
         // give FileTableController the method we want it to use for long presses
         [(FileTableController *)newBlockController setLongPressTarget:dragController];
-        [(FileTableController *)newBlockController setLongPressSelector:[dragController dragEvenHandler]];
+        [(FileTableController *)newBlockController setLongPressSelector:[dragController dragEventHandler]];
         
     }
     else 

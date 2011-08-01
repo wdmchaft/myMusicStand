@@ -18,6 +18,6 @@
 - (id)initWithStageViewController:(StageViewController *)aDelegate;
 
 // returns method that should be used to handle drag events
-- (SEL)dragEvenHandler;
+- (SEL)dragEventHandler;
 
 @end

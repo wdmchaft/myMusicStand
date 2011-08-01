@@ -15,6 +15,11 @@
 #import "Thumbnail.h"
 #import "myMusicStandAppDelegate.h"
 
+@interface BlockDragController ()
+#pragma mark Private Methods
+- (CGRect)frameOnStandForPosition:(int)position;
+@end
+
 @implementation BlockDragController
 {
     // Offsets in dragged view
@@ -46,11 +51,16 @@
     return self;
 }
 
-- (SEL)dragEvenHandler
+- (SEL)dragEventHandler
 {
     return @selector(handleLongPress:);
 }
 
+/*
+    
+    
+    
+ */
 -(void)handleLongPress:(UILongPressGestureRecognizer *)recognizer
 {
     targetView = [recognizer view];
@@ -113,9 +123,10 @@
         if (standContainsPoint)
         {            
             int numSubviews = [[newSetlist orderedFiles] count]; // get the number of files in the set
-            CGRect viewsFrame = [dragView frame];
-            viewsFrame.origin.x = viewsFrame.size.width * numSubviews;
-            viewsFrame.origin.y = 6;
+            
+            // determine where to show the dragView
+            CGRect viewsFrame = [self frameOnStandForPosition:numSubviews];
+            
             // animate dragview back to normal
             [UIView animateWithDuration:0.2 
                              animations:^{
@@ -145,4 +156,20 @@
     }
 }
 
+/*
+    Determines the frame within a music stand to give the appearence of ordering 
+ 
+    @param index the position where the thumbnail will be placed visually on the stand
+ 
+    @return the frame for the thumbnail to be displayed in 
+ 
+ */
+- (CGRect)frameOnStandForPosition:(int)position
+{
+    CGRect frame = [dragView frame];
+    frame.origin.x = frame.size.width * position;
+    frame.origin.y = 6;
+    
+    return frame;
+}
 @end
