@@ -15,9 +15,34 @@
 #import "Thumbnail.h"
 #import "myMusicStandAppDelegate.h"
 
+/*
+    Helper class that holds a thumbnail and its position
+    this is used in a hash to allow us to get at the view
+    and it's position so we can move them around easily
+ */
+@interface ThumbnailPositionPair : NSObject 
+
+@property (nonatomic, strong) UIView *thumbnail;
+@property (nonatomic, assign) int position;
+
+@end
+
+@implementation ThumbnailPositionPair
+{
+    UIView *thumbnail;
+    int postion;
+}
+
+@synthesize thumbnail;
+@synthesize position;
+
+@end
+
+
 @interface BlockDragController ()
 #pragma mark Private Methods
 - (CGRect)frameOnStandForPosition:(int)position;
+- (void)relayoutThumbnails;
 @end
 
 @implementation BlockDragController
@@ -31,6 +56,10 @@
     NSManagedObjectContext *setlistContext;
     Setlist *newSetlist;
     UIView *targetView;
+    
+    // Mapping of thumbnails to position
+    NSMutableDictionary *thumbnailMapping;
+    int intendedPosition; // where the user seems to want to place the dragView
 }
 
 - (id)initWithStageViewController:(StageViewController *)aDelegate
@@ -45,6 +74,8 @@
         
         // create a new setlist
         newSetlist = [NSEntityDescription insertNewObjectForEntityForName:@"Setlist" inManagedObjectContext:setlistContext];
+        
+        thumbnailMapping = [[NSMutableDictionary alloc] init];
 
     }
     
@@ -56,11 +87,6 @@
     return @selector(handleLongPress:);
 }
 
-/*
-    
-    
-    
- */
 -(void)handleLongPress:(UILongPressGestureRecognizer *)recognizer
 {
     targetView = [recognizer view];
@@ -113,6 +139,30 @@
         CGPoint newCenter = CGPointMake(point.x - xOffset, point.y - yOffset);
         
         [dragView setCenter:newCenter];
+        
+        // Hit test backOfStand with our center to see if we hit subviews
+        UIView *hitThumbnail = [[delegate backOfStand] hitTest:newCenter withEvent:nil];
+        
+        // Check that we have a subview of the backOfStand
+        if (hitThumbnail != [delegate backOfStand] && hitThumbnail != nil)
+        {
+            // Get the pair for the hitThumbnail
+            ThumbnailPositionPair *pair = [thumbnailMapping valueForKey:[hitThumbnail description]]; 
+            intendedPosition = [pair position];
+           
+            NSLog(@"Inteneded Position %d", intendedPosition);
+        }
+        else if (hitThumbnail == nil)
+        {
+            // default value is last position
+            intendedPosition = [thumbnailMapping count];
+            NSLog(@"Default used");
+                    
+        }
+        
+        [self relayoutThumbnails];
+        
+        
     }
     else if ([recognizer state] == UIGestureRecognizerStateEnded)
     {
@@ -122,10 +172,10 @@
         
         if (standContainsPoint)
         {            
-            int numSubviews = [[newSetlist orderedFiles] count]; // get the number of files in the set
+            //[[newSetlist orderedFiles] count]; // get the number of files in the set
             
             // determine where to show the dragView
-            CGRect viewsFrame = [self frameOnStandForPosition:numSubviews];
+            CGRect viewsFrame = [self frameOnStandForPosition:intendedPosition];
             
             // animate dragview back to normal
             [UIView animateWithDuration:0.2 
@@ -134,9 +184,19 @@
                                  [dragView setAlpha:1.0];
                                  [dragView setFrame:viewsFrame];
                              }
-                             completion:^(BOOL finished){
-                                [[delegate backOfStand] addSubview:dragView];
-                                dragView = nil;
+                             completion:^(BOOL finished)
+                             {
+                                 [[delegate backOfStand] addSubview:dragView];
+
+                                 // add the thumbnail to the mapping
+                                 ThumbnailPositionPair *pair = [[ThumbnailPositionPair alloc] init];
+                                 [pair setThumbnail:dragView];
+                                 [pair setPosition:intendedPosition];
+                                 
+                                 [thumbnailMapping setValue:pair
+                                                     forKey:[dragView description]];
+
+                                 dragView = nil;
                              }];
             
             // Add File to setlist
@@ -145,7 +205,7 @@
             File *localContextFile = (File *)[setlistContext objectWithID:[file objectID]];
             // finally add the file to the setlist
             [newSetlist insertFile:localContextFile 
-                          forIndex:[[newSetlist orderedFiles] count] 
+                          forIndex:intendedPosition
                          inContext:setlistContext];
             
         }
@@ -167,9 +227,58 @@
 - (CGRect)frameOnStandForPosition:(int)position
 {
     CGRect frame = [dragView frame];
+    
     frame.origin.x = frame.size.width * position;
+    
     frame.origin.y = 6;
     
     return frame;
+}
+
+/*
+    Relayout the views in the backOfStand according to their position in the 
+    mapping. After determining the new frame we animate the view to it
+ */
+- (void)relayoutThumbnails
+{
+    // Relayout subviews of the backOfStand, when we get the the hit position 
+    // that thumbnail and each after it is moved one position right
+    NSArray *pairs = [thumbnailMapping allValues];
+    
+    // Sort the array by each pair's position
+    NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"position" ascending:YES];
+    pairs = [pairs sortedArrayUsingDescriptors:[NSArray arrayWithObject:sort]];
+
+    // Create a newMapping
+    NSMutableDictionary *newMapping = [[NSMutableDictionary alloc] init];
+    
+    // Loop through pairs and move them to the correct position
+    int i = 0;
+    for (ThumbnailPositionPair *aPair in pairs)
+    {
+        // When i is the intended position of the the dragView 
+        if (i >= intendedPosition)
+        {
+            [aPair setPosition:(i + 1)];
+        }
+        else
+        {
+            [aPair setPosition:i];
+            
+        }
+        
+        CGRect newFrame = [self frameOnStandForPosition:[aPair position]];
+        UIView *thumbnail = [aPair thumbnail];
+        
+
+        [thumbnail setFrame:newFrame];
+        
+        // add the modified pair to the new mapping
+        [newMapping setValue:aPair forKey:[thumbnail description]];
+        i++;
+    }
+    
+    // swap in the newMapping
+    thumbnailMapping = newMapping;
 }
 @end
