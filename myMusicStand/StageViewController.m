@@ -15,7 +15,7 @@
 #import "myMusicStandAppDelegate.h"
 #import "TimestampEntity.h"
 #import "MailComposerController.h"
-#import "BlockDragController.h"
+#import "ThumbnailDragController.h"
 
 #define FILES_CONTROLLER_INDEX 0
 #define NAV_BAR_HEIGHT 44
@@ -56,7 +56,7 @@ typedef enum
     
     MailComposerController *composerController; // responsible for handling email UI
     
-    BlockDragController *dragController; // handles dragging blocks on screen
+    ThumbnailDragController *dragController; // handles dragging blocks on screen
     
 }
 
@@ -269,18 +269,26 @@ typedef enum
 - (IBAction)tabIndexChanged:(UISegmentedControl *)sender
 {
     BlockTableController *newBlockController;
-    UITableView *newTableView = [[UITableView alloc] initWithFrame:[tableView frame]
+    
+    CGRect defaultFrame = CGRectMake(0, 44, 768, 960);
+    
+    if (musicStandState == MusicStandStateDown)
+    {
+        defaultFrame = CGRectMake(0, 252, 768, 752);
+    }
+    UITableView *newTableView = [[UITableView alloc] initWithFrame:defaultFrame
                                                              style:UITableViewStylePlain];
     
     // Define frames to use for animations
-    CGRect leftframe = [tableView frame];
+    CGRect leftframe = defaultFrame;
+
     leftframe.origin.x -= leftframe.size.width;
     
-    CGRect rightframe = [tableView frame];
+    CGRect rightframe = defaultFrame;
     rightframe.origin.x += rightframe.size.width;
     
     // Final frame to use
-    CGRect centerframe = [tableView frame];
+    CGRect centerframe = defaultFrame;
     
     // frame to use when animating out tableview
     CGRect outframe;
@@ -373,7 +381,7 @@ typedef enum
     isAddBlockShowing = NO;
     
     // allow dragging by setting the dragController 
-    dragController = [[BlockDragController alloc] initWithStageViewController:self];
+    dragController = [[ThumbnailDragController alloc] initWithStageViewController:self];
     
 }
 
