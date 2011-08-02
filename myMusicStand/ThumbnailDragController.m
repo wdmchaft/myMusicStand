@@ -31,13 +31,6 @@
 
 @end
 
-
-@interface ThumbnailDragController ()
-#pragma mark Private Methods
-- (CGRect)frameOnStandForPosition:(int)position;
-- (void)relayoutThumbnails;
-@end
-
 @implementation ThumbnailDragController
 {
     // Offsets in dragged view
@@ -75,11 +68,6 @@
     return self;
 }
 
-/**
- *  Handles a long press event on a block (aka a thumbnail) after 
- *  the long press begins this method determines how to visually move
- *  the thumbnail around the screen as the user performs dragging motions
- */
 -(void)handleLongPress:(UILongPressGestureRecognizer *)recognizer
 {
     targetView = [recognizer view];
@@ -209,14 +197,6 @@
     }
 }
 
-/**
- *  Determines the frame within a music stand to give the appearence of ordering 
- *
- *  @param index the position where the thumbnail will be placed visually on the stand
- *
- *  @return the frame for the thumbnail to be displayed in 
- *
- */
 - (CGRect)frameOnStandForPosition:(int)position
 {
     CGRect frame = [dragView frame];
@@ -228,10 +208,6 @@
     return frame;
 }
 
-/**
- *  Relayout the views in the backOfStand according to their position in the 
- *  mapping. After determining the new frame we animate the view to it
- */
 - (void)relayoutThumbnails
 {
     // Relayout subviews of the backOfStand, when we get the the hit position 

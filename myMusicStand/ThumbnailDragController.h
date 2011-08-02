@@ -30,4 +30,22 @@
  *  the thumbnail around the screen as the user performs dragging motions
  */
 -(void)handleLongPress:(UILongPressGestureRecognizer *)recognizer;
+
+/**
+ *  \private 
+ *  Determines the frame within a music stand to give the appearence of ordering 
+ *
+ *  @param index the position where the thumbnail will be placed visually on the stand
+ *
+ *  @return the frame for the thumbnail to be displayed in 
+ *
+ */
+- (CGRect)frameOnStandForPosition:(int)position;
+
+/**
+ *  \private
+ *  Relayout the views in the backOfStand according to their position in a book keeping
+ *  datastructure. After determining the new frame we animate the view to it.
+ */
+- (void)relayoutThumbnails;
 @end
