@@ -1,10 +1,3 @@
-//
-//  BlockDragController.m
-//  myMusicStand
-//
-//  Created by Steven Solomon on 7/26/11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
-//
 
 #import "ThumbnailDragController.h"
 #import "StageViewController.h"
@@ -82,11 +75,11 @@
     return self;
 }
 
-- (SEL)dragEventHandler
-{
-    return @selector(handleLongPress:);
-}
-
+/**
+ *  Handles a long press event on a block (aka a thumbnail) after 
+ *  the long press begins this method determines how to visually move
+ *  the thumbnail around the screen as the user performs dragging motions
+ */
 -(void)handleLongPress:(UILongPressGestureRecognizer *)recognizer
 {
     targetView = [recognizer view];
@@ -216,13 +209,13 @@
     }
 }
 
-/*
-    Determines the frame within a music stand to give the appearence of ordering 
- 
-    @param index the position where the thumbnail will be placed visually on the stand
- 
-    @return the frame for the thumbnail to be displayed in 
- 
+/**
+ *  Determines the frame within a music stand to give the appearence of ordering 
+ *
+ *  @param index the position where the thumbnail will be placed visually on the stand
+ *
+ *  @return the frame for the thumbnail to be displayed in 
+ *
  */
 - (CGRect)frameOnStandForPosition:(int)position
 {
@@ -235,9 +228,9 @@
     return frame;
 }
 
-/*
-    Relayout the views in the backOfStand according to their position in the 
-    mapping. After determining the new frame we animate the view to it
+/**
+ *  Relayout the views in the backOfStand according to their position in the 
+ *  mapping. After determining the new frame we animate the view to it
  */
 - (void)relayoutThumbnails
 {

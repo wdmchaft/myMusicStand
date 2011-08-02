@@ -270,8 +270,10 @@ typedef enum
 {
     BlockTableController *newBlockController;
     
+    // Frame for music stand being up
     CGRect defaultFrame = CGRectMake(0, 44, 768, 960);
     
+    // Frame for music stand being down
     if (musicStandState == MusicStandStateDown)
     {
         defaultFrame = CGRectMake(0, 252, 768, 752);
@@ -306,7 +308,7 @@ typedef enum
         
         // give FileTableController the method we want it to use for long presses
         [(FileTableController *)newBlockController setLongPressTarget:dragController];
-        [(FileTableController *)newBlockController setLongPressSelector:[dragController dragEventHandler]];
+        [(FileTableController *)newBlockController setLongPressSelector:@selector(handleLongPress:)];
         
     }
     else 
