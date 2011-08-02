@@ -48,4 +48,23 @@
  *  datastructure. After determining the new frame we animate the view to it.
  */
 - (void)relayoutThumbnails;
+
+/**
+ *  \private
+ *  Animate the dragView to its new Frame in the delegates backOfStand
+ *
+ *  @param newFrame frame for the dragView
+ *  @param completion completion block that is called after animation
+ *
+ */
+- (void)animateDragViewOnStandToFrame:(CGRect)newFrame completion:(void (^)(BOOL finished))completion;
+
+/**
+ *  \private
+ *  Hit test the backOfStand and determine which position the user is intending to 
+ *  drop the dragView.
+ *
+ *  @param center the center of the dragView to use in our calculation for dragView's intended position
+ */
+- (void)processHitTestForPoint:(CGPoint)center;
 @end

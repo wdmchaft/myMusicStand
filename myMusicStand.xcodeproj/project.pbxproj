@@ -155,6 +155,7 @@
 		699D0F2013D780D0009D467A /* FileImporter.m in Sources */ = {isa = PBXBuildFile; fileRef = 699D0F1F13D780D0009D467A /* FileImporter.m */; };
 		699D0F2413D780F1009D467A /* FileImporterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 699D0F2313D780F1009D467A /* FileImporterTests.m */; };
 		699D0F2513D78115009D467A /* FileImporter.m in Sources */ = {isa = PBXBuildFile; fileRef = 699D0F1F13D780D0009D467A /* FileImporter.m */; };
+		69A2358E13E89AF300C32F91 /* Doxyfile in Resources */ = {isa = PBXBuildFile; fileRef = 69A2358D13E89AF300C32F91 /* Doxyfile */; };
 		69A6EE3A13E72E62004A3BF8 /* platform.png in Resources */ = {isa = PBXBuildFile; fileRef = 69A6EE3913E72E62004A3BF8 /* platform.png */; };
 		69A7561313DF1B2600671838 /* ThumbnailDragController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69A7561213DF1B2600671838 /* ThumbnailDragController.m */; };
 		69B1CEC613DE47D200C3F493 /* MailComposerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69B1CEC513DE47D200C3F493 /* MailComposerController.m */; };
@@ -392,8 +393,9 @@
 		699D0F1F13D780D0009D467A /* FileImporter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileImporter.m; sourceTree = "<group>"; };
 		699D0F2213D780F1009D467A /* FileImporterTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileImporterTests.h; sourceTree = "<group>"; };
 		699D0F2313D780F1009D467A /* FileImporterTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileImporterTests.m; sourceTree = "<group>"; };
+		69A2358D13E89AF300C32F91 /* Doxyfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Doxyfile; sourceTree = "<group>"; };
 		69A6EE3913E72E62004A3BF8 /* platform.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = platform.png; sourceTree = "<group>"; };
-		69A7561113DF1B2600671838 /* ThumbnailDragController.h */ = {isa = PBXFileReference; fileEncoding = 4; path = ThumbnailDragController.h; sourceTree = "<group>"; };
+		69A7561113DF1B2600671838 /* ThumbnailDragController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThumbnailDragController.h; sourceTree = "<group>"; };
 		69A7561213DF1B2600671838 /* ThumbnailDragController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThumbnailDragController.m; sourceTree = "<group>"; };
 		69B1CEC413DE47D200C3F493 /* MailComposerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MailComposerController.h; sourceTree = "<group>"; };
 		69B1CEC513DE47D200C3F493 /* MailComposerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MailComposerController.m; sourceTree = "<group>"; };
@@ -672,6 +674,7 @@
 		64D94E001379B2CB00300349 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				69A2358D13E89AF300C32F91 /* Doxyfile */,
 				64D94E011379B2CB00300349 /* myMusicStand-Info.plist */,
 				64D94E021379B2CB00300349 /* InfoPlist.strings */,
 				64D94E051379B2CB00300349 /* myMusicStand-Prefix.pch */,
@@ -1083,6 +1086,7 @@
 				69945F2013CFB40300D9BF72 /* PDFDocumentViewController.xib in Resources */,
 				6998AD2B13E382FC00CC7539 /* bottom_of_stand.png in Resources */,
 				69A6EE3A13E72E62004A3BF8 /* platform.png in Resources */,
+				69A2358E13E89AF300C32F91 /* Doxyfile in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
