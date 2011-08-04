@@ -58,4 +58,10 @@
     
     STAssertEquals(YES, wasCompleted, @"Completion block should have been called");
 }
+
+- (void)testFrameForPosition
+{
+    STAssertEquals(CGRectMake(10, 6, 162, 201), [layout frameForPosition:0], @"Frame should be correct");
+    STAssertEquals(CGRectMake(182, 6, 162, 201), [layout frameForPosition:1], @"Frame should be correct");
+}
 @end

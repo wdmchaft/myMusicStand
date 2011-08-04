@@ -1,6 +1,11 @@
 
 #import "SetlistViewLayout.h"
 
+#define THUMBNAIL_LEFT_PADDING 10
+#define THUMBNAIL_TOP_PADDING 6
+#define THUMBNAIL_WIDTH 162
+#define THUMBNAIL_HEIGHT 201
+
 @implementation SetlistViewLayout
 {
     // Book keeping structure 
@@ -72,5 +77,25 @@
     int position = [self postionOfThumbnail:thumbnail];
     
     return position;
+}
+
+/**
+ *  Helper method to calculate the frame for a thumbnail at a 
+ *  given position in the scrollView. This shouldn't be called by
+ *  outside classes.
+ *
+ *  @param position position used to calculate the frame of a thumbnail
+ *
+ *  @return frame for the thumbnail
+ */
+- (CGRect)frameForPosition:(int)position
+{
+    CGRect frame = CGRectMake(0, THUMBNAIL_TOP_PADDING, THUMBNAIL_WIDTH, THUMBNAIL_HEIGHT);
+    
+    CGFloat xOffset = (THUMBNAIL_LEFT_PADDING * (position + 1)) + position * frame.size.width;
+    
+    frame.origin.x = xOffset;
+    
+    return frame;
 }
 @end
