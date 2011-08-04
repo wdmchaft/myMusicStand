@@ -7,6 +7,7 @@
 #import "Setlist.h"
 #import "Thumbnail.h"
 #import "myMusicStandAppDelegate.h"
+#import "SetlistViewLayout.h"
 
 /*
     Helper class that holds a thumbnail and its position
@@ -46,6 +47,7 @@
     // Mapping of thumbnails to position
     NSMutableDictionary *thumbnailMapping;
     int intendedPosition; // where the user seems to want to place the dragView
+    SetlistViewLayout *viewLayout;
 }
 
 - (id)initWithStageViewController:(StageViewController *)aDelegate
@@ -62,6 +64,8 @@
         newSetlist = [NSEntityDescription insertNewObjectForEntityForName:@"Setlist" inManagedObjectContext:setlistContext];
         
         thumbnailMapping = [[NSMutableDictionary alloc] init];
+        
+        viewLayout = [[SetlistViewLayout alloc] initWithScrollView:[delegate backOfStand]];
 
     }
     
@@ -101,94 +105,6 @@
         NSLog(@"Default used");
         
     }
-}
-
-- (void)handleLongPressOfExistingThumbnail:(UILongPressGestureRecognizer *)recognizer
-{
-    dragView = [recognizer view];
-    
-    CGPoint point = [recognizer locationInView:[delegate view]];
-    
-    switch ([recognizer state]) {
-        case UIGestureRecognizerStateBegan:
-        {
-            // Move the thumbnail to the delegates view
-            [[delegate view] addSubview:dragView];
-            
-            // calculate offset of touch from center
-            
-            CGPoint center = [[delegate view] convertPoint:[dragView center] fromView:[dragView superview]];
-            xOffset = point.x - center.x;
-            yOffset = point.y - center.y;
-            
-            // animate dragview to show it has been grabbed
-            CGAffineTransform transform = [dragView transform];
-            transform = CGAffineTransformMakeScale(1.15, 1.15);
-            CGFloat alpha = 0.75;
-            
-            [UIView animateWithDuration:0.2 
-                             animations:^{
-                                 [dragView setTransform:transform];
-                                 [dragView setAlpha:alpha];
-                             }];
-
-            
-            // remove the thumbnail associated with the dragView
-            [thumbnailMapping removeObjectForKey:[dragView description]];
-            
-            break;
-        }   
-        case UIGestureRecognizerStateChanged:
-        {
-            
-            // move the view to recreate the offset 
-            CGPoint newCenter = CGPointMake(point.x - xOffset, point.y - yOffset);
-            
-            [dragView setCenter:newCenter];
-
-            
-            [self processHitTestForPoint:newCenter];
-            
-            break;
-        }
-        case UIGestureRecognizerStateEnded:
-        {
-            // hittest dragview with backOfStand 
-            BOOL standContainsPoint = CGRectContainsPoint([[delegate backOfStand] frame], 
-                                                          [dragView center]);
-            
-            if (standContainsPoint)
-            {
-                // determine where to show the dragView
-                CGRect viewsFrame = [self frameOnStandForPosition:intendedPosition];
-                
-                [self animateDragViewOnStandToFrame:viewsFrame 
-                                         completion:^(BOOL finished){
-                                             [[delegate backOfStand] addSubview:dragView];
-                                            
-                                             // add the thumbnail to the mapping
-                                             ThumbnailPositionPair *pair = [[ThumbnailPositionPair alloc] init];
-                                             [pair setThumbnail:dragView];
-                                             [pair setPosition:intendedPosition];
-                                            
-                                             [thumbnailMapping setValue:pair
-                                                                 forKey:[dragView description]];
-                                            
-                                             dragView = nil;
-                                         }];
-
-            }
-            else 
-            {
-                [dragView removeFromSuperview];
-            }
-            
-            break;
-        }
-        default:
-            break;
-    }
-    
 }
 
 -(void)handleLongPress:(UILongPressGestureRecognizer *)recognizer
@@ -243,78 +159,12 @@
         CGPoint newCenter = CGPointMake(point.x - xOffset, point.y - yOffset);
         
         [dragView setCenter:newCenter];
-        
-        // Hit test backOfStand with our center to see if we hit subviews
-        UIView *hitThumbnail = [[delegate backOfStand] hitTest:newCenter withEvent:nil];
-        
-        // Check that we have a subview of the backOfStand
-        if (hitThumbnail != [delegate backOfStand] && hitThumbnail != nil)
-        {
-            // Get the pair for the hitThumbnail
-            ThumbnailPositionPair *pair = [thumbnailMapping valueForKey:[hitThumbnail description]]; 
-            intendedPosition = [pair position];
-           
-            NSLog(@"Inteneded Position %d", intendedPosition);
-        }
-        else if (hitThumbnail == nil)
-        {
-            // default value is last position
-            intendedPosition = [thumbnailMapping count];
-            NSLog(@"Default used");
-                    
-        }
-        
-        [self relayoutThumbnails];
-        
-        
+               
     }
     else if ([recognizer state] == UIGestureRecognizerStateEnded)
     {
-        // hittest dragview with backOfStand 
-        BOOL standContainsPoint = CGRectContainsPoint([[delegate backOfStand] frame], 
-                                                      [dragView center]);
+        [viewLayout insertThumbnail:dragView completion:nil];
         
-        if (standContainsPoint)
-        {                       
-            // determine where to show the dragView
-            CGRect viewsFrame = [self frameOnStandForPosition:intendedPosition];
-            
-            [self animateDragViewOnStandToFrame:viewsFrame 
-                                     completion:^(BOOL finished)
-                                     {
-                                         [[delegate backOfStand] addSubview:dragView];
-
-                                         // add the thumbnail to the mapping
-                                         ThumbnailPositionPair *pair = [[ThumbnailPositionPair alloc] init];
-                                         [pair setThumbnail:dragView];
-                                         [pair setPosition:intendedPosition];
-                                         
-                                         [thumbnailMapping setValue:pair
-                                                             forKey:[dragView description]];
-                                         
-                                         // add gesture recognizer to the thumbnail
-                                         UILongPressGestureRecognizer *recognizer = 
-                                            [[UILongPressGestureRecognizer alloc] initWithTarget:self 
-                                                                                          action:@selector(handleLongPressOfExistingThumbnail:)];
-                                         [dragView addGestureRecognizer:recognizer];
-
-                                         dragView = nil;
-                                     }];
-            
-            // Add File to setlist
-            File *file = [(FileTableController *)[delegate blockController] fileForBlock:targetView];
-            // add the file object to the local context
-            File *localContextFile = (File *)[setlistContext objectWithID:[file objectID]];
-            // finally add the file to the setlist
-            [newSetlist insertFile:localContextFile 
-                          forIndex:intendedPosition
-                         inContext:setlistContext];
-            
-        }
-        else
-        {
-            [dragView removeFromSuperview];
-        }
     }
 }
 

@@ -3,15 +3,27 @@
 
 @implementation SetlistViewLayout
 {
+    // Book keeping structure 
     NSMutableDictionary *mapping;
+    
+    // ScrollView we manage
+    UIScrollView *view;
 }
 
-- (id)init
+/**
+ *  Designated intializer. 
+ *  
+ *  @param scrollView the scrollView whos layout we manage
+ *
+ *  @return instance of this class
+ */
+- (id)initWithScrollView:(UIScrollView *)scrollView
 {
     self = [super init];
     if (self) 
     {
         mapping = [[NSMutableDictionary alloc] init];
+        view = scrollView;
     }
     
     return self;
@@ -32,20 +44,30 @@
 }
 
 /**
- *  Inserts a thumbnail into the ordered listing of thumbnails. 
- *  Position of the thumbnail is determined by checking positioning 
- *  against other thumbnails.
+ *  Inserts a thumbnail into the ordered listing of thumbnails and into
+ *  the view ivar at the appropriate position. Position of the thumbnail 
+ *  is determined by checking positioning against other thumbnails.
  *
  *  @param thumbnail the thumbnail to insert into the listing
+ *  @param completion a ^(void) block used called immediatly after inserting a thumbnail
+ *                    into the scrollview 
  *
  *  @return the position of that the thumbnail has been inserted into
  */
-- (int)insertThumbnail:(UIView *)thumbnail
+- (int)insertThumbnail:(UIView *)thumbnail completion:(void (^)(void))completion;
 {
     int lastPosition = [mapping count];
     NSNumber *positionAsNumber = [NSNumber numberWithInt:lastPosition];
     
     [mapping setValue:positionAsNumber forKey:[thumbnail description]];
+    
+    [view addSubview:thumbnail];
+    
+    // call completion block
+    if (completion)
+    {
+        completion();
+    }
     
     int position = [self postionOfThumbnail:thumbnail];
     
