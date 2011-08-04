@@ -163,7 +163,18 @@
     }
     else if ([recognizer state] == UIGestureRecognizerStateEnded)
     {
-        [viewLayout insertThumbnail:dragView completion:nil];
+        __weak id weakSelf = self;
+        [viewLayout insertThumbnail:dragView completion:^{
+            [UIView animateWithDuration:0.3 
+                              animations:^{
+                                  ThumbnailDragController *strongSelf = weakSelf;
+                                  if (strongSelf)
+                                  {
+                                      [dragView setTransform:CGAffineTransformIdentity];
+                                      [dragView setAlpha:1.0];
+                                  }
+                              }];
+        }];
         
     }
 }
