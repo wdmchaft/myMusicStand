@@ -147,6 +147,7 @@
 		64FD3BC613A109D6008163F3 /* UISpecCommandReceiver.m in Sources */ = {isa = PBXBuildFile; fileRef = 64FD3B8713A109D6008163F3 /* UISpecCommandReceiver.m */; };
 		691F733013D48461004C1008 /* TimestampEntity.m in Sources */ = {isa = PBXBuildFile; fileRef = 691F732F13D48461004C1008 /* TimestampEntity.m */; };
 		693D5B5B13CB4A3A00840F67 /* PDFView.m in Sources */ = {isa = PBXBuildFile; fileRef = 693D5B5A13CB4A3A00840F67 /* PDFView.m */; };
+		699187E613EACC1900F96842 /* SetlistViewLayoutTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 699187E513EACC1900F96842 /* SetlistViewLayoutTests.m */; };
 		69945F1A13CFA0C300D9BF72 /* PDFScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 69945F1913CFA0C300D9BF72 /* PDFScrollView.m */; };
 		69945F2013CFB40300D9BF72 /* PDFDocumentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69945F1F13CFB40300D9BF72 /* PDFDocumentViewController.xib */; };
 		69958E1013C8C6CE00A6911E /* PDFHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 69958E0F13C8C6CE00A6911E /* PDFHelpers.m */; };
@@ -159,6 +160,8 @@
 		69A6EE3A13E72E62004A3BF8 /* platform.png in Resources */ = {isa = PBXBuildFile; fileRef = 69A6EE3913E72E62004A3BF8 /* platform.png */; };
 		69A7561313DF1B2600671838 /* ThumbnailDragController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69A7561213DF1B2600671838 /* ThumbnailDragController.m */; };
 		69B1CEC613DE47D200C3F493 /* MailComposerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69B1CEC513DE47D200C3F493 /* MailComposerController.m */; };
+		69D346E613EAC915002B03FC /* SetlistViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 69D346E513EAC915002B03FC /* SetlistViewLayout.m */; };
+		69D346E713EAC915002B03FC /* SetlistViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 69D346E513EAC915002B03FC /* SetlistViewLayout.m */; };
 		69D45F2513C397E30041AF71 /* firsttime.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 69D45F2413C397E30041AF71 /* firsttime.pdf */; };
 		69F39AED13C5FD6800B7B939 /* Thumbnail.m in Sources */ = {isa = PBXBuildFile; fileRef = 69F39AEC13C5FD6800B7B939 /* Thumbnail.m */; };
 /* End PBXBuildFile section */
@@ -382,6 +385,8 @@
 		691F732F13D48461004C1008 /* TimestampEntity.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimestampEntity.m; sourceTree = "<group>"; };
 		693D5B5913CB4A3A00840F67 /* PDFView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDFView.h; sourceTree = "<group>"; };
 		693D5B5A13CB4A3A00840F67 /* PDFView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDFView.m; sourceTree = "<group>"; };
+		699187E413EACC1900F96842 /* SetlistViewLayoutTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetlistViewLayoutTests.h; sourceTree = "<group>"; };
+		699187E513EACC1900F96842 /* SetlistViewLayoutTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetlistViewLayoutTests.m; sourceTree = "<group>"; };
 		69945F1813CFA0C300D9BF72 /* PDFScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDFScrollView.h; sourceTree = "<group>"; };
 		69945F1913CFA0C300D9BF72 /* PDFScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDFScrollView.m; sourceTree = "<group>"; };
 		69945F1F13CFB40300D9BF72 /* PDFDocumentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PDFDocumentViewController.xib; sourceTree = "<group>"; };
@@ -399,6 +404,8 @@
 		69A7561213DF1B2600671838 /* ThumbnailDragController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThumbnailDragController.m; sourceTree = "<group>"; };
 		69B1CEC413DE47D200C3F493 /* MailComposerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MailComposerController.h; sourceTree = "<group>"; };
 		69B1CEC513DE47D200C3F493 /* MailComposerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MailComposerController.m; sourceTree = "<group>"; };
+		69D346E413EAC915002B03FC /* SetlistViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetlistViewLayout.h; sourceTree = "<group>"; };
+		69D346E513EAC915002B03FC /* SetlistViewLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetlistViewLayout.m; sourceTree = "<group>"; };
 		69D45F2413C397E30041AF71 /* firsttime.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = firsttime.pdf; sourceTree = "<group>"; };
 		69F39AEB13C5FD6800B7B939 /* Thumbnail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Thumbnail.h; sourceTree = "<group>"; };
 		69F39AEC13C5FD6800B7B939 /* Thumbnail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Thumbnail.m; sourceTree = "<group>"; };
@@ -702,6 +709,8 @@
 				64886D3113BCCE68009C3EDA /* PDFDocumentViewControllerTests.m */,
 				699D0F2213D780F1009D467A /* FileImporterTests.h */,
 				699D0F2313D780F1009D467A /* FileImporterTests.m */,
+				699187E413EACC1900F96842 /* SetlistViewLayoutTests.h */,
+				699187E513EACC1900F96842 /* SetlistViewLayoutTests.m */,
 			);
 			path = myMusicStandTests;
 			sourceTree = "<group>";
@@ -750,6 +759,8 @@
 				69B1CEC513DE47D200C3F493 /* MailComposerController.m */,
 				69A7561113DF1B2600671838 /* ThumbnailDragController.h */,
 				69A7561213DF1B2600671838 /* ThumbnailDragController.m */,
+				69D346E413EAC915002B03FC /* SetlistViewLayout.h */,
+				69D346E513EAC915002B03FC /* SetlistViewLayout.m */,
 			);
 			name = "Top Level";
 			sourceTree = "<group>";
@@ -1160,6 +1171,7 @@
 				699D0F2013D780D0009D467A /* FileImporter.m in Sources */,
 				69B1CEC613DE47D200C3F493 /* MailComposerController.m in Sources */,
 				69A7561313DF1B2600671838 /* ThumbnailDragController.m in Sources */,
+				69D346E613EAC915002B03FC /* SetlistViewLayout.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1185,6 +1197,8 @@
 				64886D3B13BCD1C0009C3EDA /* PDFDocument.m in Sources */,
 				699D0F2413D780F1009D467A /* FileImporterTests.m in Sources */,
 				699D0F2513D78115009D467A /* FileImporter.m in Sources */,
+				69D346E713EAC915002B03FC /* SetlistViewLayout.m in Sources */,
+				699187E613EACC1900F96842 /* SetlistViewLayoutTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1400,7 +1414,7 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks/**",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "myMusicStandTests/myMusicStandTests-Prefix.pch";
@@ -1433,7 +1447,7 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks/**",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "myMusicStandTests/myMusicStandTests-Prefix.pch";
