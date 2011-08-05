@@ -65,14 +65,27 @@
     NSNumber *positionAsNumber = [NSNumber numberWithInt:lastPosition];
     
     [mapping setValue:positionAsNumber forKey:[thumbnail description]];
+
+    CGRect newFrame = [self frameForPosition:lastPosition];
     
-    [view addSubview:thumbnail];
+    dispatch_queue_t mainQueue = dispatch_get_main_queue();
     
-    // call completion block
-    if (completion)
-    {
-        completion();
-    }
+    // Animate the frame
+    [UIView animateWithDuration:0.2
+                     animations:^{
+                         [thumbnail setFrame:newFrame];
+                     }
+                     completion:^(BOOL finished){
+                         dispatch_async(mainQueue, ^{
+                            [view addSubview:thumbnail];
+                         });
+                         
+                         // call the completion block
+                         if (completion)
+                         {
+                             completion();
+                         }
+                     }];
     
     int position = [self postionOfThumbnail:thumbnail];
     
