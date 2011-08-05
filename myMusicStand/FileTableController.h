@@ -1,10 +1,17 @@
-//
-//  FilesListTableViewController.h
-//  myMusicStand
-//
-//  Created by Steve Solomon on 5/10/11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
-//
+/**
+ *  @file FileTableController
+ *  @author Steven Solomon <solomon.steven.m@gmail.com>
+ *  @date 8/4/11
+ *
+ *  @section DESCRIPTION
+ *  This class displays files in a multiple document per row format
+ *  within a tableView. It is a controller class in the MVC pattern 
+ *  but doesn't meet the Cocoa standards as maintaining an entire screen 
+ *  full of content so it isn't a viewController. 
+ *  
+ *  Throughout this application blocks are sometimes refered to as thumbnails.
+ *
+ */
 
 #import <UIKit/UIKit.h>
 #import "BlockTableController.h"
@@ -12,13 +19,57 @@
 @class myMusicStandAppDelegate, NSManagedObjectContext, StageViewController, File;
 @interface FileTableController : BlockTableController <UITextFieldDelegate>
 
-
+/**
+ *  Allows clients that use this class to toggle gesture recognition on the thumbnails within
+ *  the tableView
+ */
 @property (nonatomic, assign) BOOL canDragBlocks;
-// can be used by a delegate to specify the selector to use to respond to block gestures
+
+/**
+ *  Allows for the selector used to respond to block gestures to be set
+ */
 @property (nonatomic, assign) SEL longPressSelector; 
+
+/**
+ *  Allows for target used in block gesture recognition to be set. 
+ *  Note that the target isn't retained by us so it may not exist
+ *  when a gesture recogition event is sent to it.
+ */
 @property (nonatomic, weak) id longPressTarget;
 
+/**
+ *  Reloads the files from it's instance of NSManagedObjectContext and then
+ *  updates the tableView to reflect any new files. This is run anytime 
+ *  the context we managed saves.
+ *
+ *  @param notification
+ *  Currently an NSManagedObjectContextDidSaveNotification we are listening for.
+ *  
+ */
 - (void)reloadFiles:(NSNotification *)notification;
+
+/**
+ *  Future will allow us to modify the alias of a file via the label under a thumbnail
+ *  
+ *  @param recognizer
+ *  A gesture we will use to allow this feature to be used.
+ */
 -(void)editAlias:(UIGestureRecognizer *)recognizer;
-- (File *)fileForBlock:(UIView *)block; // returns the file for the coresponding block
+
+/**
+ *  @abstract
+ *  A File instance that is mapped to the view passed in
+ *
+ *  @discussion
+ *  This class keeps a mapping of blocks (aka thumbnails) to File instances
+ *  allowing for fast lookup of the File that is displayed in the block
+ *
+ *  @param block
+ *  A thumbnail displaying a file we care about and we want to access the actual
+ *  file.
+ *
+ *  @return 
+ *  the file corresponding to the block passed in
+ */
+- (File *)fileForBlock:(UIView *)block; 
 @end
