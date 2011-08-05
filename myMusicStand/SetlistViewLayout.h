@@ -14,7 +14,6 @@
 @interface SetlistViewLayout : NSObject
 
 /**
- *  @function initWithScrollView:
  *
  *  Designated intializer. 
  *  
@@ -25,8 +24,6 @@
 - (id)initWithScrollView:(UIScrollView *)scrollView;
 
 /**
- *  @function positionOfThumbnail:
- *
  *  Checks listing for the thumbnail and returns its position. 
  *  Note that positions are zero based.
  *  
@@ -39,8 +36,6 @@
 - (int)postionOfThumbnail:(UIView *)thumbnail;
 
 /**
- *  @function insertThumbnail:completion:
- *
  *  Inserts a thumbnail into the ordered listing of thumbnails and into
  *  the view ivar at the appropriate position. Position of the thumbnail 
  *  is determined by checking positioning against other thumbnails.
@@ -58,8 +53,7 @@
 - (int)insertThumbnail:(UIView *)thumbnail completion:(void (^)(void))completion;
 
 /**
- *  @helper frameForPosition
- *
+ *  @private
  *  Helper method to calculate the frame for a thumbnail at a 
  *  given position in the scrollView. This shouldn't be called by
  *  outside classes.
