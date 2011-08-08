@@ -3,13 +3,9 @@
  *  @author Steven Solomon <solomon.steven.m@gmail.com>
  *  @date 8/4/11
  *
- *  @section DESCRIPTION
- *  This class displays files in a multiple document per row format
- *  within a tableView. It is a controller class in the MVC pattern 
- *  but doesn't meet the Cocoa standards as maintaining an entire screen 
- *  full of content so it isn't a viewController. 
- *  
- *  Throughout this application blocks are sometimes refered to as thumbnails.
+ *  @discussion
+ *  This class is a subclass of BlockTableController. It extends its superclass
+ *  to allow dragging of blocks by delegating the task to ThumbnailDragController object
  *
  */
 

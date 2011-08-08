@@ -1,10 +1,19 @@
-//
-//  BlockTableViewController.h
-//  
-//
-//  Created by Steve Solomon on 5/19/11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
-//
+/**
+ *  @file BlockTableController
+ *  @author Steven Solomon <solomon.steven.m@gmail.com>
+ *  @date 8/4/11
+ *
+ *  @discussion
+ *  This class allows any subclasses to display models in a multiple 
+ *  model per row format within a tableView. It is a controller class 
+ *  in the MVC pattern but doesn't meet the Cocoa standards as maintaining 
+ *  an entire screen full of content so it isn't a viewController. 
+ *  
+ *  NOTE: this class is to be treated as abstract and shouldn't be instantiated.
+ *  
+ *  Throughout this application blocks are sometimes refered to as thumbnails.
+ *
+ */
 
 extern const CGFloat BLOCK_WIDTH;
 extern const CGFloat BLOCK_HEIGHT;
@@ -22,15 +31,64 @@ extern const CGFloat CELL_HEIGHT;
     StageViewController *__weak delegate;
 }
 
+/**
+ *  pointer to a navigationController
+ */
 @property (nonatomic, weak) UINavigationController *navigationController;
+
+/**
+ *  Pointer to TableView managed by this class.
+ */
 @property (nonatomic, weak) UITableView *tableView;
+
+/**
+ *  Data that will be displayed in the table
+ */
 @property (nonatomic, retain) NSArray *model;
+
+/**
+ *  Allows toggling of thumbnail selection (aka blocks)
+ */
 @property (nonatomic, assign) BOOL isSelectingBlocks;
+
+/**
+ *  Currently selected models. This is a book keeping state
+ *  so other classes can perform custom actions.
+ */
 @property (nonatomic, readonly) NSArray *selectedModels;
+
+/**
+ *  Pointer to our ViewController (tightly coupled sadly)
+ */
 @property (nonatomic, weak) StageViewController *delegate;
 
+/**
+ *  Designated initializer for subclasses
+ *
+ *  @param moc 
+ *  NSManagedObjectContext used to save model changes and recieve notifications.
+ *
+ *  @param tv
+ *  we manage the display of data for this table
+ *  
+ */
 - (id)initWithManagedObjectContext:(NSManagedObjectContext *)moc andTableView:(UITableView *)tv;
+
+/**
+ *  @abstract
+ *  Method for creating a blockCell to display in the table
+ *
+ *  @discussion
+ *  To be treated as a private method. In the future this should go away.
+ *
+ *  @param tableView 
+ *  tableView to create a cell for.
+ *
+ *  @return 
+ *  Created Cell with correct block layout.
+ */
 - (UITableViewCell *)blockCellForTableView:(UITableView *)tableView;
+
 - (int)numberOfBlocks; // index for block cell
 // Helper method for adding model coresponding to ui block to selectedModels (DONOT CALL DIRECTLY)
 - (void)toggleBlockSelection:(UITapGestureRecognizer *)recognizer;
