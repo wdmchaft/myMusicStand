@@ -152,7 +152,7 @@
 		69945F2013CFB40300D9BF72 /* PDFDocumentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69945F1F13CFB40300D9BF72 /* PDFDocumentViewController.xib */; };
 		69958E1013C8C6CE00A6911E /* PDFHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 69958E0F13C8C6CE00A6911E /* PDFHelpers.m */; };
 		69958E2213C9259D00A6911E /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 69958E2113C9259D00A6911E /* icon.png */; };
-		6998AD2B13E382FC00CC7539 /* bottom_of_stand.png in Resources */ = {isa = PBXBuildFile; fileRef = 6998AD2A13E382FC00CC7539 /* bottom_of_stand.png */; };
+		6998AD2B13E382FC00CC7539 /* bottomOfStand.png in Resources */ = {isa = PBXBuildFile; fileRef = 6998AD2A13E382FC00CC7539 /* bottomOfStand.png */; };
 		699D0F2013D780D0009D467A /* FileImporter.m in Sources */ = {isa = PBXBuildFile; fileRef = 699D0F1F13D780D0009D467A /* FileImporter.m */; };
 		699D0F2413D780F1009D467A /* FileImporterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 699D0F2313D780F1009D467A /* FileImporterTests.m */; };
 		699D0F2513D78115009D467A /* FileImporter.m in Sources */ = {isa = PBXBuildFile; fileRef = 699D0F1F13D780D0009D467A /* FileImporter.m */; };
@@ -394,7 +394,7 @@
 		69958E0E13C8C6CE00A6911E /* PDFHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PDFHelpers.h; sourceTree = "<group>"; };
 		69958E0F13C8C6CE00A6911E /* PDFHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PDFHelpers.m; sourceTree = "<group>"; };
 		69958E2113C9259D00A6911E /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon.png; path = ../icon.png; sourceTree = "<group>"; };
-		6998AD2A13E382FC00CC7539 /* bottom_of_stand.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bottom_of_stand.png; sourceTree = "<group>"; };
+		6998AD2A13E382FC00CC7539 /* bottomOfStand.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bottomOfStand.png; sourceTree = "<group>"; };
 		699D0F1E13D780D0009D467A /* FileImporter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileImporter.h; sourceTree = "<group>"; };
 		699D0F1F13D780D0009D467A /* FileImporter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileImporter.m; sourceTree = "<group>"; };
 		699D0F2213D780F1009D467A /* FileImporterTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileImporterTests.h; sourceTree = "<group>"; };
@@ -988,7 +988,7 @@
 				64E380641381786700A43834 /* floorAndStage.png */,
 				69958E2113C9259D00A6911E /* icon.png */,
 				645BC56C13B928CE00C20507 /* check.png */,
-				6998AD2A13E382FC00CC7539 /* bottom_of_stand.png */,
+				6998AD2A13E382FC00CC7539 /* bottomOfStand.png */,
 			);
 			name = images;
 			sourceTree = "<group>";
@@ -1098,7 +1098,7 @@
 				645BC56D13B928CE00C20507 /* check.png in Resources */,
 				69958E2213C9259D00A6911E /* icon.png in Resources */,
 				69945F2013CFB40300D9BF72 /* PDFDocumentViewController.xib in Resources */,
-				6998AD2B13E382FC00CC7539 /* bottom_of_stand.png in Resources */,
+				6998AD2B13E382FC00CC7539 /* bottomOfStand.png in Resources */,
 				69A6EE3A13E72E62004A3BF8 /* platform.png in Resources */,
 				69A2358E13E89AF300C32F91 /* Doxyfile in Resources */,
 				69E1ECCB13F032D400D8CF65 /* tripod.png in Resources */,

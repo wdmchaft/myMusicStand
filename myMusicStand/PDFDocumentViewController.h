@@ -14,7 +14,7 @@
 @class PDFDocument, PDFView, StageViewController;
 @interface PDFDocumentViewController : UIViewController <UIScrollViewDelegate, UIGestureRecognizerDelegate>
 
-@property (nonatomic, readonly) PDFDocument *document;
+@property (nonatomic, strong, readonly) PDFDocument *document;
 @property (nonatomic, weak) StageViewController *delegate;
 // Designated initializer, which creates the document from the url passed
 // and loads view setup from nib

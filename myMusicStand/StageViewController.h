@@ -22,8 +22,8 @@
 @class BlockTableController;
 @interface StageViewController : UIViewController 
 
-@property (nonatomic, readonly) BlockTableController *blockController;
-@property (nonatomic, readonly) UIScrollView *backOfStand;
+@property (nonatomic, strong, readonly) BlockTableController *blockController;
+@property (nonatomic, strong, readonly) UIScrollView *backOfStand;
 
 - (IBAction)tabIndexChanged:(UISegmentedControl *)sender;
 - (IBAction)showActionItems:(UIBarButtonItem *)sender;

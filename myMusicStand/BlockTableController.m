@@ -251,7 +251,7 @@ const CGFloat CELL_HEIGHT = 270.0;
     {
         if ([subview isKindOfClass:[UILabel class]])
         {
-            [subview performSelector:@selector(setText:) withObject:@""];
+            [(UILabel*)subview setText:@""];
         }
         else
         {

@@ -13,7 +13,7 @@
 @interface myMusicStandAppDelegate : NSObject <UIApplicationDelegate > 
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
-@property (nonatomic, readonly) UINavigationBar *bottomOfStand;
+@property (nonatomic, strong, readonly) UINavigationBar *bottomOfStand;
 @property (nonatomic, retain) NSManagedObjectContext *managedObjectContext;
 @property (nonatomic, retain, readonly) NSManagedObjectModel *managedObjectModel;
 @property (nonatomic, retain, readonly) NSPersistentStoreCoordinator *persistentStoreCoordinator;

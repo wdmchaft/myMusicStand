@@ -103,6 +103,11 @@ typedef enum
     // Give the tableView a label of "Charts"
     [tableView setAccessibilityLabel:@"Charts"];
 
+    // Give the bottom of stand its backgroud image
+    UIImage *bottomOfStandImage = [UIImage imageNamed:@"bottomOfStand"];
+    UIEdgeInsets bottomOfStandInsets = UIEdgeInsetsMake(6, 21, 0, 21);
+    bottomOfStandImage = [bottomOfStandImage resizableImageWithCapInsets:bottomOfStandInsets];
+    [bottomOfStand setBackgroundImage:bottomOfStandImage forBarMetrics:UIBarMetricsDefault];
 }
 
 - (void)viewDidUnload
