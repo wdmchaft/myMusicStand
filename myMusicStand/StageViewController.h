@@ -1,10 +1,21 @@
-//
-//  StageViewController.h
-//  myMusicStand
-//
-//  Created by Steve Solomon on 5/24/11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
-//
+/**
+ *  @file StageViewController
+ *  @author Steven Solomon <solomon.steven.m@gmail.com>
+ *  @date 5/24/11
+ *
+ *  @abstract
+ *  This class is the overall controller for the myMusicStand app.
+ *  
+ *  @discussion 
+ *  StageViewController manages the stage analogy throughout the app.
+ *  It delegates managing of the tableView to a subclass of blockController.
+ *  It handles all tasks that require knowledge of a myMusicStandDelegate and
+ *  navigationController for the app. 
+ *  
+ *  It provides interfaces to allow for the musicStand on screen to be slid up and
+ *  down as well as emailing model objects as attachments.
+ *
+ */
 
 #import <UIKit/UIKit.h>
 

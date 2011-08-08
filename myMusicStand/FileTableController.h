@@ -1,7 +1,7 @@
 /**
  *  @file FileTableController
  *  @author Steven Solomon <solomon.steven.m@gmail.com>
- *  @date 8/4/11
+ *  @date 5/10/11
  *
  *  @discussion
  *  This class is a subclass of BlockTableController. It extends its superclass

@@ -47,6 +47,7 @@ typedef enum
     IBOutlet UISegmentedControl *tabControl;
     IBOutlet UIBarButtonItem *actionItem;
     IBOutlet UIImageView *imageOfStand;
+    IBOutlet UIImageView *standTripod;
     
     UIBarButtonItem *emailItem;
     BOOL isAddBlockShowing; // flag to keep track of setlist's addBlockShowing property
@@ -423,7 +424,7 @@ typedef enum
     CGRect newBackOfStandFrame = [backOfStand frame];
     CGRect newDoneButtonFrame = [doneButton frame];
     CGRect newImageOfStandFrame = [imageOfStand frame];
-    
+    CGRect newStandTripodFrame = [standTripod frame];
     
     // determine how to set the UI
     if (toState == MusicStandStateDown)
@@ -436,7 +437,9 @@ typedef enum
     
         newBackOfStandFrame.origin.y += BACK_OF_STAND_Y_OFFSET;
         
-        newImageOfStandFrame.origin.y += BACK_OF_STAND_Y_OFFSET;        
+        newImageOfStandFrame.origin.y += BACK_OF_STAND_Y_OFFSET; 
+        
+        newStandTripodFrame.origin.y += BACK_OF_STAND_Y_OFFSET;
         
         newDoneButtonFrame.origin.y += (BACK_OF_STAND_Y_OFFSET + DONE_BUTTON_Y_INSET);
     }
@@ -451,6 +454,8 @@ typedef enum
         
         newImageOfStandFrame.origin.y -= BACK_OF_STAND_Y_OFFSET;
         
+        newStandTripodFrame.origin.y -= BACK_OF_STAND_Y_OFFSET;
+        
         newDoneButtonFrame.origin.y -= (BACK_OF_STAND_Y_OFFSET - DONE_BUTTON_Y_INSET);
     }
     
@@ -463,6 +468,7 @@ typedef enum
                          [backOfStand setFrame:newBackOfStandFrame];
                          [doneButton setFrame:newDoneButtonFrame];
                          [imageOfStand setFrame:newImageOfStandFrame];
+                         [standTripod setFrame:newStandTripodFrame];
                          
                      }
                      completion:^(BOOL finished){

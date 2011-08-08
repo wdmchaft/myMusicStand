@@ -163,6 +163,7 @@
 		69D346E613EAC915002B03FC /* SetlistViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 69D346E513EAC915002B03FC /* SetlistViewLayout.m */; };
 		69D346E713EAC915002B03FC /* SetlistViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 69D346E513EAC915002B03FC /* SetlistViewLayout.m */; };
 		69D45F2513C397E30041AF71 /* firsttime.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 69D45F2413C397E30041AF71 /* firsttime.pdf */; };
+		69E1ECCB13F032D400D8CF65 /* tripod.png in Resources */ = {isa = PBXBuildFile; fileRef = 69E1ECCA13F032D400D8CF65 /* tripod.png */; };
 		69F39AED13C5FD6800B7B939 /* Thumbnail.m in Sources */ = {isa = PBXBuildFile; fileRef = 69F39AEC13C5FD6800B7B939 /* Thumbnail.m */; };
 /* End PBXBuildFile section */
 
@@ -407,6 +408,7 @@
 		69D346E413EAC915002B03FC /* SetlistViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetlistViewLayout.h; sourceTree = "<group>"; };
 		69D346E513EAC915002B03FC /* SetlistViewLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetlistViewLayout.m; sourceTree = "<group>"; };
 		69D45F2413C397E30041AF71 /* firsttime.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = firsttime.pdf; sourceTree = "<group>"; };
+		69E1ECCA13F032D400D8CF65 /* tripod.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tripod.png; sourceTree = "<group>"; };
 		69F39AEB13C5FD6800B7B939 /* Thumbnail.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Thumbnail.h; sourceTree = "<group>"; };
 		69F39AEC13C5FD6800B7B939 /* Thumbnail.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Thumbnail.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -981,6 +983,7 @@
 		6998AD2813E382E100CC7539 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				69E1ECCA13F032D400D8CF65 /* tripod.png */,
 				69A6EE3913E72E62004A3BF8 /* platform.png */,
 				64E380641381786700A43834 /* floorAndStage.png */,
 				69958E2113C9259D00A6911E /* icon.png */,
@@ -1098,6 +1101,7 @@
 				6998AD2B13E382FC00CC7539 /* bottom_of_stand.png in Resources */,
 				69A6EE3A13E72E62004A3BF8 /* platform.png in Resources */,
 				69A2358E13E89AF300C32F91 /* Doxyfile in Resources */,
+				69E1ECCB13F032D400D8CF65 /* tripod.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

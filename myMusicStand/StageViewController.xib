@@ -58,6 +58,20 @@
 							<string key="NSResourceName">floorAndStage.png</string>
 						</object>
 					</object>
+					<object class="IBUIImageView" id="263951770">
+						<reference key="NSNextResponder" ref="766721923"/>
+						<int key="NSvFlags">293</int>
+						<string key="NSFrame">{{266, 44}, {212, 264}}</string>
+						<reference key="NSSuperview" ref="766721923"/>
+						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView"/>
+						<bool key="IBUIUserInteractionEnabled">NO</bool>
+						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
+						<object class="NSCustomResource" key="IBUIImage">
+							<string key="NSClassName">NSImage</string>
+							<string key="NSResourceName">tripod.png</string>
+						</object>
+					</object>
 					<object class="IBUIImageView" id="351499432">
 						<reference key="NSNextResponder" ref="766721923"/>
 						<int key="NSvFlags">292</int>
@@ -99,7 +113,7 @@
 						<string key="NSFrame">{{0, 44}, {768, 960}}</string>
 						<reference key="NSSuperview" ref="766721923"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView"/>
+						<reference key="NSNextKeyView" ref="263951770"/>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">3</int>
 							<bytes key="NSWhite">MQA</bytes>
@@ -270,6 +284,14 @@
 					</object>
 					<int key="connectionID">23</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">standTripod</string>
+						<reference key="source" ref="841351856"/>
+						<reference key="destination" ref="263951770"/>
+					</object>
+					<int key="connectionID">25</int>
+				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<object class="NSArray" key="orderedObjects">
@@ -300,9 +322,10 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<reference ref="993610608"/>
 							<reference ref="824237933"/>
-							<reference ref="311267253"/>
 							<reference ref="325879617"/>
 							<reference ref="351499432"/>
+							<reference ref="311267253"/>
+							<reference ref="263951770"/>
 						</object>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -357,6 +380,11 @@
 						<reference key="object" ref="351499432"/>
 						<reference key="parent" ref="766721923"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">24</int>
+						<reference key="object" ref="263951770"/>
+						<reference key="parent" ref="766721923"/>
+					</object>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="flattenedProperties">
@@ -372,6 +400,7 @@
 					<string>20.CustomClassName</string>
 					<string>20.IBPluginDependency</string>
 					<string>22.IBPluginDependency</string>
+					<string>24.IBPluginDependency</string>
 					<string>4.IBPluginDependency</string>
 					<string>5.IBPluginDependency</string>
 					<string>6.IBPluginDependency</string>
@@ -394,6 +423,7 @@
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+					<string>com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="unlocalizedProperties">
@@ -408,7 +438,7 @@
 				<reference key="dict.values" ref="0"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">23</int>
+			<int key="maxID">25</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -469,11 +499,13 @@
 				<bool key="EncodedWithXMLCoder">YES</bool>
 				<string>floorAndStage.png</string>
 				<string>platform.png</string>
+				<string>tripod.png</string>
 			</object>
 			<object class="NSMutableArray" key="dict.values">
 				<bool key="EncodedWithXMLCoder">YES</bool>
 				<string>{768, 1004}</string>
 				<string>{768, 252}</string>
+				<string>{212, 264}</string>
 			</object>
 		</object>
 		<string key="IBCocoaTouchPluginVersion">894</string>

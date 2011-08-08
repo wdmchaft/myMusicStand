@@ -1,7 +1,7 @@
 /**
  *  @file BlockTableController
  *  @author Steven Solomon <solomon.steven.m@gmail.com>
- *  @date 8/4/11
+ *  @date 5/19/11
  *
  *  @discussion
  *  This class allows any subclasses to display models in a multiple 
