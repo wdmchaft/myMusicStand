@@ -57,8 +57,7 @@ typedef enum
     
     MailComposerController *composerController; // responsible for handling email UI
     
-    ThumbnailDragController *dragController; // handles dragging blocks on screen
-    
+    ThumbnailDragController *dragController; // handles dragging blocks on screen    
 }
 
 @synthesize blockController;
@@ -81,6 +80,7 @@ typedef enum
     
     // composer for email messages
     composerController = [[MailComposerController alloc] initWithStageViewController:self];
+    
 }
 
 - (void)viewDidLoad
@@ -108,6 +108,9 @@ typedef enum
     UIEdgeInsets bottomOfStandInsets = UIEdgeInsetsMake(6, 21, 0, 21);
     bottomOfStandImage = [bottomOfStandImage resizableImageWithCapInsets:bottomOfStandInsets];
     [bottomOfStand setBackgroundImage:bottomOfStandImage forBarMetrics:UIBarMetricsDefault];
+    
+    // Relayout nav bar items to have proper spacing
+    [self layoutInitialBarItems];
 }
 
 - (void)viewDidUnload
@@ -135,6 +138,7 @@ typedef enum
     UINavigationItem *navItem = [[UINavigationItem alloc] init];
     
     // Create bbi for navItem
+
     emailItem = [[UIBarButtonItem alloc] initWithTitle:@"Email"
                                                  style:UIBarButtonItemStyleBordered
                                                 target:self
@@ -154,39 +158,34 @@ typedef enum
     UIBarButtonItem *cancelItem = [[UIBarButtonItem alloc] initWithTitle:@"Cancel"
                                                                    style:UIBarButtonItemStyleBordered 
                                                                   target:self
-                                                                  action:@selector(hideActionItems:)];
+                                                                  action:@selector(layoutInitialBarItems)];
+    
+    // Add spacing button
+    UIBarButtonItem *leftSpaceItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace 
+                                                                               target:nil 
+                                                                               action:nil];
+    [leftSpaceItem setWidth:15.0];
     
     // Array of items to show on screen
-    NSArray *itemsArray = [NSArray arrayWithObjects:emailItem, printItem, deleteItem, nil];
+    NSArray *itemsArray = [NSArray arrayWithObjects:leftSpaceItem, emailItem, printItem, deleteItem, nil];
     
-    // If we are using new 5.0 api 
-    if ([navItem respondsToSelector:@selector(setLeftBarButtonItems:)])
-    {
-        // pack all the bbis into navitem
-        [navItem setLeftBarButtonItems:itemsArray];
-    }
-    else // Assuming 4.3 api 
-    {
-        // create frame for toolbar
-        CGRect toolbarFrame = [bottomOfStand bounds];
-        toolbarFrame.size.width = 400;
+    // pack all the bbis into navitem
+    [navItem setLeftBarButtonItems:itemsArray];
         
-        // Put all items in a toolbar
-        UIToolbar *toolbar = [[UIToolbar alloc] initWithFrame:toolbarFrame];
-        [toolbar setItems:itemsArray];
-        
-        // Put toolbar into navItem, which will be put into the bottomOfStand
-        UIBarButtonItem *toolBarContainer = [[UIBarButtonItem alloc] initWithCustomView:toolbar];
-        [navItem setLeftBarButtonItem:toolBarContainer];
-        
-    }
+
+    // Add spacing button
+    UIBarButtonItem *rightSpaceItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace 
+                                                                                target:nil 
+                                                                                action:nil];
+    [rightSpaceItem setWidth:15.0];
+    itemsArray = [NSArray arrayWithObjects:rightSpaceItem, cancelItem,nil];
+    
+    // Show cancel item
+    [navItem setRightBarButtonItems:itemsArray];
     
     // show items we created
     [bottomOfStand setItems:[NSArray arrayWithObject:navItem] 
                    animated:YES];
-    
-    // Show cancel item
-    [navItem setRightBarButtonItem:cancelItem];
     
     // Allow block selection
     [blockController setIsSelectingBlocks:YES];
@@ -196,16 +195,24 @@ typedef enum
     [self updateAddBlockDisplayOnBlockController:blockController];
 }
 
-/*
- *  Reset the bottomOfStand back to its original configuration
- */ 
-- (IBAction)hideActionItems:(UIBarButtonItem *)sender
+- (void)layoutInitialBarItems
 {
-    UINavigationItem *navItem = [[UINavigationItem alloc] init];
+    // Get first navItem
+    UINavigationItem *navItem = [[bottomOfStand items] objectAtIndex:0];
 
     // set original navItems 
-    [navItem setRightBarButtonItem:actionItem];
+    UIBarButtonItem *rightSpaceItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace 
+                                                                                   target:nil 
+                                                                                   action:nil];
+    [rightSpaceItem setWidth:15.0];
+    [navItem setRightBarButtonItems:[NSArray arrayWithObjects:rightSpaceItem, actionItem, nil]];
+    
+    // create a new tabControl
+    [self createAndStoreNewTabControl];
+    
     [navItem setTitleView:tabControl];
+
+    [navItem setLeftBarButtonItems:nil];
     
     NSArray *navArray = [NSArray arrayWithObject:navItem];
     [bottomOfStand setItems:navArray animated:NO];
@@ -488,20 +495,52 @@ typedef enum
                                                               style:UIBarButtonItemStyleDone 
                                                              target:self 
                                                              action:@selector(slideStandUp)];
-                             [navItem setRightBarButtonItem:bbi];
+                             
+                             UIBarButtonItem *spaceItem = 
+                                [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace 
+                                                                              target:nil 
+                                                                              action:nil];
+                             [spaceItem setWidth:15.0];
+                             [navItem setRightBarButtonItems:[NSArray arrayWithObjects:spaceItem, bbi, nil]];
                              
                              bbi = [[UIBarButtonItem alloc] initWithTitle:@"Cancel"
                                                                     style:UIBarButtonItemStylePlain
                                                                    target:self
                                                                    action:@selector(slideStandUp)];
-                             [navItem setLeftBarButtonItems:[NSArray arrayWithObject:bbi]];
+                             
+                             spaceItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace 
+                                                                                       target:nil 
+                                                                                       action:nil];
+                             [spaceItem setWidth:15.0];
+                             [navItem setLeftBarButtonItems:[NSArray arrayWithObjects:spaceItem, bbi, nil]];
                          }
                          else // State down
                          {
-                             [navItem setRightBarButtonItem:actionItem];
-                             [navItem setLeftBarButtonItems:nil];
+                             [self layoutInitialBarItems];
                          }
                      }];
+
+}
+
+- (void)createAndStoreNewTabControl
+{
+    // Make sure new control has the same index selected
+    NSInteger selectedSegmentIndex = [tabControl selectedSegmentIndex];
+    
+    // Create our new instance and store it in our ivar
+    tabControl = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"Charts",  @"Sets", nil]];
+    
+    // Set visual attributes
+    [tabControl setSelectedSegmentIndex:selectedSegmentIndex];
+    [tabControl setSegmentedControlStyle:UISegmentedControlStyleBar];
+    
+    [tabControl addTarget:self 
+                   action:@selector(tabIndexChanged:) 
+         forControlEvents:UIControlEventValueChanged];
+    
+    CGRect frame = [tabControl frame];
+    frame.size.width = 307;
+    [tabControl setFrame:frame];
 
 }
 
