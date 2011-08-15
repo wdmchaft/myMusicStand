@@ -9,29 +9,6 @@
 #import "myMusicStandAppDelegate.h"
 #import "SetlistViewLayout.h"
 
-/*
-    Helper class that holds a thumbnail and its position
-    this is used in a hash to allow us to get at the view
-    and it's position so we can move them around easily
- */
-@interface ThumbnailPositionPair : NSObject 
-
-@property (nonatomic, strong) UIView *thumbnail;
-@property (nonatomic, assign) int position;
-
-@end
-
-@implementation ThumbnailPositionPair
-{
-    UIView *thumbnail;
-    int postion;
-}
-
-@synthesize thumbnail;
-@synthesize position;
-
-@end
-
 @implementation ThumbnailDragController
 {
     // Offsets in dragged view
@@ -43,10 +20,7 @@
     NSManagedObjectContext *setlistContext;
     Setlist *newSetlist;
     UIView *targetView;
-    
-    // Mapping of thumbnails to position
-    NSMutableDictionary *thumbnailMapping;
-    int intendedPosition; // where the user seems to want to place the dragView
+
     SetlistViewLayout *viewLayout;
 }
 
@@ -62,8 +36,6 @@
         
         // create a new setlist
         newSetlist = [NSEntityDescription insertNewObjectForEntityForName:@"Setlist" inManagedObjectContext:setlistContext];
-        
-        thumbnailMapping = [[NSMutableDictionary alloc] init];
         
         viewLayout = [[SetlistViewLayout alloc] initWithScrollView:[delegate backOfStand]];
 
@@ -82,29 +54,6 @@
                          [dragView setFrame:newFrame];
                      }
                      completion:completion];
-}
-
-- (void)processHitTestForPoint:(CGPoint)center 
-{
-    // Hit test backOfStand with our center to see if we hit subviews
-    UIView *hitThumbnail = [[delegate backOfStand] hitTest:center withEvent:nil];
-    
-    // Check that we have a subview of the backOfStand
-    if (hitThumbnail != [delegate backOfStand] && hitThumbnail != nil)
-    {
-        // Get the pair for the hitThumbnail
-        ThumbnailPositionPair *pair = [thumbnailMapping valueForKey:[hitThumbnail description]]; 
-        intendedPosition = [pair position];
-        
-        NSLog(@"Inteneded Position %d", intendedPosition);
-    }
-    else if (hitThumbnail == nil)
-    {
-        // default value is last position
-        intendedPosition = [thumbnailMapping count];
-        NSLog(@"Default used");
-        
-    }
 }
 
 -(void)handleLongPress:(UILongPressGestureRecognizer *)recognizer
@@ -188,48 +137,5 @@
     frame.origin.y = 6;
     
     return frame;
-}
-
-- (void)relayoutThumbnails
-{
-    // Relayout subviews of the backOfStand, when we get the the hit position 
-    // that thumbnail and each after it is moved one position right
-    NSArray *pairs = [thumbnailMapping allValues];
-    
-    // Sort the array by each pair's position
-    NSSortDescriptor *sort = [NSSortDescriptor sortDescriptorWithKey:@"position" ascending:YES];
-    pairs = [pairs sortedArrayUsingDescriptors:[NSArray arrayWithObject:sort]];
-
-    // Create a newMapping
-    NSMutableDictionary *newMapping = [[NSMutableDictionary alloc] init];
-    
-    // Loop through pairs and move them to the correct position
-    int i = 0;
-    for (ThumbnailPositionPair *aPair in pairs)
-    {
-        // When i is the intended position of the the dragView 
-        if (i >= intendedPosition)
-        {
-            [aPair setPosition:(i + 1)];
-        }
-        else
-        {
-            [aPair setPosition:i];
-            
-        }
-        
-        CGRect newFrame = [self frameOnStandForPosition:[aPair position]];
-        UIView *thumbnail = [aPair thumbnail];
-        
-
-        [thumbnail setFrame:newFrame];
-        
-        // add the modified pair to the new mapping
-        [newMapping setValue:aPair forKey:[thumbnail description]];
-        i++;
-    }
-    
-    // swap in the newMapping
-    thumbnailMapping = newMapping;
 }
 @end

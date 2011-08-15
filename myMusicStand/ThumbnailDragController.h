@@ -49,12 +49,6 @@
 - (CGRect)frameOnStandForPosition:(int)position;
 
 /**
- *  Relayout the views in the backOfStand according to their position in a book keeping
- *  datastructure. After determining the new frame we animate the view to it.
- */
-- (void)relayoutThumbnails;
-
-/**
  *  Animate the dragView to its new Frame in the delegates backOfStand
  *
  *  @param newFrame 
@@ -66,12 +60,4 @@
  */
 - (void)animateDragViewOnStandToFrame:(CGRect)newFrame completion:(void (^)(BOOL finished))completion;
 
-/**
- *  Hit test the backOfStand and determine which position the user is intending to 
- *  drop the dragView.
- *
- *  @param center 
- *  the center of the dragView to use in our calculation for dragView's intended position
- */
-- (void)processHitTestForPoint:(CGPoint)center;
 @end
