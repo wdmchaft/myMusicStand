@@ -40,17 +40,17 @@
  *  the view ivar at the appropriate position. Position of the thumbnail 
  *  is determined by checking positioning against other thumbnails.
  *
+ *  If a thumbnail's center isn't contain in the frame of the view
+ *  it will not be inserted and -1 will be returned.
+ *
  *  @param thumbnail 
  *  the thumbnail to insert into the listing
  *
- *  @param completion 
- *  a void block used called immediatly after inserting a thumbnail
- *  into the scrollview 
- *
  *  @return 
- *  the position of that the thumbnail has been inserted into
+ *  the position of that the thumbnail has been inserted into. -1 
+ *  if the thumbnail's center isn't contained in the views frame.
  */
-- (int)insertThumbnail:(UIView *)thumbnail completion:(void (^)(void))completion;
+- (int)insertThumbnail:(UIView *)thumbnail;
 
 /**
  *  @private

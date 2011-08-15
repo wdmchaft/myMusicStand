@@ -37,7 +37,7 @@
     [[mockScrollView expect] addSubview:thumbnail];
     
     // check that it has the proper layout
-    STAssertEquals(0, [layout insertThumbnail:thumbnail completion:nil], @"Thumbnail postion should be correct");
+    STAssertEquals(0, [layout insertThumbnail:thumbnail], @"Thumbnail postion should be correct");
 
     // wait for animation completion due to it's async nature
     [[NSRunLoop mainRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.5]];
@@ -55,11 +55,11 @@
     for (int i = 0; i < 5; i++)
     {
         thumbnail = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 162, 201)];
-        [layout insertThumbnail:thumbnail completion:nil];
+        [layout insertThumbnail:thumbnail];
     }
     
     [[mockScrollView expect] setContentSize:CGSizeMake(870, 252)];
-    [layout insertThumbnail:thumbnail completion:nil];
+    [layout insertThumbnail:thumbnail];
     
     // wait to complete animations
     [[NSRunLoop mainRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.5]];
@@ -72,7 +72,7 @@
     // Make thumbnail no where near scrollview
     [thumbnail setCenter:CGPointMake(1000, 1000)];
     
-    STAssertEquals(-1, [layout insertThumbnail:thumbnail completion:nil], 
+    STAssertEquals(-1, [layout insertThumbnail:thumbnail], 
                    @"Thumbnail should not have been inserted");
 }
 - (void)testFrameForPosition

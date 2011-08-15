@@ -35,7 +35,7 @@
     return [position intValue];
 }
 
-- (int)insertThumbnail:(UIView *)thumbnail completion:(void (^)(void))completion;
+- (int)insertThumbnail:(UIView *)thumbnail
 {
     if (!CGRectContainsPoint([view frame], [thumbnail center]))
     {
@@ -78,11 +78,7 @@
                                              [thumbnail setTransform:CGAffineTransformIdentity];
                                              [thumbnail setAlpha:1.0];
                                          }];
-                         // call the completion block
-                         if (completion)
-                         {
-                             completion();
-                         }
+                         
                      }];
     
     int position = [self postionOfThumbnail:thumbnail];

@@ -112,7 +112,7 @@
     }
     else if ([recognizer state] == UIGestureRecognizerStateEnded)
     {
-        int position =[viewLayout insertThumbnail:dragView completion:nil];
+        int position =[viewLayout insertThumbnail:dragView];
         
         // it wasn't inserted so throw away the dragView
         if (position == -1)
