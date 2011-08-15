@@ -58,6 +58,7 @@
                      }
                      completion:^(BOOL finished){
                          dispatch_async(mainQueue, ^{
+                             
                             [view addSubview:thumbnail];
                              
                              // Grow the content size to show all the thumbnails
@@ -69,9 +70,14 @@
                                  newContentSize.width = MIN_SCROLLVIEW_CONTENT_WIDTH;
                              }
                              [view setContentSize:newContentSize];
-                                  
+                            
                          });
                          
+                         [UIView animateWithDuration:0.2 
+                                          animations:^{
+                                             [thumbnail setTransform:CGAffineTransformIdentity];
+                                             [thumbnail setAlpha:1.0];
+                                         }];
                          // call the completion block
                          if (completion)
                          {

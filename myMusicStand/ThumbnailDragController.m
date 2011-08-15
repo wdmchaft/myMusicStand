@@ -112,18 +112,7 @@
     }
     else if ([recognizer state] == UIGestureRecognizerStateEnded)
     {
-        __weak id weakSelf = self;
-        int position =[viewLayout insertThumbnail:dragView completion:^{
-                            [UIView animateWithDuration:0.3 
-                                              animations:^{
-                                                  ThumbnailDragController *strongSelf = weakSelf;
-                                                  if (strongSelf)
-                                                  {
-                                                      [dragView setTransform:CGAffineTransformIdentity];
-                                                      [dragView setAlpha:1.0];
-                                                  }
-                                              }];
-                        }];
+        int position =[viewLayout insertThumbnail:dragView completion:nil];
         
         // it wasn't inserted so throw away the dragView
         if (position == -1)
