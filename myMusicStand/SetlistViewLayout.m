@@ -5,6 +5,8 @@
 #define THUMBNAIL_TOP_PADDING 6
 #define THUMBNAIL_WIDTH 162
 #define THUMBNAIL_HEIGHT 201
+#define MIN_SCROLLVIEW_CONTENT_WIDTH 769
+#define SCROLLVIEW_CONTENT_HEIGHT 252
 
 @implementation SetlistViewLayout
 {
@@ -52,6 +54,17 @@
                      completion:^(BOOL finished){
                          dispatch_async(mainQueue, ^{
                             [view addSubview:thumbnail];
+                             
+                             // Grow the content size to show all the thumbnails
+                             CGSize newContentSize = CGSizeMake(MIN_SCROLLVIEW_CONTENT_WIDTH, SCROLLVIEW_CONTENT_HEIGHT);
+                             newContentSize.width = (THUMBNAIL_WIDTH + THUMBNAIL_LEFT_PADDING) + newFrame.origin.x;
+
+                             if (newContentSize.width <= MIN_SCROLLVIEW_CONTENT_WIDTH)
+                             {
+                                 newContentSize.width = MIN_SCROLLVIEW_CONTENT_WIDTH;
+                             }
+                             [view setContentSize:newContentSize];
+                                  
                          });
                          
                          // call the completion block

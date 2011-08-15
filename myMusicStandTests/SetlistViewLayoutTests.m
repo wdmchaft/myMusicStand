@@ -15,6 +15,7 @@
     SetlistViewLayout *layout; // SUT
     UIView *thumbnail; // thumbnail to be used in testing
     id mockScrollView; // mocking fixture
+    UIScrollView *scrollView;
     
 }
 
@@ -22,9 +23,8 @@
 {
     [super setUp];
     
-    // Create partial mock
-    UIScrollView *scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, 768, 252)];
-    mockScrollView = [OCMockObject partialMockForObject:scrollView];
+    // Create nice mock
+    mockScrollView = [OCMockObject niceMockForClass:[UIScrollView class]];
     
     layout = [[SetlistViewLayout alloc] initWithScrollView:mockScrollView];
     thumbnail = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 162, 201)];
@@ -33,7 +33,7 @@
 - (void)testThumbnailInsertionIntoLayoutAndScrollView
 {    
     [[mockScrollView expect] addSubview:thumbnail];
-   
+    
     // check that it has the proper layout
     STAssertEquals(0, [layout insertThumbnail:thumbnail completion:nil], @"Thumbnail postion should be correct");
 
@@ -43,6 +43,26 @@
     STAssertEquals([layout frameForPosition:0], [thumbnail frame], @"Make sure thumbnail's frame has been set");
     [mockScrollView verify];
     
+}
+
+- (void)testScrollViewContentSizeGrowsToShowSubviews
+{
+    [[mockScrollView stub] setContentSize:CGSizeMake(768, 252)];
+    
+    // Add 4 thumbnails 
+    for (int i = 0; i < 5; i++)
+    {
+        thumbnail = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 162, 201)];
+        [layout insertThumbnail:thumbnail completion:nil];
+    }
+    
+    [[mockScrollView expect] setContentSize:CGSizeMake(870, 252)];
+    [layout insertThumbnail:thumbnail completion:nil];
+    
+    // wait to complete animations
+    [[NSRunLoop mainRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.5]];
+    
+    [mockScrollView verify];
 }
 
 - (void)testFrameForPosition
