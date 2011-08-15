@@ -386,12 +386,6 @@ typedef enum
 #pragma mark Stand Moving Methods
 - (void)slideStandDown
 {
-    // clear out the stand of subviews
-    for (UIView *subview in [backOfStand subviews])
-    {
-        [subview removeFromSuperview];
-    }
-    
     [self moveMusicStandToState:MusicStandStateDown];
     isAddBlockShowing = NO;
     
@@ -516,6 +510,12 @@ typedef enum
                          }
                          else // State down
                          {
+                             // clear out the stand of subviews
+                             for (UIView *subview in [backOfStand subviews])
+                             {
+                                 [subview removeFromSuperview];
+                             }
+                             
                              [self layoutInitialBarItems];
                          }
                      }];
