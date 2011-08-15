@@ -25,6 +25,8 @@
     
     // Create nice mock
     mockScrollView = [OCMockObject niceMockForClass:[UIScrollView class]];
+    CGRect mockFrame = CGRectMake(0, 0, 768, 252);
+    [[[mockScrollView stub] andReturnValue:[NSValue valueWithCGRect:mockFrame]] frame];
     
     layout = [[SetlistViewLayout alloc] initWithScrollView:mockScrollView];
     thumbnail = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 162, 201)];
@@ -65,6 +67,14 @@
     [mockScrollView verify];
 }
 
+- (void)testThumbnailWithCenterNotInScrollViewIsNotInserted
+{
+    // Make thumbnail no where near scrollview
+    [thumbnail setCenter:CGPointMake(1000, 1000)];
+    
+    STAssertEquals(-1, [layout insertThumbnail:thumbnail completion:nil], 
+                   @"Thumbnail should not have been inserted");
+}
 - (void)testFrameForPosition
 {
     STAssertEquals(CGRectMake(10, 6, 162, 201), [layout frameForPosition:0], @"Frame should be correct");

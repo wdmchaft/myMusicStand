@@ -37,6 +37,11 @@
 
 - (int)insertThumbnail:(UIView *)thumbnail completion:(void (^)(void))completion;
 {
+    if (!CGRectContainsPoint([view frame], [thumbnail center]))
+    {
+        return -1;
+    }
+    
     int lastPosition = [mapping count];
     NSNumber *positionAsNumber = [NSNumber numberWithInt:lastPosition];
     
