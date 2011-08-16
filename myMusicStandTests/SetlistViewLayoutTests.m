@@ -47,7 +47,21 @@
     
 }
 
-// NOTE: this test require simulator orientation to be portrait
+- (void)testInsertAddsGestureRecognizerToThumbnail
+{   
+    id mockThumbnail = [OCMockObject partialMockForObject:thumbnail];
+    [[mockThumbnail expect] addGestureRecognizer:[OCMArg any]];
+    
+    // wait for animation completion
+    [layout insertThumbnail:mockThumbnail];
+    
+    // wait for animation completion due to it's async nature
+    [[NSRunLoop mainRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.5]];
+    
+    [mockThumbnail verify];
+}
+
+// NOTE: this test requires simulator orientation to be portrait
 - (void)testScrollViewContentSizeGrowsToShowSubviews
 {
     [[mockScrollView stub] setContentSize:CGSizeMake(768, 252)];

@@ -15,7 +15,14 @@
     
     // ScrollView we manage
     UIScrollView *view;
+    
+    // Used to create longPressGesture recognizer
+    id __weak longPressTarget;
+    SEL longPressHandler;
 }
+
+@synthesize longPressTarget;
+@synthesize longPressHandler;
 
 - (id)initWithScrollView:(UIScrollView *)scrollView
 {
@@ -72,6 +79,11 @@
                              [view setContentSize:newContentSize];
                             
                          });
+                         
+                         // Create a gesture recognizer and add it to thumbnail
+                         UIGestureRecognizer *recognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:longPressTarget     
+                                                                                                         action:longPressHandler];
+                         [thumbnail addGestureRecognizer:recognizer];
                          
                          [UIView animateWithDuration:0.2 
                                           animations:^{

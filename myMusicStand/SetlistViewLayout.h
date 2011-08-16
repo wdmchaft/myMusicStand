@@ -65,4 +65,7 @@
  *  frame for the thumbnail
  */
 - (CGRect)frameForPosition:(int)position;
+
+@property (nonatomic, weak) id longPressTarget;
+@property (nonatomic) SEL longPressHandler;
 @end

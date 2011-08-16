@@ -38,6 +38,9 @@
         newSetlist = [NSEntityDescription insertNewObjectForEntityForName:@"Setlist" inManagedObjectContext:setlistContext];
         
         viewLayout = [[SetlistViewLayout alloc] initWithScrollView:[delegate backOfStand]];
+        
+        [viewLayout setLongPressTarget:self];
+        [viewLayout setLongPressHandler:@selector(handleReordering:)];
 
     }
     
@@ -121,6 +124,69 @@
         }
         
     }
+}
+
+- (void)handleReordering:(UILongPressGestureRecognizer *)recognizer
+{
+    targetView = [recognizer view];
+    
+    // touched point
+    CGPoint point = [recognizer locationInView:[delegate view]];
+    
+    if ([recognizer state] == UIGestureRecognizerStateBegan)
+    {
+        [[delegate view] addSubview:targetView];
+        
+        dragView = targetView;
+        
+        // current center
+        CGPoint center = [[delegate view] convertPoint:[targetView center] fromView:[targetView superview]];
+        
+        // keep track of offset while dragging
+        CGPoint offset = [[delegate backOfStand] contentOffset];
+        
+        center.x -= offset.x;
+        center.y -= offset.y;
+        
+        [dragView setCenter:center];
+        
+        xOffset = point.x - center.x;
+        yOffset = point.y - center.y;
+        
+        // animate dragview to show it has been grabbed
+        CGAffineTransform transform = [dragView transform];
+        transform = CGAffineTransformMakeScale(1.15, 1.15);
+        CGFloat alpha = 0.75;
+        
+        [UIView animateWithDuration:0.2 
+                         animations:^{
+                             
+                             [dragView setTransform:transform];
+                             [dragView setAlpha:alpha];
+                         }];
+        
+
+    }
+    else if ([recognizer state] == UIGestureRecognizerStateChanged)
+    {        
+        // move the view to recreate the offset 
+        CGPoint newCenter = CGPointMake(point.x - xOffset, point.y - yOffset);
+        
+        [dragView setCenter:newCenter];
+        
+    }
+    else if ([recognizer state] == UIGestureRecognizerStateEnded)
+    {
+        int position = [viewLayout insertThumbnail:dragView];
+        
+        // it wasn't inserted so throw away the dragView
+        if (position == -1)
+        {
+            [dragView removeFromSuperview];
+        }
+        
+    }
+
 }
 
 - (CGRect)frameOnStandForPosition:(int)position
