@@ -129,6 +129,22 @@ typedef enum
 	return YES;
 }
 
+- (void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration
+{
+    if (UIInterfaceOrientationIsLandscape(toInterfaceOrientation))
+    {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [imageOfStand setImage:[UIImage imageNamed:@"widePlatform"]];
+        });
+        
+    }
+    else //Portrait
+    {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [imageOfStand setImage:[UIImage imageNamed:@"platform"]];
+        });
+    }
+}
 
 #pragma mark Action Methods
 

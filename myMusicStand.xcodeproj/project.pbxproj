@@ -159,6 +159,7 @@
 		69A2358E13E89AF300C32F91 /* Doxyfile in Resources */ = {isa = PBXBuildFile; fileRef = 69A2358D13E89AF300C32F91 /* Doxyfile */; };
 		69A6EE3A13E72E62004A3BF8 /* platform.png in Resources */ = {isa = PBXBuildFile; fileRef = 69A6EE3913E72E62004A3BF8 /* platform.png */; };
 		69A7561313DF1B2600671838 /* ThumbnailDragController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69A7561213DF1B2600671838 /* ThumbnailDragController.m */; };
+		69A9CC8113F9BBC800EB2284 /* widePlatform.png in Resources */ = {isa = PBXBuildFile; fileRef = 69A9CC8013F9BBC800EB2284 /* widePlatform.png */; };
 		69B1CEC613DE47D200C3F493 /* MailComposerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69B1CEC513DE47D200C3F493 /* MailComposerController.m */; };
 		69D346E613EAC915002B03FC /* SetlistViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 69D346E513EAC915002B03FC /* SetlistViewLayout.m */; };
 		69D346E713EAC915002B03FC /* SetlistViewLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 69D346E513EAC915002B03FC /* SetlistViewLayout.m */; };
@@ -403,6 +404,7 @@
 		69A6EE3913E72E62004A3BF8 /* platform.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = platform.png; sourceTree = "<group>"; };
 		69A7561113DF1B2600671838 /* ThumbnailDragController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ThumbnailDragController.h; sourceTree = "<group>"; };
 		69A7561213DF1B2600671838 /* ThumbnailDragController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ThumbnailDragController.m; sourceTree = "<group>"; };
+		69A9CC8013F9BBC800EB2284 /* widePlatform.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = widePlatform.png; sourceTree = "<group>"; };
 		69B1CEC413DE47D200C3F493 /* MailComposerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MailComposerController.h; sourceTree = "<group>"; };
 		69B1CEC513DE47D200C3F493 /* MailComposerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MailComposerController.m; sourceTree = "<group>"; };
 		69D346E413EAC915002B03FC /* SetlistViewLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetlistViewLayout.h; sourceTree = "<group>"; };
@@ -983,6 +985,7 @@
 		6998AD2813E382E100CC7539 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				69A9CC8013F9BBC800EB2284 /* widePlatform.png */,
 				69E1ECCA13F032D400D8CF65 /* tripod.png */,
 				69A6EE3913E72E62004A3BF8 /* platform.png */,
 				64E380641381786700A43834 /* floorAndStage.png */,
@@ -1102,6 +1105,7 @@
 				69A6EE3A13E72E62004A3BF8 /* platform.png in Resources */,
 				69A2358E13E89AF300C32F91 /* Doxyfile in Resources */,
 				69E1ECCB13F032D400D8CF65 /* tripod.png in Resources */,
+				69A9CC8113F9BBC800EB2284 /* widePlatform.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
