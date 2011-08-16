@@ -16,6 +16,7 @@
 #import "TimestampEntity.h"
 #import "MailComposerController.h"
 #import "ThumbnailDragController.h"
+#import <QuartzCore/QuartzCore.h>
 
 #define FILES_CONTROLLER_INDEX 0
 #define NAV_BAR_HEIGHT 44
@@ -58,6 +59,8 @@ typedef enum
     MailComposerController *composerController; // responsible for handling email UI
     
     ThumbnailDragController *dragController; // handles dragging blocks on screen    
+    
+    UIImageView *imageOfScreen;
 }
 
 @synthesize blockController;
@@ -136,7 +139,6 @@ typedef enum
         dispatch_async(dispatch_get_main_queue(), ^{
             [imageOfStand setImage:[UIImage imageNamed:@"widePlatform"]];
         });
-        
     }
     else //Portrait
     {
@@ -144,6 +146,26 @@ typedef enum
             [imageOfStand setImage:[UIImage imageNamed:@"platform"]];
         });
     }
+    
+    // Create an image of the screen    
+    UIImage *screenshot = [self screenshot];
+    imageOfScreen = [[UIImageView alloc] initWithImage:screenshot];
+    [[[myMusicStandAppDelegate sharedInstance] window] addSubview:imageOfScreen];
+    
+    [tableView setAlpha:0.0];
+    [tableView setFrame:[self determineTableFrame:toInterfaceOrientation]];
+    
+    // Cross fade between the table and the screenshot
+    [UIView animateWithDuration:0.3
+                     animations:^{
+                         [imageOfScreen setAlpha:0.0];
+                         [tableView setAlpha:1.0];
+                     } 
+                     completion:^(BOOL finished){
+                         // remove the image from the screen
+                         [imageOfScreen removeFromSuperview];
+                         imageOfScreen = nil;
+                     }];
 }
 
 #pragma mark Action Methods
@@ -299,14 +321,9 @@ typedef enum
 {
     BlockTableController *newBlockController;
     
-    // Frame for music stand being up
-    CGRect defaultFrame = CGRectMake(0, 44, 768, 960);
+    // determine tableView frame
+    CGRect defaultFrame = [self determineTableFrame:[self interfaceOrientation]];
     
-    // Frame for music stand being down
-    if (musicStandState == MusicStandStateDown)
-    {
-        defaultFrame = CGRectMake(0, 252, 768, 752);
-    }
     UITableView *newTableView = [[UITableView alloc] initWithFrame:defaultFrame
                                                              style:UITableViewStylePlain];
     
@@ -568,6 +585,81 @@ typedef enum
         [(SetlistTableController *)aBlockController setAddBlockShowing:isAddBlockShowing];
         [tableView reloadData];
     }
+}
+
+- (CGRect)determineTableFrame:(UIInterfaceOrientation)orientation
+{
+    // frame for musicStandUp and portrait
+    CGRect frame = CGRectMake(0, 44, 768, 960);
+    
+    if (UIInterfaceOrientationIsLandscape(orientation))
+    {
+        // frame for musicStandUp and landscape
+        frame = CGRectMake(0, 44, 768, 724);
+    }
+    
+    
+    if (musicStandState == MusicStandStateDown)
+    {
+        // frame for musicStandDown and portrait
+        frame = CGRectMake(0, 252, 768, 752);
+        
+        if (UIInterfaceOrientationIsLandscape(orientation))
+        {
+            // frame for musicStandDown and landscape
+            frame = CGRectMake(0, 252, 768, 472);
+        }
+        
+    }
+    
+    return frame;
+
+}
+
+- (UIImage*)screenshot 
+{
+    // Create a graphics context with the target size
+    // On iOS 4 and later, use UIGraphicsBeginImageContextWithOptions to take the scale into consideration
+    // On iOS prior to 4, fall back to use UIGraphicsBeginImageContext
+    CGSize imageSize = [[UIScreen mainScreen] bounds].size;
+    if (NULL != UIGraphicsBeginImageContextWithOptions)
+        UIGraphicsBeginImageContextWithOptions(imageSize, NO, 0);
+    else
+        UIGraphicsBeginImageContext(imageSize);
+    
+    CGContextRef ctx = UIGraphicsGetCurrentContext();
+    
+    // Iterate over every window from back to front
+    for (UIWindow *window in [[UIApplication sharedApplication] windows]) 
+    {
+        if (![window respondsToSelector:@selector(screen)] || [window screen] == [UIScreen mainScreen])
+        {
+            // -renderInContext: renders in the coordinate space of the layer,
+            // so we must first apply the layer's geometry to the graphics context
+            CGContextSaveGState(ctx);
+            // Center the context around the window's anchor point
+            CGContextTranslateCTM(ctx, [window center].x, [window center].y);
+            // Apply the window's transform about the anchor point
+            CGContextConcatCTM(ctx, [window transform]);
+            // Offset by the portion of the bounds left of and above the anchor point
+            CGContextTranslateCTM(ctx,
+                                  -[window bounds].size.width * [[window layer] anchorPoint].x,
+                                  -[window bounds].size.height * [[window layer] anchorPoint].y);
+            
+            // Render the layer hierarchy to the current context
+            [[window layer] renderInContext:ctx];
+            
+            // Restore the context
+            CGContextRestoreGState(ctx);
+        }
+    }
+    
+    // Retrieve the screenshot image
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+    
+    UIGraphicsEndImageContext();
+    
+    return image;
 }
 
 

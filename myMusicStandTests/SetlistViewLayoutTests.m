@@ -47,6 +47,7 @@
     
 }
 
+// NOTE: this test require simulator orientation to be portrait
 - (void)testScrollViewContentSizeGrowsToShowSubviews
 {
     [[mockScrollView stub] setContentSize:CGSizeMake(768, 252)];

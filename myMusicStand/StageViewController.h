@@ -70,4 +70,39 @@
 - (void)slideStandDown;
 - (void)slideStandUp;
 
+/**
+ *  @abstract 
+ *  Determine the frame to be used based on interface orientation and musicStandState
+ *  
+ *  @discussion 
+ *  The tableView being displayed requires drastically different frames based on
+ *  the musicStandState and the device orientation. 
+ *  <br />Resulting in 4 configurations:
+ *      <ul>
+ *          <li>musicStandDown and landscape </li>
+ *          <li>musicStandUp and landscape</li>
+ *          <li>musicStandDown and portrait</li>
+ *          <li>musicStandUp and portrait</li>
+ *      </ul>
+ *
+ *  @param orientation
+ *  The orientation to use in determining the frame.
+ *
+ *  @return 
+ *  The calculated frame.
+ */
+- (CGRect)determineTableFrame:(UIInterfaceOrientation)orientation;
+
+/**
+ *  @abstract 
+ *  Render a screenshot of the entire view heirarchy.
+ *
+ *  @discussion
+ *  In order to perform a crossfade animation we needed to capture an image of the 
+ *  entire screen. This method generates such an image.
+ *
+ *  @return
+ *  Image of the entire view heirarchy.
+ */
+- (UIImage*)screenshot;
 @end
