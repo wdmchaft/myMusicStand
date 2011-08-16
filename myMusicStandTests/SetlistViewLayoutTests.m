@@ -47,9 +47,16 @@
     
 }
 
-- (void)testInsertAddsGestureRecognizerToThumbnail
+- (void)testInsertAddsGestureRecognizerAndRemovesAllExistingFromThumbnail
 {   
     id mockThumbnail = [OCMockObject partialMockForObject:thumbnail];
+
+    // Add a gesture recognizer so it will be removed
+    [thumbnail addGestureRecognizer:[[UIGestureRecognizer alloc] init]];
+    
+    [[mockThumbnail expect] removeGestureRecognizer:[OCMArg any]];
+    [[mockThumbnail stub] removeGestureRecognizer:[OCMArg any]];
+    
     [[mockThumbnail expect] addGestureRecognizer:[OCMArg any]];
     
     // wait for animation completion

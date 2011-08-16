@@ -80,6 +80,12 @@
                             
                          });
                          
+                         // Remove any existing gesture recognizers
+                         for (UIGestureRecognizer *recognzier in [thumbnail gestureRecognizers])
+                         {
+                             [thumbnail removeGestureRecognizer:recognzier];
+                         }
+                         
                          // Create a gesture recognizer and add it to thumbnail
                          UIGestureRecognizer *recognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:longPressTarget     
                                                                                                          action:longPressHandler];
