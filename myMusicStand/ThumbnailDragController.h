@@ -60,4 +60,12 @@
  */
 - (void)animateDragViewOnStandToFrame:(CGRect)newFrame completion:(void (^)(BOOL finished))completion;
 
+/**
+ *  @abstract 
+ *  Animate DragView to appear as grabbed.
+ *
+ *  @discussion
+ *  A grabbed appearence on iOS is slightly less opaque and larger than a normal view.
+ */
+- (void)makeDragViewAppearGrabbed;
 @end
