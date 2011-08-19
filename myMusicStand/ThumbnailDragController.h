@@ -37,18 +37,6 @@
 -(void)handleLongPress:(UILongPressGestureRecognizer *)recognizer;
 
 /**
- *  Determines the frame within a music stand to give the appearence of ordering 
- *
- *  @param index 
- *  the position where the thumbnail will be placed visually on the stand
- *
- *  @return 
- *  the frame for the thumbnail to be displayed in 
- *
- */
-- (CGRect)frameOnStandForPosition:(int)position;
-
-/**
  *  Animate the dragView to its new Frame in the delegates backOfStand
  *
  *  @param newFrame 
@@ -68,4 +56,28 @@
  *  A grabbed appearence on iOS is slightly less opaque and larger than a normal view.
  */
 - (void)makeDragViewAppearGrabbed;
+
+/**
+ *  @private
+ *  Helper method to calculate the frame for a thumbnail at a 
+ *  given position in the scrollView. This shouldn't be called by
+ *  outside classes.
+ *
+ *  @param position 
+ *  position used to calculate the frame of a thumbnail
+ *
+ *  @return 
+ *  frame for the thumbnail
+ */
+- (CGRect)frameForPosition:(int)position;
+
+/**
+ *  @abstract
+ *  Helper method to add file to setlist and also update the view to show change.
+ *
+ *  @discussion 
+ *  Checks if the file should be added to a setlist based on where it is dropped.
+ *  If it should be added the addition is animated.
+ */
+- (void)addFileToSetlistAndUpdateView;
 @end

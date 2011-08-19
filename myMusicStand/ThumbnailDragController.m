@@ -7,7 +7,13 @@
 #import "Setlist.h"
 #import "Thumbnail.h"
 #import "myMusicStandAppDelegate.h"
-#import "SetlistViewLayout.h"
+
+#define THUMBNAIL_LEFT_PADDING 10
+#define THUMBNAIL_TOP_PADDING 6
+#define THUMBNAIL_WIDTH 162
+#define THUMBNAIL_HEIGHT 201
+#define MIN_SCROLLVIEW_CONTENT_WIDTH 769
+#define SCROLLVIEW_CONTENT_HEIGHT 252
 
 @implementation ThumbnailDragController
 {
@@ -15,13 +21,15 @@
     CGFloat xOffset;
     CGFloat yOffset;
     __block UIView *dragView;
+    File *fileBeingDragged;
     
     StageViewController *__weak delegate;
+    UIScrollView *__weak backOfStand;
     NSManagedObjectContext *setlistContext;
     Setlist *newSetlist;
     UIView *targetView;
 
-    SetlistViewLayout *viewLayout;
+
 }
 
 - (id)initWithStageViewController:(StageViewController *)aDelegate
@@ -37,10 +45,8 @@
         // create a new setlist
         newSetlist = [NSEntityDescription insertNewObjectForEntityForName:@"Setlist" inManagedObjectContext:setlistContext];
         
-        viewLayout = [[SetlistViewLayout alloc] initWithScrollView:[delegate backOfStand]];
+        backOfStand = [delegate backOfStand];
         
-        [viewLayout setLongPressTarget:self];
-        [viewLayout setLongPressHandler:@selector(handleReordering:)];
 
     }
     
@@ -57,6 +63,76 @@
                          [dragView setFrame:newFrame];
                      }
                      completion:completion];
+}
+
+- (void)addFileToSetlistAndUpdateView
+{
+    if (!CGRectContainsPoint([backOfStand frame], [dragView center]))
+    {
+        [dragView removeFromSuperview];
+        return;
+    }
+    
+    int lastPossiblePosition = [[newSetlist orderedFiles] count];
+    
+    CGRect newFrame = [self frameForPosition:lastPossiblePosition];
+    
+    // Async add file to setlist
+    [setlistContext performBlock:^{
+        // Get the file in terms of this context
+        File *fileInSetlistContext = (File *)[setlistContext objectWithID:[fileBeingDragged objectID]];
+        [newSetlist insertFile:fileInSetlistContext 
+                      forIndex:lastPossiblePosition 
+                     inContext:setlistContext];
+    }];
+    
+    dispatch_queue_t mainQueue = dispatch_get_main_queue();
+    
+    // Animate the frame
+    [UIView animateWithDuration:0.2
+                     animations:^{
+                         [dragView setFrame:newFrame];
+                     }
+                     completion:^(BOOL finished){
+                         // Work for main queue
+                         dispatch_async(mainQueue, ^{
+                             
+                             [backOfStand addSubview:dragView];
+                             
+                             // Grow the content size to show all the thumbnails
+                             CGSize newContentSize = CGSizeMake(MIN_SCROLLVIEW_CONTENT_WIDTH, SCROLLVIEW_CONTENT_HEIGHT);
+                             newContentSize.width = (THUMBNAIL_WIDTH + THUMBNAIL_LEFT_PADDING) + newFrame.origin.x;
+                             
+                             if (newContentSize.width <= MIN_SCROLLVIEW_CONTENT_WIDTH)
+                             {
+                                 newContentSize.width = MIN_SCROLLVIEW_CONTENT_WIDTH;
+                             }
+                             [backOfStand setContentSize:newContentSize];
+                             
+                         });
+                         
+                         
+                         
+                         // Remove any existing gesture recognizers
+                         for (UIGestureRecognizer *recognzier in [dragView gestureRecognizers])
+                         {
+                             [dragView removeGestureRecognizer:recognzier];
+                         }
+                         
+                         // Create a gesture recognizer and add it to thumbnail
+                         UIGestureRecognizer *recognizer = 
+                         [[UILongPressGestureRecognizer alloc] initWithTarget:self     
+                                                                       action:@selector(handleReordering:)];
+                         
+                         [dragView addGestureRecognizer:recognizer];
+                         
+                         [UIView animateWithDuration:0.2 
+                                          animations:^{
+                                              [dragView setTransform:CGAffineTransformIdentity];
+                                              [dragView setAlpha:1.0];
+                                          }];
+                         
+                     }];
 }
 
 -(void)handleLongPress:(UILongPressGestureRecognizer *)recognizer
@@ -79,8 +155,8 @@
         [[delegate view] addSubview:dragView];
         
         // make the dragView look like the targetView   
-        File *fileObject = [(FileTableController *)blockController fileForBlock:targetView];
-        UIImage *image = [[UIImage alloc] initWithData:[[fileObject thumbnail] data]];
+        fileBeingDragged = [(FileTableController *)blockController fileForBlock:targetView];
+        UIImage *image = [[UIImage alloc] initWithData:[[fileBeingDragged thumbnail] data]];
         UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
         [imageView setFrame:[dragView bounds]];
         [dragView addSubview:imageView];
@@ -104,13 +180,8 @@
     }
     else if ([recognizer state] == UIGestureRecognizerStateEnded)
     {
-        int position =[viewLayout insertThumbnail:dragView];
-        
-        // it wasn't inserted so throw away the dragView
-        if (position == -1)
-        {
-            [dragView removeFromSuperview];
-        }
+        [self addFileToSetlistAndUpdateView];
+
         
     }
 }
@@ -173,25 +244,18 @@
     }
     else if ([recognizer state] == UIGestureRecognizerStateEnded)
     {
-        int position = [viewLayout insertThumbnail:dragView];
-        
-        // it wasn't inserted so throw away the dragView
-        if (position == -1)
-        {
-            [dragView removeFromSuperview];
-        }
-        
+        [self addFileToSetlistAndUpdateView];        
     }
 
 }
 
-- (CGRect)frameOnStandForPosition:(int)position
+- (CGRect)frameForPosition:(int)position
 {
-    CGRect frame = [dragView frame];
+    CGRect frame = CGRectMake(0, THUMBNAIL_TOP_PADDING, THUMBNAIL_WIDTH, THUMBNAIL_HEIGHT);
     
-    frame.origin.x = frame.size.width * position;
+    CGFloat offset = (THUMBNAIL_LEFT_PADDING * (position + 1)) + position * frame.size.width;
     
-    frame.origin.y = 6;
+    frame.origin.x = offset;
     
     return frame;
 }
