@@ -427,8 +427,19 @@ typedef enum
     
 }
 
-- (void)slideStandUp
+- (void)slideStandUp:(UIBarButtonItem *)sender
 {
+    if ([[sender title] isEqualToString:@"Done"])
+    {
+        // we should save the context
+        NSError *error = nil;
+        [context save:&error];
+        if (error)
+        {
+            NSLog(@"Failed to save setlist");
+        }
+    }
+    
     [self moveMusicStandToState:MusicStandStateUp];
     isAddBlockShowing = YES; // reset to display add block
     [self updateAddBlockDisplayOnBlockController:blockController];
@@ -521,7 +532,7 @@ typedef enum
                              [[UIBarButtonItem alloc] initWithTitle:@"Done"
                                                               style:UIBarButtonItemStyleDone 
                                                              target:self 
-                                                             action:@selector(slideStandUp)];
+                                                             action:@selector(slideStandUp:)];
                              
                              UIBarButtonItem *spaceItem = 
                                 [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace 
@@ -533,7 +544,7 @@ typedef enum
                              bbi = [[UIBarButtonItem alloc] initWithTitle:@"Cancel"
                                                                     style:UIBarButtonItemStylePlain
                                                                    target:self
-                                                                   action:@selector(slideStandUp)];
+                                                                   action:@selector(slideStandUp:)];
                              
                              spaceItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace 
                                                                                        target:nil 

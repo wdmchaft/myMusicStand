@@ -68,7 +68,20 @@
 - (void)setEmailButtonEnabled:(BOOL)enabled;
 - (void)displayEmailWith:(NSArray *)attachmentURLs;
 - (void)slideStandDown;
-- (void)slideStandUp;
+
+/**
+ *  @abstract
+ *  Slide the music stand up and save the changes if the sender is the 
+ *  "Done" button.
+ *
+ *  @discussion
+ *  If the sender has the title "Done" the stand also saves the changes to the 
+ *  NSManagedObjectContext.
+ *  
+ *  @param sender
+ *  Caller of this method.
+ */
+- (void)slideStandUp:(UIBarButtonItem *)sender;
 
 /**
  *  @abstract 
