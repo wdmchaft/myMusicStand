@@ -4,11 +4,6 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>myMusicStand-Frankified.xcscheme</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>1</integer>
-		</dict>
 		<key>myMusicStand.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -28,6 +23,11 @@
 			<true/>
 		</dict>
 		<key>64FAA498138C411F009465BC</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>6903DAAE1405512600FD2CD0</key>
 		<dict>
 			<key>primary</key>
 			<true/>
