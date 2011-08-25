@@ -32,7 +32,7 @@ extern const CGFloat CELL_HEIGHT;
 }
 
 /**
- *  pointer to a navigationController
+ *  Pointer to a navigationController
  */
 @property (nonatomic, weak) UINavigationController *navigationController;
 
