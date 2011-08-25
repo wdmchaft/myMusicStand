@@ -38,6 +38,15 @@
             </BuildableReference>
          </TestableReference>
       </Testables>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "64D94DF21379B2CB00300349"
+            BuildableName = "myMusicStand.app"
+            BlueprintName = "myMusicStand"
+            ReferencedContainer = "container:myMusicStand.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
    </TestAction>
    <LaunchAction
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.GDB"

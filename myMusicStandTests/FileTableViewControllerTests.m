@@ -23,6 +23,7 @@
     // TableView must expect it's setup
     [[mockTableView expect] setDelegate:[OCMArg any]];
     [[mockTableView expect] setDataSource:[OCMArg any]];
+    [[mockTableView expect] setAccessibilityLabel:@"Charts"];
     
     // Expect files to be loaded to display on instantiation
     [[mockContext expect] allEntity:@"File"];

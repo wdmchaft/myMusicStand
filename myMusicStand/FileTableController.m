@@ -52,6 +52,8 @@
         totalSelectedFileSize = [NSNumber numberWithInt:0];
         
         canDragBlocks = NO;
+        
+        [tv setAccessibilityLabel:@"Charts"];
     }
     
     return self;
