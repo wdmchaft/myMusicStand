@@ -1,16 +1,22 @@
 #import "tuneup_js/test.js"
 #import "tuneup_js/assertions.js"
 
+function UILog(message)
+{
+	UIALogger.logMessage(message);
+}
+
 var target = UIATarget.localTarget();
 
 var window = target.frontMostApp().mainWindow();
 
 test("Test Initial Screen", function(){
-	 // Check charts table exists
-	 table = window.tableViews()[0];
-	 assertEquals("Charts", table.name());
-	 
-	 window.logElementTree();
-	 bottomOfStand = window
+	 	 
+     assertWindow({
+                  tableViews: [
+							   { name: "Charts"}
+                  ]
+				  
+                 });
 	
 });

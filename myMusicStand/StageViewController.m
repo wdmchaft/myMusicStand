@@ -103,7 +103,7 @@ typedef enum
     [tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     [tableView setAllowsSelection:NO];
     
-    // Give the tableView a label of "Charts"
+    // Set accessibility labels for controls
     [tableView setAccessibilityLabel:@"Charts"];
 
     // Give the bottom of stand its backgroud image
