@@ -80,4 +80,13 @@
  *  If it should be added the addition is animated.
  */
 - (void)addFileToSetlistAndUpdateView;
+
+/**
+ *  @abstract 
+ *  Save setlist context, Not for external use.
+ *
+ *  @discussion
+ *  Save any changes to this child context.
+ */
+- (void)saveSetlistContext;
 @end

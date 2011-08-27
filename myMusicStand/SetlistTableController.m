@@ -83,14 +83,6 @@
         
         // hide the add button
         [self setAddBlockShowing:NO];
-        
-        // Create new setlist
-        Setlist *setlist = [Setlist setlistWithContext:context];
-        
-        // Set attributes for setlist
-        [setlist setTitle:@"Unnamed Set"];
-         
-        [context save:nil];
     }
 }
 

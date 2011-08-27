@@ -32,6 +32,18 @@
 
 }
 
+- (void)saveSetlistContext
+{
+    // Save changes
+    NSError *error = nil;
+    [setlistContext save:&error];
+    
+    if (error)
+    {
+        NSLog(@"Failed to save changes is setlistContext: %@", [error localizedDescription]);
+    }
+}
+
 - (id)initWithStageViewController:(StageViewController *)aDelegate
 {
     self = [super init];
@@ -42,12 +54,13 @@
         setlistContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSPrivateQueueConcurrencyType];
         [setlistContext setParentContext:context];
         
-        // create a new setlist
+        // create a new setlist with title of 'Unnamed Set'
         newSetlist = [NSEntityDescription insertNewObjectForEntityForName:@"Setlist" inManagedObjectContext:setlistContext];
+        [newSetlist setTitle:@"Unnamed Set"];
         
         backOfStand = [delegate backOfStand];
         
-
+        [self saveSetlistContext];
     }
     
     return self;
@@ -84,6 +97,8 @@
         [newSetlist insertFile:fileInSetlistContext 
                       forIndex:lastPossiblePosition 
                      inContext:setlistContext];
+        
+        [self saveSetlistContext];
     }];
     
     dispatch_queue_t mainQueue = dispatch_get_main_queue();
