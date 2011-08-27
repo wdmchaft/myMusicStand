@@ -425,6 +425,9 @@ typedef enum
     // allow dragging by setting the dragController 
     dragController = [[ThumbnailDragController alloc] initWithStageViewController:self];
     
+    // Create synthetic transition to charts controller
+    [tabControl setSelectedSegmentIndex:FILES_CONTROLLER_INDEX];
+    [self tabIndexChanged:tabControl];
 }
 
 - (void)slideStandUp:(UIBarButtonItem *)sender

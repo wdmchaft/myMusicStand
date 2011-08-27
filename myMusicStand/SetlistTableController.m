@@ -39,7 +39,7 @@
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(reloadFiles:)
                                                      name:NSManagedObjectContextDidSaveNotification 
-                                                   object:nil];
+                                                   object:moc];
         shouldDisplayAddBlock = YES;
     }
     return self;
